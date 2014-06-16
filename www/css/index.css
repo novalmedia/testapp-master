@@ -27,7 +27,7 @@ body {
     background-color:#191919;
    
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
-    font-size:12px;
+    font-size:24px;
     height:100%;
     margin:0px;
     padding:0px;
@@ -39,17 +39,18 @@ body {
 .app {
     width:100%;
 	position: relative;
+
 }
-#logo-home {width: 125px; height: 99px;background:url(../img/logo-home.png) no-repeat center top; margin: 25px auto;}
+#logo-home {width: 250px; height: 198px;background:url(../img/logo-home.png) no-repeat center top; margin: 50px auto;background-size: 250px;}
 
 /* Landscape layout (with min-width) */
 
 
 h1 {
 	position: relative;
-	width: 240px;
-margin: 25px auto;
-    font-size:18px;
+	width: 480px;
+margin: 50px auto;
+    font-size:36px;
 	color: #ffffff;
     font-weight:bold;
     overflow:visible;
@@ -60,11 +61,11 @@ margin: 25px auto;
 
 h1 span{color: #d1d1d1;}
 
-#texthome-es {color: #ffffff;text-transform: none;	position: relative;	width: 240px;text-align: center;margin: 25px auto;}
-#texthome-en {color: #d1d1d1;text-transform: none;	position: relative;	width: 240px;text-align: center;margin: 25px auto;}
+#texthome-es {color: #ffffff;text-transform: none;	position: relative;	width: 480px;text-align: center;margin: 50px auto;}
+#texthome-en {color: #d1d1d1;text-transform: none;	position: relative;	width: 480px;text-align: center;margin: 50px auto;}
 
-#lang-es {padding-left: 59px;color: #959595; font-size: 13px; font-weight:bold;text-transform: uppercase;display: block;position: relative; margin: 10px auto;width: 82px;text-decoration: none; line-height: 31px;background:url(../img/lang-es.png) no-repeat center top;}
-#lang-en {padding-left: 59px;color: #959595; font-size: 13px; font-weight:bold;text-transform: uppercase;display: block;position: relative; margin: 10px auto;width: 82px;text-decoration: none; line-height: 31px;background:url(../img/lang-en.png) no-repeat center top;}
+#lang-es {padding-left: 118px;color: #959595; font-size: 26px; font-weight:bold;text-transform: uppercase;display: block;position: relative; margin: 20px auto;width: 164px;text-decoration: none; line-height: 50px;background:url(../img/lang-es.png) no-repeat center top;background-size:226px;}
+#lang-en {padding-left: 118px;color: #959595; font-size: 26px; font-weight:bold;text-transform: uppercase;display: block;position: relative; margin: 20px auto;width: 164px;text-decoration: none; line-height: 50px;background:url(../img/lang-en.png) no-repeat center top;background-size:226px;}
 
  #map-canvas{ 
                 width:100%; 
