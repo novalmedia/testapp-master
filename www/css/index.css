@@ -97,6 +97,12 @@ display: block;text-align: center;line-height: 20px;}
 .dmk2maps_bubble_arrow {margin: 20px auto;cursor: pointer;}
 
 
+.dmk2maps_bubble_image img{
+border-top-left-radius: 200px;
+border-top-right-radius: 200px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 0px;
+}
 
 
 @media (min-width: 480px) { 
