@@ -66,10 +66,7 @@ h1 span{color: #d1d1d1;}
 #lang-es {padding-left: 59px;color: #959595; font-size: 13px; font-weight:bold;text-transform: uppercase;display: block;position: relative; margin: 10px auto;width: 82px;text-decoration: none; line-height: 31px;background:url(../img/lang-es.png) no-repeat center top;}
 #lang-en {padding-left: 59px;color: #959595; font-size: 13px; font-weight:bold;text-transform: uppercase;display: block;position: relative; margin: 10px auto;width: 82px;text-decoration: none; line-height: 31px;background:url(../img/lang-en.png) no-repeat center top;}
 
- #map-canvas{ 
-                width:100%; 
-                height:400px 
-            } 
+ 
 @keyframes fade {
     from { opacity: 1.0; }
     50% { opacity: 0.4; }
@@ -104,6 +101,15 @@ border-bottom-right-radius: 0px;
 border-bottom-left-radius: 0px;
 }
 
+/* Places */
+body.places header {height: 90px; background:#fff; width: 100%;border-bottom: 1px dashed #d8d8d8;display: flex;}
+body.places #filter {height: 75px; background:#fff; width: 100%;}
+
+body.places #map-canvas{width:100%; height:525px } 
+body.places #btn_menu {background: url(../img/btn_menu.png);width:34px;height: 28px;float: left;margin: 31px 0 0 22px;}
+body.places #logo {background: url(../img/logo_black.png);width:194px;height: 63px;margin: 12px auto 0;}
+body.places #aroundme {background: url(../img/aroundme.png);width:26px;height: 34px;float: right;margin: 31px 22px 0 0;}
+			
 
 @media (min-width: 480px) { 
 

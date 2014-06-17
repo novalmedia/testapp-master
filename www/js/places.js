@@ -4,6 +4,7 @@
 		myLatlng = new google.maps.LatLng(37.357938, -6.055301); 
 			var mapOptions = { 
 				zoom: 18, 
+				disableDefaultUI: true,
 				center: myLatlng 
 			}; 
 			map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions); 
