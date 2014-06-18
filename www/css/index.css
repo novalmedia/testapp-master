@@ -90,13 +90,13 @@ h1 span{color: #d1d1d1;}
 }
 
 
-.dmk2maps_bubble_image img {height: 150px;}
-.dmk2maps_bubble_title {font-family: 'Merriweather';font-size: 11px;font-weight: bold;color: #fff;width: 300px;margin: 14px auto;
-display: block;text-align: center;line-height: 20px;}
+.dmk2maps_bubble_image img {height: 145px;}
+.dmk2maps_bubble_title {font-family: 'Merriweather';font-size: 21px;font-weight: bold;color: #fff;width: 290px;margin: 14px auto;
+display: block;text-align: center;line-height: 20px;text-decoration: none;text-transform: none;}
 
-.dmk2maps_bubble_author {display: block;width: 300px;text-align: center;margin: 0 auto;font-family: 'Lato';font-size: 20px;font-weight: bold;color: #959595;}
+.dmk2maps_bubble_author {display: block;width: 290px;text-align: center;margin: 0 auto;font-family: 'Lato';font-size: 21px;font-weight: bold;color: #959595;text-transform: none;}
 .phoney {text-align: center;overflow: hidden;max-height: 380px;}
-.dmk2maps_bubble_arrow {margin: 20px auto;cursor: pointer;}
+.dmk2maps_bubble_arrow {margin: 20px auto;cursor: pointer;width: 35px;}
 
 
 .dmk2maps_bubble_image img{
@@ -138,7 +138,7 @@ body.places #filteropts a.all {background: url(../img/filter_all.png) no-repeat 
     height: 100%; 
     -webkit-transform: translate3d(-100%, 0, 0); 
     transform: translate3d(-100%, 0, 0); 
-	background: #fff;
+	background: url(../img/logo_ministerio.png) no-repeat center bottom #fff;
 	-webkit-transition-duration: .25s; 
     transition-duration: .25s; 
 }
