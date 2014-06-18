@@ -143,7 +143,7 @@
 				icon: '../img/markers/'+data.catid+'.png'				
 			});
 			var infowindow = new InfoBubble({
-				  content : '<div class="dmk2maps_bubble_image"><img src="http://miflamencoplace.com/media/k2/items/cache/9415f9bcd76598f9c08127db1641b596_S.jpg"></div><a class="dmk2maps_bubble_title" href="http://miflamencoplace.com/index.php?option=com_k2&amp;view=item&amp;id=63:pila-del-pato-by-eusebia-lopez">Pila del Pato </a><span class="dmk2maps_bubble_author"> by Eusebia López</span><img onclick="document.location.href=\'/index.php?option=com_k2&amp;view=item&amp;id=63:pila-del-pato-by-eusebia-lopez\';" class="dmk2maps_bubble_arrow" src="http://miflamencoplace.com/images/arrow7.png">',
+				  content : '<div class="dmk2maps_bubble_image"><img src="http://miflamencoplace.com/media/k2/items/cache/'+data.img+'"></div><a class="dmk2maps_bubble_title" href="http://miflamencoplace.com/index.php?option=com_k2&amp;view=item&amp;id=63:pila-del-pato-by-eusebia-lopez">'+data.title+'</a><span class="dmk2maps_bubble_author"> by '+data.personname+'</span><img onclick="document.location.href=\'/index.php?option=com_k2&amp;view=item&amp;id=63:pila-del-pato-by-eusebia-lopez\';" class="dmk2maps_bubble_arrow" src="http://miflamencoplace.com/images/arrow'+data.catid+'.png">',
 				  shadowStyle: 0,
 				  padding: 0,
 				  backgroundColor: 'rgba(0,0,0,0.8)',
