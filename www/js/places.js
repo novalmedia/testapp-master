@@ -135,7 +135,6 @@
 				});
 			
 		function addMarker(data,map) {
-					console.log(data.lat);
 			placeLatlng = new google.maps.LatLng(data.lat, data.long);
 			var marker = new google.maps.Marker({ 
 				position: placeLatlng, 
