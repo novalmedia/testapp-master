@@ -102,14 +102,29 @@ border-bottom-left-radius: 0px;
 }
 
 /* Places */
-body.places header {height: 90px; background:#fff; width: 100%;border-bottom: 1px dashed #d8d8d8;display: flex;}
-body.places #filter {height: 75px; background:#fff; width: 100%;}
 
+body.places header {height: 90px; background:#fff; width: 100%;border-bottom: 1px dashed #d8d8d8;display: flex;}
+body.places #filter {position: relative;float: left;height: 75px; width: 100%;background:  url(../img/filter_arrow.png) no-repeat right center,url(../img/filter_bg.jpg) repeat 0 0;}
+body.places #filter.open {background: url(../img/filter_bg.jpg) repeat 0 0;}
+body.places #filter > span{display: block;font-family: 'Merriweather'; font-size: 24px; font-weight: bold;font-style:italic;text-transform: none;margin: 25px 0 0 25px;}
 body.places #map-canvas{width:100%; height:525px } 
 body.places #btn_menu {background: url(../img/btn_menu.png);width:34px;height: 28px;float: left;margin: 31px 0 0 22px;}
 body.places #logo {background: url(../img/logo_black.png);width:194px;height: 63px;margin: 12px auto 0;}
 body.places #aroundme {background: url(../img/aroundme.png);width:26px;height: 34px;float: right;margin: 31px 22px 0 0;}
-			
+
+body.places #filteropts {position: absolute;top:75px;z-index:99;width: 100%;height: 400px;background:#fff;}			
+body.places #filteropts a{display: block;width: 100%;line-height: 65px;font-size: 21px; font-family: 'Lato'; color: #787878;text-transform: none;
+text-decoration: none;background: url(../img/filteropts_bg.jpg) repeat 0 0;border-bottom: 1px dotted #d9d9d9;  }	
+body.places #filteropts a span{padding: 0 0 0 22px;}
+body.places #filteropts a.btnclose {background: url(../img/filter_arrowup.png) no-repeat right center #fff;}
+
+body.places #filteropts a.remember {background: url(../img/filter_remember.png) no-repeat right center, url(../img/filteropts_bg.jpg) repeat 0 0;}
+body.places #filteropts a.breathe {background: url(../img/filter_breathe.png) no-repeat right center, url(../img/filteropts_bg.jpg) repeat 0 0;}
+body.places #filteropts a.live {background: url(../img/filter_live.png) no-repeat right center, url(../img/filteropts_bg.jpg) repeat 0 0;}
+body.places #filteropts a.learn {background: url(../img/filter_learn.png) no-repeat right center, url(../img/filteropts_bg.jpg) repeat 0 0;}
+body.places #filteropts a.all {background: url(../img/filter_all.png) no-repeat right center, url(../img/filteropts_bg.jpg) repeat 0 0;}
+
+
 
 @media (min-width: 480px) { 
 

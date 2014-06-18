@@ -1,5 +1,6 @@
 	var map; 
 	var myLatlng; 
+	var markersArray = [];
 	function initMap() {
 		myLatlng = new google.maps.LatLng(37.392864, -5.990077); 
 			var mapOptions = { 
@@ -133,7 +134,7 @@
 					addMarker(val,map);
 				  });
 				});
-			
+	}			
 		function addMarker(data,map) {
 			placeLatlng = new google.maps.LatLng(data.lat, data.long);
 			var marker = new google.maps.Marker({ 
@@ -142,6 +143,7 @@
 				title: data.title,
 				icon: '../img/markers/'+data.catid+'.png'				
 			});
+			markersArray.push(marker);
 			var infowindow = new InfoBubble({
 				  content : '<div class="dmk2maps_bubble_image"><img src="http://miflamencoplace.com/media/k2/items/cache/'+data.img+'"></div><a class="dmk2maps_bubble_title" href="http://miflamencoplace.com/index.php?option=com_k2&amp;view=item&amp;id=63:pila-del-pato-by-eusebia-lopez">'+data.title+'</a><span class="dmk2maps_bubble_author"> by '+data.personname+'</span><img onclick="document.location.href=\'/index.php?option=com_k2&amp;view=item&amp;id=63:pila-del-pato-by-eusebia-lopez\';" class="dmk2maps_bubble_arrow" src="http://miflamencoplace.com/images/arrow'+data.catid+'.png">',
 				  shadowStyle: 0,
@@ -163,4 +165,23 @@
 				});		
 			new google.maps.event.addListener(marker, "click", function(){infowindow.open(map,marker);});	
 		}
+
+	
+	
+	function filterMarkers(catid){
+		while(markersArray.length) { markersArray.pop().setMap(null); }
+		if (!catid || catid == 'all'){
+			jQuery.getJSON( "http://miflamencoplace.com/rpc/get_places.php", function( data ) {
+			  jQuery.each( data, function( key, val ) {
+				addMarker(val,map);
+			  });
+			});
+		} else {
+			jQuery.getJSON( "http://miflamencoplace.com/rpc/get_places.php?catid="+catid, function( data ) {
+			  jQuery.each( data, function( key, val ) {
+				addMarker(val,map);
+			  });
+			});
+		}
+		jQuery('#filteropts').slideToggle();
 	}
