@@ -36,9 +36,14 @@ body {
 }
 
 /* Portrait layout (default) */
-.app {
-    width:100%;
-	position: relative;
+#app {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    -webkit-transform: translate3d(0, 0, 0); 
+    transform: translate3d(0, 0, 0); 
 }
 #logo-home {width: 125px; height: 99px;background:url(../img/logo-home.png) no-repeat center top; margin: 25px auto;}
 
@@ -106,7 +111,8 @@ border-bottom-left-radius: 0px;
 body.places header {height: 90px; background:#fff; width: 100%;border-bottom: 1px dashed #d8d8d8;display: flex;}
 body.places #filter {position: relative;float: left;height: 75px; width: 100%;background:  url(../img/filter_arrow.png) no-repeat right center,url(../img/filter_bg.jpg) repeat 0 0;}
 body.places #filter.open {background: url(../img/filter_bg.jpg) repeat 0 0;}
-body.places #filter > span{display: block;font-family: 'Merriweather'; font-size: 24px; font-weight: bold;font-style:italic;text-transform: none;margin: 25px 0 0 25px;}
+body.places #filter > a {color: #000;text-decoration: none;display: block;font-family: 'Merriweather'; font-size: 24px; font-weight: bold;font-style:italic;text-transform: none;width: 100%;line-height: 65px;}
+body.places #filter > a span {padding: 0 0 0 22px;}
 body.places #map-canvas{width:100%; height:525px } 
 body.places #btn_menu {background: url(../img/btn_menu.png);width:34px;height: 28px;float: left;margin: 31px 0 0 22px;}
 body.places #logo {background: url(../img/logo_black.png);width:194px;height: 63px;margin: 12px auto 0;}
@@ -124,7 +130,28 @@ body.places #filteropts a.live {background: url(../img/filter_live.png) no-repea
 body.places #filteropts a.learn {background: url(../img/filter_learn.png) no-repeat right center, url(../img/filteropts_bg.jpg) repeat 0 0;}
 body.places #filteropts a.all {background: url(../img/filter_all.png) no-repeat right center, url(../img/filteropts_bg.jpg) repeat 0 0;}
 
+#menu {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 80%; 
+    height: 100%; 
+    -webkit-transform: translate3d(-100%, 0, 0); 
+    transform: translate3d(-100%, 0, 0); 
+	background: #fff;
+	-webkit-transition-duration: .25s; 
+    transition-duration: .25s; 
+}
+#menu.open { 
+    -webkit-transform: translate3d(0, 0, 0); 
+    transform: translate3d(0, 0, 0); 
+	box-shadow: 5px 0 10px #999;
+}
 
+#menu a{display: block;width: 100%;line-height: 75px;font-size: 22px; font-family: 'Merriweather'; color: #787878;text-transform: none;font-weight: bold;
+text-decoration: none;background: url(../img/filteropts_bg.jpg) repeat 0 0;border-bottom: 1px dotted #d9d9d9;  }
+#menu a span{padding: 0 0 0 22px;}
+#menu a.close {line-height: 90px;background: #fff;color: #959595; font-family: 'Lato'; font-style: italic;font-size: 21px;}
 
 @media (min-width: 480px) { 
 

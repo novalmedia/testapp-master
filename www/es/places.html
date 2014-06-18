@@ -9,10 +9,10 @@
         <title>Mi Flamenco Place</title>
     </head>
     <body class="places">
-        <div class="app">
+        <div id="app">
 			<header>
 				<div style="float: left;width: 33%;">
-					<div id="btn_menu"></div>
+					<div id="btn_menu" onclick="jQuery('#menu').addClass('open');"></div>
 				</div>
 				<div style="float: left;width: 33%;">
 					<div id="logo"></div>
@@ -21,18 +21,24 @@
 					<div id="aroundme"></div>
 				</div>
 			</header>
-           <div id="filter"><span onclick="jQuery('#filteropts').slideToggle();">Lugares para...</span>
+           <div id="filter"><a href="#" onclick="toggleFilter();"><span>Lugares para...</span></a>
 			   <div id="filteropts" style="display: none;">
 				<a href="#" onclick="filterMarkers(5);return false;" class="remember"><span>Recordar</span></a>
 				<a href="#" onclick="filterMarkers(6);return false;" class="breathe"><span>Respirar</span></a>
 				<a href="#" onclick="filterMarkers(7);return false;" class="live"><span>Vivir</span></a>
 				<a href="#" onclick="filterMarkers(8);return false;" class="learn"><span>Aprender</span></a>
 				<a href="#" onclick="filterMarkers('all');return false;" class="all"><span>Todos</span></a>
-				<a href="#" onclick="jQuery('#filteropts').slideToggle();return false;" class="btnclose">&nbsp;</a>
+				<a href="#" onclick="toggleFilter();" class="btnclose">&nbsp;</a>
 			   </div>
 		   </div>
            <div id="map-canvas"></div>
         </div>
+		<div id="menu">
+			<a href="#" class="close"  onclick="jQuery('#menu').removeClass('open');"><span>Navegación</span></a>
+			<a href="#" class="item"><span>Lugares</span></a>
+			<a href="#" class="item"><span>Personas</span></a>
+			<a href="#" class="item"><span>Historias</span></a>
+		</div>
         <script type="text/javascript" src="../phonegap.js"></script>
         <script type="text/javascript" src="../js/index.js"></script>
 		<script type="text/javascript" 	src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=true&amp;libraries=places"></script>

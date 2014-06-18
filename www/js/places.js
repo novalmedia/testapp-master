@@ -183,5 +183,16 @@
 			  });
 			});
 		}
-		jQuery('#filteropts').slideToggle();
+		toggleFilter();
+	}
+	
+	function toggleFilter(){
+		if (jQuery('#filter').hasClass('open')) {
+			jQuery('#filteropts').slideUp('fast');
+			jQuery('#filter').removeClass('open');	
+		} else {
+			jQuery('#filteropts').slideDown();
+			jQuery('#filter').addClass('open');	
+		}
+		return false;
 	}
