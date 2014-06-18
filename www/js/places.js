@@ -1,9 +1,9 @@
 	var map; 
 	var myLatlng; 
 	function initMap() {
-		myLatlng = new google.maps.LatLng(37.357938, -6.055301); 
+		myLatlng = new google.maps.LatLng(37.392864, -5.990077); 
 			var mapOptions = { 
-				zoom: 18, 
+				zoom: 14, 
 				disableDefaultUI: true,
 				center: myLatlng 
 			}; 
@@ -127,30 +127,41 @@
 			var styledMap = new google.maps.StyledMapType(styles,{name: "Styled Map"});
 			map.mapTypes.set("map_style",styledMap);
 			map.setMapTypeId("map_style");
-		var marker = new google.maps.Marker({ 
-			position: myLatlng, 
-			map: map, 
-			title: 'Mi punto en el mapa',
-			icon: '../img/markers/5.png'				
-		});
-		var infowindow = new InfoBubble({
-			  content : '<div class="phoney"><div class="dmk2maps_bubble_image"><img src="http://miflamencoplace.com/media/k2/items/cache/9415f9bcd76598f9c08127db1641b596_S.jpg"></div><a class="dmk2maps_bubble_title" href="http://miflamencoplace.com/index.php?option=com_k2&amp;view=item&amp;id=63:pila-del-pato-by-eusebia-lopez">Pila del Pato </a><span class="dmk2maps_bubble_author"> by Eusebia López</span><img onclick="document.location.href=\'/index.php?option=com_k2&amp;view=item&amp;id=63:pila-del-pato-by-eusebia-lopez\';" class="dmk2maps_bubble_arrow" src="http://miflamencoplace.com/images/arrow7.png">',
-			  shadowStyle: 0,
-			  padding: 0,
-			  backgroundColor: 'rgba(0,0,0,0.8)',
-			  borderRadius: 400,
-			  borderWidth: 6,
-			  borderColor: '#fff',
-			  minWidth: 390,
-			  minHeight: 390,
-			  maxWidth: 390,
-			  maxHeight: 390,
-			  disableAutoPan: false,
-			  hideCloseButton: false,
-			  backgroundClassName: 'phoney',
-			  arrowSize: 5,
-			  arrowPosition: 10,
-			  arrowStyle: 3
-			});		
-		new google.maps.event.addListener(marker, "click", function(){infowindow.open(map,marker);});	
+			
+			jQuery.getJSON( "http://miflamencoplace.com/rpc/get_places.php?callback=jsonp1122334455", function( data ) {
+				  jQuery.each( data, function( key, val ) {
+					addMarker(val,map);
+				  });
+				});
+			
+		function addMarker(data,map) {
+					console.log(data.lat);
+			placeLatlng = new google.maps.LatLng(data.lat, data.long);
+			var marker = new google.maps.Marker({ 
+				position: placeLatlng, 
+				map: map, 
+				title: data.title,
+				icon: '../img/markers/'+data.catid+'.png'				
+			});
+			var infowindow = new InfoBubble({
+				  content : '<div class="dmk2maps_bubble_image"><img src="http://miflamencoplace.com/media/k2/items/cache/9415f9bcd76598f9c08127db1641b596_S.jpg"></div><a class="dmk2maps_bubble_title" href="http://miflamencoplace.com/index.php?option=com_k2&amp;view=item&amp;id=63:pila-del-pato-by-eusebia-lopez">Pila del Pato </a><span class="dmk2maps_bubble_author"> by Eusebia López</span><img onclick="document.location.href=\'/index.php?option=com_k2&amp;view=item&amp;id=63:pila-del-pato-by-eusebia-lopez\';" class="dmk2maps_bubble_arrow" src="http://miflamencoplace.com/images/arrow7.png">',
+				  shadowStyle: 0,
+				  padding: 0,
+				  backgroundColor: 'rgba(0,0,0,0.8)',
+				  borderRadius: 400,
+				  borderWidth: 6,
+				  borderColor: '#fff',
+				  minWidth: 390,
+				  minHeight: 390,
+				  maxWidth: 390,
+				  maxHeight: 390,
+				  disableAutoPan: false,
+				  hideCloseButton: false,
+				  backgroundClassName: 'phoney',
+				  arrowSize: 5,
+				  arrowPosition: 10,
+				  arrowStyle: 3
+				});		
+			new google.maps.event.addListener(marker, "click", function(){infowindow.open(map,marker);});	
+		}
 	}
