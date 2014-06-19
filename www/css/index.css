@@ -182,10 +182,11 @@ body.profile #place .social {width: 100%; text-align: center;}
 body.profile #place .fulltext {width: 100%; text-align: center;margin-top: 65px;font-family: 'Lato'; font-size: 21px;color: #959595;text-transform: none;}
 
 body.profile #person {display: inline-block;background-size: contain;}
-body.profile #person .persontitle{background: rgba(50,50,50,0.8);margin-top:180px; width: 100%;padding: 15px 0 20px 0;}
-body.profile #person .persontitle span{padding-left: 15px;font-family: 'Merriweather';font-weight: bold; font-size: 14px;color: #b6b6b6;text-transform: none;}
-body.profile #person .persontitle .authorname{padding-left: 15px;font-family: 'Merriweather';font-weight: bold; font-size: 20px;color: #fff;text-transform: none;}
-body.profile #person .authortext {font-family: 'Lato'; font-size: 14px;color: #bcbcbc;text-transform: none;}
+body.profile #person .persontitle{background: rgba(50,50,50,0.8);margin-top:270px; width: 100%;padding: 20px 0 30px 0;}
+body.profile #person .persontitle span{padding-left: 20px;font-family: 'Merriweather';font-weight: bold; font-size: 21px;color: #b6b6b6;text-transform: none;}
+body.profile #person .persontitle .authorname{padding-left: 20px;font-family: 'Merriweather';font-weight: bold; font-size: 30px;color: #fff;}
+body.profile #person .authortext {font-family: 'Lato'; font-size: 21px;color: #bcbcbc;text-transform: none;background: #1b1b1b;}
+body.profile #person .authortext p{padding: 40px 20px;}
 
 
 @media (min-width: 480px) { 
