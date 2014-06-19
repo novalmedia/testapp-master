@@ -24,23 +24,29 @@
 			</header>
            <div id="filter"><a href="#" onclick="toggleFilter();"><span>Saber más..</span></a>
 			   <div id="filteropts" style="display: none;">
-				<a href="#" onclick="" class="person"><span>Sobre la persona</span></a>
-				<a href="#" onclick="" class="history"><span>Sobre la historia</span></a>
+				<a href="#" onclick="showPlace();" class="person"><span>Sobre el lugar</span></a>
+				<a href="#" onclick="showPerson();" class="person"><span>Sobre la persona</span></a>
+				<a href="#" onclick="showStory();" class="history"><span>Sobre la historia</span></a>
 				<a href="#" onclick="toggleFilter();" class="btnclose">&nbsp;</a>
 			   </div>
 		   </div>
-          <div id="place">
+		<div id="place">
 			<div class="title"></div>
 			<div class="author"></div>
 			<div class="personface"><img src="" /></div>
 			<div class="introtext"></div>
 			<div class="social"></div>
 			<div class="fulltext"></div>
+			<div id="map-canvas"></div>
 		  </div>
-		  
-		  
-		  
-		  <div id="map-canvas"></div>
+		  <div id="person" style="display: none;">
+			<div class="persontitle"><span>Persona</span><div class="authorname"></div></div>
+			<div class="authortext"></div>
+		  </div>
+		  <div id="story"  style="display: none;">
+			
+			
+		  </div>
         </div>
 		<div id="menu">
 			<a href="#" class="close"  onclick="jQuery('#menu').removeClass('open');"><span>Navegación</span></a>

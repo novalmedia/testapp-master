@@ -126,7 +126,9 @@
 				var mapOptions = { 
 					zoom: 14, 
 					disableDefaultUI: true,
-					center: placeLatlng 
+					center: placeLatlng,
+					scrollwheel: false,
+					draggable: false
 				}; 
 				map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions); 
 				map.mapTypes.set("map_style",styledMap);
@@ -149,6 +151,10 @@
 		$('#place .personface img').attr('src','http://miflamencoplace.com'+data.personface);
 		$('#place .introtext').html(data.placeintrotext);
 		$('#place .fulltext').html(data.placefulltext);
+		$('#person').css('background','url(http://miflamencoplace.com/media/k2/items/cache/'+data.personpicture+') no-repeat center top');
+		$('#person .authorname').html(data.personname);
+		$('#person .authortext').html(data.persontext);
+		
 	}
 	
 	
@@ -179,3 +185,25 @@
     };
 })(jQuery);
 
+
+	function showPlace(){
+		jQuery('#person').fadeOut('fast');
+		jQuery('#story').fadeOut('fast');
+		jQuery('#place').fadeIn('slow');
+		toggleFilter();
+		return false;
+	}
+	function showPerson(){
+		jQuery('#story').fadeOut('fast');
+		jQuery('#place').fadeOut('fast');
+		jQuery('#person').fadeIn('slow');
+		toggleFilter();
+		return false;
+	}
+	function showStory(){
+		jQuery('#person').fadeOut('fast');
+		jQuery('#place').fadeOut('fast');
+		jQuery('#story').fadeIn('slow');
+		toggleFilter();
+		return false;
+	}
