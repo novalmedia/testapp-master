@@ -189,6 +189,23 @@ body.profile #person .authortext {font-family: 'Lato'; font-size: 21px;color: #b
 body.profile #person .authortext p{padding: 40px 20px;}
 
 
+body.profile #story {display: inline-block;background: #fff;width: 100%;}
+body.profile #story .left {display: inline-block;width: 50%;float: left;margin-top: 65px;}
+body.profile #story .left span{padding-left: 20px;font-family: 'Merriweather';font-weight: bold; font-size: 21px;color: #b6b6b6;text-transform: none;}
+body.profile #story .left .placetitle{padding-left: 20px;font-family: 'Merriweather';font-weight: bold; font-size: 21px;color: #2f2f2f;text-transform: none;}
+body.profile #story .left .persontitle{padding-left: 20px;font-family: 'Lato';font-size: 21px;color: #959595;text-transform: none;font-style: italic;}
+
+body.profile #story .right {display: inline-block;width: 50%;float: right;margin-top: 30px;}
+body.profile #story .right img{margin-right: 20px;width: 180px;height:180px;border: 6px solid #d4d1d1;border-radius: 190px;float: right;}
+
+body.profile #story .text{width: 100%;float: left;font-family: 'Lato';font-size: 21px;color: #959595;text-transform: none;border-top: 1px solid #ebebeb;
+background:url(../img/filter_bg.jpg) repeat 0 0;}
+body.profile #story .text p{padding: 0 20px;}
+body.profile #story .text span{font-weight: bold;}
+body.profile #story .download{width: 100%;float: left;padding: 0 20px;}
+body.profile #story .downloada{width: 436px; margin: 0 auto; padding-left: 20px;border: 2px solid #d3d3d3; background: url(../img/download_arrow.png) no-repeat right center, url(../img/filter_bg.jpg) repeat 0 0;
+display: block; font-family: 'Lato';font-size: 20px;color: #787878;text-transform: uppercase;line-height: 50px;text-decoration: none;}
+
 @media (min-width: 480px) { 
 
 body {

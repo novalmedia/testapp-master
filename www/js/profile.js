@@ -154,6 +154,11 @@
 		$('#person').css('background','url(http://miflamencoplace.com/media/k2/items/cache/'+data.personpicture+') no-repeat center top');
 		$('#person .authorname').html(data.personname);
 		$('#person .authortext').html(data.persontext);
+		$('#story .placetitle').html(data.title);
+		$('#story .persontitle').html('By '+data.personname);
+		$('#story .right img').attr('src','http://miflamencoplace.com/media/k2/items/cache/'+data.img);
+		$('#story .authorname').html(data.personname);
+		
 		
 	}
 	
