@@ -186,7 +186,7 @@ body.profile #person .persontitle{background: rgba(50,50,50,0.8);margin-top:270p
 body.profile #person .persontitle span{padding-left: 20px;font-family: 'Merriweather';font-weight: bold; font-size: 21px;color: #b6b6b6;text-transform: none;}
 body.profile #person .persontitle .authorname{padding-left: 20px;font-family: 'Merriweather';font-weight: bold; font-size: 30px;color: #fff;}
 body.profile #person .authortext {font-family: 'Lato'; font-size: 21px;color: #bcbcbc;text-transform: none;background: #1b1b1b;}
-body.profile #person .authortext p{padding: 40px 20px;}
+body.profile #person .authortext p{padding: 40px 20px;margin-top: 0;}
 
 
 body.profile #story {display: inline-block;background: #fff;width: 100%;}
