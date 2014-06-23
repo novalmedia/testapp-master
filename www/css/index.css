@@ -139,7 +139,7 @@ body.places #filter {position: relative;float: left;height: 75px; width: 100%;ba
 body.places #filter.open {background: url(../img/filter_bg.jpg) repeat 0 0;}
 body.places #filter > a {color: #000;text-decoration: none;display: block;font-family: 'Merriweather'; font-size: 24px; font-weight: bold;font-style:italic;text-transform: none;width: 100%;line-height: 65px;}
 body.places #filter > a span {padding: 0 0 0 22px;}
-body.places #map-canvas{width:100%; height:525px } 
+body.places #map-canvas{width:100%; height:525px; float: left;clear: both; } 
 
 body.places #filteropts {position: absolute;top:75px;z-index:99;width: 100%;height: 400px;background:#fff;}			
 body.places #filteropts a{display: block;width: 100%;line-height: 65px;font-size: 21px; font-family: 'Lato'; color: #787878;text-transform: none;
@@ -204,15 +204,22 @@ display: block; font-family: 'Lato';font-size: 20px;color: #787878;text-transfor
 
 
 /* Galeria */
-.gallery{float: left;width: 100%;}
+.gallery{float: left;width: 100%;clear: both;display: block; min-height: 100px;}
 .md-modal { background: rgba(0,0,0,0.8); position: fixed; top: 0; left: 0; bottom:0; width: 100%; height: auto; z-index: 9999999999999999999;
  text-align:center; display: table-cell; vertical-align: middle;}
 #zoom { float:left; position:relative;  z-index:1; overflow:hidden; top:0; bottom:0; height:100%; background-position:center; 
 background-size:contain !important;background-repeat: no-repeat;width: 100%;}
 #close{ font-size:14px; width:28px;  height:28px; border: solid #ccc 1px; color: #FFF; background: #000; -webkit-border-radius: 14px; 
 float:right; right:5px; top:5px; position:absolute; z-index: 9999999999999999999;}
-.md-hide {visibility: hidden;}
 .gallery img {margin: 0 0 5px 5px;float: left;cursor:pointer;}
+
+.md-modal  { -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+.md-hide {
+    -webkit-transform: translate3d(0, -100%, 0); 
+    transform: translate3d(0, -100%, 0); 
+	-webkit-transition-duration: .25s; 
+    transition-duration: .25s; 
+}
 
 @media (min-width: 480px) { 
 

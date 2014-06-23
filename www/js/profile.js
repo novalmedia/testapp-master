@@ -160,7 +160,7 @@
 		$('#story .authorname').html(data.personname);
 		var galContent = '';
 		data.placegallery.forEach(function(galpic) {
-			galContent += '<img width="115" onclick="zoomPicture(this.src);" src="'+galpic+'" />';
+			galContent += '<a href="#" onclick="zoomPicture(\''+galpic+'\');" ><img width="115" src="'+galpic+'" /></a>';
 		});
 		$('#place .gallery').html(galContent);
 	}
@@ -168,6 +168,7 @@
 	function zoomPicture(picture){
 		$('#zoom').css('background-image','url('+picture+')');
 		$('.md-modal').removeClass('md-hide');
+		return false;
 	}
 	
 	function closeZoom(){
