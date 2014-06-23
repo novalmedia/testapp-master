@@ -158,10 +158,22 @@
 		$('#story .persontitle').html('By '+data.personname);
 		$('#story .right img').attr('src','http://miflamencoplace.com/media/k2/items/cache/'+data.img);
 		$('#story .authorname').html(data.personname);
-		
-		
+		var galContent = '';
+		data.placegallery.forEach(function(galpic) {
+			galContent += '<img width="115" onclick="zoomPicture(this.src);" src="'+galpic+'" />';
+		});
+		$('#place .gallery').html(galContent);
 	}
 	
+	function zoomPicture(picture){
+		$('#zoom').css('background-image','url('+picture+')');
+		$('.md-modal').removeClass('md-hide');
+	}
+	
+	function closeZoom(){
+		$('.md-modal').addClass('md-hide');
+		$('#zoom').css('background-image','');
+	}
 	
 	function toggleFilter(){
 		if (jQuery('#filter').hasClass('open')) {

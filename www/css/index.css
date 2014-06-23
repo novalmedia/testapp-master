@@ -84,10 +84,6 @@ h1 span{color: #d1d1d1;}
     to { opacity: 1.0; }
 }
 
-.blink {
-    animation:fade 3000ms infinite;
-    -webkit-animation:fade 3000ms infinite;
-}
 
 
 .dmk2maps_bubble_image img {height: 145px;}
@@ -205,6 +201,18 @@ body.profile #story .text span{font-weight: bold;}
 body.profile #story .download{width: 100%;float: left;padding: 0 20px;}
 body.profile #story .downloada{width: 436px; margin: 0 auto; padding-left: 20px;border: 2px solid #d3d3d3; background: url(../img/download_arrow.png) no-repeat right center, url(../img/filter_bg.jpg) repeat 0 0;
 display: block; font-family: 'Lato';font-size: 20px;color: #787878;text-transform: uppercase;line-height: 50px;text-decoration: none;}
+
+
+/* Galeria */
+.gallery{float: left;width: 100%;}
+.md-modal { background: rgba(0,0,0,0.8); position: fixed; top: 0; left: 0; bottom:0; width: 100%; height: auto; z-index: 9999999999999999999;
+ text-align:center; display: table-cell; vertical-align: middle;}
+#zoom { float:left; position:relative;  z-index:1; overflow:hidden; top:0; bottom:0; height:100%; background-position:center; 
+background-size:contain !important;background-repeat: no-repeat;width: 100%;}
+#close{ font-size:14px; width:28px;  height:28px; border: solid #ccc 1px; color: #FFF; background: #000; -webkit-border-radius: 14px; 
+float:right; right:5px; top:5px; position:absolute; z-index: 9999999999999999999;}
+.md-hide {visibility: hidden;}
+.gallery img {margin: 0 0 5px 5px;float: left;cursor:pointer;}
 
 @media (min-width: 480px) { 
 

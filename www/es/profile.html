@@ -38,12 +38,17 @@
 			<div class="social"></div>
 			<div class="fulltext"></div>
 			<div id="map-canvas"></div>
-		  </div>
-		  <div id="person" style="display: none;">
+			<div class="gallery"></div>
+			<div class="md-modal md-hide">
+				<button id="close" onclick="closeZoom();">X</button>
+				<div id="zoom"></div>
+			</div>
+		</div>
+		<div id="person" style="display: none;">
 			<div class="persontitle"><span>Persona</span><div class="authorname"></div></div>
 			<div class="authortext"></div>
-		  </div>
-		  <div id="story"  style="display: none;">
+		</div>
+		<div id="story"  style="display: none;">
 			<div class="left">
 				<span>Historia</span>
 				<div class="placetitle"></div>
@@ -56,7 +61,7 @@
 				<p>Sumérgete en este lugar descargándote la historia que nos cuenta <span class="authorname"></span>.</p>
 				<div class="download"><a href="" class="downloada">Descargar audio guía</a></div>
 			</div>
-		  </div>
+		</div>
         </div>
 		<div id="menu">
 			<a href="#" class="close"  onclick="jQuery('#menu').removeClass('open');"><span>Navegación</span></a>
