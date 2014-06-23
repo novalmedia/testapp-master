@@ -159,9 +159,9 @@
 				  disableAutoPan: false,
 				  hideCloseButton: false,
 				  backgroundClassName: 'phoney',
-				  arrowSize: 0,
-				  arrowPosition: 75,
-				  arrowStyle: 0
+				  arrowSize: 5,
+				  arrowPosition: 10,
+				  arrowStyle: 3
 				});		
 			new google.maps.event.addListener(marker, "click", function(){infowindow.open(map,marker);});	
 		}
@@ -198,32 +198,25 @@
 	}
 	
 	
-	var onSuccessPosition = function(position) {
-
-		navigator.notification.alert(
-		  'Latitude: '          + position.coords.latitude          + '\n' +
+	var onSuccess = function(position) {
+    alert('Latitude: '          + position.coords.latitude          + '\n' +
           'Longitude: '         + position.coords.longitude         + '\n' +
-          'Altitude: '          + position.coords.altitude          + '\n',  // message
-			alertDismissed,         // callback
-			'Game Over',            // title
-			'Done'                  // buttonName
-		);
-
-    
+          'Altitude: '          + position.coords.altitude          + '\n' +
+          'Accuracy: '          + position.coords.accuracy          + '\n' +
+          'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+          'Heading: '           + position.coords.heading           + '\n' +
+          'Speed: '             + position.coords.speed             + '\n' +
+          'Timestamp: '         + position.timestamp                + '\n');
 };
-
-function alertDismissed(){
-	return false;
-}
 
 // onError Callback receives a PositionError object
 //
-function onErrorPosition(error) {
+function onError(error) {
     alert('code: '    + error.code    + '\n' +
           'message: ' + error.message + '\n');
 }
 function getUserPosition(){
-	navigator.geolocation.getCurrentPosition(onSuccessPosition, onErrorPosition);
+	navigator.geolocation.getCurrentPosition(onSuccess, onError);
 }
 
 
