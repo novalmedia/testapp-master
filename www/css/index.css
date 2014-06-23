@@ -275,3 +275,109 @@ h1 span{color: #d1d1d1;}
                 height:800px 
             } 
  }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ @media (min-width: 1080px) { 
+ 
+body { font-size:24px;}
+
+#logo-home {width: 250px; height: 198px; margin: 50px auto;}
+
+h1 {
+	width: 480px;
+margin: 50px auto;
+    font-size:36px;
+}
+
+#texthome-es {width: 480px;margin: 50px auto;}
+#texthome-en {width: 480px;margin: 50px auto;}
+
+#lang-es {padding-left: 118px;font-size: 26px; margin: 20px auto;width: 164px; line-height: 62px;}
+#lang-en {padding-left: 118px;font-size: 26px; margin: 20px auto;width: 164px; line-height: 62px;}
+
+.dmk2maps_bubble_image img {height: 290px;}
+.dmk2maps_bubble_title {font-size: 42px;width: 580px;margin: 28px auto;line-height: 40px;}
+.dmk2maps_bubble_author {width: 580px;font-size: 42px;}
+.phoney {max-height: 760px;}
+.dmk2maps_bubble_arrow {margin: 40px auto;width: 70px;}
+.dmk2maps_bubble_image img{
+border-top-left-radius: 300px;
+border-top-right-radius: 300px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 0px;
+}
+
+#menu a{line-height: 150px;font-size: 44px;   }
+#menu a span{padding: 0 0 0 44px;}
+#menu a.close {line-height: 180px;font-size: 42px;}
+
+header {height: 180px; }
+#logo {width:388px;height: 126px;margin: 24px auto 0;background-size: 388px 126px;}
+#btn_menu {width:68px;height: 56px;margin: 62px 0 0 44px;background-size: 68px 56px;}
+
+
+
+
+/* Places */
+
+body.places #aroundme {width:26px;height: 34px;margin: 31px 22px 0 0;}
+body.places #filter {height: 75px; }
+body.places #filter > a { font-size: 24px; line-height: 65px;}
+body.places #filter > a span {padding: 0 0 0 22px;}
+body.places #map-canvas{height:525px;} 
+
+body.places #filteropts {top:75px;height: 400px;}			
+body.places #filteropts a{line-height: 65px;font-size: 21px; }	
+body.places #filteropts a span{padding: 0 0 0 22px;}
+
+/* Profile */
+
+body.profile #place {height: 890px;}
+
+body.profile #filter {height: 75px; }
+body.profile #filter > a {font-size: 24px; line-height: 65px;}
+body.profile #filter > a span {padding: 0 0 0 22px;}
+
+body.profile #filteropts {top:75px;height: 130px;}			
+body.profile #filteropts a{line-height: 65px;font-size: 21px; }	
+body.profile #filteropts a span{padding: 0 0 0 22px;}
+
+body.profile #place .title {margin-top: 30px; font-size: 30px;}
+body.profile #place .author { font-size: 21px;}
+body.profile #place .personface {margin-top: 20px;}
+body.profile #place .personface img{width: 180px;border: 6px solid #d4d1d1;border-radius: 190px;}
+body.profile #place .introtext {margin-top: 30px;font-size: 21px;}
+body.profile #place .fulltext {margin-top: 65px;font-size: 21px;}
+
+body.profile #person .persontitle{margin-top:270px; padding: 20px 0 30px 0;}
+body.profile #person .persontitle span{padding-left: 20px; font-size: 21px;}
+body.profile #person .persontitle .authorname{padding-left: 20px; font-size: 30px;}
+body.profile #person .authortext {font-size: 21px;}
+body.profile #person .authortext p{padding: 40px 20px;}
+
+body.profile #story .left {margin-top: 65px;}
+body.profile #story .left span{padding-left: 20px;font-size: 21px;}
+body.profile #story .left .placetitle{padding-left: 20px; font-size: 21px;}
+body.profile #story .left .persontitle{padding-left: 20px;font-size: 21px;}
+
+body.profile #story .right {margin-top: 30px;}
+body.profile #story .right img{margin-right: 20px;width: 180px;height:180px;border-radius: 190px;}
+
+body.profile #story .text{font-size: 21px;}
+body.profile #story .text p{padding: 0 20px;}
+body.profile #story .download{padding: 0 20px;}
+body.profile #story .downloada{width: 436px; padding-left: 20px;font-size: 20px;line-height: 50px;}
+
+
+/* Galeria */
+
+#close{ font-size:28px; width:56px;  height:56px; }
+
+ 
+ }
