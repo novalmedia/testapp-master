@@ -135,7 +135,7 @@ header {height: 90px; background:#fff; width: 100%;border-bottom: 1px dashed #d8
 /* Places */
 
 body.places #aroundme {background: url(../img/aroundme.png);width:26px;height: 34px;float: right;margin: 31px 22px 0 0;}
-body.places #map-canvas{width:100%; height:525px; float: left;clear: both; } 
+body.places #map-canvas{width:100%; height:599px; float: left;clear: both; } 
 body.places #filter {position: relative;float: left;height: 75px; width: 100%;background:  url(../img/filter_arrow.png) no-repeat right center,url(../img/filter_bg.jpg) repeat 0 0;}
 body.places #filter.open {background: url(../img/filter_bg.jpg) repeat 0 0;}
 body.places #filter > a {color: #000;text-decoration: none;display: block;font-family: 'Merriweather'; font-size: 24px; font-weight: bold;font-style:italic;text-transform: none;width: 100%;line-height: 65px;}
