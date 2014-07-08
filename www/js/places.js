@@ -2,9 +2,6 @@
 	var myLatlng; 
 	var markersArray = [];
 	function initMap() {
-		if (!navigator.onLine){
-			navigator.notification.alert('Esta aplicación requiere conexión a internet.');
-		}
 		myLatlng = new google.maps.LatLng(37.392864, -5.990077); 
 			var mapOptions = { 
 				zoom: 14, 
@@ -132,11 +129,7 @@
 			map.mapTypes.set("map_style",styledMap);
 			map.setMapTypeId("map_style");
 			
-			jQuery.getJSON( "http://miflamencoplace.com/rpc/get_places.php?callback=jsonp1122334455", function( data ) {
-				  jQuery.each( data, function( key, val ) {
-					addMarker(val,map);
-				  });
-				});
+			filterMarkers('all', true);
 	}			
 		function addMarker(data,map) {
 			placeLatlng = new google.maps.LatLng(data.lat, data.long);
@@ -171,31 +164,26 @@
 
 	
 	
-	function filterMarkers(catid){
+	function filterMarkers(catid, load){
 		while(markersArray.length) { markersArray.pop().setMap(null); }
 		if (!catid || catid == 'all'){
-			jQuery.getJSON( "http://miflamencoplace.com/rpc/get_places.php", function( data ) {
-			  jQuery.each( data, function( key, val ) {
-				addMarker(val,map);
-			  });
-			});
+			dbShell = window.openDatabase("miflamenkoplace", 1, "miflamenkoplace", 1000000);
+			dbShell.transaction(setupTable,dbErrorHandler,getEntries);
 		} else {
-			jQuery.getJSON( "http://miflamencoplace.com/rpc/get_places.php?catid="+catid, function( data ) {
-			  jQuery.each( data, function( key, val ) {
-				addMarker(val,map);
-			  });
-			});
+			getEntries(catid);
 		}
-		toggleFilter();
+		toggleFilter(load);
 	}
 	
-	function toggleFilter(){
-		if (jQuery('#filter').hasClass('open')) {
-			jQuery('#filteropts').slideUp('fast');
-			jQuery('#filter').removeClass('open');	
-		} else {
-			jQuery('#filteropts').slideDown();
-			jQuery('#filter').addClass('open');	
+	function toggleFilter(load){
+		if (!load) {
+			if (jQuery('#filter').hasClass('open')) {
+				jQuery('#filteropts').slideUp('fast');
+				jQuery('#filter').removeClass('open');	
+			} else {
+				jQuery('#filteropts').slideDown();
+				jQuery('#filter').addClass('open');	
+			}
 		}
 		return false;
 	}
@@ -243,3 +231,50 @@ function getUserPosition(){
     };
 })(jQuery);
 
+
+// DB Actions
+
+function setupTable(tx){
+
+//	tx.executeSql("DROP TABLE places");
+	tx.executeSql("CREATE TABLE IF NOT EXISTS places(id INTEGER PRIMARY KEY,catid INTEGER,data)");
+}
+
+function dbErrorHandler(err){
+	alert("DB Error: "+err.message + "\nCode="+err.code);
+}
+
+function getEntries(catid) {
+	dbShell.transaction(function(tx) {
+		if (!catid)
+			tx.executeSql("SELECT data FROM places",[],renderEntries,dbErrorHandler);
+		else 
+			tx.executeSql("SELECT data FROM places WHERE catid = ?",[ catid ],renderEntries,dbErrorHandler);
+	}, dbErrorHandler);
+}
+
+function renderEntries(tx,results){
+		console.log(results);
+	if (results.rows.length == 0) {
+		jQuery.getJSON( "http://miflamencoplace.com/rpc/get_places.php", function( data ) {
+		  jQuery.each( data, function( key, val ) {
+			addMarker(val,map);
+			savePlace(val);
+		  });
+		});
+	} else {
+		for(var i=0; i<results.rows.length; i++) {
+			data = JSON.parse(results.rows.item(i).data);
+		//console.log(data);
+			addMarker(data,map);
+		}
+	}
+}
+
+function savePlace(data) {
+	var catid = data.catid;
+	var jsonData = JSON.stringify(data);
+	dbShell.transaction(function(tx) {
+		tx.executeSql("INSERT INTO places(catid,data) values(?,?)",[catid,jsonData]);
+	}, dbErrorHandler);
+}
