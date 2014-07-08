@@ -2,6 +2,9 @@
 	var myLatlng; 
 	var markersArray = [];
 	function initMap() {
+		if (!navigator.onLine){
+			navigator.notification.alert('Esta aplicación requiere conexión a internet.');
+		}
 		myLatlng = new google.maps.LatLng(37.392864, -5.990077); 
 			var mapOptions = { 
 				zoom: 14, 
