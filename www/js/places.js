@@ -254,7 +254,7 @@ function getEntries(catid) {
 }
 
 function renderEntries(tx,results){
-		console.log(results);
+//		console.log(results);
 	if (results.rows.length == 0) {
 		jQuery.getJSON( "http://miflamencoplace.com/rpc/get_places.php", function( data ) {
 		  jQuery.each( data, function( key, val ) {
