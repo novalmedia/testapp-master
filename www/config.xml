@@ -62,7 +62,6 @@
     <gap:plugin name="org.apache.cordova.media" />
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
-    <gap:plugin name="org.apache.cordova.Storage" />
 	
    <!--  <gap:plugin name="org.apache.cordova.vibration" />
  -->
