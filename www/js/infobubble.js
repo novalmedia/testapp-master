@@ -273,8 +273,12 @@ InfoBubble.prototype.buildDom_ = function() {
    * @type {string}
    */
   this.animationName_ = '_ibani_' + Math.round(Math.random() * 10000);
+  var vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 
-  var css = '.' + this.animationName_ + '{width: 190px;-webkit-animation-name:' +
+  var bubw = 290;
+  if (parseInt(vpw) > 470) bubw = 190;
+  if (parseInt(vpw) > 950) bubw = 590;
+  var css = '.' + this.animationName_ + '{width: '+bubw+'px;-webkit-animation-name:' +
       this.animationName_ + ';-webkit-animation-duration:0.5s;' +
       '-webkit-animation-iteration-count:1;}' +
       '@-webkit-keyframes ' + this.animationName_ + ' {from {' +

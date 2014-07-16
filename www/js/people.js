@@ -14,7 +14,7 @@ $(function() {
 function addThumb(val){
 	var path = val.img;
 	var elm = $('<img src="'+ path +'">').load(function() {
-		  $(this).appendTo('#mosaic').wrap( "<a href='profile.html?itemid="+val.placeid+"'></a>" );
+		  $(this).appendTo('#mosaic').wrap( "<a href='profile.html?itemid="+val.placeid+"&tab=person'></a>" );
     });
 
 }

@@ -1,7 +1,21 @@
 	var map; 
 	var myLatlng; 
 	function initProfile() {
-						
+					
+			var showTab = jQuery.getQuery('tab');
+			switch(showTab){
+				case 'person':
+					showPerson(true);
+					break;
+				case 'story':
+					showStory(true);
+					break;
+				case 'place':
+				default:
+					showPlace(true);
+					break;
+			}
+					
 			var styles = [
 							{
 								"elementType": "labels.icon",
@@ -158,6 +172,7 @@
 		$('#story .persontitle').html('By '+data.personname);
 		$('#story .right img').attr('src','http://miflamencoplace.com/media/k2/items/cache/'+data.img);
 		$('#story .authorname').html(data.personname);
+		$('#story #onyoutube').attr('href',data.onyoutube);
 		var galContent = '';
 		data.placegallery.forEach(function(galpic) {
 			galContent += '<a href="#" onclick="zoomPicture(\''+galpic+'\');" ><img width="115" src="'+galpic+'" /></a>';
@@ -204,24 +219,30 @@
 })(jQuery);
 
 
-	function showPlace(){
+	function showPlace(open){
 		jQuery('#person').fadeOut('fast');
 		jQuery('#story').fadeOut('fast');
 		jQuery('#place').fadeIn('slow');
-		toggleFilter();
+		if (!open){
+			toggleFilter();
+		}
 		return false;
 	}
-	function showPerson(){
+	function showPerson(open){
 		jQuery('#story').fadeOut('fast');
 		jQuery('#place').fadeOut('fast');
 		jQuery('#person').fadeIn('slow');
-		toggleFilter();
+		if (!open){
+			toggleFilter();
+		}
 		return false;
 	}
-	function showStory(){
+	function showStory(open){
 		jQuery('#person').fadeOut('fast');
 		jQuery('#place').fadeOut('fast');
 		jQuery('#story').fadeIn('slow');
-		toggleFilter();
+		if (!open){
+			toggleFilter();
+		}
 		return false;
 	}

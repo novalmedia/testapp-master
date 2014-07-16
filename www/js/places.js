@@ -140,18 +140,22 @@
 				icon: '../img/markers/'+data.catid+'.png'				
 			});
 			markersArray.push(marker);
+			  var vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+			  var bubw = 300;
+			  if (parseInt(vpw) > 470) bubw = 200;
+			  if (parseInt(vpw) > 950) bubw = 600;
 			var infowindow = new InfoBubble({
 				  content : '<div class="dmk2maps_bubble_image"><img src="http://miflamencoplace.com/media/k2/items/cache/'+data.img+'"></div><a class="dmk2maps_bubble_title" href="profile.html?itemid='+data.id+'">'+data.title+'</a><span class="dmk2maps_bubble_author"> by '+data.personname+'</span><img onclick="document.location.href=\'profile.html?itemid='+data.id+'\';" class="dmk2maps_bubble_arrow" src="http://miflamencoplace.com/images/arrow'+data.catid+'.png">',
 				  shadowStyle: 0,
 				  padding: 0,
 				  backgroundColor: 'rgba(0,0,0,0.8)',
-				  borderRadius: 300,
+				  borderRadius: bubw+(bubw/3),
 				  borderWidth: 6,
 				  borderColor: '#fff',
-				  minWidth: 290,
-				  minHeight: 290,
-				  maxWidth: 290,
-				  maxHeight: 290,
+				  minWidth: bubw,
+				  minHeight: bubw,
+				  maxWidth: bubw,
+				  maxHeight: bubw,
 				  disableAutoPan: false,
 				  hideCloseButton: false,
 				  backgroundClassName: 'phoney',
@@ -236,8 +240,12 @@ function getUserPosition(){
 
 function setupTable(tx){
 
-//	tx.executeSql("DROP TABLE places");
+	tx.executeSql("DROP TABLE places");
+	tx.executeSql("DROP TABLE people");
+	tx.executeSql("DROP TABLE profiles");
 	tx.executeSql("CREATE TABLE IF NOT EXISTS places(id INTEGER PRIMARY KEY,catid INTEGER,data)");
+	tx.executeSql("CREATE TABLE IF NOT EXISTS people(id INTEGER PRIMARY KEY,catid INTEGER,data)");
+	tx.executeSql("CREATE TABLE IF NOT EXISTS profiles(id INTEGER PRIMARY KEY,itemid INTEGER,data)");
 }
 
 function dbErrorHandler(err){
@@ -273,8 +281,15 @@ function renderEntries(tx,results){
 
 function savePlace(data) {
 	var catid = data.catid;
+	var itemid = data.id;
 	var jsonData = JSON.stringify(data);
 	dbShell.transaction(function(tx) {
 		tx.executeSql("INSERT INTO places(catid,data) values(?,?)",[catid,jsonData]);
 	}, dbErrorHandler);
+	jQuery.getJSON( "http://miflamencoplace.com/rpc/get_profile.php?itemid="+itemid, function( profileData ) {
+		var jsonProfileData = JSON.stringify(profileData);
+		dbShell.transaction(function(tx) {
+			tx.executeSql("INSERT INTO profiles(itemid,data) values(?,?)",[itemid,jsonProfileData]);
+		}, dbErrorHandler);
+	});
 }
