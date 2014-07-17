@@ -240,9 +240,9 @@ function getUserPosition(){
 
 function setupTable(tx){
 
-	tx.executeSql("DROP TABLE places");
+/* 	tx.executeSql("DROP TABLE places");
 	tx.executeSql("DROP TABLE people");
-	tx.executeSql("DROP TABLE profiles");
+	tx.executeSql("DROP TABLE profiles"); */
 	tx.executeSql("CREATE TABLE IF NOT EXISTS places(id INTEGER PRIMARY KEY,catid INTEGER,data)");
 	tx.executeSql("CREATE TABLE IF NOT EXISTS people(id INTEGER PRIMARY KEY,catid INTEGER,data)");
 	tx.executeSql("CREATE TABLE IF NOT EXISTS profiles(id INTEGER PRIMARY KEY,itemid INTEGER,data)");
