@@ -195,7 +195,7 @@ body.profile #person .authortext {font-family: 'Lato'; font-size: 21px;color: #b
 body.profile #person .authortext p{padding: 40px 20px;margin-top: 0;}
 
 
-body.profile #story {display: inline-block;background: #fff;width: 100%;}
+body.profile #story {display: inline-block;background: #fff;width: 100%;min-height: 100%;}
 body.profile #story .left {display: inline-block;width: 50%;float: left;margin-top: 65px;}
 body.profile #story .left span{padding-left: 20px;font-family: 'Merriweather';font-weight: bold; font-size: 21px;color: #b6b6b6;text-transform: none;}
 body.profile #story .left .placetitle{padding-left: 20px;font-family: 'Merriweather';font-weight: bold; font-size: 21px;color: #2f2f2f;text-transform: none;}
