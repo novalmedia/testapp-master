@@ -9,7 +9,7 @@
 		<link rel="stylesheet" type="text/css" href="../css/index.css" />
         <title>Mi Flamenco Place</title>
     </head>
-    <body class="profile">
+    <body class="contact">
         <div id="app">
 			<header>
 				<div style="float: left;width: 33%;">
@@ -22,52 +22,19 @@
 					
 				</div>
 			</header>
-           <div id="filter"><a href="#" onclick="toggleFilter();"><span>Saber más..</span></a>
-			   <div id="filteropts" style="display: none;">
-				<a href="#" onclick="showPlace();" class="place"><span>Sobre el lugar</span></a>
-				<a href="#" onclick="showPerson();" class="person"><span>Sobre la persona</span></a>
-				<a href="#" onclick="showStory();" class="story"><span>Sobre la historia</span></a>
-				<a href="#" onclick="toggleFilter();" class="btnclose">&nbsp;</a>
-			   </div>
-		   </div>
-		<div id="place">
-			<div class="title"></div>
-			<div class="author"></div>
-			<div class="personface"><img src="" /></div>
-			<div class="introtext"></div>
-			<div class="social"></div>
-			<div class="fulltext"></div>
-			<div id="map-canvas"></div>
-			<div class="gallery"></div>
-			<div class="md-modal md-hide">
-				<button id="close" onclick="closeZoom();">X</button>
-				<div id="zoom"></div>
-			</div>
+           
+		<div id="contact">
+			<div class="routeimg"><img src="" /></div>
+			<h2>Contacto</h2>
+			
+			<div class="fulltext">
+			<p>Si deseas contactar con <strong>Mi Flamenco Place</strong> escríbenos un e-mail a...</p>
+			<a class="email" href="mailto:info@miflamencoplace.com">info@miflamencoplace.com</a>
+</div>
+			
 		</div>
-		<div id="person" style="display: none;">
-			<div class="persontitle"><span>Persona</span><div class="authorname"></div></div>
-			<div class="authortext"></div>
-		</div>
-		<div id="story"  style="display: none;">
-			<div class="left">
-				<span>Historia</span>
-				<div class="placetitle"></div>
-				<div class="persontitle"></div>
-			</div>
-			<div class="right">
-				<img class="placeimg" src="" />
-			</div>
-			<div class="text">
-				<p>Sumérgete en este lugar descargándote la historia que nos cuenta <span class="authorname"></span>.</p>
-				<div class="download"><a href="" class="downloada">Descargar audio guía</a></div>
-				<div class="onyoutube">
-					<a id="onyoutube" href="" target="_blank">
-						<img src="../img/onyoutube.png" />
-						<span>¿Quieres ver el <strong>vídeo</strong><br>de esta <strong>historia</strong>?</span>
-					</a>
-				</div>
-			</div>
-		</div>
+
+
         </div>
 		<div id="menu">
 			<a href="#" class="close"  onclick="jQuery('#menu').removeClass('open');"><span>Navegación</span></a>
@@ -88,14 +55,13 @@
         <script type="text/javascript" src="../js/index.js"></script>
 		<script type="text/javascript" 	src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=true&amp;libraries=geometry"></script>
 		<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-        <script type="text/javascript" src="../js/profile.js"></script>
         <script type="text/javascript">
            // app.initialize();
 
             function initialize() { 
-               	initProfile();		
+		
             } 
-            google.maps.event.addDomListener(window, 'load', initialize);
+
         </script>
 	</body>
 </html>

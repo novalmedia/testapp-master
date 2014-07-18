@@ -9,7 +9,7 @@
 		<link rel="stylesheet" type="text/css" href="../css/index.css" />
         <title>Mi Flamenco Place</title>
     </head>
-    <body class="profile">
+    <body class="about">
         <div id="app">
 			<header>
 				<div style="float: left;width: 33%;">
@@ -22,52 +22,52 @@
 					
 				</div>
 			</header>
-           <div id="filter"><a href="#" onclick="toggleFilter();"><span>Saber más..</span></a>
-			   <div id="filteropts" style="display: none;">
-				<a href="#" onclick="showPlace();" class="place"><span>Sobre el lugar</span></a>
-				<a href="#" onclick="showPerson();" class="person"><span>Sobre la persona</span></a>
-				<a href="#" onclick="showStory();" class="story"><span>Sobre la historia</span></a>
-				<a href="#" onclick="toggleFilter();" class="btnclose">&nbsp;</a>
-			   </div>
-		   </div>
-		<div id="place">
-			<div class="title"></div>
-			<div class="author"></div>
-			<div class="personface"><img src="" /></div>
-			<div class="introtext"></div>
-			<div class="social"></div>
-			<div class="fulltext"></div>
-			<div id="map-canvas"></div>
-			<div class="gallery"></div>
-			<div class="md-modal md-hide">
-				<button id="close" onclick="closeZoom();">X</button>
-				<div id="zoom"></div>
-			</div>
+           
+		<div id="about">
+			<div class="routeimg"><img src="" /></div>
+			<h2>About</h2>
+			
+			<div class="fulltext">
+			<p><strong>Mi Flamenco Place</strong> is a journey across the flamenco dimension of the city of Sevilla, 
+			collective-driven by the people who do and love flamenco. If flamenco was already declared by UNESCO as 
+			Intangible Cultural Heritage, Sevilla must be considered one of its most important capitals, because of 
+			its history and tradition, of course, but also due to the huge amount of cultural, formative and leisure
+			activities it has to offer. Thanks to the help of Ministerio de Cultura, Mi Flamenco Place is born, a new
+			app project created by SURNAMES, Narradores Transmedia that intends to highlight the rich flamenco dimension
+			of Sevilla, past and present of this art, and beyond mere geolocation thanks to the emotional connections
+			between three basic coordinates: places, people and stories. So far, we’ve enjoyed the places and stories
+			of artists, researchers, journalists and institutional representatives like:</p>
+<ul>
+<li>CHLOÉ BRÛLÉ</li>
+<li>CHARO CALA</li>
+<li>RAÚL CANTIZANO</li>
+<li>Mª DE LOS ÁNGELES CARRASCO</li>
+<li>MARTA CARRASCO</li>
+<li>CRISTINA CRUCES</li>
+<li>NIÑO DE ELCHE</li>
+<li>SEGUNDO FALCÓN</li>
+<li>ESPERANZA FERNÁNDEZ</li>
+<li>JOSÉ GALÁN</li>
+<li>PATRICIA GUERRERO</li>
+<li>Mª EUSEBIA LÓPEZ</li>
+<li>ANDRÉS MARÍN</li>
+<li>MIGUEL MARÍN</li>
+<li>ROCÍO MÁRQUEZ</li>
+<li>RICARDO MIÑO</li>
+<li>PEDRO RICARDO MIÑO</li>
+<li>PEPA MONTES</li>
+<li>CRISTÓBAL ORTEGA</li>
+<li>LOLA PANTOJA</li>
+<li>JUAN CARLOS ROMERO</li>
+<li>KYOKO SHIKAZE</li>
+<li>ILDEFONSO VERGARA</li>
+<li>JUAN VERGILLOS</li>
+</ul>
+</div>
+			
 		</div>
-		<div id="person" style="display: none;">
-			<div class="persontitle"><span>Persona</span><div class="authorname"></div></div>
-			<div class="authortext"></div>
-		</div>
-		<div id="story"  style="display: none;">
-			<div class="left">
-				<span>Historia</span>
-				<div class="placetitle"></div>
-				<div class="persontitle"></div>
-			</div>
-			<div class="right">
-				<img class="placeimg" src="" />
-			</div>
-			<div class="text">
-				<p>Sumérgete en este lugar descargándote la historia que nos cuenta <span class="authorname"></span>.</p>
-				<div class="download"><a href="" class="downloada">Descargar audio guía</a></div>
-				<div class="onyoutube">
-					<a id="onyoutube" href="" target="_blank">
-						<img src="../img/onyoutube.png" />
-						<span>¿Quieres ver el <strong>vídeo</strong><br>de esta <strong>historia</strong>?</span>
-					</a>
-				</div>
-			</div>
-		</div>
+
+
         </div>
 		<div id="menu">
 			<a href="#" class="close"  onclick="jQuery('#menu').removeClass('open');"><span>Navegación</span></a>
@@ -88,14 +88,13 @@
         <script type="text/javascript" src="../js/index.js"></script>
 		<script type="text/javascript" 	src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=true&amp;libraries=geometry"></script>
 		<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-        <script type="text/javascript" src="../js/profile.js"></script>
         <script type="text/javascript">
            // app.initialize();
 
             function initialize() { 
-               	initProfile();		
+		
             } 
-            google.maps.event.addDomListener(window, 'load', initialize);
+
         </script>
 	</body>
 </html>

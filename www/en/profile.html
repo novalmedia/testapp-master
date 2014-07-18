@@ -22,11 +22,11 @@
 					
 				</div>
 			</header>
-           <div id="filter"><a href="#" onclick="toggleFilter();"><span>Saber más..</span></a>
+           <div id="filter"><a href="#" onclick="toggleFilter();"><span>Learn more..</span></a>
 			   <div id="filteropts" style="display: none;">
-				<a href="#" onclick="showPlace();" class="person"><span>Sobre el lugar</span></a>
-				<a href="#" onclick="showPerson();" class="person"><span>Sobre la persona</span></a>
-				<a href="#" onclick="showStory();" class="history"><span>Sobre la historia</span></a>
+				<a href="#" onclick="showPlace();" class="person"><span>About the place</span></a>
+				<a href="#" onclick="showPerson();" class="person"><span>About the person</span></a>
+				<a href="#" onclick="showStory();" class="history"><span>About the story</span></a>
 				<a href="#" onclick="toggleFilter();" class="btnclose">&nbsp;</a>
 			   </div>
 		   </div>
@@ -45,12 +45,12 @@
 			</div>
 		</div>
 		<div id="person" style="display: none;">
-			<div class="persontitle"><span>Persona</span><div class="authorname"></div></div>
+			<div class="persontitle"><span>Person</span><div class="authorname"></div></div>
 			<div class="authortext"></div>
 		</div>
 		<div id="story"  style="display: none;">
 			<div class="left">
-				<span>Historia</span>
+				<span>Story</span>
 				<div class="placetitle"></div>
 				<div class="persontitle"></div>
 			</div>
@@ -59,15 +59,30 @@
 			</div>
 			<div class="text">
 				<p>Sumérgete en este lugar descargándote la historia que nos cuenta <span class="authorname"></span>.</p>
-				<div class="download"><a href="" class="downloada">Descargar audio guía</a></div>
+				<div class="download"><a href="" class="downloada">Download audio free</a></div>
+				<div class="onyoutube">
+					<a id="onyoutube" href="" target="_blank">
+						<img src="../img/onyoutube.png" />
+						<span>¿Quieres ver el <strong>vídeo</strong><br>de esta <strong>historia</strong>?</span>
+					</a>
+				</div>
 			</div>
 		</div>
         </div>
 		<div id="menu">
-			<a href="#" class="close"  onclick="jQuery('#menu').removeClass('open');"><span>Navegación</span></a>
-			<a href="places.html" class="item"><span>Lugares</span></a>
-			<a href="people.html" class="item"><span>Personas</span></a>
-			<a href="stories.html" class="item"><span>Historias</span></a>
+			<a href="#" class="close"  onclick="jQuery('#menu').removeClass('open');"><span>Navigation</span></a>
+			<a href="places.html" class="item"><span>Places</span></a>
+			<a href="people.html" class="item"><span>People</span></a>
+			<a href="stories.html" class="item"><span>Stories</span></a>
+			<div class="rrss">
+				<a href="" target="_blank"><img src="../img/facebook.png" /></a>
+				<a href="" target="_blank"><img src="../img/twitter.png" /></a>
+				<a href="" target="_blank"><img src="../img/youtube.png" /></a>
+			</div>
+			<div class="links">
+				<a href="about.html">ABOUT</a>
+				<a href="contact.html">CONTACT</a>
+			</div>
 		</div>
         <script type="text/javascript" src="../phonegap.js"></script>
         <script type="text/javascript" src="../js/index.js"></script>

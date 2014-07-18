@@ -130,13 +130,13 @@ text-decoration: none;background: url(../img/filteropts_bg.jpg) repeat 0 0;borde
 #menu > a.close {line-height: 90px;background: #fff;color: #959595; font-family: 'Lato'; font-style: italic;font-size: 21px;}
 
 #menu .rrss {width: 100%; float: left; text-align: center;padding: 30px 0;}
-#menu .rrss a{margin: 0 25px;}
+#menu .rrss a{margin: 0 18px;}
 #menu .links {width: 100%; float: left; text-align: center;padding: 35px 0;}
 #menu .links a{padding: 0 20px;font-size: 19px; font-family: 'Lato'; color: #787878; text-decoration: none;}
 #menu .links a:first-child {border-right: 1px solid #dddcdd;}
 
 header {height: 90px; background:#fff; width: 100%;border-bottom: 1px dashed #d8d8d8;display: flex;}
-#logo {background: url(../img/logo_black.png);width:194px;height: 63px;margin: 12px auto 0;}
+#logo {background: url(../img/logo_black.png);width:120px;height: 39px;margin: 24px auto 0;background-size:120px 39px;}
 #btn_menu {background: url(../img/btn_menu.png);width:34px;height: 28px;float: left;margin: 31px 0 0 22px;}
 
 
@@ -183,6 +183,8 @@ body.profile #place .personface {width: 100%; text-align: center;margin-top: 20p
 body.profile #place .personface img{width: 180px;border: 6px solid #d4d1d1;border-radius: 190px;}
 body.profile #place .introtext {width: 100%; text-align: center;margin-top: 30px;font-family: 'Merriweather'; font-size: 21px;color: #c7c7c7;text-transform: none;}
 body.profile #place .social {width: 100%; text-align: center;}
+body.profile #place #map-canvas{width:100%; height:250px; float: left;clear: both; } 
+
 body.profile #place .fulltext {width: 100%; text-align: center;margin-top: 65px;font-family: 'Lato'; font-size: 21px;color: #959595;text-transform: none;}
 
 body.profile #person {display: inline-block;background-size: contain;}
@@ -299,9 +301,9 @@ body.stories #app .introtext{font-family: 'Merriweather';font-size: 18px; color:
 
 
 body.stories .route{float: left; width: 100%;background: #191919;margin: 3px 0;position: relative;border: 1px solid #808080;}
-body.stories .route img{float: left; width: 50%;}
-body.stories .route .routedata{float: left; width: 50%;position:relative;min-height: 180px;}
-body.stories .route span{width: 100%;float: left; text-transform: none;padding-left: 13px;}
+body.stories .route img{float: left; width: 50%;min-height: 140px;}
+body.stories .route .routedata{float: left; width: 50%;position:relative;min-height: 140px;}
+body.stories .route span{width: 90%;float: left; text-transform: none;padding-left: 13px;line-height: 20px;}
 body.stories .route span.title{font-family: 'Merriweather'; color: #fff;font-size: 24px; font-weight: bold;margin-top: 13px;}
 body.stories .route span.subtitle{font-family: 'Lato'; color: #d1d1d1;font-size: 21px; font-style: italic;}
 body.stories .route span.linkroute{width: 100px;font-family: 'Lato'; color: #ffffff;font-size: 18px;font-weight: bold;position: absolute;
@@ -317,6 +319,27 @@ body.route .introtext {width:100%;clear: both;font-family:'Lato';color:#959595;f
 body.route .downloadtip {width:100%;clear: both;font-family:'Lato';color:#959595;font-size: 18px;font-style: normal;text-transform: none;}
 body.route .audio{width: 436px; margin: 0 auto; padding-left: 20px;border: 2px solid #d3d3d3; background: url(../img/download_arrow.png) no-repeat right center, url(../img/filter_bg.jpg) repeat 0 0;
 display: block; font-family: 'Lato';font-size: 20px;color: #787878;text-transform: uppercase;line-height: 50px;text-decoration: none;}
+
+
+/* ABOUT */
+body.about {background: #f0f0f0;}
+body.about #about {padding: 20px 15px; }
+body.about h2 {font-family: 'Merriweather';color: #2f2f2f;font-size: 18px;text-transform:none; font-weight: normal;}
+body.about p {font-family: 'Lato';color: #787878;font-size: 14px;text-transform:none; font-weight: normal;}
+body.about ul {list-style: none;margin: 25px 0 0 0;padding: 0 0 0 0 ;}
+body.about ul li {font-family: 'Lato';color: #2f2f2f;font-size: 14px;text-transform:none; font-weight: normal;margin: 9px 0;}
+
+
+/* contact */
+body.contact {background: #f0f0f0;}
+body.contact #contact {padding: 20px 15px; }
+body.contact h2 {font-family: 'Merriweather';color: #2f2f2f;font-size: 18px;text-transform:none; font-weight: normal;text-align: center;}
+body.contact p {width: 100%;padding-top: 50px;font-family: 'Lato';color: #787878;font-size: 14px;text-transform:none; font-weight: normal;text-align: center;
+padding-top: 50px;background: url(../img/contact_bg.png) no-repeat center top;float: left;clear: both;
+}
+body.contact .email{width: 80%; margin: 0 auto; border: 2px solid #d0d0d0; background: url(../img/filteropts_bg.jpg) repeat 0 0;padding: 5px auto;
+font-family: 'Lato';font-size: 14px;color: #787878;text-transform: none;line-height: 50px;text-decoration: none;display: table;text-align: center;}
+
 
 @media (min-width: 480px) { 
 
@@ -376,7 +399,10 @@ h1 span{color: #d1d1d1;}
  
  
  
- 
+  @media (min-width: 420px) { 
+#logo {background: url(../img/logo_black.png);width:194px;height: 63px;margin: 12px auto 0;background-size:194px 63px;}
+#btn_menu {background: url(../img/btn_menu.png);width:34px;height: 28px;float: left;margin: 31px 0 0 22px;}
+  }
  
  
  

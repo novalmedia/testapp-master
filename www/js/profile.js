@@ -220,27 +220,36 @@
 
 
 	function showPlace(open){
+		
 		jQuery('#person').fadeOut('fast');
 		jQuery('#story').fadeOut('fast');
 		jQuery('#place').fadeIn('slow');
+		jQuery('#filteropts a').show();
+		jQuery('#filteropts .place').hide();
 		if (!open){
 			toggleFilter();
 		}
 		return false;
 	}
 	function showPerson(open){
+		
 		jQuery('#story').fadeOut('fast');
 		jQuery('#place').fadeOut('fast');
 		jQuery('#person').fadeIn('slow');
+		jQuery('#filteropts a').show();
+		jQuery('#filteropts .person').hide();
 		if (!open){
 			toggleFilter();
 		}
 		return false;
 	}
 	function showStory(open){
+		
 		jQuery('#person').fadeOut('fast');
 		jQuery('#place').fadeOut('fast');
 		jQuery('#story').fadeIn('slow');
+		jQuery('#filteropts a').show();
+		jQuery('#filteropts .story').hide();
 		if (!open){
 			toggleFilter();
 		}

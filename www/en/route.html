@@ -9,7 +9,7 @@
 		<link rel="stylesheet" type="text/css" href="../css/index.css" />
         <title>Mi Flamenco Place</title>
     </head>
-    <body class="places">
+    <body class="route">
         <div id="app">
 			<header>
 				<div style="float: left;width: 33%;">
@@ -19,20 +19,22 @@
 					<div id="logo"></div>
 				</div>
 				<div style="float: left;width: 33%;">
-					<!--<div id="aroundme" onclick="getUserPosition();"></div>-->
+					
 				</div>
 			</header>
-           <div id="filter"><a href="#" onclick="toggleFilter();"><span>Places to...</span></a>
-			   <div id="filteropts" style="display: none;">
-				<a href="#" onclick="filterMarkers(5);return false;" class="remember"><span>Remember</span></a>
-				<a href="#" onclick="filterMarkers(6);return false;" class="breathe"><span>Breathe</span></a>
-				<a href="#" onclick="filterMarkers(7);return false;" class="live"><span>Live</span></a>
-				<a href="#" onclick="filterMarkers(8);return false;" class="learn"><span>Learn</span></a>
-				<a href="#" onclick="filterMarkers('all');return false;" class="all"><span>All</span></a>
-				<a href="#" onclick="toggleFilter();" class="btnclose">&nbsp;</a>
-			   </div>
-		   </div>
-           <div id="map-canvas"></div>
+           
+		<div id="route">
+			<div class="routeimg"><img src="" /></div>
+			<h2>Route</h2>
+			<div class="title"></div>
+			<div class="subtitle"></div>
+			<div class="introtext"></div>
+			<div id="map-canvas"></div>
+			<div class="downloadtip">Dive into this <strong> Route </ strong> and enjoy the ride that we offer by downloading the audio tour that brings all the stories of this journey.</div>
+			<a class="audio" href="">Donwload this route</a>
+		</div>
+
+
         </div>
 		<div id="menu">
 			<a href="#" class="close"  onclick="jQuery('#menu').removeClass('open');"><span>Navigation</span></a>
@@ -52,17 +54,15 @@
         <script type="text/javascript" src="../phonegap.js"></script>
         <script type="text/javascript" src="../js/index.js"></script>
 		<script type="text/javascript" 	src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=true&amp;libraries=geometry"></script>
-        <script type="text/javascript" src="../js/infobubble.js"></script>
 		<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-        <script type="text/javascript" src="../js/places.js"></script>
+        <script type="text/javascript" src="../js/route.js"></script>
         <script type="text/javascript">
            // app.initialize();
-		
-            google.maps.event.addDomListener(window, 'load', initialize);
-		
+
             function initialize() { 
-               	initMap();		
+               	initProfile();		
             } 
+            google.maps.event.addDomListener(window, 'load', initialize);
         </script>
 	</body>
 </html>
