@@ -210,8 +210,8 @@ InfoBubble.prototype.buildDom_ = function() {
   // Close button
   var close = this.close_ = document.createElement('IMG');
   close.style['position'] = 'absolute';
-  close.style['width'] = this.px(12);
-  close.style['height'] = this.px(12);
+  close.style['width'] = this.px(20);
+  close.style['height'] = this.px(20);
   close.style['border'] = 0;
   close.style['zIndex'] = this.baseZIndex_ + 1;
   close.style['cursor'] = 'pointer';
@@ -275,9 +275,9 @@ InfoBubble.prototype.buildDom_ = function() {
   this.animationName_ = '_ibani_' + Math.round(Math.random() * 10000);
   var vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 
-  var bubw = 190;
-  if (parseInt(vpw) > 400) bubw = 290;
-  if (parseInt(vpw) > 950) bubw = 590;
+  var bubw = 210;
+  if (parseInt(vpw) > 400) bubw = 310;
+  if (parseInt(vpw) > 950) bubw = 610;
   var css = '.' + this.animationName_ + '{width: '+bubw+'px;-webkit-animation-name:' +
       this.animationName_ + ';-webkit-animation-duration:0.5s;' +
       '-webkit-animation-iteration-count:1;}' +
