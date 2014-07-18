@@ -264,7 +264,3 @@
 		return false;
 	}
 	
-	function playAudio(src) {
-	    var my_audio = new Media(src);
-       	mi_audio.play();
-    }
