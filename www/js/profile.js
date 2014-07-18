@@ -163,11 +163,19 @@
 		$('#place .title').html(data.title);
 		$('#place .author').html('By '+data.personname);
 		$('#place .personface img').attr('src','http://miflamencoplace.com'+data.personface);
-		$('#place .introtext').html(data.placeintrotext);
-		$('#place .fulltext').html(data.placefulltext);
+		if (langid == 'en'){
+			$('#place .introtext').html(data.placeintrotexten);
+			$('#place .fulltext').html(data.placefulltexten);
+			$('#person .authortext').html(data.persontexten);
+			$('#audiosrc').attr('src','http://miflamencoplace.com/media/k2/attachments/'+data.audioen);
+		} else {
+			$('#place .introtext').html(data.placeintrotext);
+			$('#place .fulltext').html(data.placefulltext);
+			$('#person .authortext').html(data.persontext);
+			$('#audiosrc').attr('src','http://miflamencoplace.com/media/k2/attachments/'+data.audioes);
+		}
 		$('#person').css('background','url(http://miflamencoplace.com/media/k2/items/cache/'+data.personpicture+') no-repeat center top');
 		$('#person .authorname').html(data.personname);
-		$('#person .authortext').html(data.persontext);
 		$('#story .placetitle').html(data.title);
 		$('#story .persontitle').html('By '+data.personname);
 		$('#story .right img').attr('src','http://miflamencoplace.com'+data.img);

@@ -24,7 +24,7 @@
 			</header>
            <div id="filter"><a href="#" onclick="toggleFilter();"><span>Learn more..</span></a>
 			   <div id="filteropts" style="display: none;">
-				<a href="#" onclick="showPlace();" class="person"><span>About the place</span></a>
+				<a href="#" onclick="showPlace();" class="place"><span>About the place</span></a>
 				<a href="#" onclick="showPerson();" class="person"><span>About the person</span></a>
 				<a href="#" onclick="showStory();" class="history"><span>About the story</span></a>
 				<a href="#" onclick="toggleFilter();" class="btnclose">&nbsp;</a>
@@ -59,7 +59,8 @@
 			</div>
 			<div class="text">
 				<p>Sumérgete en este lugar descargándote la historia que nos cuenta <span class="authorname"></span>.</p>
-				<div class="download"><a href="" class="downloada">Download audio free</a></div>
+				<div class="download"><a href="#" onclick="$('#audio').show();return false;" class="downloada">Download audio free</a></div>
+				<div id="audio" style="display:none;"><audio id="audiosrc" src="" controls></div>
 				<div class="onyoutube">
 					<a id="onyoutube" href="" target="_blank">
 						<img src="../img/onyoutube.png" />
@@ -91,7 +92,7 @@
         <script type="text/javascript" src="../js/profile.js"></script>
         <script type="text/javascript">
            // app.initialize();
-
+			var langid = 'en';
             function initialize() { 
                	initProfile();		
             } 
