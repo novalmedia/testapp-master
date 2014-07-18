@@ -159,7 +159,7 @@
 		
 	
 	function fillProfile(data){
-		$('#place').css('background','url(http://miflamencoplace.com/media/k2/items/cache/'+data.img+') no-repeat center top');
+		$('#place').css('background-image','url(http://miflamencoplace.com'+data.img+')');
 		$('#place .title').html(data.title);
 		$('#place .author').html('By '+data.personname);
 		$('#place .personface img').attr('src','http://miflamencoplace.com'+data.personface);
@@ -170,7 +170,7 @@
 		$('#person .authortext').html(data.persontext);
 		$('#story .placetitle').html(data.title);
 		$('#story .persontitle').html('By '+data.personname);
-		$('#story .right img').attr('src','http://miflamencoplace.com/media/k2/items/cache/'+data.img);
+		$('#story .right img').attr('src','http://miflamencoplace.com'+data.img);
 		$('#story .authorname').html(data.personname);
 		$('#story #onyoutube').attr('href',data.onyoutube);
 		var galContent = '';

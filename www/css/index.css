@@ -176,7 +176,7 @@ text-decoration: none;background: url(../img/filteropts_bg.jpg) repeat 0 0;borde
 body.profile #filteropts a span{padding: 0 0 0 22px;}
 body.profile #filteropts a.btnclose {background: url(../img/filter_arrowup.png) no-repeat right center #fff;}
 
-body.profile #place {display: inline-block;background-size: contain;}
+body.profile #place {display: inline-block;background-size: contain;background-repeat: no-repeat; background-position: center top;}
 body.profile #place .title {width: 100%; text-align: center;margin-top: 30px;font-family: 'Merriweather'; font-size: 30px;color: #fff;text-transform: none;}
 body.profile #place .author {width: 100%; text-align: center;font-family: 'Lato';font-style: italic; font-size: 21px;color: #fff;text-transform: none;}
 body.profile #place .personface {width: 100%; text-align: center;margin-top: 20px;}

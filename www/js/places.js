@@ -141,7 +141,7 @@
 			});
 			markersArray.push(marker);
 			  var vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-			  var bubw = 300;
+			  var bubw = 200;
 			  if (parseInt(vpw) > 470) bubw = 200;
 			  if (parseInt(vpw) > 950) bubw = 600;
 			var infowindow = new InfoBubble({
@@ -149,7 +149,7 @@
 				  shadowStyle: 0,
 				  padding: 0,
 				  backgroundColor: 'rgba(0,0,0,0.8)',
-				  borderRadius: bubw+(bubw/3),
+				  borderRadius: Math.floor(bubw+(bubw/3)),
 				  borderWidth: 6,
 				  borderColor: '#fff',
 				  minWidth: bubw,

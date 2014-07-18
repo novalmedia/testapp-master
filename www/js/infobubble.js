@@ -275,7 +275,7 @@ InfoBubble.prototype.buildDom_ = function() {
   this.animationName_ = '_ibani_' + Math.round(Math.random() * 10000);
   var vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 
-  var bubw = 290;
+  var bubw = 190;
   if (parseInt(vpw) > 470) bubw = 190;
   if (parseInt(vpw) > 950) bubw = 590;
   var css = '.' + this.animationName_ + '{width: '+bubw+'px;-webkit-animation-name:' +
