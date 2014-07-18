@@ -202,16 +202,16 @@ body.profile #story .left .placetitle{padding-left: 20px;font-family: 'Merriweat
 body.profile #story .left .persontitle{padding-left: 20px;font-family: 'Lato';font-size: 21px;color: #959595;text-transform: none;font-style: italic;}
 
 body.profile #story .right {display: inline-block;width: 50%;float: right;margin-top: 30px;}
-body.profile #story .right img{margin-right: 20px;width: 180px;height:180px;border: 6px solid #d4d1d1;border-radius: 190px;float: right;}
+body.profile #story .right img{margin-right: 20px;width: 140px;height:140px;border: 6px solid #d4d1d1;border-radius: 150px;float: right;}
 
 body.profile #story .text{width: 100%;float: left;font-family: 'Lato';font-size: 21px;color: #959595;text-transform: none;border-top: 1px solid #ebebeb;
-background:url(../img/filter_bg.jpg) repeat 0 0;}
+background:url(../img/filter_bg.jpg) repeat 0 0;margin: 20px 0 0 0;}
 body.profile #story .text p{padding: 0 20px;}
 body.profile #story .text span{font-weight: bold;}
-body.profile #story .download{width: 100%;float: left;padding: 0 20px;}
-body.profile #story .downloada{width: 436px; margin: 0 auto; padding-left: 20px;border: 2px solid #d3d3d3; background: url(../img/download_arrow.png) no-repeat right center, url(../img/filter_bg.jpg) repeat 0 0;
-display: block; font-family: 'Lato';font-size: 20px;color: #787878;text-transform: uppercase;line-height: 50px;text-decoration: none;}
-body.profile #story .onyoutube{width: 50%;float: right;}
+body.profile #story .download{width: 85%;float: left;padding: 0 20px;}
+body.profile #story .downloada{width: 80%; margin: 0 auto; padding-left: 20px;border: 2px solid #d3d3d3; background: url(../img/download_arrow.png) no-repeat right center, url(../img/filter_bg.jpg) repeat 0 0;
+display: table; font-family: 'Lato';font-size: 14px;color: #787878;text-transform: uppercase;line-height: 50px;text-decoration: none;}
+body.profile #story .onyoutube{width: 60%;float: right;margin: 20px 0 0 0;}
 body.profile #story .onyoutube #onyoutube{color:#2f2f2f; font-size: 16px;font-family: 'Lato';font-style:italic;font-weight: normal;}
 body.profile #story .onyoutube #onyoutube span{display: block; float: right;font-weight: normal;}
 body.profile #story .onyoutube #onyoutube img{display: block; float: right;margin-left: 5px;}
@@ -301,6 +301,7 @@ body.stories #app .introtext{font-family: 'Merriweather';font-size: 18px; color:
 
 
 body.stories .route{float: left; width: 100%;background: #191919;margin: 3px 0;position: relative;border: 1px solid #808080;}
+body.stories .route a{text-decoration:none;}
 body.stories .route img{float: left; width: 50%;min-height: 140px;}
 body.stories .route .routedata{float: left; width: 50%;position:relative;min-height: 140px;}
 body.stories .route span{width: 90%;float: left; text-transform: none;padding-left: 13px;line-height: 20px;}
@@ -310,15 +311,16 @@ body.stories .route span.linkroute{width: 100px;font-family: 'Lato'; color: #fff
 bottom: 30px;left: 8px;background: url(../img/right-arrow.png) no-repeat right center;}
 
 /* ROUTE */
+body.route #route {width: 90%;margin:0 auto;}
 body.route .routeimg {float: right;width: 50%;}
-body.route .routeimg img {width: 180px;height: 180px;border: 6px solid #d4d1d1;border-radius: 190px;}
+body.route .routeimg img {width: 140px;height: 140px;border: 6px solid #d4d1d1;border-radius: 150px;}
 body.route h2 {font-family:'Merriweather';color:#959595;font-size: 18px;font-style: normal;text-transform: none;}
 body.route .title {font-family:'Merriweather';color:#ffffff;font-size: 24px;font-style: normal;text-transform: none;}
 body.route .subtitle {font-family:'Lato';color:#d1d1d1;font-size: 18px;font-style: italic;text-transform: none;}
 body.route .introtext {width:100%;clear: both;font-family:'Lato';color:#959595;font-size: 18px;font-style: normal;text-transform: none;}
 body.route .downloadtip {width:100%;clear: both;font-family:'Lato';color:#959595;font-size: 18px;font-style: normal;text-transform: none;}
-body.route .audio{width: 436px; margin: 0 auto; padding-left: 20px;border: 2px solid #d3d3d3; background: url(../img/download_arrow.png) no-repeat right center, url(../img/filter_bg.jpg) repeat 0 0;
-display: block; font-family: 'Lato';font-size: 20px;color: #787878;text-transform: uppercase;line-height: 50px;text-decoration: none;}
+body.route .audio{width: 90%; margin: 0 auto; padding-left: 20px;border: 2px solid #d3d3d3; background: url(../img/download_arrow.png) no-repeat right center, url(../img/filter_bg.jpg) repeat 0 0;
+display: block; font-family: 'Lato';font-size: 16px;color: #787878;text-transform: uppercase;line-height: 50px;text-decoration: none;}
 
 
 /* ABOUT */
