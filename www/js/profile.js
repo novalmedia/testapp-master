@@ -167,12 +167,20 @@
 			$('#place .introtext').html(data.placeintrotexten);
 			$('#place .fulltext').html(data.placefulltexten);
 			$('#person .authortext').html(data.persontexten);
-			$('#story .downloada').attr('href','http://miflamencoplace.com/media/k2/attachments/'+data.audioen);
+			if (data.audioen != null){
+				$('#story .downloada').attr('href','http://miflamencoplace.com/media/k2/attachments/'+data.audioen);
+			}else{
+				$('#story .downloada').hide();
+			} 
 		} else {
 			$('#place .introtext').html(data.placeintrotext);
 			$('#place .fulltext').html(data.placefulltext);
 			$('#person .authortext').html(data.persontext);
-			$('#story .downloada').attr('href','http://miflamencoplace.com/media/k2/attachments/'+data.audioes);
+			if (data.audioes != null){
+				$('#story .downloada').attr('href','http://miflamencoplace.com/media/k2/attachments/'+data.audioes);
+			}else{
+				$('#story .downloada').hide();
+			} 
 		}
 		$('#person').css('background','url(http://miflamencoplace.com/media/k2/items/cache/'+data.personpicture+') no-repeat center top');
 		$('#person .authorname').html(data.personname);

@@ -276,7 +276,7 @@ InfoBubble.prototype.buildDom_ = function() {
   var vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 
   var bubw = 190;
-  if (parseInt(vpw) > 470) bubw = 190;
+  if (parseInt(vpw) > 400) bubw = 290;
   if (parseInt(vpw) > 950) bubw = 590;
   var css = '.' + this.animationName_ + '{width: '+bubw+'px;-webkit-animation-name:' +
       this.animationName_ + ';-webkit-animation-duration:0.5s;' +
