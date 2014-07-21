@@ -153,8 +153,11 @@
 		var bounds = new google.maps.LatLngBounds();
 		for (i=0;i<data.routeitems.length;i++){
 				item = data.routeitems[i];
-	
-				$("#playlist").append('<option value="http://miflamencoplace.com/media/k2/attachments/'+item.audioes+'">'+item.audioes+'</option>');
+				if (item.audioes != '')
+					$("#playlistes").append('<option value="http://miflamencoplace.com/media/k2/attachments/'+item.audioes+'">'+item.audioes+'</option>');
+				
+				if (item.audioen != '')
+					$("#playlisten").append('<option value="http://miflamencoplace.com/media/k2/attachments/'+item.audioen+'">'+item.audioen+'</option>');
 				
 				placeLatlng[i] = new google.maps.LatLng(item.lat, item.long); 
 				
