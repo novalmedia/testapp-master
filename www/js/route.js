@@ -1,7 +1,6 @@
 	var map; 
 	var myLatlng; 
 	function initProfile() {
-		updateMedia();
 		var styles = [
 							{
 								"elementType": "labels.icon",
@@ -154,10 +153,10 @@
 		for (i=0;i<data.routeitems.length;i++){
 				item = data.routeitems[i];
 				if (item.audioes != '')
-					$("#playlistes").append('<option value="http://miflamencoplace.com/media/k2/attachments/'+item.audioes+'">'+item.audioes+'</option>');
+					$("#playlistes").append('<a href="http://miflamencoplace.com/media/k2/attachments/'+item.audioes+'" onclick="navigator.app.loadUrl(this.href, { openExternal:true } );" class="audio">Audio de '+item.title+'</a>');
 				
 				if (item.audioen != '')
-					$("#playlisten").append('<option value="http://miflamencoplace.com/media/k2/attachments/'+item.audioen+'">'+item.audioen+'</option>');
+					$("#playlisten").append('<a href="http://miflamencoplace.com/media/k2/attachments/'+item.audioen+'" onclick="navigator.app.loadUrl(this.href, { openExternal:true } );" class="audio">'+item.title+' audio</a>');
 				
 				placeLatlng[i] = new google.maps.LatLng(item.lat, item.long); 
 				
@@ -187,61 +186,3 @@
     };
 })(jQuery);
 
-
-
-var myMedia = null;
-var playing = false;
-
-function playAudio() {
-	if (!playing) {
-		myMedia.play();	
-		document.getElementById('play').src = "images/pause.png";
-		playing = true;	
-	} else {
-		myMedia.pause();
-		document.getElementById('play').src = "images/play.png";    
-		playing = false; 
-	}
-}
-
-function stopAudio() {
-	myMedia.stop();
-	playing = false;
-	document.getElementById('play').src = "images/play.png";    
-	document.getElementById('audio_position').innerHTML = "0.000 sec";
-}
-
-
-
-
-function updateMedia(src) {
-	// Clean up old file
-	if (myMedia != null) {
-		myMedia.release();
-	}
-	
-	// Get the new media file
-	var yourSelect = document.getElementById('playlist');		
-			myMedia = new Media(yourSelect.options[yourSelect.selectedIndex].value, stopAudio, null);
-
-	// Update media position every second
-		var mediaTimer = setInterval(function() {
-		// get media position
-		myMedia.getCurrentPosition(
-			// success callback
-			function(position) {
-				if (position > -1) {
-					document.getElementById('audio_position').innerHTML = (position/1000) + " sec";
-				}
-			},
-			// error callback
-			function(e) {
-				console.log("Error getting pos=" + e);
-			}
-		);
-	}, 1000);
-}
-
-function setAudioPosition(position) {
-   document.getElementById('audio_position').innerHTML =position;
-}
