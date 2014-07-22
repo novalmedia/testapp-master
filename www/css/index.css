@@ -315,7 +315,7 @@ body.stories .route span.linkroute{width: 100px;font-family: 'Lato'; color: #fff
 bottom: 30px;left: 8px;background: url(../img/right-arrow.png) no-repeat right center;}
 
 /* ROUTE */
-body.route #route {width: 90%;margin:0 auto;display: table;}
+body.route #route {width: 90%;margin:0 auto;display: table;padding-top: 30px;}
 body.route #subroute {width: 100%;margin:0 auto;background:url(../img/filter_bg.jpg) repeat 0 0;display: table;padding: 0 0 40px 0;}
 body.route .routeimg {float: right;width: 50%;}
 body.route .routeimg img {width: 140px;height: 140px;border: 6px solid #d4d1d1;border-radius: 150px;float: right;
@@ -328,7 +328,7 @@ body.route .introtext {float:left;width:100%;clear: both;font-family:'Lato';colo
 body.route .downloadtip {width:90%;margin: 0 auto;padding: 20px 0;clear: both;font-family:'Lato';color:#959595;font-size: 18px;font-style: normal;text-transform: none;}
 body.route .audio{width: 90%; margin: 0 auto; padding-left: 20px;border: 2px solid #d3d3d3; background: url(../img/download_arrow.png) no-repeat right center, url(../img/filter_bg.jpg) repeat 0 0;
 display: block; font-family: 'Lato';font-size: 16px;color: #787878;text-transform: uppercase;line-height: 50px;text-decoration: none;}
-body.route  #map-canvas{width:100%; height:350px; float: left;clear: both; } 
+body.route  #map-canvas{width:100%; height:450px; float: left;clear: both; } 
 
 /* ABOUT */
 body.about {background: #f0f0f0;}

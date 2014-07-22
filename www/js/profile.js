@@ -1,6 +1,8 @@
 	var map; 
 	var myLatlng; 
 	function initProfile() {
+	
+			
 					
 			var showTab = jQuery.getQuery('tab');
 			switch(showTab){
@@ -159,7 +161,8 @@
 		
 	
 	function fillProfile(data){
-		$('#place').css('background-image','url(http://miflamencoplace.com'+data.img+')');
+		$('#place').css('background',' url(../img/overlay.png) repeat,url(http://miflamencoplace.com'+data.img+') no-repeat center top')
+		.css('background-size','auto,cover');
 		$('#place .title').html(data.title);
 		$('#place .author').html('By '+data.personname);
 		$('#place .personface img').attr('src','http://miflamencoplace.com'+data.personface);

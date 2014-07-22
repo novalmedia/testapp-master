@@ -2,6 +2,12 @@
 	var myLatlng; 
 	var markersArray = [];
 	function initMap() {
+	
+	var viewportHeight = $(window).height();
+			 $('#map-canvas').height(viewportHeight-166);
+			 $('#app').height(viewportHeight);
+			 $('#menu').css('min-height',(viewportHeight-150)+'px');
+	
 		myLatlng = new google.maps.LatLng(37.392864, -5.990077); 
 			var mapOptions = { 
 				zoom: 14, 
