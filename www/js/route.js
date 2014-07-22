@@ -159,11 +159,12 @@
 					$("#playlisten").append('<a href="http://miflamencoplace.com/media/k2/attachments/'+item.audioen+'" onclick="navigator.app.loadUrl(this.href, { openExternal:true } );" class="audio">'+item.title+' audio</a>');
 				
 				placeLatlng[i] = new google.maps.LatLng(item.lat, item.long); 
-				
+				var vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+				var sfx = (vpw > 1024)?'hd':'';
 				var marker = new google.maps.Marker({ 
 					position: placeLatlng[i], 
 					map: map, 
-					icon: '../img/markers/'+item.catid+'.png'				
+					icon: '../img/markers/'+sfx+item.catid+'.png'				
 				});
 				bounds.extend(placeLatlng[i]);
 				map.fitBounds(bounds);

@@ -149,11 +149,13 @@
 				map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions); 
 				map.mapTypes.set("map_style",styledMap);
 				map.setMapTypeId("map_style");
+				var vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+				var sfx = (vpw > 1024)?'hd':'';
 				var marker = new google.maps.Marker({ 
 					position: placeLatlng, 
 					map: map, 
 					title: data.title,
-					icon: '../img/markers/'+data.catid+'.png'				
+					icon: '../img/markers/'+sfx+data.catid+'.png'				
 				});
 					  
 			});

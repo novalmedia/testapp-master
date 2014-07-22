@@ -3,14 +3,16 @@
 	var markersArray = [];
 	function initMap() {
 	
-	var viewportHeight = $(window).height();
-			 $('#map-canvas').height(viewportHeight-166);
+		var viewportHeight = $(window).height();
+		var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+		var menuH = (viewportWidth > 1024)?465:166;
+			 $('#map-canvas').height(viewportHeight-menuH);
 			 $('#app').height(viewportHeight);
-			 $('#menu').css('min-height',(viewportHeight-150)+'px');
-	
+			 $('#menu').css('min-height',(viewportHeight-menuH+16)+'px');
+		var mapZoom = (viewportWidth > 1024)?15:14;
 		myLatlng = new google.maps.LatLng(37.392864, -5.990077); 
 			var mapOptions = { 
-				zoom: 14, 
+				zoom: mapZoom, 
 				disableDefaultUI: true,
 				center: myLatlng 
 			}; 
@@ -138,18 +140,19 @@
 			filterMarkers('all', true);
 	}			
 		function addMarker(data,map) {
+			var vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+			var sfx = (vpw > 1024)?'hd':'';
 			placeLatlng = new google.maps.LatLng(data.lat, data.long);
 			var marker = new google.maps.Marker({ 
 				position: placeLatlng, 
 				map: map, 
 				title: data.title,
-				icon: '../img/markers/'+data.catid+'.png'				
+				icon: '../img/markers/'+sfx+data.catid+'.png'				
 			});
 			markersArray.push(marker);
-			  var vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 			  var bubw = 200;
 			  if (parseInt(vpw) > 400) bubw = 300;
-			  if (parseInt(vpw) > 950) bubw = 600;
+			  if (parseInt(vpw) > 1024) bubw = 800;
 			var infowindow = new InfoBubble({
 				  content : '<div class="dmk2maps_bubble_image"><img src="http://miflamencoplace.com/media/k2/items/cache/'+data.img+'"></div><a class="dmk2maps_bubble_title" href="profile.html?itemid='+data.id+'">'+data.title+'</a><span class="dmk2maps_bubble_author"> by '+data.personname+'</span><img onclick="document.location.href=\'profile.html?itemid='+data.id+'\';" class="dmk2maps_bubble_arrow" src="http://miflamencoplace.com/images/arrow'+data.catid+'.png">',
 				  shadowStyle: 0,
