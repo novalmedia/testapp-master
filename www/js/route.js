@@ -199,7 +199,7 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 			directoryEntry.getDirectory(folderName, { create: true, exclusive: false }, onDirectorySuccess, onDirectoryFail); // creating folder in sdcard
 			
 			var fp = directoryEntry.fullPath; // Returns Fulpath of local directory
-			fp = fp + "/" + folderName + "/" + nameFile; 
+			fp = "file:" + fp + "/" + folderName + "/" + nameFile; 
 			var fileTransfer = new FileTransfer();
             fileTransfer.download(
                 file,
