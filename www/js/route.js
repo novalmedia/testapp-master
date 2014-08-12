@@ -197,9 +197,10 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 			var folderName = 'miflamencoplace'
 			var directoryEntry = fileSystem.root; // to get root path of directory
 			directoryEntry.getDirectory(folderName, { create: true, exclusive: false }, onDirectorySuccess, onDirectoryFail); // creating folder in sdcard
-			var rootdir = fileSystem.root;
-			var fp = rootdir.fullPath; // Returns Fulpath of local directory
+			
+			var fp = directoryEntry.fullPath; // Returns Fulpath of local directory
 			fp = fp + "/" + folderName + "/" + nameFile; 
+			var fileTransfer = new FileTransfer();
             fileTransfer.download(
                 file,
                 fp,
