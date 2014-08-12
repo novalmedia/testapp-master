@@ -301,7 +301,22 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 			alert('fp ' + fp);
 			alert('fp3 ' + fp3);
 			
-			fileSystem.root.getFile(fp3, {create: false, exclusive: false}, function(){alert('existe')}, onError
+			var reader = new FileReader();
+			var fileSource = fp3;
+
+			reader.onloadend = function(evt) {
+
+				if(evt.target.result == null) {
+				  alert('no existe');
+				} else {
+					alert('si existe');
+				}         
+			};
+
+			// We are going to check if the file exists
+			reader.readAsDataURL(fileSource);   
+			
+			//fileSystem.root.getFile(fp3, {create: false, exclusive: false}, function(){alert('existe')}, onError);
 				/* function playExistingFile(fp){
 					alert('existe audio '+fp);
 					playAudio(fp.toNativeURL());
@@ -323,7 +338,7 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 						}
 					); */
 				/* } */
-			);
+			
       
     }, onError);
 };
