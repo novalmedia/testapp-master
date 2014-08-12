@@ -60,6 +60,7 @@
     <gap:plugin name="org.apache.cordova.globalization" />
     <gap:plugin name="org.apache.cordova.inappbrowser" />
     <gap:plugin name="org.apache.cordova.media" />
+    <gap:plugin name="org.apache.cordova.AudioHandler" />
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
 	
@@ -73,6 +74,10 @@
 	<feature name="Storage">
 		   <param value="org.apache.cordova.Storage" name="android-package"/>
 	</feature>
+	<feature name="Media">
+		<param name="android-package" value="org.apache.cordova.AudioHandler" />
+	</feature>
+- See more at: http://www.phonegapspain.com/topic/ejecutar-mp3-interno/#sthash.IWg2lwWE.dpuf
    <!--  <gap:plugin name="org.apache.cordova.vibration" />
  -->
     <!-- Third party plugins -->
