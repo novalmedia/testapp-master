@@ -277,3 +277,80 @@
 		return false;
 	}
 	
+	
+	function isDownloadedFile()
+	{
+		entry.getFile("newFile.txt", {create: true, exclusive: false}, success, fail);
+	
+		return false;
+	}
+	
+function manageFile(file, nameFile){
+
+window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
+    function onFileSystemSuccess(fileSystem) {
+			var folderName = 'miflamencoplace'
+			var directoryEntry = fileSystem.root; // to get root path of directory
+			directoryEntry.getDirectory(folderName, { create: true, exclusive: false }, onDirectorySuccess, onDirectoryFail); // creating folder in sdcard
+			
+			var fp = directoryEntry.toURL(); // Returns Fulpath of local directory
+			fp = fp + "/" + folderName + "/" + nameFile; 
+			
+			fileSystem.root.getFile(fp, {create: false, exclusive: false}, 
+				function playExistingFile(fp){
+					alert('existe audio '.fp.toNativeURL());
+					playAudio(fp.toNativeURL());
+				},
+				function downloadFile(){
+					var fileTransfer = new FileTransfer();
+					fileTransfer.download(
+						file,
+						fp,
+						function(theFile) {
+							alert("download complete: " + theFile.toURI());
+							playAudio(theFile.toNativeURL());
+						},
+						function(error) {
+							alert("download error source " + error.source);
+							alert("download error target " + error.target);
+							alert("upload error code: " + error.code);
+						}
+					);
+				}
+			);
+      
+    }, onError);
+};
+
+function onDirectorySuccess(parent) {
+    // Directory created successfuly
+	alert('folder created');
+}
+
+function onDirectoryFail(error) {
+    //Error while creating directory
+    alert("Unable to create new directory: " + error.code);
+}
+
+ function playAudio(src) {
+            // Create Media object from src
+			alert(src);
+	my_media = new Media(src, onSuccess, onError);
+
+	// Play audio
+	my_media.play();
+
+
+}
+
+function onSuccess() {
+	alert("playAudio():Audio Success");
+}
+
+// onError Callback 
+//
+function onError(error) {
+	alert('code: '    + error.code    + '\n' + 
+		  'message: ' + error.message + '\n');
+}
+	
