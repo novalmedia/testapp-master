@@ -302,7 +302,7 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 			alert('fp3 ' + fp3);
 			
 			
-			my_media = new Media(fp3, onSuccess, onError);
+			my_media = new Media(fp3.toNativeURL(), onSuccess, onError);
 				/* function playExistingFile(fp){
 					alert('existe audio '+fp);
 					playAudio(fp.toNativeURL());
