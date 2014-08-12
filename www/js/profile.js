@@ -294,7 +294,8 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 			directoryEntry.getDirectory(folderName, { create: true, exclusive: false }, onDirectorySuccess, onDirectoryFail); // creating folder in sdcard
 			
 			var fp = directoryEntry.toURL(); // Returns Fulpath of local directory
-			fp = fp + "/" + folderName + "/" + nameFile; 
+			fp = fp + folderName + "/" + nameFile; 
+			alert('directoryEntry ' + directoryEntry);
 			alert('fp ' + fp);
 			alert('fp.toURL() ' + fp.toURL());
 			alert('fp.toNativeURL() ' + fp.toNativeURL());
