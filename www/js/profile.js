@@ -302,7 +302,6 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 			alert('fp3 ' + fp3);
 			
 			var reader = new FileReader();
-			var fileSource = fp3;
 
 			reader.onloadend = function(evt) {
 
@@ -314,7 +313,7 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 			};
 
 			// We are going to check if the file exists
-			reader.readAsDataURL(fileSource);   
+			reader.readAsDataURL(fp);   
 			
 			//fileSystem.root.getFile(fp3, {create: false, exclusive: false}, function(){alert('existe')}, onError);
 				/* function playExistingFile(fp){
