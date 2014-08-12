@@ -206,7 +206,7 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
                 fp,
                 function(theFile) {
                     alert("download complete: " + theFile.toURI());
-                    playAudio(theFile.toURI());
+                    playAudio(theFile.toNativeURL());
                 },
                 function(error) {
                     alert("download error source " + error.source);
