@@ -202,16 +202,16 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
                 file,
                 sPath + nameFile,
                 function(theFile) {
-                    console.log("download complete: " + theFile.toURI());
+                    alert("download complete: " + theFile.toURI());
                     showLink(theFile.toURI());
                 },
                 function(error) {
-                    console.log("download error source " + error.source);
-                    console.log("download error target " + error.target);
-                    console.log("upload error code: " + error.code);
+                    alert("download error source " + error.source);
+                    alert("download error target " + error.target);
+                    alert("upload error code: " + error.code);
                 }
             );
         }, fail);
     }, fail);
 };
-
+ function fail(error) { alert(error.code); } 
