@@ -301,21 +301,8 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 			alert('fp ' + fp);
 			alert('fp3 ' + fp3);
 			
-			var reader = new FileReader();
-
-			reader.onloadend = function(evt) {
-
-				if(evt.target.result == null) {
-				  alert('no existe');
-				} else {
-					alert('si existe');
-				}         
-			};
-
-			// We are going to check if the file exists
-			reader.readAsDataURL(fp);   
 			
-			//fileSystem.root.getFile(fp3, {create: false, exclusive: false}, function(){alert('existe')}, onError);
+			fileSystem.root.getFile(fp3, null, function(){alert('existe')}, onError);
 				/* function playExistingFile(fp){
 					alert('existe audio '+fp);
 					playAudio(fp.toNativeURL());
