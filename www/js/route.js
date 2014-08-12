@@ -206,7 +206,7 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
                 fp,
                 function(theFile) {
                     alert("download complete: " + theFile.toURI());
-                    //showLink(theFile.toURI());
+                    playAudio(theFile.toURI());
                 },
                 function(error) {
                     alert("download error source " + error.source);
@@ -227,3 +227,24 @@ function onDirectoryFail(error) {
     alert("Unable to create new directory: " + error.code);
 }
  function fail(error) { alert(error.code); } 
+
+ function playAudio(src) {
+            // Create Media object from src
+	my_media = new Media(src, onSuccess, onError);
+
+	// Play audio
+	my_media.play();
+
+
+}
+
+function onSuccess() {
+	alert("playAudio():Audio Success");
+}
+
+// onError Callback 
+//
+function onError(error) {
+	alert('code: '    + error.code    + '\n' + 
+		  'message: ' + error.message + '\n');
+}
