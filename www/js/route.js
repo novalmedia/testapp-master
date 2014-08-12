@@ -205,7 +205,7 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
                 fp,
                 function(theFile) {
                     alert("download complete: " + theFile.toURI());
-                    showLink(theFile.toURI());
+                    //showLink(theFile.toURI());
                 },
                 function(error) {
                     alert("download error source " + error.source);
@@ -218,6 +218,7 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 };
 function onDirectorySuccess(parent) {
     // Directory created successfuly
+	alert('folder created');
 }
 
 function onDirectoryFail(error) {
