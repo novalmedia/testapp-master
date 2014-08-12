@@ -295,9 +295,9 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 			
 			var fp = directoryEntry.toURL(); // Returns Fulpath of local directory
 			fp = fp + "/" + folderName + "/" + nameFile; 
-			alert('fp' + fp);
-			alert('fp.toURL()' + fp.toURL());
-			alert('fp.toNativeURL()' + fp.toNativeURL());
+			alert('fp ' + fp);
+			alert('fp.toURL() ' + fp.toURL());
+			alert('fp.toNativeURL() ' + fp.toNativeURL());
 			fileSystem.root.getFile(fp.toURL(), {create: false, exclusive: false}, 
 				function playExistingFile(fp){
 					alert('existe audio '+fp.toURL());
@@ -310,7 +310,7 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 						fp,
 						function(theFile) {
 							alert("download complete: " + theFile.toURI());
-							playAudio(theFile.toNativeURL());
+							//playAudio(theFile.toNativeURL());
 						},
 						function(error) {
 							alert("download error source " + error.source);
