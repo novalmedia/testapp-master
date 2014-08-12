@@ -294,14 +294,16 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 			directoryEntry.getDirectory(folderName, { create: true, exclusive: false }, onDirectorySuccess, onDirectoryFail); // creating folder in sdcard
 			
 			var fp = directoryEntry.toURL(); // Returns Fulpath of local directory
+			var fp2 = directoryEntry.toNativeURL(); // Returns Fulpath of local directory
 			fp = fp + folderName + "/" + nameFile; 
-			alert('directoryEntry ' + directoryEntry);
+			fp2 = fp2 + folderName + "/" + nameFile; 
+			
 			alert('fp ' + fp);
-			alert('fp.toURL() ' + fp.toURL());
-			alert('fp.toNativeURL() ' + fp.toNativeURL());
-			fileSystem.root.getFile(fp.toURL(), {create: false, exclusive: false}, 
+			alert('fp2 ' + fp2);
+			
+			fileSystem.root.getFile(fp2, {create: false, exclusive: false}, 
 				function playExistingFile(fp){
-					alert('existe audio '+fp.toURL());
+					alert('existe audio '+fp);
 					playAudio(fp.toNativeURL());
 				},
 				function downloadFile(){
