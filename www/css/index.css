@@ -135,6 +135,36 @@ text-decoration: none;background: url(../img/filteropts_bg.jpg) repeat 0 0;borde
 #menu .links a{padding: 0 20px;font-size: 19px; font-family: 'Lato'; color: #787878; text-decoration: none;}
 #menu .links a:first-child {border-right: 1px solid #dddcdd;}
 
+
+
+
+#aroundmenu {
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    width: 80%; 
+  
+    min-height: 100%; 
+	padding-bottom: 150px;
+    -webkit-transform: translate3d(100%, 0, 0); 
+    transform: translate3d(100%, 0, 0); 
+	background: url(../img/logo_ministerio.png) no-repeat center bottom #fff;
+	-webkit-transition-duration: .25s; 
+    transition-duration: .25s; 
+}
+#aroundmenu.open { 
+    -webkit-transform: translate3d(0, 0, 0); 
+    transform: translate3d(0, 0, 0); 
+	box-shadow: -5px 0 10px #999;
+}
+
+#aroundmenu > a{display: block;width: 100%;line-height: 75px;font-size: 22px; font-family: 'Merriweather'; color: #787878;text-transform: none;font-weight: bold;
+text-decoration: none;background: url(../img/filteropts_bg.jpg) repeat 0 0;border-bottom: 1px dotted #d9d9d9;  }
+#aroundmenu > a span{padding: 0 0 0 22px;}
+#aroundmenu > a.close {line-height: 90px;background: #fff;color: #959595; font-family: 'Lato'; font-style: italic;font-size: 21px;}
+
+
+
 header {height: 90px; background:#fff; width: 100%;border-bottom: 1px dashed #d8d8d8;display: flex;}
 #logo {background: url(../img/logo_black.png);width:120px;height: 39px;margin: 24px auto 0;background-size:120px 39px;}
 #btn_menu {background: url(../img/btn_menu.png);width:34px;height: 28px;float: left;margin: 31px 0 0 22px;}

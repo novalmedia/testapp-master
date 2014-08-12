@@ -153,10 +153,10 @@
 		for (i=0;i<data.routeitems.length;i++){
 				item = data.routeitems[i];
 				if (item.audioes != '')
-					$("#playlistes").append('<a href="http://miflamencoplace.com/media/k2/attachments/'+item.audioes+'" onclick="navigator.app.loadUrl(this.href, { openExternal:true } );" class="audio">Audio de '+item.title+'</a>');
+					$("#playlistes").append('<a href="http://miflamencoplace.com/media/k2/attachments/'+item.audioes+'" onclick="downloadFile(this.href, \''+item.audioes+'\');return false;" class="audio">Audio de '+item.title+'</a>');
 				
 				if (item.audioen != '')
-					$("#playlisten").append('<a href="http://miflamencoplace.com/media/k2/attachments/'+item.audioen+'" onclick="navigator.app.loadUrl(this.href, { openExternal:true } );" class="audio">'+item.title+' audio</a>');
+					$("#playlisten").append('<a href="http://miflamencoplace.com/media/k2/attachments/'+item.audioen+'" onclick="downloadFile(this.href, \''+item.audioen+'\');return false;" class="audio">'+item.title+' audio</a>');
 				
 				placeLatlng[i] = new google.maps.LatLng(item.lat, item.long); 
 				var vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
@@ -186,4 +186,32 @@
         }
     };
 })(jQuery);
+
+function downloadFile(file, nameFile){
+
+window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
+    function onFileSystemSuccess(fileSystem) {
+        fileSystem.root.getFile(
+        "dummy.html", {create: true, exclusive: false}, 
+        function gotFileEntry(fileEntry) {
+            var sPath = fileEntry.fullPath.replace("dummy.html","");
+            var fileTransfer = new FileTransfer();
+            fileEntry.remove();
+
+            fileTransfer.download(
+                file,
+                sPath + nameFile,
+                function(theFile) {
+                    console.log("download complete: " + theFile.toURI());
+                    showLink(theFile.toURI());
+                },
+                function(error) {
+                    console.log("download error source " + error.source);
+                    console.log("download error target " + error.target);
+                    console.log("upload error code: " + error.code);
+                }
+            );
+        }, fail);
+    }, fail);
+};
 
