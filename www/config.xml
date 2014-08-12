@@ -77,7 +77,6 @@
 	<feature name="Media">
 		<param name="android-package" value="org.apache.cordova.AudioHandler" />
 	</feature>
-- See more at: http://www.phonegapspain.com/topic/ejecutar-mp3-interno/#sthash.IWg2lwWE.dpuf
    <!--  <gap:plugin name="org.apache.cordova.vibration" />
  -->
     <!-- Third party plugins -->
