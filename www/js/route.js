@@ -230,6 +230,7 @@ function onDirectoryFail(error) {
 
  function playAudio(src) {
             // Create Media object from src
+			alert(src);
 	my_media = new Media(src, onSuccess, onError);
 
 	// Play audio
