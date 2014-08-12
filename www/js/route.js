@@ -194,13 +194,15 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
         fileSystem.root.getFile(
         "dummy.html", {create: true, exclusive: false}, 
         function gotFileEntry(fileEntry) {
-            var sPath = fileEntry.fullPath.replace("dummy.html","");
-            var fileTransfer = new FileTransfer();
-            fileEntry.remove();
-
+			var folderName = 'miflamencoplace'
+			var directoryEntry = fileSystem.root; // to get root path of directory
+			directoryEntry.getDirectory(folderName, { create: true, exclusive: false }, onDirectorySuccess, onDirectoryFail); // creating folder in sdcard
+			var rootdir = fileSystem.root;
+			var fp = rootdir.fullPath; // Returns Fulpath of local directory
+			fp = fp + "/" + folderName + "/" + nameFile; 
             fileTransfer.download(
                 file,
-                sPath + nameFile,
+                fp,
                 function(theFile) {
                     alert("download complete: " + theFile.toURI());
                     showLink(theFile.toURI());
@@ -214,4 +216,12 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
         }, fail);
     }, fail);
 };
+function onDirectorySuccess(parent) {
+    // Directory created successfuly
+}
+
+function onDirectoryFail(error) {
+    //Error while creating directory
+    alert("Unable to create new directory: " + error.code);
+}
  function fail(error) { alert(error.code); } 
