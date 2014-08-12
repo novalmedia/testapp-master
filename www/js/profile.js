@@ -294,20 +294,21 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 			directoryEntry.getDirectory(folderName, { create: true, exclusive: false }, onDirectorySuccess, onDirectoryFail); // creating folder in sdcard
 			
 			var fp = directoryEntry.toURL(); // Returns Fulpath of local directory
-			var fp2 = directoryEntry.toNativeURL(); // Returns Fulpath of local directory
+			var fp3 = directoryEntry.fullPath; // Returns Fulpath of local directory
 			fp = fp + folderName + "/" + nameFile; 
-			fp2 = fp2 + folderName + "/" + nameFile; 
+			fp3 = fp3 + folderName + "/" + nameFile; 
 			
 			alert('fp ' + fp);
-			alert('fp2 ' + fp2);
+			alert('fp3 ' + fp3);
 			
-			fileSystem.root.getFile(fp2, {create: false, exclusive: false}, 
+			fileSystem.root.getFile(fp3, {create: false, exclusive: false}, 
 				function playExistingFile(fp){
 					alert('existe audio '+fp);
 					playAudio(fp.toNativeURL());
 				},
 				function downloadFile(){
-					var fileTransfer = new FileTransfer();
+					alert('descargar');
+					/* var fileTransfer = new FileTransfer();
 					fileTransfer.download(
 						file,
 						fp,
@@ -320,7 +321,7 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 							alert("download error target " + error.target);
 							alert("upload error code: " + error.code);
 						}
-					);
+					); */
 				}
 			);
       
