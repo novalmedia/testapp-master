@@ -296,7 +296,7 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 			var fp = directoryEntry.toURL(); // Returns Fulpath of local directory
 			fp = fp + "/" + folderName + "/" + nameFile; 
 			
-			fileSystem.root.getFile(fp, {create: false, exclusive: false}, 
+			fileSystem.root.getFile(fp.toURL(), {create: false, exclusive: false}, 
 				function playExistingFile(fp){
 					alert('existe audio '.fp.toNativeURL());
 					playAudio(fp.toNativeURL());
