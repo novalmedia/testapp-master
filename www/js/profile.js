@@ -304,6 +304,7 @@
 				function successReader(entries) {
 					var i;
 					for (i=0; i<entries.length; i++) {
+						alert(entries[i].name +" -> "+ nameFile);
 						if (entries[i].name == nameFile){
 							return true;
 						}
