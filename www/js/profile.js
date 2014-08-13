@@ -298,10 +298,10 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 			fp = fp + folderName + "/" + nameFile; 
 			fp3 = folderName + "/" + nameFile; 
 			
-			alert('fp ' + fp);
-			alert('fp3 ' + fp3);
+			/* alert('fp ' + fp);
+			alert('fp3 ' + fp3); */
 			
-			
+			onFileSystemSuccessUpload(fileSystem);
 			function onFileSystemSuccessUpload(fileSystem) {
 				 // get directory entry through root and access all the folders
 				 var directoryReader = fileSystem.root.createReader();
