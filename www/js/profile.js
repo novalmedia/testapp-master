@@ -174,12 +174,7 @@
 			$('#person .authortext').html(data.persontexten);
 			if (data.audioen != null){
 				$('#story .downloada').click(function(){manageFile('http://miflamencoplace.com/media/k2/attachments/'+data.audioen, data.audioen )});
-				if(isDownloadedFile(data.audioen)){
-					alert('lo tengo');
-					$('#story .downloada').addClass('pause');
-				} else {
-					alert('NO lo tengo');
-				}
+				isDownloadedFile(data.audioen);
 			}else{
 				$('#story .downloada').hide();
 			} 
@@ -189,12 +184,7 @@
 			$('#person .authortext').html(data.persontext);
 			if (data.audioes != null){
 				$('#story .downloada').click(function(){manageFile('http://miflamencoplace.com/media/k2/attachments/'+data.audioes,data.audioes )});
-				if(isDownloadedFile(data.audioes)){
-					alert('lo tengo');
-					$('#story .downloada').addClass('pause');
-				} else {
-					alert('NO lo tengo');
-				}
+				isDownloadedFile(data.audioes);
 			}else{
 				$('#story .downloada').hide();
 			} 
@@ -304,13 +294,9 @@
 				function successReader(entries) {
 					var i;
 					for (i=0; i<entries.length; i++) {
-						alert(entries[i].name +" -> "+ nameFile);
 						if (entries[i].name == nameFile){
-							return true;
+							$('#story .downloada').addClass('pause');
 						}
-					}
-					if (!fileFound){
-						return false;
 					}
 				}
 			},
