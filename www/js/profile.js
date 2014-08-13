@@ -174,6 +174,9 @@
 			$('#person .authortext').html(data.persontexten);
 			if (data.audioen != null){
 				$('#story .downloada').click(function(){manageFile('http://miflamencoplace.com/media/k2/attachments/'+data.audioen, data.audioen )});
+				/* if(isDownloadedFile(data.audioen)){
+					$('#story .downloada').addClass('pause');
+				} */
 			}else{
 				$('#story .downloada').hide();
 			} 
@@ -183,6 +186,9 @@
 			$('#person .authortext').html(data.persontext);
 			if (data.audioes != null){
 				$('#story .downloada').click(function(){manageFile('http://miflamencoplace.com/media/k2/attachments/'+data.audioes,data.audioes )});
+				/* if(isDownloadedFile(data.audioes)){
+					$('#story .downloada').addClass('pause');
+				} */
 			}else{
 				$('#story .downloada').hide();
 			} 
@@ -278,11 +284,31 @@
 	}
 	
 	
-	function isDownloadedFile()
+	function isDownloadedFile(nameFile)
 	{
-		entry.getFile("newFile.txt", {create: true, exclusive: false}, success, fail);
-	
-		return false;
+		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
+			function onFileSystemSuccess(fileSystem) {
+				var folderName = 'miflamencoplace'
+				var directoryEntry = fileSystem.root; 
+				directoryEntry.getDirectory(folderName, { create: true, exclusive: false }, onDirectorySuccess, onDirectoryFail); // creating folder in sdcard
+				function onDirectorySuccess(parent) {
+					var directoryReader = parent.createReader();
+					directoryReader.readEntries(successReader,fail); 
+				}
+				function successReader(entries) {
+					var i;
+					for (i=0; i<entries.length; i++) {
+						if (entries[i].name == nameFile){
+							return true;
+						}
+					}
+					if (!fileFound){
+						return false;
+					}
+				}
+			},
+			onError
+		);
 	}
 	
 function manageFile(file, nameFile){
@@ -293,20 +319,9 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 			var directoryEntry = fileSystem.root; // to get root path of directory
 			directoryEntry.getDirectory(folderName, { create: true, exclusive: false }, onDirectorySuccess, onDirectoryFail); // creating folder in sdcard
 			
-						
 			function onDirectorySuccess(parent) {
-				// Directory created successfuly
-				//alert('folder created '+parent.name);
-				onFileSystemSuccessUpload(parent);
-			}
-	
-			function onFileSystemSuccessUpload(parent) {
-				 // get directory entry through root and access all the folders
 				 var directoryReader = parent.createReader();
-
-				// Get a list of all the entries in the directory
-				directoryReader.readEntries(successReader,fail); 
-
+				directoryReader.readEntries(successReader,fail);
 			}
 
 			function successReader(entries) {
@@ -338,28 +353,6 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 					
 					}
 				}; 
-			
-				/* function playExistingFile(fp){
-					alert('existe audio '+fp);
-					playAudio(fp.toNativeURL());
-				},
-				function downloadFile(){
-					alert('descargar'); */
-					/* var fileTransfer = new FileTransfer();
-					fileTransfer.download(
-						file,
-						fp,
-						function(theFile) {
-							alert("download complete: " + theFile.toURI());
-							//playAudio(theFile.toNativeURL());
-						},
-						function(error) {
-							alert("download error source " + error.source);
-							alert("download error target " + error.target);
-							alert("upload error code: " + error.code);
-						}
-					); */
-				/* } */
 			
       
     }, onError);
