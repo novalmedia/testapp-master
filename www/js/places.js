@@ -183,7 +183,8 @@
 		placeLatlng = new google.maps.LatLng(data.lat, data.long);
 		getUserPosition();
 		userLatLng = new google.maps.LatLng(userPosition.coords.latitude, userPosition.coords.longitude);
-		
+		alert(userPosition.coords.latitude);
+		alert(userPosition.coords.longitude);
 		markerDistance = google.maps.geometry.spherical.computeDistanceBetween(userLatLng, placeLatlng);
 		
 		if (markerDistance < distance) {
@@ -264,7 +265,8 @@
 	};
 	
 	function getAroundMe(distance){
-		getEntriesByDistance('all', distance);
+		alert(distance);
+		getEntriesByDistance(distance);
 		
 	}
 	function alertDismissed(){}
@@ -320,7 +322,7 @@
 		}, dbErrorHandler);
 	}
 	
-	function getEntriesByDistance(catid, distance) {
+	function getEntriesByDistance(distance, catid) {
 		dbShell.transaction(function(tx) {
 			if (!catid)
 				tx.executeSql("SELECT data FROM places",[],function(tx,results){renderEntriesByDistance(tx,results,distance)},dbErrorHandler);
@@ -349,6 +351,8 @@
 	
 	function renderEntriesByDistance(tx,results, distance){
 	//		console.log(results);
+		alert(distance);
+		alert(results);
 		if (results.rows.length == 0) {
 			jQuery.getJSON( "http://miflamencoplace.com/rpc/get_places.php", function( data ) {
 			  jQuery.each( data, function( key, val ) {
