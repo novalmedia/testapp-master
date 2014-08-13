@@ -181,12 +181,14 @@
 		var vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 		var sfx = (vpw > 1024)?'hd':'';
 		placeLatlng = new google.maps.LatLng(data.lat, data.long);
-		getUserPosition();
-		userLatLng = new google.maps.LatLng(userPosition.coords.latitude, userPosition.coords.longitude);
+		
+		navigator.geolocation.getCurrentPosition(onSuccess, onError);
+		
 		alert(userPosition.coords.latitude);
 		alert(userPosition.coords.longitude);
+		userLatLng = new google.maps.LatLng(userPosition.coords.latitude, userPosition.coords.longitude);
 		markerDistance = google.maps.geometry.spherical.computeDistanceBetween(userLatLng, placeLatlng);
-		
+		alert(markerDistance + ' -- ' + distance);
 		if (markerDistance < distance) {
 			var marker = new google.maps.Marker({ 
 				position: placeLatlng, 
