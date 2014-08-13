@@ -301,9 +301,9 @@
 
 	function setupTable(tx){
 
-	/* 	tx.executeSql("DROP TABLE places");
+	 	tx.executeSql("DROP TABLE places");
 		tx.executeSql("DROP TABLE people");
-		tx.executeSql("DROP TABLE profiles"); */
+		tx.executeSql("DROP TABLE profiles");
 		tx.executeSql("CREATE TABLE IF NOT EXISTS places(id INTEGER PRIMARY KEY,catid INTEGER,data)");
 		tx.executeSql("CREATE TABLE IF NOT EXISTS people(id INTEGER PRIMARY KEY,catid INTEGER,data)");
 		tx.executeSql("CREATE TABLE IF NOT EXISTS profiles(id INTEGER PRIMARY KEY,itemid INTEGER,data)");
@@ -352,7 +352,7 @@
 	function renderEntriesByDistance(tx,results, distance){
 	//		console.log(results);
 		alert(distance);
-		alert(results);
+		alert(results.rows.length);
 		if (results.rows.length == 0) {
 			jQuery.getJSON( "http://miflamencoplace.com/rpc/get_places.php", function( data ) {
 			  jQuery.each( data, function( key, val ) {
