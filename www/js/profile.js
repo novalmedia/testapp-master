@@ -361,7 +361,7 @@ function onDirectoryFail(error) {
 
  function playAudio(src) {
             // Create Media object from src
-	//		alert(src);
+			alert(src.toURI());
 	my_media = new Media(src.toURI(), onSuccess, onError);
 
 	// Play audio
