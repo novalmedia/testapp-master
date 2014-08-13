@@ -293,22 +293,13 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 			var directoryEntry = fileSystem.root; // to get root path of directory
 			directoryEntry.getDirectory(folderName, { create: true, exclusive: false }, onDirectorySuccess, onDirectoryFail); // creating folder in sdcard
 			
-			var fp = directoryEntry.toURL(); // Returns Fulpath of local directory
-			
-			fp = fp + folderName + "/" + nameFile; 
-			fp3 = folderName + "/" + nameFile; 
-			
-			/* alert('fp ' + fp);
-			alert('fp3 ' + fp3); */
-			
+						
 			function onDirectorySuccess(parent) {
 				// Directory created successfuly
 				//alert('folder created '+parent.name);
 				onFileSystemSuccessUpload(parent);
 			}
-
-			
-			
+	
 			function onFileSystemSuccessUpload(parent) {
 				 // get directory entry through root and access all the folders
 				 var directoryReader = parent.createReader();
@@ -320,10 +311,31 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 
 			function successReader(entries) {
 					var i;
+					var fileFound = false;
 					for (i=0; i<entries.length; i++) {
 					   if (entries[i].name == nameFile){
+						fileFound = true;
 						playAudio(entries[i]);
 					   }
+					}
+					if (!fileFound){
+						var fp = directoryEntry.toURL(); // Returns Fulpath of local directory
+						fp = fp + folderName + "/" + nameFile; 		
+						var fileTransfer = new FileTransfer();
+						fileTransfer.download(
+							file,
+							fp,
+							function(theFile) {
+								alert("download complete: " + theFile.toURI());
+								playAudio(theFile);
+							},
+							function(error) {
+								alert("download error source " + error.source);
+								alert("download error target " + error.target);
+								alert("upload error code: " + error.code);
+							}
+						);
+					
 					}
 				}; 
 			
@@ -361,7 +373,7 @@ function onDirectoryFail(error) {
 
  function playAudio(src) {
             // Create Media object from src
-			alert(src.toNativeURL());
+	alert(src.toNativeURL());
 	my_media = new Media(src.toNativeURL(), onSuccess, onError);
 
 	// Play audio
