@@ -257,7 +257,7 @@
 	function onGEOSuccess(position) {
 		getEntriesByDistance(selectedDistance);
 		userPosition = position;
-		/*  alert(
+		 alert(
 			'Latitude: '          + position.coords.latitude          + '\n' +
 			'Longitude: '         + position.coords.longitude         + '\n' +
 			'Altitude: '          + position.coords.altitude          + '\n' +
@@ -265,11 +265,8 @@
 			'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
 			'Heading: '           + position.coords.heading           + '\n' +
 			'Speed: '             + position.coords.speed             + '\n' +
-			'Timestamp: '         + position.timestamp                + '\n',  // message
-			alertDismissed,         // callback
-			'Game Over',            // title
-			'Done'                  // buttonName
-		);  */
+			'Timestamp: '         + position.timestamp                + '\n'
+		);  
 	};
 	function onGEOError(position) {
 		//var userPosition = position;
