@@ -357,7 +357,7 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 
 function onDirectorySuccess(parent) {
     // Directory created successfuly
-	alert('folder created');
+	alert('folder created '+parent.name);
 }
 
 function onDirectoryFail(error) {
