@@ -1,6 +1,7 @@
 	var map; 
 	var myLatlng; 
 	var userPosition;
+	var selectedDistance;
 	var markersArray = [];
 	function initMap() {
 	
@@ -178,17 +179,21 @@
 
 	
 	function addMarkerByDistance(data,map,distance) {
+	
 		var vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 		var sfx = (vpw > 1024)?'hd':'';
-		placeLatlng = new google.maps.LatLng(data.lat, data.long);
+		var placeLatlng = new google.maps.LatLng(data.lat, data.long);
 		
-		navigator.geolocation.getCurrentPosition(onSuccess, onError);
 		
-		alert(userPosition.coords.latitude);
-		alert(userPosition.coords.longitude);
-		userLatLng = new google.maps.LatLng(userPosition.coords.latitude, userPosition.coords.longitude);
-		markerDistance = google.maps.geometry.spherical.computeDistanceBetween(userLatLng, placeLatlng);
-		alert(markerDistance + ' -- ' + distance);
+		
+/* 		alert(userPosition.coords.latitude);
+		alert(userPosition.coords.longitude); */
+
+		
+		var userLatLng = new google.maps.LatLng(userPosition.coords.latitude, userPosition.coords.longitude);
+		var markerDistance = google.maps.geometry.spherical.computeDistanceBetween(userLatLng, placeLatlng);
+		
+		//alert(markerDistance + ' -- ' + distance);
 		if (markerDistance < distance) {
 			var marker = new google.maps.Marker({ 
 				position: placeLatlng, 
@@ -249,9 +254,10 @@
 	}
 	
 	
-	var onSuccess = function(position) {
-		var userPosition = position;
-		/* navigator.notification.alert(
+	function onGEOSuccess(position) {
+		getEntriesByDistance(selectedDistance);
+		userPosition = position;
+		/*  alert(
 			'Latitude: '          + position.coords.latitude          + '\n' +
 			'Longitude: '         + position.coords.longitude         + '\n' +
 			'Altitude: '          + position.coords.altitude          + '\n' +
@@ -263,13 +269,19 @@
 			alertDismissed,         // callback
 			'Game Over',            // title
 			'Done'                  // buttonName
-		); */
+		);  */
+	};
+	function onGEOError(position) {
+		//var userPosition = position;
+		alert('GEOERROR');
 	};
 	
 	function getAroundMe(distance){
-		alert(distance);
-		getEntriesByDistance(distance);
-		
+		//alert(distance);
+		while(markersArray.length) { markersArray.pop().setMap(null); }
+		selectedDistance = distance;
+		navigator.geolocation.getCurrentPosition(onGEOSuccess, onGEOError);
+		jQuery('#aroundmenu').removeClass('open');
 	}
 	function alertDismissed(){}
 	// onError Callback receives a PositionError object
@@ -278,9 +290,9 @@
 		alert('code: '    + error.code    + '\n' +
 			  'message: ' + error.message + '\n');
 	}
-	function getUserPosition(){
+/* 	function getUserPosition(){
 		navigator.geolocation.getCurrentPosition(onSuccess, onError);
-	}
+	} */
 
 
 	(function($){
@@ -327,9 +339,9 @@
 	function getEntriesByDistance(distance, catid) {
 		dbShell.transaction(function(tx) {
 			if (!catid)
-				tx.executeSql("SELECT data FROM places",[],function(tx,results){renderEntriesByDistance(tx,results,distance)},dbErrorHandler);
+				tx.executeSql("SELECT ? as distance, data FROM places",[distance],renderEntriesByDistance,dbErrorHandler);
 			else 
-				tx.executeSql("SELECT data FROM places WHERE catid = ?",[ catid ],function(tx,results){renderEntriesByDistance(tx,results,distance)},dbErrorHandler);
+				tx.executeSql("SELECT ? as distance, data FROM places WHERE catid = ?",[ distance,catid ],renderEntriesByDistance,dbErrorHandler);
 		}, dbErrorHandler);
 	}
 
@@ -351,24 +363,19 @@
 		}
 	}
 	
-	function renderEntriesByDistance(tx,results, distance){
+	function renderEntriesByDistance(tx,results){
 	//		console.log(results);
-		alert(distance);
-		alert(results.rows.length);
-		if (results.rows.length == 0) {
-			jQuery.getJSON( "http://miflamencoplace.com/rpc/get_places.php", function( data ) {
-			  jQuery.each( data, function( key, val ) {
-				addMarkerByDistance(val,map, distance);
-				savePlace(val);
-			  });
-			});
-		} else {
-			for(var i=0; i<results.rows.length; i++) {
-				data = JSON.parse(results.rows.item(i).data);
-			//console.log(data);
-				addMarkerByDistance(data,map,distance);
-			}
+		
+		//alert(results.rows.length);
+		
+		for(var i=0; i<results.rows.length; i++) {
+			data = JSON.parse(results.rows.item(i).data);
+			distance = results.rows.item(i).distance;
+		//console.log(data);
+		
+			addMarkerByDistance(data,map,distance);
 		}
+
 	}
 
 	function savePlace(data) {
