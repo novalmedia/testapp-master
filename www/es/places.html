@@ -51,9 +51,9 @@
 		</div>
 		<div id="aroundmenu">
 			<a href="#" class="close"  onclick="jQuery('#aroundmenu').removeClass('open');"><span>Cerca de mi</span></a>
-			<a href="#" class="item"><span>100m</span></a>
-			<a href="#" class="item"><span>5000m</span></a>
-			<a href="#" class="item"><span>1000m</span></a>
+			<a href="#" onclick="getAroundMe(100);return false;" class="item"><span>100m</span></a>
+			<a href="#" onclick="getAroundMe(500);return false;" class="item"><span>500m</span></a>
+			<a href="#" onclick="getAroundMe(1000);return false;" class="item"><span>1000m</span></a>
 		</div>
         <script type="text/javascript" src="../phonegap.js"></script>
         <script type="text/javascript" src="../js/index.js"></script>

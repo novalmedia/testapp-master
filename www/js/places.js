@@ -1,5 +1,6 @@
 	var map; 
 	var myLatlng; 
+	var userPosition;
 	var markersArray = [];
 	function initMap() {
 	
@@ -139,10 +140,53 @@
 			
 			filterMarkers('all', true);
 	}			
-		function addMarker(data,map) {
-			var vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-			var sfx = (vpw > 1024)?'hd':'';
-			placeLatlng = new google.maps.LatLng(data.lat, data.long);
+	function addMarker(data,map) {
+		var vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+		var sfx = (vpw > 1024)?'hd':'';
+		placeLatlng = new google.maps.LatLng(data.lat, data.long);
+		var marker = new google.maps.Marker({ 
+			position: placeLatlng, 
+			map: map, 
+			title: data.title,
+			icon: '../img/markers/'+sfx+data.catid+'.png'				
+		});
+		markersArray.push(marker);
+		  var bubw = 200;
+		  if (parseInt(vpw) > 400) bubw = 300;
+		  if (parseInt(vpw) > 1024) bubw = 800;
+		var infowindow = new InfoBubble({
+			  content : '<div class="dmk2maps_bubble_image"><img src="http://miflamencoplace.com/media/k2/items/cache/'+data.img+'"></div><a class="dmk2maps_bubble_title" href="profile.html?itemid='+data.id+'">'+data.title+'</a><span class="dmk2maps_bubble_author"> by '+data.personname+'</span><img onclick="document.location.href=\'profile.html?itemid='+data.id+'\';" class="dmk2maps_bubble_arrow" src="http://miflamencoplace.com/images/arrow'+data.catid+'.png">',
+			  shadowStyle: 0,
+			  padding: 0,
+			  backgroundColor: 'rgba(0,0,0,0.8)',
+			  borderRadius: Math.floor(bubw+(bubw/3)),
+			  borderWidth: 6,
+			  borderColor: '#fff',
+			  minWidth: bubw,
+			  minHeight: bubw,
+			  maxWidth: bubw,
+			  maxHeight: bubw,
+			  disableAutoPan: false,
+			  hideCloseButton: false,
+			  backgroundClassName: 'phoney',
+			  arrowSize: 5,
+			  arrowPosition: 10,
+			  arrowStyle: 3
+			});		
+		new google.maps.event.addListener(marker, "click", function(){infowindow.open(map,marker);});	
+	}
+
+	
+	function addMarkerByDistance(data,map,distance) {
+		var vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+		var sfx = (vpw > 1024)?'hd':'';
+		placeLatlng = new google.maps.LatLng(data.lat, data.long);
+		getUserPosition();
+		userLatLng = new google.maps.LatLng(userPosition.coords.latitude, userPosition.coords.longitude);
+		
+		markerDistance = google.maps.geometry.spherical.computeDistanceBetween(userLatLng, placeLatlng);
+		
+		if (markerDistance < distance) {
 			var marker = new google.maps.Marker({ 
 				position: placeLatlng, 
 				map: map, 
@@ -174,7 +218,7 @@
 				});		
 			new google.maps.event.addListener(marker, "click", function(){infowindow.open(map,marker);});	
 		}
-
+	}
 	
 	
 	function filterMarkers(catid, load){
@@ -203,7 +247,8 @@
 	
 	
 	var onSuccess = function(position) {
-		navigator.notification.alert(
+		var userPosition = position;
+		/* navigator.notification.alert(
 			'Latitude: '          + position.coords.latitude          + '\n' +
 			'Longitude: '         + position.coords.longitude         + '\n' +
 			'Altitude: '          + position.coords.altitude          + '\n' +
@@ -215,90 +260,122 @@
 			alertDismissed,         // callback
 			'Game Over',            // title
 			'Done'                  // buttonName
-		);
+		); */
 	};
-function alertDismissed(){}
-// onError Callback receives a PositionError object
-//
-function onError(error) {
-    alert('code: '    + error.code    + '\n' +
-          'message: ' + error.message + '\n');
-}
-function getUserPosition(){
-	navigator.geolocation.getCurrentPosition(onSuccess, onError);
-}
+	
+	function getAroundMe(distance){
+		getEntriesByDistance('all', distance);
+		
+	}
+	function alertDismissed(){}
+	// onError Callback receives a PositionError object
+	//
+	function onError(error) {
+		alert('code: '    + error.code    + '\n' +
+			  'message: ' + error.message + '\n');
+	}
+	function getUserPosition(){
+		navigator.geolocation.getCurrentPosition(onSuccess, onError);
+	}
 
 
-(function($){
-    $.getQuery = function( query ) {
-        query = query.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
-        var expr = "[\\?&]"+query+"=([^&#]*)";
-        var regex = new RegExp( expr );
-        var results = regex.exec( window.location.href );
-        if( results !== null ) {
-            return results[1];
-            return decodeURIComponent(results[1].replace(/\+/g, " "));
-        } else {
-            return false;
-        }
-    };
-})(jQuery);
+	(function($){
+		$.getQuery = function( query ) {
+			query = query.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+			var expr = "[\\?&]"+query+"=([^&#]*)";
+			var regex = new RegExp( expr );
+			var results = regex.exec( window.location.href );
+			if( results !== null ) {
+				return results[1];
+				return decodeURIComponent(results[1].replace(/\+/g, " "));
+			} else {
+				return false;
+			}
+		};
+	})(jQuery);
 
 
-// DB Actions
+	// DB Actions
 
-function setupTable(tx){
+	function setupTable(tx){
 
-/* 	tx.executeSql("DROP TABLE places");
-	tx.executeSql("DROP TABLE people");
-	tx.executeSql("DROP TABLE profiles"); */
-	tx.executeSql("CREATE TABLE IF NOT EXISTS places(id INTEGER PRIMARY KEY,catid INTEGER,data)");
-	tx.executeSql("CREATE TABLE IF NOT EXISTS people(id INTEGER PRIMARY KEY,catid INTEGER,data)");
-	tx.executeSql("CREATE TABLE IF NOT EXISTS profiles(id INTEGER PRIMARY KEY,itemid INTEGER,data)");
-}
+	/* 	tx.executeSql("DROP TABLE places");
+		tx.executeSql("DROP TABLE people");
+		tx.executeSql("DROP TABLE profiles"); */
+		tx.executeSql("CREATE TABLE IF NOT EXISTS places(id INTEGER PRIMARY KEY,catid INTEGER,data)");
+		tx.executeSql("CREATE TABLE IF NOT EXISTS people(id INTEGER PRIMARY KEY,catid INTEGER,data)");
+		tx.executeSql("CREATE TABLE IF NOT EXISTS profiles(id INTEGER PRIMARY KEY,itemid INTEGER,data)");
+	}
 
-function dbErrorHandler(err){
-	alert("DB Error: "+err.message + "\nCode="+err.code);
-}
+	function dbErrorHandler(err){
+		alert("DB Error: "+err.message + "\nCode="+err.code);
+	}
 
-function getEntries(catid) {
-	dbShell.transaction(function(tx) {
-		if (!catid)
-			tx.executeSql("SELECT data FROM places",[],renderEntries,dbErrorHandler);
-		else 
-			tx.executeSql("SELECT data FROM places WHERE catid = ?",[ catid ],renderEntries,dbErrorHandler);
-	}, dbErrorHandler);
-}
+	function getEntries(catid) {
+		dbShell.transaction(function(tx) {
+			if (!catid)
+				tx.executeSql("SELECT data FROM places",[],renderEntries,dbErrorHandler);
+			else 
+				tx.executeSql("SELECT data FROM places WHERE catid = ?",[ catid ],renderEntries,dbErrorHandler);
+		}, dbErrorHandler);
+	}
+	
+	function getEntriesByDistance(catid, distance) {
+		dbShell.transaction(function(tx) {
+			if (!catid)
+				tx.executeSql("SELECT data FROM places",[],function(tx,results){renderEntriesByDistance(tx,results,distance)},dbErrorHandler);
+			else 
+				tx.executeSql("SELECT data FROM places WHERE catid = ?",[ catid ],function(tx,results){renderEntriesByDistance(tx,results,distance)},dbErrorHandler);
+		}, dbErrorHandler);
+	}
 
-function renderEntries(tx,results){
-//		console.log(results);
-	if (results.rows.length == 0) {
-		jQuery.getJSON( "http://miflamencoplace.com/rpc/get_places.php", function( data ) {
-		  jQuery.each( data, function( key, val ) {
-			addMarker(val,map);
-			savePlace(val);
-		  });
-		});
-	} else {
-		for(var i=0; i<results.rows.length; i++) {
-			data = JSON.parse(results.rows.item(i).data);
-		//console.log(data);
-			addMarker(data,map);
+	function renderEntries(tx,results){
+	//		console.log(results);
+		if (results.rows.length == 0) {
+			jQuery.getJSON( "http://miflamencoplace.com/rpc/get_places.php", function( data ) {
+			  jQuery.each( data, function( key, val ) {
+				addMarker(val,map);
+				savePlace(val);
+			  });
+			});
+		} else {
+			for(var i=0; i<results.rows.length; i++) {
+				data = JSON.parse(results.rows.item(i).data);
+			//console.log(data);
+				addMarker(data,map);
+			}
 		}
 	}
-}
+	
+	function renderEntriesByDistance(tx,results, distance){
+	//		console.log(results);
+		if (results.rows.length == 0) {
+			jQuery.getJSON( "http://miflamencoplace.com/rpc/get_places.php", function( data ) {
+			  jQuery.each( data, function( key, val ) {
+				addMarkerByDistance(val,map, distance);
+				savePlace(val);
+			  });
+			});
+		} else {
+			for(var i=0; i<results.rows.length; i++) {
+				data = JSON.parse(results.rows.item(i).data);
+			//console.log(data);
+				addMarkerByDistance(data,map,distance);
+			}
+		}
+	}
 
-function savePlace(data) {
-	var catid = data.catid;
-	var itemid = data.id;
-	var jsonData = JSON.stringify(data);
-	dbShell.transaction(function(tx) {
-		tx.executeSql("INSERT INTO places(catid,data) values(?,?)",[catid,jsonData]);
-	}, dbErrorHandler);
-	jQuery.getJSON( "http://miflamencoplace.com/rpc/get_profile.php?itemid="+itemid, function( profileData ) {
-		var jsonProfileData = JSON.stringify(profileData);
+	function savePlace(data) {
+		var catid = data.catid;
+		var itemid = data.id;
+		var jsonData = JSON.stringify(data);
 		dbShell.transaction(function(tx) {
-			tx.executeSql("INSERT INTO profiles(itemid,data) values(?,?)",[itemid,jsonProfileData]);
+			tx.executeSql("INSERT INTO places(catid,data) values(?,?)",[catid,jsonData]);
 		}, dbErrorHandler);
-	});
-}
+		jQuery.getJSON( "http://miflamencoplace.com/rpc/get_profile.php?itemid="+itemid, function( profileData ) {
+			var jsonProfileData = JSON.stringify(profileData);
+			dbShell.transaction(function(tx) {
+				tx.executeSql("INSERT INTO profiles(itemid,data) values(?,?)",[itemid,jsonProfileData]);
+			}, dbErrorHandler);
+		});
+	}
