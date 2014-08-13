@@ -301,10 +301,17 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 			/* alert('fp ' + fp);
 			alert('fp3 ' + fp3); */
 			
-			onFileSystemSuccessUpload(fileSystem);
-			function onFileSystemSuccessUpload(fileSystem) {
+			function onDirectorySuccess(parent) {
+				// Directory created successfuly
+				//alert('folder created '+parent.name);
+				onFileSystemSuccessUpload(parent);
+			}
+
+			
+			
+			function onFileSystemSuccessUpload(parent) {
 				 // get directory entry through root and access all the folders
-				 var directoryReader = fileSystem.root.createReader();
+				 var directoryReader = parent.createReader();
 
 				// Get a list of all the entries in the directory
 				directoryReader.readEntries(successReader,fail); 
@@ -355,10 +362,6 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
     }, onError);
 };
 
-function onDirectorySuccess(parent) {
-    // Directory created successfuly
-	alert('folder created '+parent.name);
-}
 
 function onDirectoryFail(error) {
     //Error while creating directory
