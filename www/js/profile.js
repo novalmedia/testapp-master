@@ -175,7 +175,10 @@
 			if (data.audioen != null){
 				$('#story .downloada').click(function(){manageFile('http://miflamencoplace.com/media/k2/attachments/'+data.audioen, data.audioen )});
 				if(isDownloadedFile(data.audioen)){
+					alert('lo tengo');
 					$('#story .downloada').addClass('pause');
+				} else {
+					alert('NO lo tengo');
 				}
 			}else{
 				$('#story .downloada').hide();
@@ -187,7 +190,10 @@
 			if (data.audioes != null){
 				$('#story .downloada').click(function(){manageFile('http://miflamencoplace.com/media/k2/attachments/'+data.audioes,data.audioes )});
 				if(isDownloadedFile(data.audioes)){
+					alert('lo tengo');
 					$('#story .downloada').addClass('pause');
+				} else {
+					alert('NO lo tengo');
 				}
 			}else{
 				$('#story .downloada').hide();
