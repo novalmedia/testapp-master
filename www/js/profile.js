@@ -296,14 +296,38 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 			var fp = directoryEntry.toURL(); // Returns Fulpath of local directory
 			
 			fp = fp + folderName + "/" + nameFile; 
-			fp3 = "/" + folderName + "/" + nameFile; 
+			fp3 = folderName + "/" + nameFile; 
 			
 			alert('fp ' + fp);
 			alert('fp3 ' + fp3);
 			
 			
-			my_media = new Media(fp.toNativeURL(), onSuccess, onError);
-			alert(my_media.getDuration());
+			function onFileSystemSuccessUpload(fileSystem) {
+				 // get directory entry through root and access all the folders
+				 var directoryReader = fileSystem.root.createReader();
+
+				// Get a list of all the entries in the directory
+				directoryReader.readEntries(successReader,fail); 
+
+			}
+
+			function successReader(entries) {
+					var i;
+					for (i=0; i<entries.length; i++) {
+					   alert(entries[i].name);
+					   if(entries[i].isDirectory==true)
+					   {
+						 var directoryReaderIn = entries[i].createReader();
+						directoryReaderIn.readEntries(successReader,fail); 
+
+					   }
+
+						if(entries[i].isFile==true)
+						 {
+							//entries[i].file(uploadFile, fail);
+						}
+					}
+				}; 
 			
 				/* function playExistingFile(fp){
 					alert('existe audio '+fp);
@@ -358,6 +382,7 @@ function onSuccess() {
 
 // onError Callback 
 //
+function fail(){}
 function onError(error) {
 	alert('code: '    + error.code    + '\n' + 
 		  'message: ' + error.message + '\n');
