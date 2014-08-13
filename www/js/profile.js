@@ -321,18 +321,9 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 			function successReader(entries) {
 					var i;
 					for (i=0; i<entries.length; i++) {
-					   alert(entries[i].name);
-					   if(entries[i].isDirectory==true)
-					   {
-						 var directoryReaderIn = entries[i].createReader();
-						directoryReaderIn.readEntries(successReader,fail); 
-
+					   if (entries[i].name == nameFile){
+						playAudio(entries[i]);
 					   }
-
-						if(entries[i].isFile==true)
-						 {
-							//entries[i].file(uploadFile, fail);
-						}
 					}
 				}; 
 			
@@ -370,7 +361,7 @@ function onDirectoryFail(error) {
 
  function playAudio(src) {
             // Create Media object from src
-			alert(src);
+	//		alert(src);
 	my_media = new Media(src, onSuccess, onError);
 
 	// Play audio
