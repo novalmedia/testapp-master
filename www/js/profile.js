@@ -403,7 +403,11 @@ function onDirectoryFail(error) {
 	}
 
 	function setAudioPosition(position) {
-        jQuery('.audio_position').html(position);
+		if (position < 10){
+			jQuery('.audio_position').html(Math.ceil(position/60)+':0'+Math.ceil(position));
+		} else {
+			jQuery('.audio_position').html(Math.ceil(position/60)+':'+Math.ceil(position));
+		}
     }
 function onSuccess() {
 	//alert("playAudio():Audio Success");
