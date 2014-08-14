@@ -288,7 +288,7 @@
 	
 	function isDownloadedFile(nameFile)
 	{
-		  window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
+		   window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
 			function onFileSystemSuccess(fileSystem) {
 				var folderName = 'miflamencoplace'
 				var directoryEntry = fileSystem.root; 
@@ -307,7 +307,7 @@
 				}
 			},
 			onError
-		);  
+		);   
 	}
 	
 function manageFile(file, nameFile){
@@ -365,20 +365,46 @@ function onDirectoryFail(error) {
 
 
 	var my_media = null;
+	var mediaTimer = null;
 	function playAudio(src) {
 		$('#story .downloada').hide();
 		$('#story .playing').show();
 		my_media = new Media(src.toNativeURL(), onSuccess, onError);
 		my_media.play();
+		
+		 // Update my_media position every second
+            if (mediaTimer == null) {
+                mediaTimer = setInterval(function() {
+                    // get my_media position
+                    my_media.getCurrentPosition(
+                        // success callback
+                        function(position) {
+                            if (position > -1) {
+                                setAudioPosition((position));
+                            }
+                        },
+                        // error callback
+                        function(e) {
+                           
+                            setAudioPosition("");
+                        }
+                    );
+                }, 1000);
+            }
+		
+		
 	}
 	function stopAudio() {
 		if (my_media) {
 			$('#story .downloada').show();
 			$('#story .playing').hide();
-			my_media.stop();
+			my_media.pause();
 		}
 	}
 
+	function setAudioPosition(position) {
+        jQuery('.audio_position').html(position);
+    }
 function onSuccess() {
 	//alert("playAudio():Audio Success");
 }
