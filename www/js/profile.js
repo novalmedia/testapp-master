@@ -380,7 +380,7 @@ function onDirectoryFail(error) {
                         // success callback
                         function(position) {
                             if (position > -1) {
-                                setAudioPosition((position));
+                                setAudioPosition(position);
                             }
                         },
                         // error callback
@@ -404,9 +404,9 @@ function onDirectoryFail(error) {
 
 	function setAudioPosition(position) {
 		if (position < 10){
-			jQuery('.audio_position').html(Math.ceil(position/60)+':0'+Math.ceil(position));
+			jQuery('.audio_position').html(Math.floor(position/60)+':0'+Math.floor(position));
 		} else {
-			jQuery('.audio_position').html(Math.ceil(position/60)+':'+Math.ceil(position));
+			jQuery('.audio_position').html(Math.floor(position/60)+':'+Math.floor(position));
 		}
     }
 function onSuccess() {
