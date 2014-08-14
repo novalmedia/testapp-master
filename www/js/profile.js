@@ -362,19 +362,25 @@ function onDirectoryFail(error) {
     //Error while creating directory
     alert("Unable to create new directory: " + error.code);
 }
-var my_media = null;
- function playAudio(src) {
-	my_media = new Media(src.toNativeURL(), onSuccess, onError);
-	my_media.play();
-}
+
+
+	var my_media = null;
+	function playAudio(src) {
+		$('#story .downloada').hide();
+		$('#story .playing').show();
+		my_media = new Media(src.toNativeURL(), onSuccess, onError);
+		my_media.play();
+	}
 	function stopAudio() {
 		if (my_media) {
+			$('#story .downloada').show();
+			$('#story .playing').hide();
 			my_media.stop();
 		}
 	}
 
 function onSuccess() {
-	alert("playAudio():Audio Success");
+	//alert("playAudio():Audio Success");
 }
 
 // onError Callback 

@@ -259,7 +259,14 @@ body.profile #story .downloada span.placetitle{font-family: 'Lato';font-size:18p
 body.profile #story .downloada span.persontitle{font-family: 'Lato';font-size:18px;color: #787878; text-transform: none;font-style: italic;}
 
 body.profile #story .downloada.pause {background: url(../img/play.png) no-repeat right center;}
-body.profile #story .playing{display: none;}
+
+body.profile #story .playing{display: none;width: 100%; margin: 0 auto; padding-left: 20px; background: url(../img/pause.png) no-repeat right center;
+display: table; font-family: 'Lato';font-size: 14px;color: #787878;text-transform: uppercase;text-decoration: none;
+border-top: 1px solid #d3d3d3;border-bottom: 1px dotted #d3d3d3;padding: 15px 0;}
+body.profile #story .playing span {display: block;}
+body.profile #story .playing span.placetitle{font-family: 'Lato';font-size:18px;color: #2f2f2f; text-transform: none;}
+body.profile #story .playing span.persontitle{font-family: 'Lato';font-size:18px;color: #787878; text-transform: none;font-style: italic;}
+
 body.profile #story .onyoutube{width: 60%;float: right;margin: 20px 20px 0 0;}
 body.profile #story .onyoutube #onyoutube{color:#2f2f2f; font-size: 16px;font-family: 'Lato';font-style:italic;font-weight: normal;}
 body.profile #story .onyoutube #onyoutube span{display: block; float: right;font-weight: normal;}
