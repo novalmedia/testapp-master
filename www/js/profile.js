@@ -165,10 +165,12 @@
 	function fillProfile(data){
 		$('#place').css('background',' url(../img/overlay.png) repeat,url(http://miflamencoplace.com'+data.img+') no-repeat center top')
 		.css('background-size','auto,cover');
-		$('#place .title').html(data.title+'<img src="../img/cat'+data.catid+'.png"/><img src="../img/cat'+data.personcatid+'.png"/>');
+		$('#place .title').html('<span class="spacertit">&nbsp;</span>'+data.title+'<img src="../img/cat'+data.catid+'.png"/><img src="../img/cat'+data.personcatid+'.png"/>');
 		
 		$('#place .author').html('By '+data.personname);
 		$('#place .personface img').attr('src','http://miflamencoplace.com'+data.personface);
+		$('#place .street').html(data.street);
+		$('#place .address').html(data.address);
 		if (langid == 'en'){
 			$('#place .introtext').html(data.placeintrotexten);
 			$('#place .fulltext').html(data.placefulltexten);
@@ -191,9 +193,10 @@
 			} 
 		}
 		$('#person').css('background','url(http://miflamencoplace.com/media/k2/items/cache/'+data.personpicture+') no-repeat center top');
-		$('#person .authorname').html(data.personname);
+		$('#person .authorname').html(data.personname+'<img src="../img/cat'+data.catid+'.png"/><img src="../img/cat'+data.personcatid+'.png"/>');
 		$('#story .placetitle').html(data.title);
 		$('#story .persontitle').html('By '+data.personname);
+		$('#story .icons').html('<img src="../img/headp.png"/><img src="../img/cat'+data.personcatid+'.png"/><img src="../img/cat'+data.catid+'.png"/>');
 		$('#story .right img').attr('src','http://miflamencoplace.com'+data.img);
 		$('#story .authorname').html(data.personname);
 		$('#story #onyoutube').attr('href',data.onyoutube);
@@ -283,7 +286,7 @@
 	
 	function isDownloadedFile(nameFile)
 	{
-		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
+		 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
 			function onFileSystemSuccess(fileSystem) {
 				var folderName = 'miflamencoplace'
 				var directoryEntry = fileSystem.root; 
@@ -302,7 +305,7 @@
 				}
 			},
 			onError
-		);
+		); 
 	}
 	
 function manageFile(file, nameFile){

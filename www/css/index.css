@@ -210,6 +210,7 @@ body.profile #place {display: inline-block;background-size: contain;background-r
 body.profile #place .title {width: 100%; text-align: center;margin-top: 30px;font-family: 'Merriweather'; 
 font-size: 30px;color: #fff;text-transform: none;}
 body.profile #place .title img {float: right;width: 25px;margin: 7px 5px 0 5px;}
+body.profile #place .title .spacertit  {float: left;width: 60px;display: block;}
 body.profile #place .author {width: 100%; text-align: center;font-family: 'Lato';font-style: italic; font-size: 21px;color: #fff;text-transform: none;}
 body.profile #place .personface {width: 100%; text-align: center;margin-top: 20px;}
 body.profile #place .personface img{width: 180px;border: 6px solid #d4d1d1;border-radius: 190px;
@@ -222,11 +223,14 @@ body.profile #place #map-canvas{width:100%; height:350px; float: left;clear: bot
 
 body.profile #place .fulltext {width: 90%; text-align: left;margin-top: 65px;font-family: 'Lato'; font-size: 21px;
 color: #959595;text-transform: none;background: #000000;padding:25px 5%;}
-
+body.profile #place .addressinfo {width: 90%; text-align: left;padding:25px 5%;background: #191919;}
+body.profile #place .addressinfo .street {color:#ffffff;text-transform: none;font-size:20px;}
+body.profile #place .addressinfo .address {color:#a0a0a0;text-transform: none;font-size:20px;}
 body.profile #person {display: inline-block;background-size: contain;}
 body.profile #person .persontitle{background: rgba(50,50,50,0.8);margin-top:270px; width: 100%;padding: 20px 0 30px 0;}
-body.profile #person .persontitle span{padding-left: 20px;font-family: 'Merriweather';font-weight: bold; font-size: 21px;color: #b6b6b6;text-transform: none;}
-body.profile #person .persontitle .authorname{padding-left: 20px;font-family: 'Merriweather';font-weight: bold; font-size: 30px;color: #fff;}
+body.profile #person .persontitle span{padding-left: 20px;font-family: 'Merriweather';font-weight: normal; font-size: 21px;color: #b6b6b6;text-transform: none;}
+body.profile #person .persontitle .authorname{padding-left: 20px;font-family: 'Merriweather';font-weight: normal; font-size: 30px;color: #fff;}
+body.profile #person .persontitle .authorname img {float: right;width: 25px;margin: 7px 5px 0 5px;}
 body.profile #person .authortext {font-family: 'Lato'; font-size: 21px;color: #bcbcbc;text-transform: none;background: #1b1b1b;}
 body.profile #person .authortext p{padding: 40px 20px;margin-top: 0;}
 
@@ -236,7 +240,8 @@ body.profile #story .left {display: inline-block;width: 50%;float: left;margin-t
 body.profile #story .left span{padding-left: 20px;font-family: 'Merriweather';font-weight: bold; font-size: 21px;color: #b6b6b6;text-transform: none;}
 body.profile #story .left .placetitle{padding-left: 20px;font-family: 'Merriweather';font-weight: bold; font-size: 21px;color: #2f2f2f;text-transform: none;}
 body.profile #story .left .persontitle{padding-left: 20px;font-family: 'Lato';font-size: 21px;color: #959595;text-transform: none;font-style: italic;}
-
+body.profile #story .left .icons {padding-left: 20px;margin-top: 5px;}
+body.profile #story .left .icons img {margin-left:10px;height: 25px;}
 body.profile #story .right {display: inline-block;width: 50%;float: right;margin-top: 30px;}
 body.profile #story .right img{margin-right: 20px;width: 140px;height:140px;border: 6px solid #d4d1d1;border-radius: 150px;float: right;
  -webkit-border-radius: 150px;    -moz-border-radius: 150px;    -khtml-border-radius: 150px;}
