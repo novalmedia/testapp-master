@@ -165,7 +165,8 @@
 	function fillProfile(data){
 		$('#place').css('background',' url(../img/overlay.png) repeat,url(http://miflamencoplace.com'+data.img+') no-repeat center top')
 		.css('background-size','auto,cover');
-		$('#place .title').html(data.title);
+		$('#place .title').html(data.title+'<img src="../img/cat'+data.catid+'.png"/><img src="../img/cat'+data.personcatid+'.png"/>');
+		
 		$('#place .author').html('By '+data.personname);
 		$('#place .personface img').attr('src','http://miflamencoplace.com'+data.personface);
 		if (langid == 'en'){
