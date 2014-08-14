@@ -177,6 +177,7 @@
 			$('#person .authortext').html(data.persontexten);
 			if (data.audioen != null){
 				$('#story .downloada').click(function(){manageFile('http://miflamencoplace.com/media/k2/attachments/'+data.audioen, data.audioen )});
+				$('#story .playing').click(function(){stopAudio()});
 				isDownloadedFile(data.audioen);
 			}else{
 				$('#story .downloada').hide();
@@ -187,6 +188,7 @@
 			$('#person .authortext').html(data.persontext);
 			if (data.audioes != null){
 				$('#story .downloada').click(function(){manageFile('http://miflamencoplace.com/media/k2/attachments/'+data.audioes,data.audioes )});
+				$('#story .playing').click(function(){stopAudio()});
 				isDownloadedFile(data.audioes);
 			}else{
 				$('#story .downloada').hide();
@@ -286,7 +288,7 @@
 	
 	function isDownloadedFile(nameFile)
 	{
-		 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
+		  window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
 			function onFileSystemSuccess(fileSystem) {
 				var folderName = 'miflamencoplace'
 				var directoryEntry = fileSystem.root; 
@@ -305,7 +307,7 @@
 				}
 			},
 			onError
-		); 
+		);  
 	}
 	
 function manageFile(file, nameFile){
@@ -360,17 +362,16 @@ function onDirectoryFail(error) {
     //Error while creating directory
     alert("Unable to create new directory: " + error.code);
 }
-
+var my_media = null;
  function playAudio(src) {
-            // Create Media object from src
-	alert(src.toNativeURL());
 	my_media = new Media(src.toNativeURL(), onSuccess, onError);
-
-	// Play audio
 	my_media.play();
-
-
 }
+	function stopAudio() {
+		if (my_media) {
+			my_media.stop();
+		}
+	}
 
 function onSuccess() {
 	alert("playAudio():Audio Success");
