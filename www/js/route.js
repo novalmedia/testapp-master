@@ -152,12 +152,12 @@
 		var bounds = new google.maps.LatLngBounds();
 		for (i=0;i<data.routeitems.length;i++){
 				item = data.routeitems[i];
-				if (item.audioes != '')
-					$("#playlistes").append('<a href="http://miflamencoplace.com/media/k2/attachments/'+item.audioes+'" onclick="downloadFile(this.href, \''+item.audioes+'\');return false;" class="audio">Audio de '+item.title+'</a>');
-				
-				if (item.audioen != '')
-					$("#playlisten").append('<a href="http://miflamencoplace.com/media/k2/attachments/'+item.audioen+'" onclick="downloadFile(this.href, \''+item.audioen+'\');return false;" class="audio">'+item.title+' audio</a>');
-				
+				if (item.audioes != '') {
+					isDownloadedFile(item.audioes,item.title, i);
+				}
+				if (item.audioen != '') {
+					isDownloadedFile(item.audioen,item.title, i);
+				}
 				placeLatlng[i] = new google.maps.LatLng(item.lat, item.long); 
 				var vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 				var sfx = (vpw > 1024)?'hd':'';
@@ -187,60 +187,148 @@
     };
 })(jQuery);
 
-function downloadFile(file, nameFile){
+
+	function isDownloadedFile(nameFile,title, id)
+	{
+		   window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
+			function onFileSystemSuccess(fileSystem) {
+				var folderName = 'miflamencoplace'
+				var directoryEntry = fileSystem.root; 
+				directoryEntry.getDirectory(folderName, { create: true, exclusive: false }, onDirectorySuccess, onDirectoryFail); // creating folder in sdcard
+				function onDirectorySuccess(parent) {
+					var directoryReader = parent.createReader();
+					directoryReader.readEntries(successReader,fail); 
+				}
+				function successReader(entries) {
+					var i;
+					var found = false;
+					for (i=0; i<entries.length; i++) {
+						
+						if (entries[i].name == nameFile){
+							found = true;
+							$("#playlistes").append('<a href="#" onclick="playFile(\''+nameFile+'\');return false;" class="audio a'+id+' pause">Audio de '+title+'</a>');
+						}
+					}
+					if (!found)
+						$("#playlistes").append('<a href="#" onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\', \''+nameFile+'\','+id+');return false;" class="audio a'+id+'">Audio de '+title+'</a>')
+										.append('<a href="#" onclick="playFile(\''+nameFile+'\');return false;" class="playing a'+id+'">Audio de '+title+'</a>');
+						
+				}
+			},
+			onError
+		);   
+	}
+
+function manageFile(file, nameFile, id){
 
 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
     function onFileSystemSuccess(fileSystem) {
-        fileSystem.root.getFile(
-        "dummy.html", {create: true, exclusive: false}, 
-        function gotFileEntry(fileEntry) {
 			var folderName = 'miflamencoplace'
 			var directoryEntry = fileSystem.root; // to get root path of directory
 			directoryEntry.getDirectory(folderName, { create: true, exclusive: false }, onDirectorySuccess, onDirectoryFail); // creating folder in sdcard
 			
-			var fp = directoryEntry.toURL(); // Returns Fulpath of local directory
-			fp = fp + "/" + folderName + "/" + nameFile; 
-			var fileTransfer = new FileTransfer();
-            fileTransfer.download(
-                file,
-                fp,
-                function(theFile) {
-                    alert("download complete: " + theFile.toURI());
-                    playAudio(theFile.toNativeURL());
-                },
-                function(error) {
-                    alert("download error source " + error.source);
-                    alert("download error target " + error.target);
-                    alert("upload error code: " + error.code);
-                }
-            );
-        }, fail);
-    }, fail);
+			function onDirectorySuccess(parent) {
+				 var directoryReader = parent.createReader();
+				directoryReader.readEntries(successReader,fail);
+			}
+
+			function successReader(entries) {
+					var i;
+					var fileFound = false;
+					for (i=0; i<entries.length; i++) {
+					   if (entries[i].name == nameFile){
+						fileFound = true;
+						playAudio(entries[i]);
+					   }
+					}
+					if (!fileFound){
+						jQuery('.audio.a'+id).addClass('loading');
+						var fp = directoryEntry.toURL(); // Returns Fulpath of local directory
+						fp = fp + folderName + "/" + nameFile; 		
+						var fileTransfer = new FileTransfer();
+						fileTransfer.download(
+							file,
+							fp,
+							function(theFile) {
+								//alert("download complete: " + theFile.toURI());
+								jQuery('.audio.a'+id).removeClass('loading').addClass('pause');
+								alert('Descarga completada/Download complete');
+								//playAudio(theFile);
+							},
+							function(error) {
+								alert("download error");
+								
+							}
+						);
+					
+					}
+				}; 
+			
+      
+    }, onError);
 };
 function onDirectorySuccess(parent) {
     // Directory created successfuly
-	alert('folder created');
+	//alert('folder created');
 }
 
 function onDirectoryFail(error) {
     //Error while creating directory
-    alert("Unable to create new directory: " + error.code);
+    alert("Error: " + error.code);
 }
  function fail(error) { alert(error.code); } 
 
- function playAudio(src) {
-            // Create Media object from src
-			alert(src);
-	my_media = new Media(src, onSuccess, onError);
+ 	var my_media = null;
+	var mediaTimer = null;
+	function playAudio(src, id) {
+		$('.audio.a'+id).hide();
+		$('.playing.a'+id).show();
+		if (my_media[id] == null) {
+			my_media[id] = new Media(src.toNativeURL(), onSuccess, onError);
+		}
+		my_media[id].play();
+		
+		 // Update my_media position every second
+            if (mediaTimer == null) {
+                mediaTimer = setInterval(function() {
+                    // get my_media position
+                    my_media[id].getCurrentPosition(
+                        // success callback
+                        function(position) {
+                            if (position > -1) {
+                                setAudioPosition(position, id);
+                            }
+                        },
+                        // error callback
+                        function(e) {
+                           
+                            setAudioPosition("", id);
+                        }
+                    );
+                }, 1000);
+            }
+		
+		
+	}
+	function stopAudio(id) {
+		if (my_media[id]) {
+			$('.audio.a'+id).hide();
+			$('.playing.a'+id).show();
+			my_media[id].pause();
+		}
+	}
 
-	// Play audio
-	my_media.play();
-
-
-}
-
+	function setAudioPosition(position, id) {
+		if (position <= 0){
+			jQuery('.a'+id+' .audio_position').html("0:00");
+		} elseif (position < 10){
+			jQuery('.a'+id+' .audio_position').html(Math.floor(position/60)+':0'+Math.floor(position));
+		} else {
+			jQuery('.a'+id+' .audio_position').html(Math.floor(position/60)+':'+Math.floor(position));
+		}
+    }
 function onSuccess() {
-	alert("playAudio():Audio Success");
+	//alert("playAudio():Audio Success");
 }
 
 // onError Callback 

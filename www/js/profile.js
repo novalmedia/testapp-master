@@ -408,7 +408,9 @@ function onDirectoryFail(error) {
 	}
 
 	function setAudioPosition(position) {
-		if (position < 10){
+		if (position <= 0){
+			jQuery('.audio_position').html("0:00");
+		} elseif (position < 10){
 			jQuery('.audio_position').html(Math.floor(position/60)+':0'+Math.floor(position));
 		} else {
 			jQuery('.audio_position').html(Math.floor(position/60)+':'+Math.floor(position));
