@@ -37,6 +37,10 @@
 			<div class="introtext"></div>
 			<div class="social"></div>
 			<div class="fulltext"></div>
+			<div class="addressinfo">
+				<div class="street"></div>
+				<div class="address"></div>
+			</div>
 			<div id="map-canvas"></div>
 			<div class="gallery"></div>
 			<div class="md-modal md-hide">
@@ -53,14 +57,17 @@
 				<span>Story</span>
 				<div class="placetitle"></div>
 				<div class="persontitle"></div>
+				<div class="icons"></div>
 			</div>
 			<div class="right">
 				<img class="placeimg" src="" />
 			</div>
 			<div class="text">
 				<p>Sumérgete en este lugar descargándote la historia que nos cuenta <span class="authorname"></span>.</p>
-				<div class="download"><a href="#" onclick="navigator.app.loadUrl(this.href, { openExternal:true } );" class="downloada">Download audio free</a></div>
-				
+				<div class="download">
+					<a href="#" class="downloada"><span class="placetitle"><br></span><span class="persontitle"></span><span class="audio_position"></span></a>
+					<a href="#" class="playing"><span class="placetitle"><br></span><span class="persontitle"></span><span class="audio_position"></span></a>
+				</div>
 				<div class="onyoutube">
 					<a id="onyoutube" href="" target="_blank">
 						<img src="../img/onyoutube.png" />
