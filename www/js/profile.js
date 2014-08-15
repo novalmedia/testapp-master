@@ -178,7 +178,7 @@
 			if (data.audioen != null){
 				$('#story .downloada').click(function(){manageFile('http://miflamencoplace.com/media/k2/attachments/'+data.audioen, data.audioen )});
 				$('#story .playing').click(function(){stopAudio()});
-				isDownloadedFile(data.audioen);
+				//isDownloadedFile(data.audioen);
 			}else{
 				$('#story .downloada').hide();
 			} 
@@ -189,7 +189,7 @@
 			if (data.audioes != null){
 				$('#story .downloada').click(function(){manageFile('http://miflamencoplace.com/media/k2/attachments/'+data.audioes,data.audioes )});
 				$('#story .playing').click(function(){stopAudio()});
-				isDownloadedFile(data.audioes);
+				//isDownloadedFile(data.audioes);
 			}else{
 				$('#story .downloada').hide();
 			} 
@@ -333,6 +333,7 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 					   }
 					}
 					if (!fileFound){
+						jQuery('#story .downloada').addClass('loading');
 						var fp = directoryEntry.toURL(); // Returns Fulpath of local directory
 						fp = fp + folderName + "/" + nameFile; 		
 						var fileTransfer = new FileTransfer();
@@ -340,7 +341,8 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 							file,
 							fp,
 							function(theFile) {
-								alert("download complete: " + theFile.toURI());
+								//alert("download complete: " + theFile.toURI());
+								jQuery('#story .downloada').removeClass('loading').addClass('pause');
 								playAudio(theFile);
 							},
 							function(error) {
