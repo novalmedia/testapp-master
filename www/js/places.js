@@ -257,7 +257,7 @@
 	function onGEOSuccess(position) {
 		getEntriesByDistance(selectedDistance);
 		userPosition = position;
-		 alert(
+		/*  alert(
 			'Latitude: '          + position.coords.latitude          + '\n' +
 			'Longitude: '         + position.coords.longitude         + '\n' +
 			'Altitude: '          + position.coords.altitude          + '\n' +
@@ -266,11 +266,11 @@
 			'Heading: '           + position.coords.heading           + '\n' +
 			'Speed: '             + position.coords.speed             + '\n' +
 			'Timestamp: '         + position.timestamp                + '\n'
-		);  
+		);   */
 	};
 	function onGEOError(position) {
 		//var userPosition = position;
-		alert('GEOERROR');
+		alert('Error geolocalizacion');
 	};
 	
 	function getAroundMe(distance){
@@ -312,9 +312,9 @@
 
 	function setupTable(tx){
 
-	 	tx.executeSql("DROP TABLE places");
+	 	/* tx.executeSql("DROP TABLE places");
 		tx.executeSql("DROP TABLE people");
-		tx.executeSql("DROP TABLE profiles");
+		tx.executeSql("DROP TABLE profiles"); */
 		tx.executeSql("CREATE TABLE IF NOT EXISTS places(id INTEGER PRIMARY KEY,catid INTEGER,data)");
 		tx.executeSql("CREATE TABLE IF NOT EXISTS people(id INTEGER PRIMARY KEY,catid INTEGER,data)");
 		tx.executeSql("CREATE TABLE IF NOT EXISTS profiles(id INTEGER PRIMARY KEY,itemid INTEGER,data)");

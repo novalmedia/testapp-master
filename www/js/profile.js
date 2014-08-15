@@ -300,6 +300,7 @@
 				function successReader(entries) {
 					var i;
 					for (i=0; i<entries.length; i++) {
+						alert(entries[i].name +"=="+ nameFile);
 						if (entries[i].name == nameFile){
 							$('#story .downloada').addClass('pause');
 						}
@@ -343,12 +344,12 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 							function(theFile) {
 								//alert("download complete: " + theFile.toURI());
 								jQuery('#story .downloada').removeClass('loading').addClass('pause');
-								playAudio(theFile);
+								alert('Descarga completada/Download complete');
+								//playAudio(theFile);
 							},
 							function(error) {
-								alert("download error source " + error.source);
-								alert("download error target " + error.target);
-								alert("upload error code: " + error.code);
+								alert("download error");
+								
 							}
 						);
 					
@@ -362,7 +363,7 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 
 function onDirectoryFail(error) {
     //Error while creating directory
-    alert("Unable to create new directory: " + error.code);
+    alert("Error: " + error.code);
 }
 
 
@@ -371,7 +372,9 @@ function onDirectoryFail(error) {
 	function playAudio(src) {
 		$('#story .downloada').hide();
 		$('#story .playing').show();
-		my_media = new Media(src.toNativeURL(), onSuccess, onError);
+		if (my_media == null) {
+			my_media = new Media(src.toNativeURL(), onSuccess, onError);
+		}
 		my_media.play();
 		
 		 // Update my_media position every second
