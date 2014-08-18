@@ -287,7 +287,7 @@ function onDirectoryFail(error) {
 
  
  	var my_media = [];
-	var mediaTimer = null;
+	var mediaTimer = [];
 	
 	function playAudio(src, id) {
 		$('.download.a'+id+' .downloada').css('display','none');
@@ -298,8 +298,8 @@ function onDirectoryFail(error) {
 		my_media[id].play();
 		
 		 // Update my_media position every second
-            if (mediaTimer == null) {
-                mediaTimer = setInterval(function() {
+            if (mediaTimer[id] == null) {
+                mediaTimer[id] = setInterval(function() {
                     // get my_media position
                     my_media[id].getCurrentPosition(
                         // success callback
@@ -329,7 +329,7 @@ function onDirectoryFail(error) {
 
 	function setAudioPosition(position, id) {
 		if (position <= 0){
-			jQuery('.a'+id+' .audio_position').html("0:00");
+			jQuery('.download.a'+id+' .audio_position').html("0:00");
 		} else if (position < 10){
 			jQuery('.download.a'+id+' .audio_position').html(Math.floor(position/60)+':0'+Math.floor(position));
 		} else {
