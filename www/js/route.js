@@ -208,7 +208,7 @@
 							found = true;
 							$("#playlistes").append(
 							'<div class="download a'+id+'">'
-							+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+');return false;" href="#" class="downloada pause"><span class="placetitle">'+title+'</span><span class="audio_position"></span></a>'
+							+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+');return false;" href="#" class="downloada pause"><span class="placetitle">'+title+'</span><span class="audio_position">0:00</span></a>'
 							+'<a onclick="stopAudio('+id+');return false;" href="#" class="playing"><span class="placetitle">'+title+'</span><span class="audio_position"></span></a>'
 							+'</div>');
 						}
@@ -259,6 +259,7 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 							function(theFile) {
 								//alert("download complete: " + theFile.toURI());
 								jQuery('.download.a'+id+' .downloada').removeClass('loading').addClass('pause');
+								setAudioPosition(0);
 								alert('Descarga completada/Download complete');
 								//playAudio(theFile);
 							},

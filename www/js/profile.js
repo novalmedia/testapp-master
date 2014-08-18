@@ -303,6 +303,7 @@
 						
 						if (entries[i].name == nameFile){
 							$('#story .downloada').addClass('pause');
+							setAudioPosition(0);
 						}
 					}
 				}
@@ -344,6 +345,7 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 							function(theFile) {
 								//alert("download complete: " + theFile.toURI());
 								jQuery('#story .downloada').removeClass('loading').addClass('pause');
+								setAudioPosition(0);
 								alert('Descarga completada/Download complete');
 								//playAudio(theFile);
 							},
