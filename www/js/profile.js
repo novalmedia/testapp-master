@@ -370,8 +370,8 @@ function onDirectoryFail(error) {
 	var my_media = null;
 	var mediaTimer = null;
 	function playAudio(src) {
-		$('#story .downloada').hide();
-		$('#story .playing').show();
+		$('#story .downloada').css('display','none');
+		$('#story .playing').css('display','table');
 		if (my_media == null) {
 			my_media = new Media(src.toNativeURL(), onSuccess, onError);
 		}
@@ -401,8 +401,8 @@ function onDirectoryFail(error) {
 	}
 	function stopAudio() {
 		if (my_media) {
-			$('#story .downloada').show();
-			$('#story .playing').hide();
+			$('#story .downloada').css('display','table');
+			$('#story .playing').css('display','none');
 			my_media.pause();
 		}
 	}
