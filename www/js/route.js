@@ -135,7 +135,8 @@
 		$('#route .subtitle').html(data.subtitle);
 		$('#route .routeimg img').attr('src',data.img);
 		$('#route .introtext').html(data.introtext);
-		
+		$('#playlistes').css('background',' url(../img/overlay.png) repeat,url(\''+data.img+'\') no-repeat center top')
+		.css('background-size', 'cover');
 		
 		center = new google.maps.LatLng(37.392864, -5.990077); 
 		var mapOptions = { 
@@ -190,7 +191,13 @@
 
 	function isDownloadedFile(nameFile,title, id)
 	{
-		   window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
+		/* 	$("#playlistes").append(
+							'<div class="download a'+id+'">'
+							+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+');return false;" href="#" class="downloada pause"><span class="placetitle">'+title+'</span><span class="audio_position">0:00</span></a>'
+							+'<a onclick="stopAudio('+id+');return false;" href="#" class="playing"><span class="placetitle">'+title+'</span><span class="audio_position"></span></a>'
+							+'</div>');
+			return true; */
+	 	   window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
 			function onFileSystemSuccess(fileSystem) {
 				var folderName = 'miflamencoplace'
 				var directoryEntry = fileSystem.root; 
@@ -223,7 +230,7 @@
 				}
 			},
 			onError
-		);   
+		);    
 	}
 
 function manageFile(file, nameFile, id){
