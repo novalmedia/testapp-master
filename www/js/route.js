@@ -153,10 +153,10 @@
 		for (i=0;i<data.routeitems.length;i++){
 				item = data.routeitems[i];
 				if (item.audioes != '' && langid == 'es') {
-					isDownloadedFile(item.audioes,item.title+' ES', i);
+					isDownloadedFile(item.audioes,item.title, i);
 				}
 				if (item.audioen != '' && langid == 'en') {
-					isDownloadedFile(item.audioen,item.title+' EN', i);
+					isDownloadedFile(item.audioen,item.title, i);
 				}
 				placeLatlng[i] = new google.maps.LatLng(item.lat, item.long); 
 				var vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
@@ -285,8 +285,10 @@ function onDirectoryFail(error) {
 }
  function fail(error) { alert(error.code); } 
 
+ 
  	var my_media = [];
 	var mediaTimer = null;
+	
 	function playAudio(src, id) {
 		$('.download.a'+id+' .downloada').hide();
 		$('.download.a'+id+' .playing').show();
@@ -329,9 +331,9 @@ function onDirectoryFail(error) {
 		if (position <= 0){
 			jQuery('.a'+id+' .audio_position').html("0:00");
 		} else if (position < 10){
-			jQuery('.a'+id+' .audio_position').html(Math.floor(position/60)+':0'+Math.floor(position));
+			jQuery('.download.a'+id+' .audio_position').html(Math.floor(position/60)+':0'+Math.floor(position));
 		} else {
-			jQuery('.a'+id+' .audio_position').html(Math.floor(position/60)+':'+Math.floor(position));
+			jQuery('.download.a'+id+' .audio_position').html(Math.floor(position/60)+':'+Math.floor(position));
 		}
     }
 function onSuccess() {
