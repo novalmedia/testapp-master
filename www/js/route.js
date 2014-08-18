@@ -152,10 +152,10 @@
 		var bounds = new google.maps.LatLngBounds();
 		for (i=0;i<data.routeitems.length;i++){
 				item = data.routeitems[i];
-				if (item.audioes != '') {
+				if (item.audioes != '' && langid == 'es') {
 					isDownloadedFile(item.audioes,item.title+' ES', i);
 				}
-				if (item.audioen != '') {
+				if (item.audioen != '' && langid == 'en') {
 					isDownloadedFile(item.audioen,item.title+' EN', i);
 				}
 				placeLatlng[i] = new google.maps.LatLng(item.lat, item.long); 
@@ -258,7 +258,7 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 							fp,
 							function(theFile) {
 								//alert("download complete: " + theFile.toURI());
-								jQuery('.audio.a'+id+' .downloada').removeClass('loading').addClass('pause');
+								jQuery('.download.a'+id+' .downloada').removeClass('loading').addClass('pause');
 								alert('Descarga completada/Download complete');
 								//playAudio(theFile);
 							},
@@ -285,11 +285,11 @@ function onDirectoryFail(error) {
 }
  function fail(error) { alert(error.code); } 
 
- 	var my_media = null;
+ 	var my_media = [];
 	var mediaTimer = null;
 	function playAudio(src, id) {
-		$('.audio.a'+id).hide();
-		$('.playing.a'+id).show();
+		$('.download.a'+id+' .downloada').hide();
+		$('.download.a'+id+' .playing').show();
 		if (my_media[id] == null) {
 			my_media[id] = new Media(src.toNativeURL(), onSuccess, onError);
 		}
