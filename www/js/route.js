@@ -153,10 +153,10 @@
 		for (i=0;i<data.routeitems.length;i++){
 				item = data.routeitems[i];
 				if (item.audioes != '') {
-					isDownloadedFile(item.audioes,item.title, i);
+					isDownloadedFile(item.audioes,item.title+' ES', i);
 				}
 				if (item.audioen != '') {
-					isDownloadedFile(item.audioen,item.title, i);
+					isDownloadedFile(item.audioen,item.title+' EN', i);
 				}
 				placeLatlng[i] = new google.maps.LatLng(item.lat, item.long); 
 				var vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
@@ -208,7 +208,7 @@
 							found = true;
 							$("#playlistes").append(
 							'<div class="download a'+id+'">'
-							+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\');" href="#" class="downloada pause"><span class="placetitle">'+title+'</span><span class="audio_position"></span></a>'
+							+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+');" href="#" class="downloada pause"><span class="placetitle">'+title+'</span><span class="audio_position"></span></a>'
 							+'<a onclick="stopAudio();" href="#" class="playing"><span class="placetitle">'+title+'</span><span class="audio_position"></span></a>'
 							+'</div>');
 						}
@@ -216,7 +216,7 @@
 					if (!found)
 						$("#playlistes").append(
 						'<div class="download a'+id+'">'
-						+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\');" href="#" class="downloada"><span class="placetitle">'+title+'</span><span class="audio_position"></span></a>'
+						+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+');" href="#" class="downloada"><span class="placetitle">'+title+'</span><span class="audio_position"></span></a>'
 						+'<a onclick="stopAudio();" href="#" class="playing"><span class="placetitle">'+title+'</span><span class="audio_position"></span></a>'
 						+'</div>');
 						
@@ -249,7 +249,7 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 					   }
 					}
 					if (!fileFound){
-						jQuery('.audio.a'+id).addClass('loading');
+						jQuery('.download.a'+id+' .downloada').addClass('loading');
 						var fp = directoryEntry.toURL(); // Returns Fulpath of local directory
 						fp = fp + folderName + "/" + nameFile; 		
 						var fileTransfer = new FileTransfer();
@@ -258,7 +258,7 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 							fp,
 							function(theFile) {
 								//alert("download complete: " + theFile.toURI());
-								jQuery('.audio.a'+id).removeClass('loading').addClass('pause');
+								jQuery('.audio.a'+id+' .downloada').removeClass('loading').addClass('pause');
 								alert('Descarga completada/Download complete');
 								//playAudio(theFile);
 							},
