@@ -245,7 +245,7 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 					for (i=0; i<entries.length; i++) {
 					   if (entries[i].name == nameFile){
 						fileFound = true;
-						playAudio(entries[i]);
+						playAudio(entries[i],id);
 					   }
 					}
 					if (!fileFound){
