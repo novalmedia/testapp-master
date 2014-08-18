@@ -208,16 +208,16 @@
 							found = true;
 							$("#playlistes").append(
 							'<div class="download a'+id+'">'
-							+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+');" href="#" class="downloada pause"><span class="placetitle">'+title+'</span><span class="audio_position"></span></a>'
-							+'<a onclick="stopAudio();" href="#" class="playing"><span class="placetitle">'+title+'</span><span class="audio_position"></span></a>'
+							+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+');return false;" href="#" class="downloada pause"><span class="placetitle">'+title+'</span><span class="audio_position"></span></a>'
+							+'<a onclick="stopAudio('+id+');return false;" href="#" class="playing"><span class="placetitle">'+title+'</span><span class="audio_position"></span></a>'
 							+'</div>');
 						}
 					}
 					if (!found)
 						$("#playlistes").append(
 						'<div class="download a'+id+'">'
-						+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+');" href="#" class="downloada"><span class="placetitle">'+title+'</span><span class="audio_position"></span></a>'
-						+'<a onclick="stopAudio();" href="#" class="playing"><span class="placetitle">'+title+'</span><span class="audio_position"></span></a>'
+						+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+');return false;" href="#" class="downloada"><span class="placetitle">'+title+'</span><span class="audio_position"></span></a>'
+						+'<a onclick="stopAudio('+id+');return false;" href="#" class="playing"><span class="placetitle">'+title+'</span><span class="audio_position"></span></a>'
 						+'</div>');
 						
 				}
@@ -319,8 +319,8 @@ function onDirectoryFail(error) {
 	}
 	function stopAudio(id) {
 		if (my_media[id]) {
-			$('.audio.a'+id).hide();
-			$('.playing.a'+id).show();
+			$('.download.a'+id+' .downloada').hide();
+			$('.download.a'+id+' .playing').show();
 			my_media[id].pause();
 		}
 	}
