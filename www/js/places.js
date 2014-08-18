@@ -140,7 +140,10 @@
 			map.setMapTypeId("map_style");
 			
 			filterMarkers('all', true);
-	}			
+	}	
+
+
+	
 	function addMarker(data,map) {
 		var vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 		var sfx = (vpw > 1024)?'hd':'';
@@ -343,11 +346,12 @@
 	}
 
 	function renderEntries(tx,results){
-	//		console.log(results);
+			console.log(results);
 		if (results.rows.length == 0) {
 			jQuery.getJSON( "http://miflamencoplace.com/rpc/get_places.php", function( data ) {
 			  jQuery.each( data, function( key, val ) {
 				addMarker(val,map);
+				alert('savePlace');
 				savePlace(val);
 			  });
 			});

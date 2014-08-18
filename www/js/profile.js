@@ -1,3 +1,4 @@
+
 	var map; 
 	var myLatlng; 
 	function initProfile() {
@@ -133,42 +134,60 @@
 								]
 							  }
 							];
-			var styledMap = new google.maps.StyledMapType(styles,{name: "Styled Map"});
+			if (navigator.onLine)
+				var styledMap = new google.maps.StyledMapType(styles,{name: "Styled Map"});
 			
 			var itemid = jQuery.getQuery('itemid');
-			jQuery.getJSON( "http://miflamencoplace.com/rpc/get_profile.php?itemid="+itemid, function( data ) {
-				fillProfile(data);
-				placeLatlng = new google.maps.LatLng(data.lat, data.long);
-				var mapOptions = { 
-					zoom: 14, 
-					disableDefaultUI: true,
-					center: placeLatlng,
-					scrollwheel: false,
-					draggable: false
-				}; 
-				map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions); 
-				map.mapTypes.set("map_style",styledMap);
-				map.setMapTypeId("map_style");
-				var vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-				var sfx = (vpw > 1024)?'hd':'';
-				var marker = new google.maps.Marker({ 
-					position: placeLatlng, 
-					map: map, 
-					title: data.title,
-					icon: '../img/markers/'+sfx+data.catid+'.png'				
+			if (navigator.onLine) {
+				jQuery.getJSON( "http://miflamencoplace.com/rpc/get_profile.php?itemid="+itemid, function( data ) {
+					fillProfile(data);
+					placeLatlng = new google.maps.LatLng(data.lat, data.long);
+					var mapOptions = { 
+						zoom: 14, 
+						disableDefaultUI: true,
+						center: placeLatlng,
+						scrollwheel: false,
+						draggable: false
+					}; 
+					map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions); 
+					map.mapTypes.set("map_style",styledMap);
+					map.setMapTypeId("map_style");
+					var vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+					var sfx = (vpw > 1024)?'hd':'';
+					var marker = new google.maps.Marker({ 
+						position: placeLatlng, 
+						map: map, 
+						title: data.title,
+						icon: '../img/markers/'+sfx+data.catid+'.png'				
+					});
+						  
 				});
-					  
-			});
+			} else {
+				dbShell = window.openDatabase("miflamenkoplace", 1, "miflamenkoplace", 1000000);
+				dbShell.transaction(function(tx) {	
+					
+					tx.executeSql("SELECT data FROM profiles WHERE itemid = ? ",[itemid],fillProfileNC,dbErrorHandler);
+				}, dbErrorHandler);
+//				fillProfileNC(data);
+			}
 	}			
-		
 	
+	function dbErrorHandler(err){
+		alert("DB Error: "+err.message + "\nCode="+err.code);
+	}
+	
+	function fillProfileNC(tx,results){
+		jsondata = data = JSON.parse(results.rows.item(0).data);
+		fillProfile(jsondata);
+		return true;
+	}
 	function fillProfile(data){
-		$('#place').css('background',' url(../img/overlay.png) repeat,url(http://miflamencoplace.com'+data.img+') no-repeat center top')
+		$('#place').css('background',' url(../img/overlay.png) repeat,url('+data.img64+') no-repeat center top')
 		.css('background-size','auto,cover');
 		$('#place .title').html('<span class="spacertit">&nbsp;</span>'+data.title+'<img src="../img/cat'+data.catid+'.png"/><img src="../img/cat'+data.personcatid+'.png"/>');
 		
 		$('#place .author').html('By '+data.personname);
-		$('#place .personface img').attr('src','http://miflamencoplace.com'+data.personface);
+		$('#place .personface img').attr('src',data.personface64);
 		$('#place .street').html(data.street);
 		$('#place .address').html(data.address);
 		if (langid == 'en'){
@@ -178,7 +197,7 @@
 			if (data.audioen != null){
 				$('#story .downloada').click(function(){manageFile('http://miflamencoplace.com/media/k2/attachments/'+data.audioen, data.audioen )});
 				$('#story .playing').click(function(){stopAudio()});
-				isDownloadedFile(data.audioen);
+				//isDownloadedFile(data.audioen);
 			}else{
 				$('#story .downloada').hide();
 			} 
@@ -189,21 +208,21 @@
 			if (data.audioes != null){
 				$('#story .downloada').click(function(){manageFile('http://miflamencoplace.com/media/k2/attachments/'+data.audioes,data.audioes )});
 				$('#story .playing').click(function(){stopAudio()});
-				isDownloadedFile(data.audioes);
+				//isDownloadedFile(data.audioes);
 			}else{
 				$('#story .downloada').hide();
 			} 
 		}
-		$('#person').css('background','url(http://miflamencoplace.com/media/k2/items/cache/'+data.personpicture+') no-repeat center top');
+		$('#person').css('background','url('+data.personpicture64+') no-repeat center top');
 		$('#person .authorname').html(data.personname+'<img src="../img/cat'+data.catid+'.png"/><img src="../img/cat'+data.personcatid+'.png"/>');
 		$('#story .placetitle').html(data.title);
 		$('#story .persontitle').html('By '+data.personname);
 		$('#story .icons').html('<img src="../img/headp.png"/><img src="../img/cat'+data.personcatid+'.png"/><img src="../img/cat'+data.catid+'.png"/>');
-		$('#story .right img').attr('src','http://miflamencoplace.com'+data.img);
+		$('#story .right img').attr('src',data.img64);
 		$('#story .authorname').html(data.personname);
 		$('#story #onyoutube').attr('href',data.onyoutube);
 		var galContent = '';
-		data.placegallery.forEach(function(galpic) {
+		data.placegallery64.forEach(function(galpic) {
 			galContent += '<a href="#" onclick="zoomPicture(\''+galpic+'\');" ><img width="115" src="'+galpic+'" /></a>';
 		});
 		$('#place .gallery').html(galContent);
@@ -288,7 +307,7 @@
 	
 	function isDownloadedFile(nameFile)
 	{
-		   window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
+	/* 	   window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
 			function onFileSystemSuccess(fileSystem) {
 				var folderName = 'miflamencoplace'
 				var directoryEntry = fileSystem.root; 
@@ -309,7 +328,7 @@
 				}
 			},
 			onError
-		);   
+		);    */
 	}
 	
 function manageFile(file, nameFile){
