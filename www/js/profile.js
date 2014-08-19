@@ -196,7 +196,7 @@
 		$('#place .title').html('<span class="spacertit">&nbsp;</span>'+data.title+'<img src="../img/cat'+data.catid+'.png"/><img src="../img/cat'+data.personcatid+'.png"/>');
 		
 		$('#place .author').html('By '+data.personname);
-		$('#place .personface img').attr('src',data.personface64);
+		$('#place .personface .img').css('background-image',"url('"+data.personface64+"')");
 		$('#place .street').html(data.street);
 		$('#place .address').html(data.address);
 		if (langid == 'en'){
@@ -227,7 +227,7 @@
 		$('#story .placetitle').html(data.title);
 		$('#story .persontitle').html('By '+data.personname);
 		$('#story .icons').html('<img src="../img/headp.png"/><img src="../img/cat'+data.personcatid+'.png"/><img src="../img/cat'+data.catid+'.png"/>');
-		$('#story .right img').attr('src',data.img64);
+		$('#story .right .img').css('background-image',"url('"+data.img64+"')");
 		$('#story .authorname').html(data.personname);
 		$('#story #onyoutube').attr('href',data.onyoutube);
 		var galContent = '';

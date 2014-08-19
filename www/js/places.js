@@ -184,7 +184,7 @@
 				});		
 			new google.maps.event.addListener(marker, "click", function(){infowindow.open(map,marker);});	
 		} else {
-			$('#map-canvas').append('<div class="placeEntry cat'+data.catid+'" onclick="document.location.href=\'profile.html?itemid='+data.id+'\';"><img src="'+data.img64+'"><h3>'+data.title+'</h3><h4>'+data.personname+'</h4></div>');
+			$('#map-canvas').append('<div class="placeEntry cat'+data.catid+'" onclick="document.location.href=\'profile.html?itemid='+data.id+'\';"><div class="img" style="background-image:url(\''+data.img64+'\');"></div><h3>'+data.title+'</h3><h4>'+data.personname+'</h4></div>');
 		}
 	}
 

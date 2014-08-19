@@ -159,9 +159,9 @@
 	function fillProfile(data){
 		$('#route .title').html(data.title);
 		$('#route .subtitle').html(data.subtitle);
-		$('#route .routeimg img').attr('src',data.img);
+		$('#route .routeimg .img').css('background-image',"url('"+data.img64+"')");
 		$('#route .introtext').html(data.introtext);
-		$('#playlistes').css('background',' url(../img/overlay.png) repeat,url(\''+data.img+'\') no-repeat center top')
+		$('#playlistes').css('background',' url(../img/overlay.png) repeat,url(\''+data.img64+'\') no-repeat center top')
 		.css('background-size', 'cover');
 		if (navigator.onLine){
 		
