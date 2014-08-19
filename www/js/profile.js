@@ -1,25 +1,7 @@
 
 	var map; 
 	var myLatlng; 
-	function initProfile() {
-	
-			startLoading();
-					
-			var showTab = jQuery.getQuery('tab');
-			switch(showTab){
-				case 'person':
-					showPerson(true);
-					break;
-				case 'story':
-					showStory(true);
-					break;
-				case 'place':
-				default:
-					showPlace(true);
-					break;
-			}
-					
-			var styles = [
+	var styles = [
 							{
 								"elementType": "labels.icon",
 								"stylers": [
@@ -134,8 +116,29 @@
 								]
 							  }
 							];
-			if (navigator.onLine)
-				var styledMap = new google.maps.StyledMapType(styles,{name: "Styled Map"});
+	
+	
+	
+	function initProfile() {
+	
+			startLoading();
+					
+			var showTab = jQuery.getQuery('tab');
+			switch(showTab){
+				case 'person':
+					showPerson(true);
+					break;
+				case 'story':
+					showStory(true);
+					break;
+				case 'place':
+				default:
+					showPlace(true);
+					break;
+			}
+					
+			
+				
 			
 			var itemid = jQuery.getQuery('itemid');
 		/* 	if (navigator.onLine) {
@@ -160,25 +163,7 @@
 			if (navigator.onLine){
 				jQuery.getJSON( "http://miflamencoplace.com/rpc/get_profile.php?itemid="+itemid, function( data ) {
 						fillProfile(data);
-						placeLatlng = new google.maps.LatLng(data.lat, data.long);
-						var mapOptions = { 
-							zoom: 14, 
-							disableDefaultUI: true,
-							center: placeLatlng,
-							scrollwheel: false,
-							draggable: false
-						}; 
-						map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions); 
-						map.mapTypes.set("map_style",styledMap);
-						map.setMapTypeId("map_style");
-						var vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-						var sfx = (vpw > 1024)?'hd':'';
-						var marker = new google.maps.Marker({ 
-							position: placeLatlng, 
-							map: map, 
-							title: data.title,
-							icon: '../img/markers/'+sfx+data.catid+'.png'				
-						});
+						
 						endLoading();	  
 					});
 			} else {
@@ -232,11 +217,39 @@
 		$('#story .right .img').css('background-image',"url('"+data.img64+"')");
 		$('#story .authorname').html(data.personname);
 		$('#story #onyoutube').attr('href',data.onyoutube);
-		var galContent = '';
-		data.placegallery.forEach(function(galpic) {
-			galContent += '<a href="#" onclick="zoomPicture(\''+galpic+'\');" ><img width="115" src="'+galpic+'" /></a>';
-		});
-		$('#place .gallery').html(galContent);
+		if (navigator.onLine){
+		
+			var styledMap = new google.maps.StyledMapType(styles,{name: "Styled Map"});
+			placeLatlng = new google.maps.LatLng(data.lat, data.long);
+			var mapOptions = { 
+				zoom: 14, 
+				disableDefaultUI: true,
+				center: placeLatlng,
+				scrollwheel: false,
+				draggable: false
+			}; 
+			map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions); 
+			map.mapTypes.set("map_style",styledMap);
+			map.setMapTypeId("map_style");
+			var vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+			var sfx = (vpw > 1024)?'hd':'';
+			var marker = new google.maps.Marker({ 
+				position: placeLatlng, 
+				map: map, 
+				title: data.title,
+				icon: '../img/markers/'+sfx+data.catid+'.png'				
+			});
+
+		
+			var galContent = '';
+			data.placegallery.forEach(function(galpic) {
+				galContent += '<a href="#" onclick="zoomPicture(\''+galpic+'\');" ><img width="115" src="'+galpic+'" /></a>';
+			});
+			$('#place .gallery').html(galContent);
+		} else {
+			$('#place .gallery').remove();
+			$('#map-canvas').remove();
+		}
 	}
 	
 	function zoomPicture(picture){
