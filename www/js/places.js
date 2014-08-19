@@ -142,6 +142,7 @@
 				map.mapTypes.set("map_style",styledMap);
 				map.setMapTypeId("map_style");
 			}	
+			startLoading();	
 			filterMarkers('all', true);
 	}	
 
@@ -322,9 +323,9 @@
 
 	function setupTable(tx){
 
-	 	/* tx.executeSql("DROP TABLE places");
+	 /* 	tx.executeSql("DROP TABLE places");
 		tx.executeSql("DROP TABLE people");
-		tx.executeSql("DROP TABLE profiles");  */ 
+		tx.executeSql("DROP TABLE profiles"); */
 		tx.executeSql("CREATE TABLE IF NOT EXISTS places(id INTEGER PRIMARY KEY,catid INTEGER,itemid INTEGER UNIQUE,data)");
 		tx.executeSql("CREATE TABLE IF NOT EXISTS people(id INTEGER PRIMARY KEY,catid INTEGER,itemid INTEGER UNIQUE,data)");
 		tx.executeSql("CREATE TABLE IF NOT EXISTS profiles(id INTEGER PRIMARY KEY,itemid INTEGER UNIQUE,data)");
@@ -356,12 +357,14 @@
 			//console.log(results);
 		jQuery('.placeEntry').remove();
 		if (results.rows.length == 0) {
+			
 			jQuery.getJSON( "http://miflamencoplace.com/rpc/get_places.php", function( data ) {
 			  jQuery.each( data, function( key, val ) {
 				addMarker(val,map);
-				//alert('savePlace');
+				alert('savePlace');
 				savePlace(val);
 			  });
+		      endLoading();	
 			});
 		} else {
 			for(var i=0; i<results.rows.length; i++) {
@@ -369,6 +372,7 @@
 			//console.log(data);
 				addMarker(data,map);
 			}
+			endLoading();	
 		}
 	}
 	
@@ -388,17 +392,25 @@
 	}
 
 	function savePlace(data) {
-
+		var profileData = data.profile;
+		delete data.profile;
 		var catid = data.catid;
 		var itemid = data.id;
 		var jsonData = JSON.stringify(data);
+		var jsonProfileData = JSON.stringify(profileData);
+		
 		dbShell.transaction(function(tx) {
 			tx.executeSql("INSERT OR REPLACE INTO places(catid,itemid,data) values(?,?,?)",[catid,itemid,jsonData]);
 		}, dbErrorHandler);
-		jQuery.getJSON( "http://miflamencoplace.com/rpc/get_profile.php?itemid="+itemid, function( profileData ) {
-			var jsonProfileData = JSON.stringify(profileData);
-			dbShell.transaction(function(tx) {
-				tx.executeSql("INSERT OR REPLACE INTO profiles(itemid,data) values(?,?)",[itemid,jsonProfileData]);
-			}, dbErrorHandler);
-		});
+		dbShell.transaction(function(tx) {
+			tx.executeSql("INSERT OR REPLACE INTO profiles(itemid,data) values(?,?)",[itemid,jsonProfileData]);
+		}, dbErrorHandler);
+		
+	}
+	
+	function startLoading(){
+		$('body').append('<div id="bigloading"><p>CARGANDO DATOS<br>LOADING DATA</p></div>');
+	}
+	function endLoading(){
+		$('#bigloading').remove();
 	}
