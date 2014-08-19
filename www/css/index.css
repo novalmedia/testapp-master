@@ -476,6 +476,7 @@ float: left;
 -webkit-border-radius: 150px;
 -moz-border-radius: 150px;
 -khtml-border-radius: 150px;
+background-size: cover;
 }
 div.placeEntry  h3{
 font-family: 'Merriweather';

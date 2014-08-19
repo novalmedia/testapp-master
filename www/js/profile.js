@@ -3,7 +3,7 @@
 	var myLatlng; 
 	function initProfile() {
 	
-			
+			startLoading();
 					
 			var showTab = jQuery.getQuery('tab');
 			switch(showTab){
@@ -179,15 +179,17 @@
 							title: data.title,
 							icon: '../img/markers/'+sfx+data.catid+'.png'				
 						});
-							  
+						endLoading();	  
 					});
 			} else {
 				alert('Error de conexión/Connection error');
+				endLoading();	  
 			}
 		
 		} else {
 			jsondata = data = JSON.parse(results.rows.item(0).data);
 			fillProfile(jsondata);
+			endLoading();	  
 			return true;
 		}
 	}
@@ -457,4 +459,12 @@ function onError(error) {
 	alert('code: '    + error.code    + '\n' + 
 		  'message: ' + error.message + '\n');
 }
+
+
+	function startLoading(){
+		$('body').append('<div id="bigloading"><p>CARGANDO DATOS<br>LOADING DATA</p></div>');
+	}
+	function endLoading(){
+		$('#bigloading').remove();
+	}
 	

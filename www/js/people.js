@@ -1,4 +1,5 @@
 $(function() {
+	startLoading();
 	dbShell = window.openDatabase("miflamenkoplace", 1, "miflamenkoplace", 1000000);
 	dbShell.transaction(function(tx) {
 				tx.executeSql("SELECT data FROM people",[],renderEntries,dbErrorHandler);
@@ -13,12 +14,14 @@ function renderEntries(tx,results){
 				addThumb(val);
 				saveThumb(val);
 			});
+			endLoading();
 		});	
 	} else {
 		for(var i=0; i<results.rows.length; i++) {
 			data = JSON.parse(results.rows.item(i).data);
 			addThumb(data);
 		}
+		endLoading();
 	}
 }
 	
@@ -73,5 +76,13 @@ function addThumb(val){
 			tx.executeSql("INSERT OR REPLACE INTO people(catid,itemid,data) values(?,?,?)",[catid,itemid,jsonData]);
 		}, dbErrorHandler);
 		
+	}
+	
+	
+	function startLoading(){
+		$('body').append('<div id="bigloading"><p>CARGANDO DATOS<br>LOADING DATA</p></div>');
+	}
+	function endLoading(){
+		$('#bigloading').remove();
 	}
 	
