@@ -307,7 +307,7 @@
 	
 	function isDownloadedFile(nameFile)
 	{
-	/* 	   window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
+	 	   window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
 			function onFileSystemSuccess(fileSystem) {
 				var folderName = 'miflamencoplace'
 				var directoryEntry = fileSystem.root; 
@@ -328,7 +328,7 @@
 				}
 			},
 			onError
-		);    */
+		);    
 	}
 	
 function manageFile(file, nameFile){

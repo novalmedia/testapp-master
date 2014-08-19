@@ -467,7 +467,10 @@ margin-left: 20px;
 width: 140px;
 height: 140px;
 border: 6px solid #d4d1d1;
-border-radius: 150px;
+border-top-left-radius: 150px;
+border-top-right-radius: 150px;
+border-bottom-left-radius: 150px;
+border-bottom-right-radius: 150px;
 float: left;
 -webkit-border-radius: 150px;
 -moz-border-radius: 150px;
@@ -613,6 +616,19 @@ border-bottom-left-radius: 0px;
 		-webkit-transform: translate3d(0, 0, 0); 
 		transform: translate3d(0, 0, 0); 
 	}
+	
+	
+	
+	#bigloading{
+	
+		padding-top: 45%;	
+		background: url(../img/bigloading.gif) no-repeat center center #000000;
+		background-size: 256px;
+		}
+	#bigloading p{	font-size: 48px;}
+		
+	
+	
 	#logo-home {width: 500px; height: 396px;background:url(../img/logo-home.png) no-repeat center top; 
 	background-size:500px 396px;  margin: 100px auto;}
 
@@ -768,12 +784,14 @@ border-bottom-left-radius: 0px;
 	 -webkit-border-radius: 540px;
 		-moz-border-radius: 540px;
 		-khtml-border-radius: 540px;}
+		
+		body.profile #place .title img {width: 60px;margin: 35px 20px 0 10px;}
 	body.profile #place .introtext {width: 100%; text-align: center;margin-top: 30px;font-family: 'Merriweather'; font-size: 63px;
 	color: #c7c7c7;text-transform: none;}
 	body.profile #place .social {width: 100%; text-align: center;}
 	body.profile #place #map-canvas{width:100%; height:950px; float: left;clear: both; } 
 
-	body.profile #place .fulltext {width: 100%; text-align: center;margin-top: 195px;font-family: 'Lato'; font-size: 63px;
+	body.profile #place .fulltext { text-align: center;margin-top: 195px;font-family: 'Lato'; font-size: 63px;
 	color: #959595;text-transform: none;}
 
 	body.profile #person {display: inline-block;background-size: contain;}
@@ -781,10 +799,13 @@ border-bottom-left-radius: 0px;
 	body.profile #person .persontitle span{padding-left: 60px;font-family: 'Merriweather';font-weight: bold; font-size: 43px;
 	color: #b6b6b6;text-transform: none;}
 	body.profile #person .persontitle .authorname{padding-left: 60px;font-family: 'Merriweather';font-weight: bold; font-size: 70px;color: #fff;}
+	body.profile #person .persontitle .authorname img {width: 60px;margin: 10px 20px 0 10px;}
 	body.profile #person .authortext {font-family: 'Lato'; font-size: 63px;color: #bcbcbc;text-transform: none;background: #1b1b1b;}
 	body.profile #person .authortext p{padding: 120px 60px;margin-top: 0;}
 
 
+	
+	
 	body.profile #story {display: inline-block;background: #fff;width: 100%;min-height: 100%;}
 	body.profile #story .left {display: inline-block;width: 50%;float: left;margin-top: 195px;}
 	body.profile #story .left span{padding-left: 60px;font-family: 'Merriweather';font-weight: bold; 
@@ -948,26 +969,68 @@ border-bottom-left-radius: 0px;
 
 	body.profile #story .download{padding: 0 40px;}
 	body.profile #story .downloada{padding-left: 40px;font-size: 48px;padding: 40px 0;}
-	body.profile #story .downloada span.placetitle{padding: 0 0 0 25px;font-size:50px;}
-	body.profile #story .downloada span.persontitle{padding: 0 0 0 25px;font-size:50px;}
+	body.profile #story .downloada span.placetitle{padding: 0 0 0 25px;font-size:50px;line-height: 50px;}
+	body.profile #story .downloada span.persontitle{padding: 0 0 0 25px;font-size:50px;line-height: 50px;}
 	body.profile #story .downloada span.audio_position{padding: 0 0 0 25px;font-size:48px;}
 	body.profile #story .downloada.pause {background-size: auto 90px;background-position: 95% center;}
 	body.profile #story .playing{padding-left: 40px; background-size: auto 90px;font-size: 48px;padding: 30px 0;background-position: 95% center;}
-	body.profile #story .playing span.placetitle{padding: 0 0 0 25px;font-size:50px;}
-	body.profile #story .playing span.persontitle{padding: 0 0 0 25px;font-size:50px;}
+	body.profile #story .playing span.placetitle{padding: 0 0 0 25px;font-size:50px;line-height: 50px;}
+	body.profile #story .playing span.persontitle{padding: 0 0 0 25px;font-size:50px;line-height: 50px;}
 	body.profile #story .playing span.audio_position{padding: 0 0 0 25px;font-size:48px;}
 	body.profile #story .downloada.loading  .audio_position{width: 240px;height:66px;}
 	
 	body.route .download{padding: 0 40px;}
 	body.route .downloada{padding-left: 40px;font-size: 48px;padding: 40px 0;}
-	body.route .downloada span.placetitle{padding: 0 0 0 25px;font-size:50px;}
-	body.route .downloada span.persontitle{padding: 0 0 0 25px;font-size:50px;}
+	body.route .downloada span.placetitle{padding: 0 0 0 25px;font-size:50px;line-height: 50px;}
+	body.route .downloada span.persontitle{padding: 0 0 0 25px;font-size:50px;line-height: 50px;}
 	body.route .downloada span.audio_position{padding: 0 0 0 25px;font-size:48px;}
 	body.route .downloada.pause {background-size: auto 90px;background-position: 95% center;}
 	body.route .playing{padding-left: 40px; background-size: auto 90px;font-size: 48px;padding: 30px 0;background-position: 95% center;}
-	body.route .playing span.placetitle{padding: 0 0 0 25px;font-size:50px;}
-	body.route .playing span.persontitle{padding: 0 0 0 25px;font-size:50px;}
+	body.route .playing span.placetitle{padding: 0 0 0 25px;font-size:50px;line-height: 50px;}
+	body.route .playing span.persontitle{padding: 0 0 0 25px;font-size:50px;line-height: 50px;}
 	body.route .playing span.audio_position{padding: 0 0 0 25px;font-size:48px;}
 	body.route .downloada.loading  .audio_position{width: 240px;height:66px;}
 #playlistes {width: 100%; float: left;padding: 60px 0;}
+
+body.profile #story .left .icons {padding-left: 50px;}
+body.profile #story .left .icons img {margin-left: 20px;height: 60px;}
+
+div.placeEntry.cat5{background: url('../img/arrow5.png') no-repeat 90% 50%; background-size: 100px auto;}
+div.placeEntry.cat6{background: url('../img/arrow6.png') no-repeat 90% 50%; background-size: 100px auto;}
+div.placeEntry.cat7{background: url('../img/arrow7.png') no-repeat 90% 50%; background-size: 100px auto;}
+div.placeEntry.cat8{background: url('../img/arrow8.png') no-repeat 90% 50%; background-size: 100px auto;}
+
+div.placeEntry {
+		border-bottom: 2px dashed #ebebeb;
+
+
+	padding: 15px 0;
+
+}
+
+div.placeEntry  img{
+margin-left: 40px;
+width: 290px;
+height: 290px;
+border: 6px solid #d4d1d1;
+border-top-left-radius: 300px;
+border-top-right-radius: 300px;
+border-bottom-left-radius: 300px;
+border-bottom-right-radius: 300px;
+-webkit-border-radius: 300px;
+-moz-border-radius: 300px;
+-khtml-border-radius: 300px;
+}
+div.placeEntry  h3{
+font-size: 50px;
+width: 690px;
+margin: 34px auto;
+line-height: 50px;
+}
+
+div.placeEntry  h4{
+width: 690px;
+font-size: 48px;
+}
+
  }
