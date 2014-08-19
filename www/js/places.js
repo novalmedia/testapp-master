@@ -361,7 +361,6 @@
 			jQuery.getJSON( "http://miflamencoplace.com/rpc/get_places.php", function( data ) {
 			  jQuery.each( data, function( key, val ) {
 				addMarker(val,map);
-				alert('savePlace');
 				savePlace(val);
 			  });
 		      endLoading();	
