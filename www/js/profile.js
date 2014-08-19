@@ -138,38 +138,16 @@
 				var styledMap = new google.maps.StyledMapType(styles,{name: "Styled Map"});
 			
 			var itemid = jQuery.getQuery('itemid');
-			if (navigator.onLine) {
-				jQuery.getJSON( "http://miflamencoplace.com/rpc/get_profile.php?itemid="+itemid, function( data ) {
-					fillProfile(data);
-					placeLatlng = new google.maps.LatLng(data.lat, data.long);
-					var mapOptions = { 
-						zoom: 14, 
-						disableDefaultUI: true,
-						center: placeLatlng,
-						scrollwheel: false,
-						draggable: false
-					}; 
-					map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions); 
-					map.mapTypes.set("map_style",styledMap);
-					map.setMapTypeId("map_style");
-					var vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-					var sfx = (vpw > 1024)?'hd':'';
-					var marker = new google.maps.Marker({ 
-						position: placeLatlng, 
-						map: map, 
-						title: data.title,
-						icon: '../img/markers/'+sfx+data.catid+'.png'				
-					});
-						  
-				});
-			} else {
+		/* 	if (navigator.onLine) {
+				
+			} else { */
 				dbShell = window.openDatabase("miflamenkoplace", 1, "miflamenkoplace", 1000000);
 				dbShell.transaction(function(tx) {	
 					
 					tx.executeSql("SELECT data FROM profiles WHERE itemid = ? ",[itemid],fillProfileNC,dbErrorHandler);
 				}, dbErrorHandler);
 //				fillProfileNC(data);
-			}
+			/* } */
 	}			
 	
 	function dbErrorHandler(err){
@@ -177,13 +155,44 @@
 	}
 	
 	function fillProfileNC(tx,results){
-		jsondata = data = JSON.parse(results.rows.item(0).data);
-		fillProfile(jsondata);
-		return true;
+	
+		if (results.rows.length == 0) {
+			if (navigator.onLine){
+				jQuery.getJSON( "http://miflamencoplace.com/rpc/get_profile.php?itemid="+itemid, function( data ) {
+						fillProfile(data);
+						placeLatlng = new google.maps.LatLng(data.lat, data.long);
+						var mapOptions = { 
+							zoom: 14, 
+							disableDefaultUI: true,
+							center: placeLatlng,
+							scrollwheel: false,
+							draggable: false
+						}; 
+						map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions); 
+						map.mapTypes.set("map_style",styledMap);
+						map.setMapTypeId("map_style");
+						var vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+						var sfx = (vpw > 1024)?'hd':'';
+						var marker = new google.maps.Marker({ 
+							position: placeLatlng, 
+							map: map, 
+							title: data.title,
+							icon: '../img/markers/'+sfx+data.catid+'.png'				
+						});
+							  
+					});
+			} else {
+				alert('Error de conexión/Connection error');
+			}
+		
+		} else {
+			jsondata = data = JSON.parse(results.rows.item(0).data);
+			fillProfile(jsondata);
+			return true;
+		}
 	}
 	function fillProfile(data){
-		$('#place').css('background',' url(../img/overlay.png) repeat,url('+data.img64+') no-repeat center top')
-		.css('background-size','auto,cover');
+		$('#place').css('background',' url(../img/overlay.png) repeat,url('+data.img64+') no-repeat center top');
 		$('#place .title').html('<span class="spacertit">&nbsp;</span>'+data.title+'<img src="../img/cat'+data.catid+'.png"/><img src="../img/cat'+data.personcatid+'.png"/>');
 		
 		$('#place .author').html('By '+data.personname);

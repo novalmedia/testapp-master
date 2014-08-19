@@ -325,10 +325,12 @@
 
 	  	/* tx.executeSql("DROP TABLE places");
 		tx.executeSql("DROP TABLE people");
+		tx.executeSql("DROP TABLE routes");
 		tx.executeSql("DROP TABLE profiles");  */
 		tx.executeSql("CREATE TABLE IF NOT EXISTS places(id INTEGER PRIMARY KEY,catid INTEGER,itemid INTEGER UNIQUE,data)");
 		tx.executeSql("CREATE TABLE IF NOT EXISTS people(id INTEGER PRIMARY KEY,catid INTEGER,itemid INTEGER UNIQUE,data)");
 		tx.executeSql("CREATE TABLE IF NOT EXISTS profiles(id INTEGER PRIMARY KEY,itemid INTEGER UNIQUE,data)");
+		tx.executeSql("CREATE TABLE IF NOT EXISTS routes(id INTEGER PRIMARY KEY,itemid INTEGER UNIQUE,data)");
 	}
 
 	function dbErrorHandler(err){

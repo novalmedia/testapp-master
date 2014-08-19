@@ -169,11 +169,13 @@ text-decoration: none;background: url(../img/filteropts_bg.jpg) repeat 0 0;borde
 	background: url(../img/logo_ministerio.png) no-repeat center bottom #fff;
 	-webkit-transition-duration: .25s; 
     transition-duration: .25s; 
+	display: none;
 }
 #aroundmenu.open { 
     -webkit-transform: translate3d(0, 0, 0); 
     transform: translate3d(0, 0, 0); 
 	box-shadow: -5px 0 10px #999;
+	display: block;
 }
 
 #aroundmenu > a{display: block;width: 100%;line-height: 75px;font-size: 22px; font-family: 'Merriweather'; color: #787878;text-transform: none;font-weight: bold;
@@ -244,7 +246,7 @@ color: #959595;text-transform: none;background: #000000;padding:25px 5%;}
 body.profile #place .addressinfo {width: 90%; text-align: left;padding:25px 5%;background: #191919;}
 body.profile #place .addressinfo .street {color:#ffffff;text-transform: none;font-size:20px;}
 body.profile #place .addressinfo .address {color:#a0a0a0;text-transform: none;font-size:20px;}
-body.profile #person {display: inline-block;background-size: contain;}
+body.profile #person {display: inline-block;background-size: contain !important;}
 body.profile #person .persontitle{background: rgba(50,50,50,0.8);margin-top:270px; width: 100%;padding: 20px 0 30px 0;}
 body.profile #person .persontitle span{padding-left: 20px;font-family: 'Merriweather';font-weight: normal; font-size: 21px;color: #b6b6b6;text-transform: none;}
 body.profile #person .persontitle .authorname{padding-left: 20px;font-family: 'Merriweather';font-weight: normal; font-size: 30px;color: #fff;}
@@ -735,7 +737,24 @@ border-bottom-left-radius: 0px;
 
 	/* Places */
 
-	body.places #aroundme {background: url(../img/aroundme.png);width:26px;height: 34px;float: right;margin: 31px 22px 0 0;}
+	body.places #aroundme {background: url(../img/aroundme.png) no-repeat;width:90px;height: 100px;float: right;margin: 85px 22px 0 0;background-size: 60px auto;}
+	
+	
+	
+
+#aroundmenu {
+   
+	padding-bottom: 450px;
+   
+}
+
+
+#aroundmenu > a{line-height: 150px;font-size: 50px;border-bottom: 2px dotted #d9d9d9;  }
+#aroundmenu > a span{padding: 0 0 0 50px;}
+#aroundmenu > a.close {line-height: 200px;font-size: 51px;}
+
+	
+	
 	body.places #map-canvas{width:100%; height:674px; float: left;clear: both; } 
 
 	body.places #filter {position: relative;float: left;height: 225px; width: 100%;
@@ -794,7 +813,10 @@ border-bottom-left-radius: 0px;
 	body.profile #place .fulltext { text-align: center;margin-top: 195px;font-family: 'Lato'; font-size: 63px;
 	color: #959595;text-transform: none;}
 
-	body.profile #person {display: inline-block;background-size: contain;}
+	body.profile #place .addressinfo .street {font-size:60px;}
+	body.profile #place .addressinfo .address {font-size:60px;}
+	
+	body.profile #person {display: inline-block;background-size: contain !important;}
 	body.profile #person .persontitle{background: rgba(50,50,50,0.8);margin-top:510px; width: 100%;padding: 60px 0 90px 0;}
 	body.profile #person .persontitle span{padding-left: 60px;font-family: 'Merriweather';font-weight: bold; font-size: 43px;
 	color: #b6b6b6;text-transform: none;}
@@ -881,7 +903,11 @@ border-bottom-left-radius: 0px;
 	body.people #filteropts a.live {background: url(../img/filter_live.png) no-repeat right center, url(../img/filteropts_bg.jpg) repeat 0 0;background-size:100px 50px, auto auto;}
 	body.people #filteropts a.learn {background: url(../img/filter_learn.png) no-repeat right center, url(../img/filteropts_bg.jpg) repeat 0 0;background-size:100px 50px, auto auto;}
 	body.people #filteropts a.all {background: url(../img/filter_all.png) no-repeat right center, url(../img/filteropts_bg.jpg) repeat 0 0;background-size:100px 50px, auto auto;}
-
+	body.people #filteropts a.make {background: url(../img/filter_make.png) no-repeat right center, url(../img/filteropts_bg.jpg) repeat 0 0;background-size:100px 50px, auto auto;}
+	body.people #filteropts a.study {background: url(../img/filter_study.png) no-repeat right center, url(../img/filteropts_bg.jpg) repeat 0 0;background-size:100px 50px, auto auto;}
+	body.people #filteropts a.promote {background: url(../img/filter_promote.png) no-repeat right center, url(../img/filteropts_bg.jpg) repeat 0 0;background-size:100px 50px, auto auto;}
+	body.people #filteropts a.love {background: url(../img/filter_love.png) no-repeat right center, url(../img/filteropts_bg.jpg) repeat 0 0;background-size:100px 50px, auto auto;}
+	
 	body.people #mosaic {
 		background: #fff;
 		display: block;

@@ -1,6 +1,6 @@
 	var map; 
 	var myLatlng; 
-	function initProfile() {
+	
 		var styles = [
 							{
 								"elementType": "labels.icon",
@@ -116,41 +116,73 @@
 								]
 							  }
 							];
-			var styledMap = new google.maps.StyledMapType(styles,{name: "Styled Map"});
 			
-			var itemid = jQuery.getQuery('itemid');
-			jQuery.getJSON( "http://miflamencoplace.com/rpc/get_route.php?itemid="+itemid, function( data ) {
-				fillProfile(data,styledMap);
-				
-				
-				
-					  
-			});
+	function initProfile() {
+	
+		var itemid = jQuery.getQuery('itemid');
+		
+		dbShell = window.openDatabase("miflamenkoplace", 1, "miflamenkoplace", 1000000);
+		dbShell.transaction(function(tx) {	
+			tx.executeSql("SELECT data FROM routes WHERE itemid = ? ",[itemid],fillProfileNC,dbErrorHandler);
+		}, dbErrorHandler);
+			
+			
 	}			
 		
+	function dbErrorHandler(err){
+		alert("DB Error: "+err.message + "\nCode="+err.code);
+	}
 	
-	function fillProfile(data,styledMap){
-		
+	function fillProfileNC(tx,results){
+	
+		if (results.rows.length == 0) {
+			if (navigator.onLine){
+				
+				jQuery.getJSON( "http://miflamencoplace.com/rpc/get_route.php?itemid="+itemid, function( data ) {
+					fillProfile(data);
+					saveRoute(data);
+				});
+			}else {
+				alert('Error de conexión/Connection error');
+			}
+		} else {
+				jsondata = data = JSON.parse(results.rows.item(0).data);
+			if (navigator.onLine){
+				fillProfile(jsondata);
+			} else {
+				fillProfile(jsondata);
+			}
+			return true;
+		}
+	}
+	
+	function fillProfile(data){
 		$('#route .title').html(data.title);
 		$('#route .subtitle').html(data.subtitle);
 		$('#route .routeimg img').attr('src',data.img);
 		$('#route .introtext').html(data.introtext);
 		$('#playlistes').css('background',' url(../img/overlay.png) repeat,url(\''+data.img+'\') no-repeat center top')
 		.css('background-size', 'cover');
+		if (navigator.onLine){
 		
-		center = new google.maps.LatLng(37.392864, -5.990077); 
-		var mapOptions = { 
-					zoom: 14, 
-					disableDefaultUI: true,
-					center: center,
-					scrollwheel: false,
-					draggable: false
-				}; 
-		map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions); 
-		map.mapTypes.set("map_style",styledMap);
-		map.setMapTypeId("map_style");
-		var placeLatlng = [];
-		var bounds = new google.maps.LatLngBounds();
+			var styledMap = new google.maps.StyledMapType(styles,{name: "Styled Map"});
+			center = new google.maps.LatLng(37.392864, -5.990077); 
+			var mapOptions = { 
+						zoom: 14, 
+						disableDefaultUI: true,
+						center: center,
+						scrollwheel: false,
+						draggable: false
+					}; 
+			map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions); 
+			map.mapTypes.set("map_style",styledMap);
+			map.setMapTypeId("map_style");
+			var placeLatlng = [];
+			var bounds = new google.maps.LatLngBounds();
+		} else {
+			jQuery('#map-canvas').remove();
+		}
+
 		for (i=0;i<data.routeitems.length;i++){
 				item = data.routeitems[i];
 				if (item.audioes != '' && langid == 'es') {
@@ -159,17 +191,30 @@
 				if (item.audioen != '' && langid == 'en') {
 					isDownloadedFile(item.audioen,item.title, i);
 				}
-				placeLatlng[i] = new google.maps.LatLng(item.lat, item.long); 
-				var vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-				var sfx = (vpw > 1024)?'hd':'';
-				var marker = new google.maps.Marker({ 
-					position: placeLatlng[i], 
-					map: map, 
-					icon: '../img/markers/'+sfx+item.catid+'.png'				
-				});
-				bounds.extend(placeLatlng[i]);
-				map.fitBounds(bounds);
+				if (navigator.onLine){
+					placeLatlng[i] = new google.maps.LatLng(item.lat, item.long); 
+					var vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+					var sfx = (vpw > 1024)?'hd':'';
+					var marker = new google.maps.Marker({ 
+						position: placeLatlng[i], 
+						map: map, 
+						icon: '../img/markers/'+sfx+item.catid+'.png'				
+					});
+					bounds.extend(placeLatlng[i]);
+					map.fitBounds(bounds);
+				}
 		}
+
+	}
+	
+	function saveRoute(data) {
+
+		var itemid = data.id;
+		var jsonData = JSON.stringify(data);
+		dbShell.transaction(function(tx) {
+			tx.executeSql("INSERT OR REPLACE INTO routes(itemid,data) values(?,?)",[itemid,jsonData]);
+		}, dbErrorHandler);
+		
 	}
 	
 	
@@ -191,7 +236,7 @@
 
 	function isDownloadedFile(nameFile,title, id)
 	{
-		/* 	$("#playlistes").append(
+		 /* 	$("#playlistes").append(
 							'<div class="download a'+id+'">'
 							+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+');return false;" href="#" class="downloada pause"><span class="placetitle">'+title+'</span><span class="audio_position">0:00</span></a>'
 							+'<a onclick="stopAudio('+id+');return false;" href="#" class="playing"><span class="placetitle">'+title+'</span><span class="audio_position"></span></a>'
