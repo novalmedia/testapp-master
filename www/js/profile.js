@@ -1,7 +1,21 @@
-
+(function($){
+    $.getQuery = function( query ) {
+        query = query.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+        var expr = "[\\?&]"+query+"=([^&#]*)";
+        var regex = new RegExp( expr );
+        var results = regex.exec( window.location.href );
+        if( results !== null ) {
+            return results[1];
+            return decodeURIComponent(results[1].replace(/\+/g, " "));
+        } else {
+            return false;
+        }
+    };
+})(jQuery);
 	var map; 
 	var myLatlng; 
 	var placeLatlng; 
+	var showTab = jQuery.getQuery('tab');
 	var styles = [
 							{
 								"elementType": "labels.icon",
@@ -123,23 +137,14 @@
 	function initProfile() {
 	
 			//startLoading();
-					
-			
-					
-			
-				
-			
 			var itemid = jQuery.getQuery('itemid');
-		/* 	if (navigator.onLine) {
-				
-			} else { */
+		
 				dbShell = window.openDatabase("miflamenkoplace", 1, "miflamenkoplace", 50000000);
 				dbShell.transaction(function(tx) {	
 					tx.executeSql("SELECT data FROM profiles WHERE itemid = ? ",[itemid],fillProfileNC,dbErrorHandler);
 				}, dbErrorHandler);
-//				fillProfileNC(data);
-			/* } */
-			var showTab = jQuery.getQuery('tab');
+
+
 			switch(showTab){
 				case 'person':
 					showPerson(true);
@@ -248,10 +253,12 @@
 				galContent += '<div class="swiper-slide"><img width="115" src="'+galpic+'" /></div>';
 			});
 			$('#place .gallery .swiper-wrapper').html(galContent);
-			 var mySwiper = $('#place .gallery').swiper({
-				mode:'horizontal',
-				loop: true
-			  });
+				if (showTab == '' || showTab == 'place') {
+					  var mySwiper = $('#place .gallery').swiper({
+						mode:'horizontal',
+						loop: true
+					  }); 
+			  }
 		} else {
 			$('#place .gallery').remove();
 			$('#map-canvas').remove();
@@ -281,20 +288,7 @@
 	}
 	
 
-(function($){
-    $.getQuery = function( query ) {
-        query = query.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
-        var expr = "[\\?&]"+query+"=([^&#]*)";
-        var regex = new RegExp( expr );
-        var results = regex.exec( window.location.href );
-        if( results !== null ) {
-            return results[1];
-            return decodeURIComponent(results[1].replace(/\+/g, " "));
-        } else {
-            return false;
-        }
-    };
-})(jQuery);
+
 
 
 	function showPlace(open){
@@ -304,17 +298,20 @@
 		jQuery('#place').fadeIn('slow');
 		jQuery('#filteropts a').show();
 		jQuery('#filteropts .place').hide();
+		
 		if (!open){
 			toggleFilter();
 		}
-		
+		if (showTab == 'person' || showTab == 'story') {
+		var mySwiper = $('#place .gallery').swiper({
+						mode:'horizontal',
+						loop: true
+					  }); 
+		}
 		var center = map.getCenter(); 
 		google.maps.event.trigger(map, 'resize'); 
 		map.setCenter(center); 
-		var mySwiper = jQuery('#place .gallery').swiper({
-				mode:'horizontal',
-				loop: true
-			  });
+		
 		return false;
 	}
 	function showPerson(open){

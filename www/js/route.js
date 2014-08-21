@@ -187,10 +187,10 @@
 		for (i=0;i<data.routeitems.length;i++){
 				item = data.routeitems[i];
 				if (item.audioes != '' && langid == 'es') {
-					isDownloadedFile(item.audioes,item.title, i);
+					isDownloadedFile(item.audioes,item.title, i+1);
 				}
 				if (item.audioen != '' && langid == 'en') {
-					isDownloadedFile(item.audioen,item.title, i);
+					isDownloadedFile(item.audioen,item.title, i+1);
 				}
 				if (navigator.onLine){
 					placeLatlng[i] = new google.maps.LatLng(item.lat, item.long); 
@@ -276,16 +276,16 @@
 							found = true;
 							$("#playlistes").append(
 							'<div class="download a'+id+'">'
-							+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+');return false;" href="#" class="downloada pause"><span class="placetitle">'+i+'   '+title+'</span><span class="audio_position">0:00</span></a>'
-							+'<a onclick="stopAudio('+id+');return false;" href="#" class="playing"><span class="placetitle">'+i+'   '+title+'</span><span class="audio_position"></span></a>'
+							+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+');return false;" href="#" class="downloada pause"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position">0:00</span></a>'
+							+'<a onclick="stopAudio('+id+');return false;" href="#" class="playing"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position"></span></a>'
 							+'</div>');
 						}
 					}
 					if (!found)
 						$("#playlistes").append(
 						'<div class="download a'+id+'">'
-						+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+');return false;" href="#" class="downloada"><span class="placetitle">'+i+'   '+title+'</span><span class="audio_position"></span></a>'
-						+'<a onclick="stopAudio('+id+');return false;" href="#" class="playing"><span class="placetitle">'+i+'   '+title+'</span><span class="audio_position"></span></a>'
+						+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+');return false;" href="#" class="downloada"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position"></span></a>'
+						+'<a onclick="stopAudio('+id+');return false;" href="#" class="playing"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position"></span></a>'
 						+'</div>');
 						
 				}
