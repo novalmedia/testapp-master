@@ -160,13 +160,14 @@
 	}			
 	
 	function dbErrorHandler(err){
-		alert("DB Error: "+err.message + "\nCode="+err.code);
+		//alert("DB Error: "+err.message + "\nCode="+err.code);
 	}
+	
 	
 	function fillProfileNC(tx,results){
 	
 		if (results.rows.length == 0) {
-			if (navigator.onLine){
+			if (navigator.network.connection.type != Connection.NONE){
 				jQuery.getJSON( "http://miflamencoplace.com/rpc/get_profile.php?itemid="+itemid, function( data ) {
 						fillProfile(data);
 						
@@ -226,7 +227,7 @@
 		$('#story .right .img').css('background-image',"url('"+data.img64+"')");
 		$('#story .authorname').html(data.personname);
 		$('#story #onyoutube').attr('href',data.onyoutube);
-		if (navigator.onLine){
+		if (navigator.network.connection.type != Connection.NONE){
 		
 			var styledMap = new google.maps.StyledMapType(styles,{name: "Styled Map"});
 			placeLatlng = new google.maps.LatLng(data.lat, data.long);

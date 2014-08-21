@@ -137,7 +137,7 @@
 	function fillProfileNC(tx,results){
 	
 		if (results.rows.length == 0) {
-			if (navigator.onLine){
+			if (navigator.network.connection.type != Connection.NONE){
 				
 				jQuery.getJSON( "http://miflamencoplace.com/rpc/get_route.php?itemid="+itemid, function( data ) {
 					fillProfile(data);
@@ -148,7 +148,7 @@
 			}
 		} else {
 				jsondata = data = JSON.parse(results.rows.item(0).data);
-			if (navigator.onLine){
+			if (navigator.network.connection.type != Connection.NONE){
 				fillProfile(jsondata);
 			} else {
 				fillProfile(jsondata);
@@ -164,7 +164,7 @@
 		$('#route .introtext').html(data.introtext);
 		$('#playlistes').css('background',' url(../img/overlay.png) repeat,url(\''+data.img64+'\') no-repeat center top')
 		.css('background-size', 'cover');
-		if (navigator.onLine){
+		if (navigator.network.connection.type != Connection.NONE){
 		
 			var styledMap = new google.maps.StyledMapType(styles,{name: "Styled Map"});
 			center = new google.maps.LatLng(37.392864, -5.990077); 
@@ -192,7 +192,7 @@
 				if (item.audioen != '' && langid == 'en') {
 					isDownloadedFile(item.audioen,item.title, i+1);
 				}
-				if (navigator.onLine){
+				if (navigator.network.connection.type != Connection.NONE){
 					placeLatlng[i] = new google.maps.LatLng(item.lat, item.long); 
 					var vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 					var sfx = (vpw > 1024)?'hd':'';

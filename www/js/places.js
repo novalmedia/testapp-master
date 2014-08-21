@@ -13,7 +13,7 @@
 			 $('#menu').css('min-height',(viewportHeight-menuH+16)+'px');
 		var mapZoom = (viewportWidth > 1024)?15:14;
 		
-			if (navigator.onLine) {
+			if (navigator.network.connection.type != Connection.NONE) {
 				myLatlng = new google.maps.LatLng(37.392864, -5.990077); 
 				var mapOptions = { 
 					zoom: mapZoom, 
@@ -137,7 +137,7 @@
 								]
 							  }
 							];
-			if (navigator.onLine) {
+			if (navigator.network.connection.type != Connection.NONE) {
 				var styledMap = new google.maps.StyledMapType(styles,{name: "Styled Map"});
 				map.mapTypes.set("map_style",styledMap);
 				map.setMapTypeId("map_style");
@@ -151,7 +151,7 @@
 	function addMarker(data,map) {
 			var vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 			var sfx = (vpw > 1024)?'hd':'';
-		if (navigator.onLine){
+		if (navigator.network.connection.type != Connection.NONE){
 			placeLatlng = new google.maps.LatLng(data.lat, data.long);
 			var marker = new google.maps.Marker({ 
 				position: placeLatlng, 
@@ -217,24 +217,11 @@
 			  if (parseInt(vpw) > 400) bubw = 300;
 			  if (parseInt(vpw) > 1024) bubw = 800;
 			var infowindow = new InfoBubble({
-				  content : '<div class="dmk2maps_bubble_image"><img src="http://miflamencoplace.com/media/k2/items/cache/'+data.img+'"></div><a class="dmk2maps_bubble_title" href="profile.html?itemid='+data.id+'">'+data.title+'</a><span class="dmk2maps_bubble_author"> by '+data.personname+'</span><img onclick="document.location.href=\'profile.html?itemid='+data.id+'\';" class="dmk2maps_bubble_arrow" src="http://miflamencoplace.com/images/arrow'+data.catid+'.png">',
-				  shadowStyle: 0,
-				  padding: 0,
-				  backgroundColor: 'rgba(0,0,0,0.8)',
-				  borderRadius: Math.floor(bubw+(bubw/3)),
-				  borderWidth: 6,
-				  borderColor: '#fff',
-				  minWidth: bubw,
-				  minHeight: bubw,
-				  maxWidth: bubw,
-				  maxHeight: bubw,
-				  disableAutoPan: false,
-				  hideCloseButton: false,
-				  backgroundClassName: 'phoney',
-				  arrowSize: 5,
-				  arrowPosition: 10,
-				  arrowStyle: 3
-				});		
+				content : '<div class="dmk2maps_bubble_image"><img src="http://miflamencoplace.com/media/k2/items/cache/'+data.img+'"></div><a class="dmk2maps_bubble_title" href="profile.html?itemid='+data.id+'">'+data.title+'</a><span class="dmk2maps_bubble_author"> by '+data.personname+'</span><img onclick="document.location.href=\'profile.html?itemid='+data.id+'\';" class="dmk2maps_bubble_arrow" src="http://miflamencoplace.com/images/arrow'+data.catid+'.png">',
+				shadowStyle: 0,padding: 0,backgroundColor: 'rgba(0,0,0,0.8)',borderRadius: Math.floor(bubw+(bubw/3)),borderWidth: 6,
+				borderColor: '#fff',minWidth: bubw,minHeight: bubw,maxWidth: bubw,maxHeight: bubw,disableAutoPan: false,
+				hideCloseButton: false,backgroundClassName: 'phoney',arrowSize: 5,arrowPosition: 10,arrowStyle: 3
+			});		
 			new google.maps.event.addListener(marker, "click", function(){infowindow.open(map,marker);});	
 		}
 	}
