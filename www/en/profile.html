@@ -19,11 +19,11 @@
 				<div style="float: left;width: 33%;">
 					<div id="logo"></div>
 				</div>
-				<div style="float: left;width: 33%;">
+				<div style="float: left;width: 33%;" class="backto" onclick="history.go(-1);">
 					
 				</div>
 			</header>
-           <div id="filter"><a href="#" onclick="toggleFilter();"><span>Learn more..</span></a>
+           <div id="filter"><a href="#" onclick="toggleFilter();"><span>Learn more...</span></a>
 			   <div id="filteropts" style="display: none;">
 				<a href="#" onclick="showPlace();" class="place"><span>About the place</span></a>
 				<a href="#" onclick="showPerson();" class="person"><span>About the person</span></a>
@@ -36,6 +36,9 @@
 			<div class="author"></div>
 			<div class="personface" onclick="showPerson(true);" ><div class="img"></div></div>
 			<div class="introtext"></div>
+			<div class="tostory" onclick="showStory(true);">
+				<img src="../img/headpw.png" />
+			</div>
 			<div class="social"></div>
 			<div class="fulltext"></div>
 			<div class="addressinfo">
@@ -52,6 +55,10 @@
 		<div id="person" style="display: none;">
 			<div class="persontitle"><span>Person</span><div class="authorname"></div></div>
 			<div class="authortext"></div>
+			<div class="tops" >
+				<img class="toplace" src="" onclick="showPlace(true);" />
+				<img src="../img/headpw.png" onclick="showStory(true);" />
+			</div>
 		</div>
 		<div id="story"  style="display: none;">
 			<div class="left">

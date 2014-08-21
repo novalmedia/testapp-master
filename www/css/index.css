@@ -215,6 +215,8 @@ body.places #filteropts a.all {background: url(../img/filter_all.png) no-repeat 
 
 body.profile #place {width: 100%;height: 890px;}
 
+	body .backto {height:90px;background: url('../img/backto.png');background-position: 80% center;background-size: 25px;background-repeat: no-repeat;}
+
 body.profile #filter {position: relative;float: left;height: 75px; width: 100%;background:  url(../img/filter_arrow.png) no-repeat right center,url(../img/filter_bg.jpg) repeat 0 0;}
 body.profile #filter.open {background: url(../img/filter_bg.jpg) repeat 0 0;}
 body.profile #filter > a {color: #000;text-decoration: none;display: block;font-family: 'Merriweather'; font-size: 24px; font-weight: bold;font-style:italic;text-transform: none;width: 100%;line-height: 65px;}
@@ -237,10 +239,12 @@ body.profile #place .personface .img{width: 180px;height: 180px;border: 6px soli
  -webkit-border-radius: 190px;    -moz-border-radius: 190px;    -khtml-border-radius: 190px;
  background-size: cover;display: inline-block;}
 body.profile #place .introtext {width: 100%; text-align: center;margin-top: 30px;font-family: 'Merriweather'; font-size: 21px;color: #c7c7c7;text-transform: none;}
+body.profile #place .tostory {width: 100%; text-align: center;}
+body.profile #place .tostory img {width: 60px; }
 body.profile #place .social {width: 100%; text-align: center;}
 body.profile #place #map-canvas{width:100%; height:350px; float: left;clear: both; } 
 
-body.profile #place .fulltext {width: 90%; text-align: left;margin-top: 65px;font-family: 'Lato'; font-size: 21px;
+body.profile #place .fulltext {width: 90%; text-align: left;margin-top: 30px;font-family: 'Lato'; font-size: 21px;
 color: #959595;text-transform: none;background: #000000;padding:25px 5%;}
 body.profile #place .addressinfo {width: 90%; text-align: left;padding:25px 5%;background: #191919;}
 body.profile #place .addressinfo .street {color:#ffffff;text-transform: none;font-size:20px;}
@@ -252,6 +256,8 @@ body.profile #person .persontitle .authorname{padding-left: 20px;font-family: 'M
 body.profile #person .persontitle .authorname img {float: right;width: 25px;margin: 7px 5px 0 5px;}
 body.profile #person .authortext {font-family: 'Lato'; font-size: 21px;color: #bcbcbc;text-transform: none;background: #1b1b1b;}
 body.profile #person .authortext p{padding: 40px 20px;margin-top: 0;}
+body.profile #person .tops {padding: 40px 20px;float: left;}
+body.profile #person .tops img{float: left;margin-right: 10px;height:60px;}
 
 
 body.profile #story {display: inline-block;background: #fff;width: 100%;min-height: 100%;}
@@ -402,6 +408,9 @@ body.route h2 {width: 50%;font-family:'Merriweather';color:#959595;font-size: 18
 body.route .title {width: 50%;font-family:'Merriweather';color:#ffffff;font-size: 24px;font-style: normal;text-transform: none;float:left;}
 body.route .subtitle {width: 50%;font-family:'Lato';color:#d1d1d1;font-size: 18px;font-style: italic;text-transform: none;float:left;}
 body.route .introtext {float:left;width:100%;clear: both;font-family:'Lato';color:#959595;font-size: 18px;font-style: normal;text-transform: none;margin: 20px 0 10px 0;}
+
+body.route.es .introtext .en {display: none;}
+body.route.en .introtext .es {display: none;}
 
 body.route .downloadtip {width:90%;margin: 0 auto;padding: 20px 0;clear: both;font-family:'Lato';color:#959595;font-size: 18px;font-style: normal;text-transform: none;}
 
@@ -739,7 +748,9 @@ border-bottom-left-radius: 0px;
 	/* Places */
 
 	body.places #aroundme {background: url(../img/aroundme.png) no-repeat;width:90px;height: 100px;float: right;margin: 85px 22px 0 0;background-size: 60px auto;}
-	
+
+	body .backto {background: url('../img/backto.png');background-position: 80% center;background-size: 80px;background-repeat: no-repeat;height: 240px;}
+
 	
 	
 
@@ -778,7 +789,6 @@ border-bottom-left-radius: 0px;
 	body.places #filteropts a.all {background: url(../img/filter_all.png) no-repeat right center, url(../img/filteropts_bg.jpg) repeat 0 0;background-size:100px 50px, auto auto;}
 
 	/* Profile */
-
 	body.profile #place {width: 100%;height: 1455px;}
 
 		body.profile #filter {position: relative;float: left;height: 225px; width: 100%;
@@ -810,7 +820,7 @@ border-bottom-left-radius: 0px;
 	color: #c7c7c7;text-transform: none;}
 	body.profile #place .social {width: 100%; text-align: center;}
 	body.profile #place #map-canvas{width:100%; height:950px; float: left;clear: both; } 
-
+	body.profile #place .tostory img {width: 120px; }
 	body.profile #place .fulltext { text-align: center;margin-top: 195px;font-family: 'Lato'; font-size: 63px;
 	color: #959595;text-transform: none;}
 
@@ -825,7 +835,8 @@ border-bottom-left-radius: 0px;
 	body.profile #person .persontitle .authorname img {width: 60px;margin: 10px 20px 0 10px;}
 	body.profile #person .authortext {font-family: 'Lato'; font-size: 63px;color: #bcbcbc;text-transform: none;background: #1b1b1b;}
 	body.profile #person .authortext p{padding: 120px 60px;margin-top: 0;}
-
+	body.profile #person .tops {padding: 0px 60px;float: left;}
+	body.profile #person .tops img{float: left;margin-right: 40px;height:120px;}
 
 	
 	
@@ -836,7 +847,7 @@ border-bottom-left-radius: 0px;
 	body.profile #story .left .placetitle{padding-left: 60px;font-family: 'Merriweather';font-weight: bold; font-size: 63px;
 	color: #2f2f2f;text-transform: none;}
 	body.profile #story .left .persontitle{padding-left: 60px;font-family: 'Lato';font-size: 63px;color: #959595;
-	text-transform: none;font-style: italic;}
+	text-transform: none;font-style: italic;padding: 20px 0 20px 60px;}
 
 	body.profile #story .right {display: inline-block;width: 50%;float: right;margin-top: 90px;}
 	body.profile #story .right .img{margin-right: 60px;width: 420px;height:420px;border: 6px solid #d4d1d1;border-radius: 450px;float: right;

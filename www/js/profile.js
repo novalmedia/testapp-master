@@ -212,6 +212,9 @@
 		}
 		$('#person').css('background','url('+data.personpicture64+') no-repeat center top');
 		$('#person .authorname').html(data.personname+'<img src="../img/cat'+data.catid+'.png"/><img src="../img/cat'+data.personcatid+'.png"/>');
+		var vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+		var sfx = (vpw > 1024)?'hd':'';
+		$('#person .toplace').attr('src','../img/markers/'+sfx+data.catid+'.png');
 		$('#story .placetitle').html(data.title);
 		$('#story .persontitle').html('By '+data.personname);
 		$('#story .icons').html('<img src="../img/headp.png"/><img src="../img/cat'+data.personcatid+'.png"/><img src="../img/cat'+data.catid+'.png"/>');
@@ -231,8 +234,7 @@
 			map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions); 
 			map.mapTypes.set("map_style",styledMap);
 			map.setMapTypeId("map_style");
-			var vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-			var sfx = (vpw > 1024)?'hd':'';
+			
 			var marker = new google.maps.Marker({ 
 				position: placeLatlng, 
 				map: map, 
