@@ -1021,7 +1021,7 @@ InfoBubble.prototype.open_ = function(opt_map, opt_anchor) {
 
   if (animation) {
     // Add the animation
-    this.bubble_.className += ' ' + this.animationName_;
+    this.bubble_.className += ' bubcont ' + this.animationName_;
     this.bubbleShadow_.className += ' ' + this.animationName_;
   }
 

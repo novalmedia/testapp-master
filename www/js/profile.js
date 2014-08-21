@@ -194,7 +194,7 @@
 			if (data.audioen != null){
 				$('#story .downloada').click(function(){manageFile('http://miflamencoplace.com/media/k2/attachments/'+data.audioen, data.audioen )});
 				$('#story .playing').click(function(){stopAudio()});
-				//isDownloadedFile(data.audioen);
+				isDownloadedFile(data.audioen);
 			}else{
 				$('#story .downloada').hide();
 			} 
@@ -205,7 +205,7 @@
 			if (data.audioes != null){
 				$('#story .downloada').click(function(){manageFile('http://miflamencoplace.com/media/k2/attachments/'+data.audioes,data.audioes )});
 				$('#story .playing').click(function(){stopAudio()});
-				//isDownloadedFile(data.audioes);
+				isDownloadedFile(data.audioes);
 			}else{
 				$('#story .downloada').hide();
 			} 
@@ -311,6 +311,10 @@
 		var center = map.getCenter(); 
 		google.maps.event.trigger(map, 'resize'); 
 		map.setCenter(center); 
+		var mySwiper = jQuery('#place .gallery').swiper({
+				mode:'horizontal',
+				loop: true
+			  });
 		return false;
 	}
 	function showPerson(open){
