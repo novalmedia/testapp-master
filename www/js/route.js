@@ -184,13 +184,15 @@
 			jQuery('#map-canvas').remove();
 		}
 		var infowindows = [];
+		var ies = 1;
+		var ien = 1;
 		for (i=0;i<data.routeitems.length;i++){
 				item = data.routeitems[i];
 				if (item.audioes != '' && langid == 'es') {
-					isDownloadedFile(item.audioes,item.title, i+1);
+					isDownloadedFile(item.audioes,item.title, ies++);
 				}
 				if (item.audioen != '' && langid == 'en') {
-					isDownloadedFile(item.audioen,item.title, i+1);
+					isDownloadedFile(item.audioen,item.title, ien++);
 				}
 				if (navigator.onLine){
 					placeLatlng[i] = new google.maps.LatLng(item.lat, item.long); 
