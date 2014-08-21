@@ -272,7 +272,7 @@
 				function successReader(entries) {
 					var i;
 					var found = false;
-					for (i=1; i<entries.length; i++) {
+					for (i=0; i<entries.length; i++) {
 						
 						if (entries[i].name == nameFile){
 							found = true;
