@@ -1,7 +1,9 @@
 $(function() {
 	startLoading();
 	dbShell = window.openDatabase("miflamenkoplace", 1, "miflamenkoplace", 50000000);
-
+	dbShell.transaction(function(tx) {
+		tx.executeSql("CREATE TABLE IF NOT EXISTS people(id INTEGER PRIMARY KEY,catid INTEGER,itemid INTEGER UNIQUE,data)");
+	}, dbErrorHandler);
 	dbShell.transaction(function(tx) {
 				tx.executeSql("SELECT data FROM people",[],renderEntries,dbErrorHandler);
 		}, dbErrorHandler);

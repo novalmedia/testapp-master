@@ -15,6 +15,7 @@
 	var map; 
 	var myLatlng; 
 	var placeLatlng; 
+	var itemid = jQuery.getQuery('itemid');
 	var showTab = jQuery.getQuery('tab');
 	var styles = [
 							{
@@ -137,9 +138,11 @@
 	function initProfile() {
 	
 			//startLoading();
-			var itemid = jQuery.getQuery('itemid');
 		
 				dbShell = window.openDatabase("miflamenkoplace", 1, "miflamenkoplace", 50000000);
+				dbShell.transaction(function(tx) {
+					tx.executeSql("CREATE TABLE IF NOT EXISTS profiles(id INTEGER PRIMARY KEY,itemid INTEGER UNIQUE,data)");
+				}, dbErrorHandler);
 				dbShell.transaction(function(tx) {	
 					tx.executeSql("SELECT data FROM profiles WHERE itemid = ? ",[itemid],fillProfileNC,dbErrorHandler);
 				}, dbErrorHandler);
@@ -162,14 +165,16 @@
 	function dbErrorHandler(err){
 		//alert("DB Error: "+err.message + "\nCode="+err.code);
 	}
-	
+
 	
 	function fillProfileNC(tx,results){
 	
 		if (results.rows.length == 0) {
-			if (navigator.network.connection.type != Connection.NONE){
+			startLoading();
+			if (navigator.onLine){
 				jQuery.getJSON( "http://miflamencoplace.com/rpc/get_profile.php?itemid="+itemid, function( data ) {
 						fillProfile(data);
+						saveProfile(data);
 						
 						endLoading();	  
 					});
@@ -181,7 +186,6 @@
 		} else {
 			jsondata = data = JSON.parse(results.rows.item(0).data);
 			fillProfile(jsondata);
-			endLoading();	  
 			return true;
 		}
 	}
@@ -227,7 +231,7 @@
 		$('#story .right .img').css('background-image',"url('"+data.img64+"')");
 		$('#story .authorname').html(data.personname);
 		$('#story #onyoutube').attr('href',data.onyoutube);
-		if (navigator.network.connection.type != Connection.NONE){
+		if (navigator.onLine){
 		
 			var styledMap = new google.maps.StyledMapType(styles,{name: "Styled Map"});
 			placeLatlng = new google.maps.LatLng(data.lat, data.long);
@@ -493,3 +497,12 @@ function onError(error) {
 		$('#bigloading').remove();
 	}
 	
+	
+	function saveProfile(data) {
+		var jsonData = JSON.stringify(data);
+		
+		dbShell.transaction(function(tx) {
+			tx.executeSql("INSERT OR REPLACE INTO profiles(itemid,data) values(?,?)",[itemid,jsonData]);
+		}, dbErrorHandler);
+		
+	}

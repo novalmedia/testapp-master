@@ -13,7 +13,7 @@
 			 $('#menu').css('min-height',(viewportHeight-menuH+16)+'px');
 		var mapZoom = (viewportWidth > 1024)?15:14;
 		
-			if (navigator.network.connection.type != Connection.NONE) {
+			if (navigator.onLine) {
 				myLatlng = new google.maps.LatLng(37.392864, -5.990077); 
 				var mapOptions = { 
 					zoom: mapZoom, 
@@ -137,7 +137,7 @@
 								]
 							  }
 							];
-			if (navigator.network.connection.type != Connection.NONE) {
+			if (navigator.onLine) {
 				var styledMap = new google.maps.StyledMapType(styles,{name: "Styled Map"});
 				map.mapTypes.set("map_style",styledMap);
 				map.setMapTypeId("map_style");
@@ -151,7 +151,7 @@
 	function addMarker(data,map) {
 			var vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 			var sfx = (vpw > 1024)?'hd':'';
-		if (navigator.network.connection.type != Connection.NONE){
+		if (navigator.onLine){
 			placeLatlng = new google.maps.LatLng(data.lat, data.long);
 			var marker = new google.maps.Marker({ 
 				position: placeLatlng, 
