@@ -1,6 +1,7 @@
 
 	var map; 
 	var myLatlng; 
+	var placeLatlng; 
 	var styles = [
 							{
 								"elementType": "labels.icon",
@@ -121,8 +122,23 @@
 	
 	function initProfile() {
 	
-			startLoading();
+			//startLoading();
 					
+			
+					
+			
+				
+			
+			var itemid = jQuery.getQuery('itemid');
+		/* 	if (navigator.onLine) {
+				
+			} else { */
+				dbShell = window.openDatabase("miflamenkoplace", 1, "miflamenkoplace", 50000000);
+				dbShell.transaction(function(tx) {	
+					tx.executeSql("SELECT data FROM profiles WHERE itemid = ? ",[itemid],fillProfileNC,dbErrorHandler);
+				}, dbErrorHandler);
+//				fillProfileNC(data);
+			/* } */
 			var showTab = jQuery.getQuery('tab');
 			switch(showTab){
 				case 'person':
@@ -136,21 +152,6 @@
 					showPlace(true);
 					break;
 			}
-					
-			
-				
-			
-			var itemid = jQuery.getQuery('itemid');
-		/* 	if (navigator.onLine) {
-				
-			} else { */
-				dbShell = window.openDatabase("miflamenkoplace", 1, "miflamenkoplace", 1000000);
-				dbShell.transaction(function(tx) {	
-					
-					tx.executeSql("SELECT data FROM profiles WHERE itemid = ? ",[itemid],fillProfileNC,dbErrorHandler);
-				}, dbErrorHandler);
-//				fillProfileNC(data);
-			/* } */
 	}			
 	
 	function dbErrorHandler(err){
@@ -193,7 +194,7 @@
 			if (data.audioen != null){
 				$('#story .downloada').click(function(){manageFile('http://miflamencoplace.com/media/k2/attachments/'+data.audioen, data.audioen )});
 				$('#story .playing').click(function(){stopAudio()});
-				isDownloadedFile(data.audioen);
+				//isDownloadedFile(data.audioen);
 			}else{
 				$('#story .downloada').hide();
 			} 
@@ -204,7 +205,7 @@
 			if (data.audioes != null){
 				$('#story .downloada').click(function(){manageFile('http://miflamencoplace.com/media/k2/attachments/'+data.audioes,data.audioes )});
 				$('#story .playing').click(function(){stopAudio()});
-				isDownloadedFile(data.audioes);
+				//isDownloadedFile(data.audioes);
 			}else{
 				$('#story .downloada').hide();
 			} 
@@ -222,11 +223,10 @@
 			var styledMap = new google.maps.StyledMapType(styles,{name: "Styled Map"});
 			placeLatlng = new google.maps.LatLng(data.lat, data.long);
 			var mapOptions = { 
-				zoom: 14, 
+				zoom: 17, 
 				disableDefaultUI: true,
 				center: placeLatlng,
-				scrollwheel: false,
-				draggable: false
+				scrollwheel: false
 			}; 
 			map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions); 
 			map.mapTypes.set("map_style",styledMap);
@@ -243,9 +243,13 @@
 		
 			var galContent = '';
 			data.placegallery.forEach(function(galpic) {
-				galContent += '<a href="#" onclick="zoomPicture(\''+galpic+'\');" ><img width="115" src="'+galpic+'" /></a>';
+				galContent += '<div class="swiper-slide"><img width="115" src="'+galpic+'" /></div>';
 			});
-			$('#place .gallery').html(galContent);
+			$('#place .gallery .swiper-wrapper').html(galContent);
+			 var mySwiper = $('#place .gallery').swiper({
+				mode:'horizontal',
+				loop: true
+			  });
 		} else {
 			$('#place .gallery').remove();
 			$('#map-canvas').remove();
@@ -301,6 +305,10 @@
 		if (!open){
 			toggleFilter();
 		}
+		
+		var center = map.getCenter(); 
+		google.maps.event.trigger(map, 'resize'); 
+		map.setCenter(center); 
 		return false;
 	}
 	function showPerson(open){

@@ -1,6 +1,7 @@
 $(function() {
 	startLoading();
-	dbShell = window.openDatabase("miflamenkoplace", 1, "miflamenkoplace", 1000000);
+	dbShell = window.openDatabase("miflamenkoplace", 1, "miflamenkoplace", 50000000);
+
 	dbShell.transaction(function(tx) {
 				tx.executeSql("SELECT data FROM people",[],renderEntries,dbErrorHandler);
 		}, dbErrorHandler);

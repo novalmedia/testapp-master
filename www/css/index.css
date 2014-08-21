@@ -297,14 +297,15 @@ body.profile #story .onyoutube #onyoutube{color:#2f2f2f; font-size: 16px;font-fa
 body.profile #story .onyoutube #onyoutube span{display: block; float: right;font-weight: normal;}
 body.profile #story .onyoutube #onyoutube img{display: block; float: right;margin-left: 5px;}
 /* Galeria */
-.gallery{float: left;width: 100%;clear: both;display: block; min-height: 100px;}
+.gallery{float: left;width: 100%;clear: both;display: block; }
 .md-modal { background: rgba(0,0,0,0.8); position: fixed; top: 0; left: 0; bottom:0; width: 100%; height: auto; z-index: 9999999999999999999;
  text-align:center; display: table-cell; vertical-align: middle;}
 #zoom { float:left; position:relative;  z-index:1; overflow:hidden; top:0; bottom:0; height:100%; background-position:center; 
 background-size:contain !important;background-repeat: no-repeat;width: 100%;}
 #close{ font-size:14px; width:28px;  height:28px; border: solid #ccc 1px; color: #FFF; background: #000; -webkit-border-radius: 14px; 
  -moz-border-radius: 14px;    border-radius: 14px;    -khtml-border-radius: 14px;float:right; right:5px; top:5px; position:absolute; z-index: 9999999999999999999;}
-.gallery img {margin: 0 0 5px 5px;float: left;cursor:pointer;}
+.gallery img {float: left;cursor:pointer;}
+ 	.gallery img{width: 100%;height: auto;} 
 
 .md-modal  { -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
 .md-hide {
@@ -678,19 +679,19 @@ border-bottom-left-radius: 0px;
 
 
 
-	.dmk2maps_bubble_image img {height: 400px;}
-	.dmk2maps_bubble_title {font-family: 'Merriweather';font-size: 46px;font-weight: bold;color: #fff;width: 760px;margin: 28px auto;
-	display: block;text-align: center;line-height: 60px;text-decoration: none;text-transform: none;}
+	.dmk2maps_bubble_image img {height: 300px;}
+	.dmk2maps_bubble_title {font-family: 'Merriweather';font-size: 42px;font-weight: bold;color: #fff;width: 560px;margin: 22px auto 18px;
+	display: block;text-align: center;line-height: 40px;text-decoration: none;text-transform: none;}
 
-	.dmk2maps_bubble_author {display: block;width: 380px;text-align: center;margin: 0 auto;font-family: 'Lato';font-size: 48px;
-	font-weight: bold;color: #959595;text-transform: none;}
-	.phoney {text-align: center;overflow: hidden;max-height: 1120px;}
-	.dmk2maps_bubble_arrow {margin: 40px auto;cursor: pointer;width: 100px;}
+	.dmk2maps_bubble_author {display: block;width: 280px;text-align: center;margin: 0 auto;font-family: 'Lato';font-size: 40px;
+	font-weight: bold;color: #959595;text-transform: none;line-height: 36px;}
+	.phoney {text-align: center;overflow: hidden;max-height: 920px;}
+	.dmk2maps_bubble_arrow {margin: 20px auto;cursor: pointer;width: 100px;}
 
 
 	.dmk2maps_bubble_image img{
-	border-top-left-radius: 600px;
-	border-top-right-radius: 600px;
+	border-top-left-radius: 500px;
+	border-top-right-radius: 500px;
 	border-bottom-right-radius: 0px;
 	border-bottom-left-radius: 0px;
 	}
@@ -855,15 +856,15 @@ border-bottom-left-radius: 0px;
 	body.profile #story .onyoutube #onyoutube span{display: block; float: right;font-weight: normal;}
 	body.profile #story .onyoutube #onyoutube img{display: block; float: right;margin-left: 15px;}
 	/* Galeria */
-	.gallery{float: left;width: 100%;clear: both;display: block; min-height: 300px;}
-	.gallery a img{width: 300px;}
+	.gallery{float: left;width: 100%;clear: both;display: block; }
+
 	.md-modal { background: rgba(0,0,0,0.8); position: fixed; top: 0; left: 0; bottom:0; width: 100%; height: auto; z-index: 9999999999999999999;
 	 text-align:center; display: table-cell; vertical-align: middle;}
 	#zoom { float:left; position:relative;  z-index:1; overflow:hidden; top:0; bottom:0; height:100%; background-position:center; 
 	background-size:contain !important;background-repeat: no-repeat;width: 100%;}
-	#close{ font-size:14px; width:28px;  height:28px; border: solid #ccc 1px; color: #FFF; background: #000; -webkit-border-radius: 14px; 
-	 -moz-border-radius: 14px;    border-radius: 14px;    -khtml-border-radius: 14px;float:right; right:5px; top:5px; position:absolute; z-index: 9999999999999999999;}
-	.gallery img {margin: 0 0 5px 5px;float: left;cursor:pointer;}
+	#close{ font-size:40px; width:80px;  height:80px; border: solid #ccc 1px; color: #FFF; background: #000; -webkit-border-radius: 40px; 
+	 -moz-border-radius: 40px;    border-radius: 40px;    -khtml-border-radius: 40px;float:right; right:5px; top:5px; position:absolute; z-index: 9999999999999999999;}
+	.gallery img {float: left;cursor:pointer;}
 
 	.md-modal  { -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
 	.md-hide {

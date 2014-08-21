@@ -162,7 +162,7 @@
 			markersArray.push(marker);
 			  var bubw = 200;
 			  if (parseInt(vpw) > 400) bubw = 300;
-			  if (parseInt(vpw) > 1024) bubw = 800;
+			  if (parseInt(vpw) > 1024) bubw = 600;
 			var infowindow = new InfoBubble({
 				  content : '<div class="dmk2maps_bubble_image" onclick="document.location.href=\'profile.html?itemid='+data.id+'\';"><img src="http://miflamencoplace.com/media/k2/items/cache/'+data.img+'"></div><a class="dmk2maps_bubble_title" href="profile.html?itemid='+data.id+'">'+data.title+'</a><span class="dmk2maps_bubble_author"> by '+data.personname+'</span><img onclick="document.location.href=\'profile.html?itemid='+data.id+'\';" class="dmk2maps_bubble_arrow" src="http://miflamencoplace.com/images/arrow'+data.catid+'.png">',
 				  shadowStyle: 0,
@@ -243,7 +243,8 @@
 	function filterMarkers(catid, load){
 		while(markersArray.length) { markersArray.pop().setMap(null); }
 		if (!catid || catid == 'all'){
-			dbShell = window.openDatabase("miflamenkoplace", 1, "miflamenkoplace", 1000000);
+			dbShell = window.openDatabase("miflamenkoplace", 1, "miflamenkoplace", 50000000);
+
 			dbShell.transaction(setupTable,dbErrorHandler,getEntries);
 		} else {
 			getEntries(catid);
