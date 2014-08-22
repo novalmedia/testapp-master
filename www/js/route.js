@@ -303,8 +303,6 @@
 	}
 
 function manageFile(file, nameFile, id, markerId){
-google.maps.event.trigger(markers[markerId], 'click');
-return true;
 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
     function onFileSystemSuccess(fileSystem) {
 			var folderName = 'miflamencoplace'
