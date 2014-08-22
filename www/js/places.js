@@ -130,6 +130,12 @@
 								  { "color": "#565656" }
 								]
 							  },{
+								"featureType": "road.highway",
+								"elementType": "labels",
+								"stylers": [
+								  { "visibility": "off" }
+								]
+							  },{
 								
 								"elementType": "labels.text.stroke",
 								"stylers": [
