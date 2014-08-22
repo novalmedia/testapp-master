@@ -462,15 +462,24 @@ function onDirectoryFail(error) {
 		}
 	}
 
+
 	function setAudioPosition(position) {
 		if (position <= 0){
 			jQuery('.audio_position').html("0:00");
-		} else if (position < 10){
-			jQuery('.audio_position').html(Math.floor(position/60)+':0'+Math.floor(position));
 		} else {
-			jQuery('.audio_position').html(Math.floor(position/60)+':'+Math.floor(position));
+			if ( position > 60 ){
+				secs = position - (60*Math.floor(position/60));
+			} else {
+				secs = position;
+			}
+			if (secs < 10){
+				jQuery('.audio_position').html(Math.floor(position/60)+':0'+Math.floor(secs));
+			} else {
+				jQuery('.audio_position').html(Math.floor(position/60)+':'+Math.floor(secs));
+			}
 		}
     }
+	
 function onSuccess() {
 	//alert("playAudio():Audio Success");
 }

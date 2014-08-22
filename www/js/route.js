@@ -406,13 +406,21 @@ function onDirectoryFail(error) {
 		}
 	}
 
+	
 	function setAudioPosition(position, id) {
 		if (position <= 0){
 			jQuery('.download.a'+id+' .audio_position').html("0:00");
-		} else if (position < 10){
-			jQuery('.download.a'+id+' .audio_position').html(Math.floor(position/60)+':0'+Math.floor(position));
 		} else {
-			jQuery('.download.a'+id+' .audio_position').html(Math.floor(position/60)+':'+Math.floor(position));
+			if ( position > 60 ){
+				secs = position - (60*Math.floor(position/60));
+			} else {
+				secs = position;
+			}
+			if (secs < 10){
+				jQuery('.download.a'+id+' .audio_position').html(Math.floor(position/60)+':0'+Math.floor(secs));
+			} else {
+				jQuery('.download.a'+id+' .audio_position').html(Math.floor(position/60)+':'+Math.floor(secs));
+			}
 		}
     }
 function onSuccess() {
