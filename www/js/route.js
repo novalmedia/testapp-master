@@ -49,6 +49,12 @@
 								  { "color": "#313131" }
 								]
 							  },{
+								"featureType": "road.local",
+								"elementType": "labels.text.fill",
+								"stylers": [
+								  { "color": "#808080" }
+								]
+							  },{
 								"featureType": "road.arterial",
 								"elementType": "geometry.fill",
 								"stylers": [
@@ -73,12 +79,6 @@
 								]
 							  },{
 								"featureType": "transit",
-								"stylers": [
-								  { "visibility": "off" }
-								]
-							  },{
-								"featureType": "road.local",
-								"elementType": "labels.text",
 								"stylers": [
 								  { "visibility": "off" }
 								]
