@@ -112,8 +112,8 @@ display: block;text-align: center;line-height: 15px;text-decoration: none;text-t
 .dmk2maps_bubble_arrow {margin: 10px auto;cursor: pointer;width: 25px;}
 
 
-.bubcont {overflow: hidden;}
-.bubcont > div {overflow: hidden !important;}
+.route .bubcont {overflow: hidden;}
+.route .bubcont > div {overflow: hidden !important;}
 
 .dmk2maps_bubble_image img{
 border-top-left-radius: 150px;

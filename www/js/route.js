@@ -1,6 +1,16 @@
 	var map; 
 	var myLatlng; 
+	var markers = [];
 	
+	var bubw =200;
+	var vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+	if (parseInt(vpw) > 400) bubw = 250;
+	if (parseInt(vpw) > 1024) bubw = 650;
+	var infowindows = new InfoBubble({
+							shadowStyle: 0,padding: 0,backgroundColor: 'rgba(0,0,0,0.8)',borderRadius: Math.floor(bubw+(bubw/3)),borderWidth: 6,
+							borderColor: '#fff',minWidth: bubw/1.2,minHeight: bubw/2.8,maxWidth: bubw/1.25,maxHeight: bubw/2.8,disableAutoPan: false,
+							hideCloseButton: false,backgroundClassName: 'phoney',arrowSize: 5,arrowPosition: 10,arrowStyle: 3
+						});	
 		var styles = [
 							{
 								"elementType": "labels.icon",
@@ -178,25 +188,24 @@
 			map.mapTypes.set("map_style",styledMap);
 			map.setMapTypeId("map_style");
 			var placeLatlng = [];
-			var markers = [];
+
 			var bounds = new google.maps.LatLngBounds();
 		} else {
 			jQuery('#map-canvas').remove();
 		}
-		var infowindows = [];
+
 		var ies = 1;
 		var ien = 1;
 		for (i=0;i<data.routeitems.length;i++){
 				item = data.routeitems[i];
 				if (item.audioes != '' && langid == 'es') {
-					isDownloadedFile(item.audioes,item.title, ies++);
+					isDownloadedFile(item.audioes,item.title, ies++, i);
 				}
 				if (item.audioen != '' && langid == 'en') {
-					isDownloadedFile(item.audioen,item.title, ien++);
+					isDownloadedFile(item.audioen,item.title, ien++, i);
 				}
 				if (navigator.onLine){
 					placeLatlng[i] = new google.maps.LatLng(item.lat, item.long); 
-					var vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 					var sfx = (vpw > 1024)?'hd':'';
 					markers[i] = new google.maps.Marker({ 
 						position: placeLatlng[i], 
@@ -205,18 +214,13 @@
 						item: item,
 						icon: '../img/markers/'+sfx+item.catid+'.png'				
 					});
-					 var bubw =200;
-					  if (parseInt(vpw) > 400) bubw = 250;
-					  if (parseInt(vpw) > 1024) bubw = 650;
+					
 					
 					
 					new google.maps.event.addListener(markers[i], "click", function(){
-						new InfoBubble({
-							content : '<a class="dmk2maps_bubble_title" href="profile.html?itemid='+this.item.id+'">'+this.item.title+'</a><img onclick="document.location.href=\'profile.html?itemid='+this.item.id+'\';" class="dmk2maps_bubble_arrow" src="http://miflamencoplace.com/images/arrow'+this.item.catid+'.png">',
-							shadowStyle: 0,padding: 0,backgroundColor: 'rgba(0,0,0,0.8)',borderRadius: Math.floor(bubw+(bubw/3)),borderWidth: 6,
-							borderColor: '#fff',minWidth: bubw/1.2,minHeight: bubw/2.8,maxWidth: bubw/1.25,maxHeight: bubw/2.8,disableAutoPan: false,
-							hideCloseButton: false,backgroundClassName: 'phoney',arrowSize: 5,arrowPosition: 10,arrowStyle: 3
-						}).open(map,this);
+						infowindows.close();
+						infowindows.setContent('<a class="dmk2maps_bubble_title" href="profile.html?itemid='+this.item.id+'">'+this.item.title+'</a><img onclick="document.location.href=\'profile.html?itemid='+this.item.id+'\';" class="dmk2maps_bubble_arrow" src="http://miflamencoplace.com/images/arrow'+this.item.catid+'.png">');
+						infowindows.open(map,this);
 					});	
 					bounds.extend(placeLatlng[i]);
 					map.fitBounds(bounds);
@@ -224,6 +228,8 @@
 		}
 
 	}
+	
+
 	
 	function saveRoute(data) {
 
@@ -252,14 +258,14 @@
 })(jQuery);
 
 
-	function isDownloadedFile(nameFile,title, id)
+	function isDownloadedFile(nameFile,title, id, markerId)
 	{
-		 	/* $("#playlistes").append(
+		 	/*  $("#playlistes").append(
 							'<div class="download a'+id+'">'
-							+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+');return false;" href="#" class="downloada pause"><span class="placetitle">'+i+'   '+title+'</span><span class="audio_position">0:00</span></a>'
+							+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+', \''+markerId+'\');return false;" href="#" class="downloada pause"><span class="placetitle">'+i+'   '+title+'</span><span class="audio_position">0:00</span></a>'
 							+'<a onclick="stopAudio('+id+');return false;" href="#" class="playing"><span class="placetitle">'+i+'   '+title+'</span><span class="audio_position"></span></a>'
 							+'</div>');
-			return true;  */
+			return true;   */
 	 	   window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
 			function onFileSystemSuccess(fileSystem) {
 				var folderName = 'miflamencoplace'
@@ -278,7 +284,7 @@
 							found = true;
 							$("#playlistes").append(
 							'<div class="download a'+id+'">'
-							+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+');return false;" href="#" class="downloada pause"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position">0:00</span></a>'
+							+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+', \''+markerId+'\');return false;" href="#" class="downloada pause"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position">0:00</span></a>'
 							+'<a onclick="stopAudio('+id+');return false;" href="#" class="playing"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position"></span></a>'
 							+'</div>');
 						}
@@ -286,7 +292,7 @@
 					if (!found)
 						$("#playlistes").append(
 						'<div class="download a'+id+'">'
-						+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+');return false;" href="#" class="downloada"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position"></span></a>'
+						+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+', \''+markerId+'\');return false;" href="#" class="downloada"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position"></span></a>'
 						+'<a onclick="stopAudio('+id+');return false;" href="#" class="playing"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position"></span></a>'
 						+'</div>');
 						
@@ -296,8 +302,9 @@
 		);    
 	}
 
-function manageFile(file, nameFile, id){
-
+function manageFile(file, nameFile, id, markerId){
+google.maps.event.trigger(markers[markerId], 'click');
+return true;
 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
     function onFileSystemSuccess(fileSystem) {
 			var folderName = 'miflamencoplace'
@@ -315,6 +322,7 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 					for (i=0; i<entries.length; i++) {
 					   if (entries[i].name == nameFile){
 						fileFound = true;
+						google.maps.event.trigger(markers[markerId], 'click');
 						playAudio(entries[i],id);
 					   }
 					}
