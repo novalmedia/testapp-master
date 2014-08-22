@@ -108,12 +108,12 @@ h1 span{color: #d1d1d1;}
 display: block;text-align: center;line-height: 15px;text-decoration: none;text-transform: none;}
 
 .dmk2maps_bubble_author {display: block;width: 190px;text-align: center;margin: 0 auto;font-family: 'Lato';font-size: 16px;font-weight: bold;color: #959595;text-transform: none;}
-.phoney {text-align: center;overflow: hidden;max-height: 280px;}
+.phoney {text-align: center;overflow: visible;max-height: 280px;}
 .dmk2maps_bubble_arrow {margin: 10px auto;cursor: pointer;width: 25px;}
 
 
-.route .bubcont {overflow: hidden;}
-.route .bubcont > div {overflow: hidden !important;}
+.route .bubcont {overflow: visible;}
+.route .bubcont > div {overflow: visible !important;}
 
 .dmk2maps_bubble_image img{
 border-top-left-radius: 150px;

@@ -260,12 +260,12 @@
 
 	function isDownloadedFile(nameFile,title, id, markerId)
 	{
-		 	/*  $("#playlistes").append(
+		 	 /*  $("#playlistes").append(
 							'<div class="download a'+id+'">'
 							+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+', \''+markerId+'\');return false;" href="#" class="downloada pause"><span class="placetitle">'+i+'   '+title+'</span><span class="audio_position">0:00</span></a>'
 							+'<a onclick="stopAudio('+id+');return false;" href="#" class="playing"><span class="placetitle">'+i+'   '+title+'</span><span class="audio_position"></span></a>'
 							+'</div>');
-			return true;   */
+			return true;    */
 	 	   window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
 			function onFileSystemSuccess(fileSystem) {
 				var folderName = 'miflamencoplace'
@@ -303,6 +303,8 @@
 	}
 
 function manageFile(file, nameFile, id, markerId){
+/* google.maps.event.trigger(markers[markerId], 'click');
+return true; */
 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
     function onFileSystemSuccess(fileSystem) {
 			var folderName = 'miflamencoplace'
