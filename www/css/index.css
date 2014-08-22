@@ -398,8 +398,14 @@ body.stories .route .routedata{float: left; width: 50%;position:relative;min-hei
 body.stories .route span{width: 90%;float: left; text-transform: none;padding-left: 13px;line-height: 20px;}
 body.stories .route span.title{font-family: 'Merriweather'; color: #fff;font-size: 24px; font-weight: bold;margin-top: 13px;}
 body.stories .route span.subtitle{font-family: 'Lato'; color: #d1d1d1;font-size: 21px; font-style: italic;}
-body.stories .route span.linkroute{width: 100px;font-family: 'Lato'; color: #ffffff;font-size: 18px;font-weight: bold;position: absolute;
+body.stories.es .route span.subtitle.en {display: none;}
+body.stories.en .route span.subtitle.es {display: none;}
+
+body.stories .route span.linkroute{width: 120px;font-family: 'Lato'; color: #ffffff;font-size: 18px;font-weight: bold;position: absolute;
 bottom: 30px;left: 8px;background: url(../img/right-arrow.png) no-repeat right center;}
+
+body.stories.es .route span.linkroute.en {display: none;}
+body.stories.en .route span.linkroute.es {display: none;}
 
 /* ROUTE */
 body.route #route {width: 90%;margin:0 auto;display: table;padding-top: 30px;}
@@ -993,7 +999,7 @@ text-transform: none;
 	body.stories .route span{width: 90%;float: left; text-transform: none;padding-left: 39px;line-height: 60px;}
 	body.stories .route span.title{font-family: 'Merriweather'; color: #fff;font-size: 64px; font-weight: bold;margin-top: 39px;}
 	body.stories .route span.subtitle{font-family: 'Lato'; color: #d1d1d1;font-size: 48px; font-style: italic;}
-	body.stories .route span.linkroute{width: 300px;font-family: 'Lato'; color: #ffffff;font-size: 54px;font-weight: bold;position: absolute;
+	body.stories .route span.linkroute{width: 340px;font-family: 'Lato'; color: #ffffff;font-size: 54px;font-weight: bold;position: absolute;
 	bottom: 90px;left: 24px;background: url(../img/right-arrow.png) no-repeat right center;background-size: 60px auto;}
 
 	/* ROUTE */

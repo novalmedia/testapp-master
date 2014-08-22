@@ -169,7 +169,8 @@
 	
 	function fillProfile(data){
 		$('#route .title').html(data.title);
-		$('#route .subtitle').html(data.subtitle);
+		$('#route .subtitle.es').html(data.subtitlees);
+		$('#route .subtitle.en').html(data.subtitleen);
 		$('#route .routeimg .img').css('background-image',"url('"+data.img64+"')");
 		$('#route .introtext').html(data.introtext);
 		$('#playlistes').css('background',' url(../img/overlay.png) repeat,url(\''+data.img64+'\') no-repeat center top')

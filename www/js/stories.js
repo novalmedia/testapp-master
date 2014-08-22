@@ -34,8 +34,10 @@ function addRoute(val){
 		+'<img src="'+ path +'" />'
 		+'<div class="routedata">'
 		+'<span class="title">'+val.title+'</span>'
-		+'<span class="subtitle">'+val.subtitle+'</span>'
-		+'<span class="linkroute">Ver ruta</span>'
+		+'<span class="subtitle es">'+val.subtitlees+'</span>'
+		+'<span class="subtitle en">'+val.subtitleen+'</span>'
+		+'<span class="linkroute es">Ver ruta</span>'
+		+'<span class="linkroute en">View route</span>'
 		+'</div></a></div>')
 		.appendTo('#routelist');
     
