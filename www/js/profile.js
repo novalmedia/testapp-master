@@ -202,7 +202,7 @@
 			$('#place .fulltext').html(data.placefulltexten);
 			$('#person .authortext').html(data.persontexten);
 			alert(data.audioen);
-			if (data.audioen != null){
+			if (data.audioen != null && data.audioen != ''){
 				$('#story .downloada').click(function(){manageFile('http://miflamencoplace.com/media/k2/attachments/'+data.audioen, data.audioen )});
 				$('#story .playing').click(function(){stopAudio()});
 				isDownloadedFile(data.audioen);
@@ -214,7 +214,7 @@
 			$('#place .fulltext').html(data.placefulltext);
 			$('#person .authortext').html(data.persontext);
 			alert(data.audioes);
-			if (data.audioes != null){
+			if (data.audioes != null && data.audioes != ''){
 				$('#story .downloada').click(function(){manageFile('http://miflamencoplace.com/media/k2/attachments/'+data.audioes,data.audioes )});
 				$('#story .playing').click(function(){stopAudio()});
 				isDownloadedFile(data.audioes);
