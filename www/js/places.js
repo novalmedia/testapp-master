@@ -3,6 +3,7 @@
 	var userPosition;
 	var selectedDistance;
 	var markersArray = [];
+	var isUpdateNeeded = 0;
 	
 	var vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 	var bubw = 200;
@@ -238,7 +239,7 @@
 		if (!catid || catid == 'all'){
 			dbShell = window.openDatabase("miflamenkoplace", 1, "miflamenkoplace", 50000000);
 
-			dbShell.transaction(setupTable,dbErrorHandler,getEntries);
+			dbShell.transaction(setupTable,dbErrorHandler,checkUpdateNeeded);
 		} else {
 			getEntries(catid);
 		}
@@ -317,10 +318,13 @@
 
 	function setupTable(tx){
 
-	  	/* tx.executeSql("DROP TABLE places");
+	  	/* 
+		tx.executeSql("DROP TABLE places");
 		tx.executeSql("DROP TABLE people");
-		tx.executeSql("DROP TABLE routes");
-		tx.executeSql("DROP TABLE profiles");  */
+		tx.executeSql("DROP TABLE profiles");  
+		tx.executeSql("DROP TABLE config");
+		*/
+		tx.executeSql("CREATE TABLE IF NOT EXISTS config(id INTEGER PRIMARY KEY,name UNIQUE,value)");
 		tx.executeSql("CREATE TABLE IF NOT EXISTS places(id INTEGER PRIMARY KEY,catid INTEGER,itemid INTEGER UNIQUE,data)");
 		tx.executeSql("CREATE TABLE IF NOT EXISTS people(id INTEGER PRIMARY KEY,catid INTEGER,itemid INTEGER UNIQUE,data)");
 		tx.executeSql("CREATE TABLE IF NOT EXISTS profiles(id INTEGER PRIMARY KEY,itemid INTEGER UNIQUE,data)");
@@ -332,12 +336,13 @@
 	}
 
 	function getEntries(catid) {
-		dbShell.transaction(function(tx) {
-			if (!catid)
-				tx.executeSql("SELECT data FROM places",[],renderEntries,dbErrorHandler);
-			else 
-				tx.executeSql("SELECT data FROM places WHERE catid = ?",[ catid ],renderEntries,dbErrorHandler);
-		}, dbErrorHandler);
+			dbShell.transaction(function(tx) {
+				if (!catid)
+					tx.executeSql("SELECT data FROM places",[],renderEntries,dbErrorHandler);
+				else 
+					tx.executeSql("SELECT data FROM places WHERE catid = ?",[ catid ],renderEntries,dbErrorHandler);
+			}, dbErrorHandler);
+
 	}
 	
 	function getEntriesByDistance(distance, catid) {
@@ -355,6 +360,10 @@
 		if (results.rows.length == 0) {
 			
 			jQuery.getJSON( "http://miflamencoplace.com/rpc/get_places.php", function( data ) {
+			  
+			  dbShell.transaction(function(tx) {
+			  	tx.executeSql("INSERT OR REPLACE INTO config(name,value) values('lastupdate',?)",[Date.now()]);
+			  }, dbErrorHandler);
 			  jQuery.each( data, function( key, val ) {
 				addMarker(val,map);
 				savePlace(val);
@@ -408,4 +417,42 @@
 	}
 	function endLoading(){
 		$('#bigloading').remove();
+	}
+	
+	function checkUpdateNeeded(){
+		if (navigator.onLine){
+			jQuery.getJSON( "http://miflamencoplace.com/rpc/check-update.php", function( data ) {
+			  jQuery.each( data, function( key, modified ) {
+				  dbShell.transaction(function(tx) {
+					tx.executeSql("SELECT value FROM config WHERE name = 'lastupdate'",[],function(tx,results){
+						if (results.rows.length == 0) {
+						 dbShell.transaction(function(tx) {
+							tx.executeSql("INSERT OR REPLACE INTO config(name,value) values('lastupdate',?)",[Date.now()]);
+						  }, dbErrorHandler);
+							getEntries();
+						} else {
+							if (results.rows.item(0).value < modified){
+							
+							  jQuery.getJSON( "http://miflamencoplace.com/rpc/update_places.php?date="+isUpdateNeeded, function( data ) {
+								  jQuery.each( data, function( key, val ) {
+									savePlace(val);
+								  });
+								  dbShell.transaction(function(tx) {
+									tx.executeSql("INSERT OR REPLACE INTO config(name,value) values('lastupdate',?)",[Date.now()]);
+								  }, dbErrorHandler);
+								alert('Datos actualizados/Updated data');
+								  getEntries();
+							  });
+								
+							} else {
+								getEntries();
+							}
+						}
+					},dbErrorHandler);
+				  }, dbErrorHandler);
+			  });
+			});
+		} else {
+			getEntries();
+		}
 	}
