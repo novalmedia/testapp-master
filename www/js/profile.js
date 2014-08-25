@@ -409,6 +409,9 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 								//playAudio(theFile);
 							},
 							function(error) {
+							alert('file'+file);
+							alert('fp'+fp);
+								jQuery('#story .downloada').removeClass('loading');
 								alert("download error");
 								
 							}
