@@ -3,10 +3,19 @@ $(function() {
 	dbShell.transaction(function(tx) {
 		tx.executeSql("CREATE TABLE IF NOT EXISTS routes(id INTEGER PRIMARY KEY,itemid INTEGER UNIQUE,data)");
 	}, dbErrorHandler);
-	dbShell.transaction(function(tx) {
-				tx.executeSql("SELECT data FROM routes",[],renderEntries,dbErrorHandler);
+	if (navigator.onLine){
+		jQuery.getJSON( "http://miflamencoplace.com/rpc/get_routes.php?callback=jsonp1122334455", function( data ) {
+			jQuery.each( data, function( key, val ) {
+				addRoute(val);
+				saveRoute(val);
+			});
+		});
+	} else {
+		
+		dbShell.transaction(function(tx) {
+					tx.executeSql("SELECT data FROM routes",[],renderEntries,dbErrorHandler);
 		}, dbErrorHandler);
-	
+	}
 });
 
 function renderEntries(tx,results){

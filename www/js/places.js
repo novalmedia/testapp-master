@@ -362,7 +362,7 @@
 			jQuery.getJSON( "http://miflamencoplace.com/rpc/get_places.php", function( data ) {
 			  
 			  dbShell.transaction(function(tx) {
-			  	tx.executeSql("INSERT OR REPLACE INTO config(name,value) values('lastupdate',?)",[Date.now()]);
+			  	tx.executeSql("INSERT OR REPLACE INTO config(name,value) values('lastupdateplaces',?)",[Date.now()]);
 			  }, dbErrorHandler);
 			  jQuery.each( data, function( key, val ) {
 				addMarker(val,map);
@@ -421,24 +421,24 @@
 	
 	function checkUpdateNeeded(){
 		if (navigator.onLine){
-			jQuery.getJSON( "http://miflamencoplace.com/rpc/check-update.php", function( data ) {
+			jQuery.getJSON( "http://miflamencoplace.com/rpc/check-updateplaces.php", function( data ) {
 			  jQuery.each( data, function( key, modified ) {
 				  dbShell.transaction(function(tx) {
-					tx.executeSql("SELECT value FROM config WHERE name = 'lastupdate'",[],function(tx,results){
+					tx.executeSql("SELECT value FROM config WHERE name = 'lastupdateplaces'",[],function(tx,results){
 						if (results.rows.length == 0) {
 						 dbShell.transaction(function(tx) {
-							tx.executeSql("INSERT OR REPLACE INTO config(name,value) values('lastupdate',?)",[Date.now()]);
+							tx.executeSql("INSERT OR REPLACE INTO config(name,value) values('lastupdateplaces',?)",[Date.now()]);
 						  }, dbErrorHandler);
 							getEntries();
 						} else {
 							if (results.rows.item(0).value < modified){
-							
+								isUpdateNeeded = results.rows.item(0).value;
 							  jQuery.getJSON( "http://miflamencoplace.com/rpc/update_places.php?date="+isUpdateNeeded, function( data ) {
 								  jQuery.each( data, function( key, val ) {
 									savePlace(val);
 								  });
 								  dbShell.transaction(function(tx) {
-									tx.executeSql("INSERT OR REPLACE INTO config(name,value) values('lastupdate',?)",[Date.now()]);
+									tx.executeSql("INSERT OR REPLACE INTO config(name,value) values('lastupdateplaces',?)",[Date.now()]);
 								  }, dbErrorHandler);
 								alert('Datos actualizados/Updated data');
 								  getEntries();

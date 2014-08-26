@@ -4,15 +4,61 @@ $(function() {
 	dbShell.transaction(function(tx) {
 		tx.executeSql("CREATE TABLE IF NOT EXISTS people(id INTEGER PRIMARY KEY,catid INTEGER,itemid INTEGER UNIQUE,data)");
 	}, dbErrorHandler);
-	dbShell.transaction(function(tx) {
+	checkUpdateNeeded();
+});
+
+	function getEntries(){
+		dbShell.transaction(function(tx) {
 				tx.executeSql("SELECT data FROM people",[],renderEntries,dbErrorHandler);
 		}, dbErrorHandler);
+	}
+	
+	function checkUpdateNeeded(){
+		if (navigator.onLine){
+			jQuery.getJSON( "http://miflamencoplace.com/rpc/check-updatepeople.php", function( data ) {
+			  jQuery.each( data, function( key, modified ) {
+				  dbShell.transaction(function(tx) {
+					tx.executeSql("SELECT value FROM config WHERE name = 'lastupdatepeople'",[],function(tx,results){
+						if (results.rows.length == 0) {
+						 dbShell.transaction(function(tx) {
+							tx.executeSql("INSERT OR REPLACE INTO config(name,value) values('lastupdatepeople',?)",[Date.now()]);
+						  }, dbErrorHandler);
+							getEntries();
+						} else {
+							if (results.rows.item(0).value < modified){
+							  isUpdateNeeded = results.rows.item(0).value;
+							  jQuery.getJSON( "http://miflamencoplace.com/rpc/update_people.php?date="+isUpdateNeeded, function( data ) {
+								  jQuery.each( data, function( key, val ) {
+									saveThumb(val);
+								  });
+								  dbShell.transaction(function(tx) {
+									tx.executeSql("INSERT OR REPLACE INTO config(name,value) values('lastupdatepeople',?)",[Date.now()]);
+								  }, dbErrorHandler);
+								alert('Datos actualizados/Updated data');
+								  getEntries();
+							  });
+								
+							} else {
+								getEntries();
+							}
+						}
+					},dbErrorHandler);
+				  }, dbErrorHandler);
+			  });
+			});
+		} else {
+			getEntries();
+		}
+	}
 
-});
+
 function renderEntries(tx,results){
 
 	if (results.rows.length == 0) {
 		jQuery.getJSON( "http://miflamencoplace.com/rpc/get_people.php?callback=jsonp1122334455", function( data ) {
+			 dbShell.transaction(function(tx) {
+			  	tx.executeSql("INSERT OR REPLACE INTO config(name,value) values('lastupdatepeople',?)",[Date.now()]);
+			  }, dbErrorHandler);
 			jQuery.each( data, function( key, val ) {
 				addThumb(val);
 				saveThumb(val);
