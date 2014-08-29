@@ -32,14 +32,16 @@
 			   </div>
 		   </div>
 		<div id="place">
-			<div class="title"></div>
-			<div class="author"></div>
-			<div class="personface" onclick="showPerson(true);" ><div class="img"></div></div>
-			<div class="introtext"></div>
-			<div class="tostory" onclick="showStory(true);">
-				<img src="../img/headpw.png" />
+		<div id="placebg">
+				<div class="title"></div>
+				<div class="author"></div>
+				<div class="personface" onclick="showPerson(true);" ><div class="img"></div></div>
+				<div class="introtext"></div>
+				<div class="tostory" onclick="showStory(true);">
+					<img src="../img/headpw.png" />
+				</div>
+				<div class="social"></div>
 			</div>
-			<div class="social"></div>
 			<div class="fulltext"></div>
 			<div class="addressinfo">
 				<div class="street"></div>
@@ -53,7 +55,9 @@
 			</div>
 		</div>
 		<div id="person" style="display: none;">
-			<div class="persontitle"><span>Person</span><div class="authorname"></div></div>
+			<div id="personbg">
+				<div class="persontitle"><span>Person</span><div class="authorname"></div></div>
+			</div>
 			<div class="authortext"></div>
 			<div class="tops" >
 				<img class="toplace" src="" onclick="showPlace(true);" />
@@ -62,7 +66,7 @@
 		</div>
 		<div id="story"  style="display: none;">
 			<div class="left">
-				<span>Story</span>
+				<span>Story<img id="headphones" src="../img/headp.png"/></span>
 				<div class="placetitle"></div>
 				<div class="persontitle" onclick="showPerson(true);"></div>
 				<div class="icons"></div>
@@ -71,7 +75,8 @@
 				<div class="img placeimg" onclick="showPlace(true);"></div>
 			</div>
 			<div class="text">
-				<p>Sumérgete en este lugar descargándote la historia que nos cuenta <span class="authorname"></span>.</p>
+			
+				<p>Inmerse yourself in this place downloading the story that tell us <span class="authorname"></span>.</p>
 				<div class="download">
 					<a href="#" class="downloada"><span class="placetitle"><br></span><span class="persontitle"></span><span class="audio_position"></span></a>
 					<a href="#" class="playing"><span class="placetitle"><br></span><span class="persontitle"></span><span class="audio_position"></span></a>

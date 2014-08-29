@@ -17,6 +17,7 @@
 	var placeLatlng; 
 	var itemid = jQuery.getQuery('itemid');
 	var showTab = jQuery.getQuery('tab');
+	var history = [];
 	var styles = [
 							{
 								"elementType": "labels.icon",
@@ -190,7 +191,7 @@
 		}
 	}
 	function fillProfile(data){
-		$('#place').css('background',' url(../img/overlay.png) repeat,url('+data.img64+') no-repeat center top');
+		$('#placebg').css('background',' url(../img/overlay.png) repeat,url('+data.img64+') no-repeat center top');
 		$('#place .title').html('<span class="spacertit">&nbsp;</span>'+data.title+'<img src="../img/cat'+data.catid+'.png"/><img src="../img/cat'+data.personcatid+'.png"/>');
 		
 		$('#place .author').html('By '+data.personname);
@@ -204,7 +205,8 @@
 			if (data.audioen != null && data.audioen != ''){
 				$('#story .downloada').click(function(){manageFile('http://miflamencoplace.com/media/k2/attachments/'+data.audioen, data.audioen )});
 				$('#story .playing').click(function(){stopAudio()});
-				isDownloadedFile(data.audioen);
+				$('#headphones').click(function(){manageFile('http://miflamencoplace.com/media/k2/attachments/'+data.audioen, data.audioen )});
+				//isDownloadedFile(data.audioen);
 			}else{
 				$('#story .downloada').hide();
 			} 
@@ -215,19 +217,20 @@
 			if (data.audioes != null && data.audioes != ''){
 				$('#story .downloada').click(function(){manageFile('http://miflamencoplace.com/media/k2/attachments/'+data.audioes,data.audioes )});
 				$('#story .playing').click(function(){stopAudio()});
-				isDownloadedFile(data.audioes);
+				$('#headphones').click(function(){manageFile('http://miflamencoplace.com/media/k2/attachments/'+data.audioes, data.audioes )});
+				//isDownloadedFile(data.audioes);
 			}else{
 				$('#story .downloada').hide();
 			} 
 		}
-		$('#person').css('background','url('+data.personpicture64+') no-repeat center top');
+		$('#personbg').css('background','url('+data.personpicture64+') no-repeat center top');
 		$('#person .authorname').html(data.personname+'<img src="../img/cat'+data.catid+'.png"/><img src="../img/cat'+data.personcatid+'.png"/>');
 		var vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-		var sfx = (vpw > 1024)?'hd':'';
+		var sfx = (vpw > 1024)?'hd':((vpw < 400)?'l':'');
 		$('#person .toplace').attr('src','../img/markers/'+sfx+data.catid+'.png');
 		$('#story .placetitle').html(data.title);
 		$('#story .persontitle').html('By '+data.personname);
-		$('#story .icons').html('<img src="../img/headp.png"/><img src="../img/cat'+data.personcatid+'.png"/><img src="../img/cat'+data.catid+'.png"/>');
+		$('#story .icons').html('<img src="../img/cat'+data.personcatid+'.png"/><img src="../img/cat'+data.catid+'.png"/>');
 		$('#story .right .img').css('background-image',"url('"+data.img64+"')");
 		$('#story .authorname').html(data.personname);
 		$('#story #onyoutube').attr('href',data.onyoutube);
@@ -238,6 +241,8 @@
 			var mapOptions = { 
 				zoom: 17, 
 				disableDefaultUI: true,
+				draggable: false,
+				 zoomControl: true,
 				center: placeLatlng,
 				scrollwheel: false
 			}; 

@@ -14,7 +14,7 @@
 	  padding: 0,
 	  backgroundColor: 'rgba(0,0,0,0.8)',
 	  borderRadius: Math.floor(bubw+(bubw/3)),
-	  borderWidth: 6,
+	  borderWidth: 2,
 	  borderColor: '#fff',
 	  minWidth: bubw,
 	  minHeight: bubw,
@@ -32,7 +32,7 @@
 	
 		var viewportHeight = $(window).height();
 		var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-		var menuH = (viewportWidth > 1024)?465:166;
+		var menuH = (viewportWidth > 1024)?465:((viewportWidth < 400)?137:166);
 			 $('#map-canvas').height(viewportHeight-menuH);
 			 $('#app').height(viewportHeight);
 			 $('#menu').css('min-height',(viewportHeight-menuH+16)+'px');
@@ -43,6 +43,7 @@
 				var mapOptions = { 
 					zoom: mapZoom, 
 					disableDefaultUI: true,
+					draggable: true,
 					center: myLatlng 
 				}; 
 				map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions); 
@@ -174,7 +175,7 @@
 
 	
 	function addMarker(data,map) {
-			var sfx = (vpw > 1024)?'hd':'';
+			var sfx = (vpw > 1024)?'hd':((vpw < 400)?'l':'');
 		if (navigator.onLine){
 			placeLatlng = new google.maps.LatLng(data.lat, data.long);
 			var marker = new google.maps.Marker({ 
@@ -190,8 +191,9 @@
 				infowindow.setContent('<div class="dmk2maps_bubble_image" onclick="document.location.href=\'profile.html?itemid='+data.id+'\';"><img src="http://miflamencoplace.com/media/k2/items/cache/'+data.img+'"></div><a class="dmk2maps_bubble_title" href="profile.html?itemid='+data.id+'">'+data.title+'</a><span class="dmk2maps_bubble_author"> by '+data.personname+'</span><img onclick="document.location.href=\'profile.html?itemid='+data.id+'\';" class="dmk2maps_bubble_arrow" src="http://miflamencoplace.com/images/arrow'+data.catid+'.png">');
 				infowindow.open(map,marker);
 			});	
+			$('#map-canvas-list').append('<div class="placeEntry cat'+data.catid+'" onclick="document.location.href=\'profile.html?itemid='+data.id+'\';"><div class="img" style="background-image:url(\''+data.img64+'\');"></div><h3>'+data.title+'</h3><h4>'+data.personname+'</h4></div>');
 		} else {
-			$('#map-canvas').append('<div class="placeEntry cat'+data.catid+'" onclick="document.location.href=\'profile.html?itemid='+data.id+'\';"><div class="img" style="background-image:url(\''+data.img64+'\');"></div><h3>'+data.title+'</h3><h4>'+data.personname+'</h4></div>');
+			$('#map-canvas-list').append('<div class="placeEntry cat'+data.catid+'" onclick="document.location.href=\'profile.html?itemid='+data.id+'\';"><div class="img" style="background-image:url(\''+data.img64+'\');"></div><h3>'+data.title+'</h3><h4>'+data.personname+'</h4></div>');
 		}
 	}
 
@@ -357,6 +359,14 @@
 	function renderEntries(tx,results){
 			//console.log(results);
 		jQuery('.placeEntry').remove();
+		
+		if (!navigator.onLine){
+			jQuery('#map-canvas').hide();
+			jQuery('#map-canvas-list').show();
+			jQuery('a.switch').remove();
+			jQuery('a.showfilters').removeClass('showfilters');
+		}
+		
 		if (results.rows.length == 0) {
 			
 			jQuery.getJSON( "http://miflamencoplace.com/rpc/get_places.php", function( data ) {
@@ -455,4 +465,9 @@
 		} else {
 			getEntries();
 		}
+	}
+	function switchView()
+	{
+		jQuery('#map-canvas').toggle();
+		jQuery('#map-canvas-list').toggle();
 	}
