@@ -142,7 +142,7 @@
 	}			
 		
 	function dbErrorHandler(err){
-		alert("DB Error: "+err.message + "\nCode="+err.code);
+		//alert("DB Error: "+err.message + "\nCode="+err.code);
 	}
 	
 	function fillProfileNC(tx,results){
@@ -155,7 +155,7 @@
 					saveRoute(data);
 				});
 			}else {
-				alert('Error de conexión/Connection error');
+				modales('Error de conexión/Connection error');
 			}
 		} else {
 				jsondata = data = JSON.parse(results.rows.item(0).data);
@@ -350,11 +350,11 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 								//alert("download complete: " + theFile.toURI());
 								jQuery('.download.a'+id+' .downloada').removeClass('loading').addClass('pause');
 								setAudioPosition(0);
-								alert('Descarga completada/Download complete');
+								modales('Descarga completada/Download complete');
 								//playAudio(theFile);
 							},
 							function(error) {
-								alert("download error");
+								modales("download error");
 								
 							}
 						);
@@ -375,9 +375,9 @@ function onDirectorySuccess(parent) {
 
 function onDirectoryFail(error) {
     //Error while creating directory
-    alert("Error: " + error.code);
+    modales("Error: " + error.code);
 }
- function fail(error) { alert(error.code); } 
+ function fail(error) { modales(error.code); } 
 
  
  	var my_media = [];
@@ -453,8 +453,7 @@ function onSuccess() {
 // onError Callback 
 //
 function onError(error) {
-	alert('code: '    + error.code    + '\n' + 
-		  'message: ' + error.message + '\n');
+	
 }
 
 	function modales(text)
