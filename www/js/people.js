@@ -84,21 +84,25 @@ function addThumb(val){
 }
 
 	function filterMarkers(catid){
+		startLoading();
 		$('#mosaic').empty();
 		if (!catid || catid == 'all'){
 			jQuery.getJSON( "http://miflamencoplace.com/rpc/get_people.php", function( data ) {
 			  jQuery.each( data, function( key, val ) {
 				addThumb(val);
 			  });
+	  		endLoading();
 			});
 		} else {
 			jQuery.getJSON( "http://miflamencoplace.com/rpc/get_people.php?catid="+catid, function( data ) {
 			  jQuery.each( data, function( key, val ) {
 				addThumb(val);
 			  });
+			  endLoading();
 			});
 		}
 		toggleFilter();
+
 	}
 	
 	function toggleFilter(){
