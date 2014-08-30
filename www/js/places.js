@@ -29,7 +29,7 @@
 	});		
 	
 	function initMap() {
-		modales('Prueba modal');
+
 		var viewportHeight = $(window).height();
 		var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 		var menuH = (viewportWidth > 1024)?465:((viewportWidth < 400)?127:166);

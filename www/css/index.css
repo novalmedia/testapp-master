@@ -1917,7 +1917,7 @@ text-transform: none;
 		background: url(../img/logo_ministerio.png) no-repeat center bottom #fff;
 		-webkit-transition-duration: .25s; 
 		transition-duration: .25s; 
-		background-size: 600px 280px;
+		background-size: 600px auto;
 	}
 	#menu.open { 
 		-webkit-transform: translate3d(0, 0, 0); 

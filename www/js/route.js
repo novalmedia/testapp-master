@@ -126,6 +126,7 @@
 								]
 							  }
 							];
+	var deviceType = (navigator.userAgent.match(/iPad/i))  == "iPad" ? "iPad" : (navigator.userAgent.match(/iPhone/i))  == "iPhone" ? "iPhone" : (navigator.userAgent.match(/Android/i)) == "Android" ? "Android" : (navigator.userAgent.match(/BlackBerry/i)) == "BlackBerry" ? "BlackBerry" : "null";
 			
 	function initProfile() {
 	
@@ -267,12 +268,12 @@
 	var playlistes = new Array();
 	function isDownloadedFile(nameFile,title, id, markerId)
 	{
-		 	   /* $("#playlistes").append(
+		 	   /*  $("#playlistes").append(
 							'<div class="download a'+id+'">'
 							+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+', \''+markerId+'\');return false;" href="#" class="downloada pause"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position">0:00</span></a>'
 							+'<a onclick="stopAudio('+id+');return false;" href="#" class="playing"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position"></span></a>'
 							+'</div>');
-			return true;  */
+			return true;   */
 	 	   window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
 			function onFileSystemSuccess(fileSystem) {
 				var folderName = 'miflamencoplace'
@@ -314,6 +315,8 @@
 function manageFile(file, nameFile, id, markerId){
 /* google.maps.event.trigger(markers[markerId], 'click');
 return true; */
+if (deviceType == 'Android') {
+
 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
     function onFileSystemSuccess(fileSystem) {
 			var folderName = 'miflamencoplace'
@@ -361,6 +364,9 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 			
       
     }, onError);
+} else {
+	playAudio(file);
+}
 };
 function onDirectorySuccess(parent) {
     // Directory created successfuly
@@ -382,7 +388,11 @@ function onDirectoryFail(error) {
 		$('.download.a'+id+' .playing').css('display','table');
 		
 		if (my_media[id] == null) {
-			my_media[id] = new Media(src.toNativeURL(), onSuccess, onError);
+			if (deviceType == 'Android') {
+				my_media[id] = new Media(src.toNativeURL(), onSuccess, onError);
+			} else {
+				my_media[id] = new Media(src, onSuccess, onError);
+			}
 		}
 		for (k=0; k<=markersArray.length;k++) { 
 			if (k!=id)  stopAudio(k);
@@ -446,3 +456,8 @@ function onError(error) {
 	alert('code: '    + error.code    + '\n' + 
 		  'message: ' + error.message + '\n');
 }
+
+	function modales(text)
+	{
+		jQuery.modal('<p>'+text+'</p><a class="btnClose simplemodal-close" href="#">Cerrar/Close</a>',{overlayClose:true});
+	}
