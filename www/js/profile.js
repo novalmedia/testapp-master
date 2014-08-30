@@ -233,7 +233,8 @@
 		$('#story .icons').html('<img src="../img/cat'+data.personcatid+'.png"/><img src="../img/cat'+data.catid+'.png"/>');
 		$('#story .right .img').css('background-image',"url('"+data.img64+"')");
 		$('#story .authorname').html(data.personname);
-		$('#story #onyoutube').attr('href',data.onyoutube);
+		$('#video iframe').attr('src',data.onyoutube).css('height',(vpw/100)*56);
+		
 		if (navigator.onLine){
 		
 			var styledMap = new google.maps.StyledMapType(styles,{name: "Styled Map"});

@@ -32,7 +32,7 @@
 	
 		var viewportHeight = $(window).height();
 		var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-		var menuH = (viewportWidth > 1024)?465:((viewportWidth < 400)?137:166);
+		var menuH = (viewportWidth > 1024)?465:((viewportWidth < 400)?127:166);
 			 $('#map-canvas').height(viewportHeight-menuH);
 			 $('#app').height(viewportHeight);
 			 $('#menu').css('min-height',(viewportHeight-menuH+16)+'px');
@@ -292,8 +292,8 @@
 	// onError Callback receives a PositionError object
 	//
 	function onError(error) {
-		alert('code: '    + error.code    + '\n' +
-			  'message: ' + error.message + '\n');
+		/* alert('code: '    + error.code    + '\n' +
+			  'message: ' + error.message + '\n'); */
 	}
 /* 	function getUserPosition(){
 		navigator.geolocation.getCurrentPosition(onSuccess, onError);
@@ -334,7 +334,7 @@
 	}
 
 	function dbErrorHandler(err){
-		alert("DB Error: "+err.message + "\nCode="+err.code);
+		//alert("DB Error: "+err.message + "\nCode="+err.code);
 	}
 
 	function getEntries(catid) {

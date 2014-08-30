@@ -81,12 +81,16 @@
 					<a href="#" class="playing"><span class="placetitle"><br></span><span class="persontitle"></span><span class="audio_position"></span></a>
 				</div>
 				<div class="onyoutube">
-					<a id="onyoutube" href="" target="_blank">
+					<a id="onyoutube" href="#" onclick="jQuery('#video').addClass('open'); ">
 						<img src="../img/onyoutube.png" />
 						<span>¿Quieres ver el <strong>vídeo</strong><br>de esta <strong>historia</strong>?</span>
 					</a>
 				</div>
+				
 			</div>
+		</div>
+		<div id="video" onclick="jQuery('#video').removeClass('open'); ">
+			<iframe src="" width="100%" frameborder="0" allowfullscreen></iframe>
 		</div>
         </div>
 		<div id="menu">
