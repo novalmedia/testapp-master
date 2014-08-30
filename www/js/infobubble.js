@@ -37,7 +37,7 @@ function InfoBubble(opt_options) {
   this.extend(InfoBubble, google.maps.OverlayView);
   this.tabs_ = [];
   this.activeTab_ = null;
-  this.baseZIndex_ = 100;
+  this.baseZIndex_ = 99999;
   this.isOpen_ = false;
 
   var options = opt_options || {};

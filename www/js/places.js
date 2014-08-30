@@ -29,7 +29,7 @@
 	});		
 	
 	function initMap() {
-	
+		modales('Prueba modal');
 		var viewportHeight = $(window).height();
 		var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 		var menuH = (viewportWidth > 1024)?465:((viewportWidth < 400)?127:166);
@@ -278,7 +278,7 @@
 	};
 	function onGEOError(position) {
 		//var userPosition = position;
-		alert('Error geolocalizacion');
+		modales('Error geolocalizacion');
 	};
 	
 	function getAroundMe(distance){
@@ -450,7 +450,7 @@
 								  dbShell.transaction(function(tx) {
 									tx.executeSql("INSERT OR REPLACE INTO config(name,value) values('lastupdateplaces',?)",[Date.now()]);
 								  }, dbErrorHandler);
-								alert('Datos actualizados/Updated data');
+								modales('Datos actualizados/Updated data');
 								  getEntries();
 							  });
 								
@@ -470,4 +470,9 @@
 	{
 		jQuery('#map-canvas').toggle();
 		jQuery('#map-canvas-list').toggle();
+	}
+	
+	function modales(text)
+	{
+		jQuery.modal('<p>'+text+'</p><a class="btnClose simplemodal-close" href="#">Cerrar/Close</a>',{overlayClose:true});
 	}

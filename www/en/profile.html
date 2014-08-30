@@ -19,7 +19,7 @@
 				<div style="float: left;width: 33%;">
 					<div id="logo"></div>
 				</div>
-				<div style="float: left;width: 33%;" class="backto" onclick="history.go(-1);">
+				<div style="float: left;width: 33%;" class="backto" onclick="goBack();">
 					
 				</div>
 			</header>
@@ -82,12 +82,15 @@
 					<a href="#" class="playing"><span class="placetitle"><br></span><span class="persontitle"></span><span class="audio_position"></span></a>
 				</div>
 				<div class="onyoutube">
-					<a id="onyoutube" href="" target="_blank">
+					<a id="onyoutube" href="#" onclick="jQuery('#video').addClass('open'); ">
 						<img src="../img/onyoutube.png" />
 						<span>¿Quieres ver el <strong>vídeo</strong><br>de esta <strong>historia</strong>?</span>
 					</a>
 				</div>
 			</div>
+		</div>
+		<div id="video" onclick="jQuery('#video').removeClass('open'); ">
+			<iframe src="" width="100%" frameborder="0" allowfullscreen></iframe>
 		</div>
         </div>
 		<div id="menu">
@@ -110,6 +113,7 @@
 		<script type="text/javascript" 	src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=true&amp;libraries=geometry"></script>
 		<script src="../js/jquery.min.js" type="text/javascript"></script>
         <script type="text/javascript" src="../js/swiper.min.js"></script>
+		<script src="../js/jquery.simplemodal.js" type="text/javascript"></script>
         <script type="text/javascript" src="../js/profile.js"></script>
         <script type="text/javascript">
            // app.initialize();

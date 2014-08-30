@@ -2,13 +2,13 @@
 	var myLatlng; 
 	var markers = [];
 	
-	var bubw =200;
+	var bubw =150;
 	var vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-	if (parseInt(vpw) > 400) bubw = 250;
-	if (parseInt(vpw) > 1024) bubw = 650;
+	if (parseInt(vpw) > 400) bubw = 200;
+	if (parseInt(vpw) > 1024) bubw = 500;
 	var infowindows = new InfoBubble({
 							shadowStyle: 0,padding: 0,backgroundColor: 'rgba(0,0,0,0.8)',borderRadius: Math.floor(bubw+(bubw/3)),borderWidth: 6,
-							borderColor: '#fff',minWidth: bubw/1.2,minHeight: bubw/2.8,maxWidth: bubw/1.25,maxHeight: bubw/2.8,disableAutoPan: false,
+							borderColor: '#fff',minWidth: bubw,minHeight: bubw,maxWidth: bubw,maxHeight: bubw,disableAutoPan: false,
 							hideCloseButton: false,backgroundClassName: 'phoney',arrowSize: 5,arrowPosition: 10,arrowStyle: 3
 						});	
 		var styles = [
@@ -221,6 +221,7 @@
 					
 					
 					new google.maps.event.addListener(markers[i], "click", function(){
+						map.setZoom(20);
 						infowindows.close();
 						infowindows.setContent('<a class="dmk2maps_bubble_title" href="profile.html?itemid='+this.item.id+'">'+this.item.title+'</a><img onclick="document.location.href=\'profile.html?itemid='+this.item.id+'\';" class="dmk2maps_bubble_arrow" src="http://miflamencoplace.com/images/arrow'+this.item.catid+'.png">');
 						infowindows.open(map,this);
@@ -229,6 +230,9 @@
 					map.fitBounds(bounds);
 				}
 		}
+		playlistes.sort();
+		playlistes.reverse();
+		while(playlistes.length > 0) {$("#playlistes").append(playlistes.push());}
 
 	}
 	
@@ -260,15 +264,15 @@
     };
 })(jQuery);
 
-
+	var playlistes = new Array();
 	function isDownloadedFile(nameFile,title, id, markerId)
 	{
-		 	   $("#playlistes").append(
+		 	   /* $("#playlistes").append(
 							'<div class="download a'+id+'">'
 							+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+', \''+markerId+'\');return false;" href="#" class="downloada pause"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position">0:00</span></a>'
 							+'<a onclick="stopAudio('+id+');return false;" href="#" class="playing"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position"></span></a>'
 							+'</div>');
-			return true; 
+			return true;  */
 	 	   window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
 			function onFileSystemSuccess(fileSystem) {
 				var folderName = 'miflamencoplace'
@@ -285,19 +289,21 @@
 						
 						if (entries[i].name == nameFile){
 							found = true;
-							$("#playlistes").append(
+							playlistes[id] =
+							//$("#playlistes").append(
 							'<div class="download a'+id+'">'
 							+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+', \''+markerId+'\');return false;" href="#" class="downloada pause"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position">0:00</span></a>'
 							+'<a onclick="stopAudio('+id+');return false;" href="#" class="playing"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position"></span></a>'
-							+'</div>');
+							+'</div>';
 						}
 					}
 					if (!found)
-						$("#playlistes").append(
+						playlistes[id] =
+//						$("#playlistes").append(
 						'<div class="download a'+id+'">'
 						+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+', \''+markerId+'\');return false;" href="#" class="downloada"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position"></span></a>'
 						+'<a onclick="stopAudio('+id+');return false;" href="#" class="playing"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position"></span></a>'
-						+'</div>');
+						+'</div>';
 						
 				}
 			},
@@ -374,8 +380,12 @@ function onDirectoryFail(error) {
 	function playAudio(src, id) {
 		$('.download.a'+id+' .downloada').css('display','none');
 		$('.download.a'+id+' .playing').css('display','table');
+		
 		if (my_media[id] == null) {
 			my_media[id] = new Media(src.toNativeURL(), onSuccess, onError);
+		}
+		for (k=0; k<=markersArray.length;k++) { 
+			if (k!=id)  stopAudio(k);
 		}
 		my_media[id].play();
 		

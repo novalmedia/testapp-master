@@ -56,6 +56,19 @@ body {
     transform: translate3d(0, 0, 0); 
 }
 
+
+/* Overlay */
+#simplemodal-overlay {background-color:#000;}
+
+/* Container */
+#simplemodal-container {height:360px; width:600px; color:#bbb; background-color:#333; border:4px solid #444; padding:12px;}
+#simplemodal-container .simplemodal-data {padding:8px;text-align: center;font-family: 'Lato';}
+#simplemodal-container a {color:#ddd;text-decoration: none; text-transform: none;font-family: 'Merriweather';}
+#simplemodal-container a.modalCloseImg {background:url(../img/basic/x.png) no-repeat; width:25px; height:29px; display:inline; z-index:3200; position:absolute; top:-15px; right:-16px; cursor:pointer;}
+#simplemodal-container h3 {color:#84b8d9;}
+
+
+
 #bigloading{
 	position: absolute; 
     top: 0; 
@@ -1758,8 +1771,8 @@ font-family: 'Merriweather';
 font-size: 15px;
 font-weight: bold;
 color: #fff;
-width: 200px;
-margin: 14px auto -5px;
+width: 160px;
+margin: 80px auto -5px;
 display: block;
 text-align: center;
 line-height: 14px;
@@ -1818,6 +1831,7 @@ text-transform: none;
 
 
 	h1 {
+		font-family: 'Merriweather';
 		position: relative;
 		width: 960px;
 	margin: 100px auto;
@@ -1827,7 +1841,7 @@ text-transform: none;
 		overflow:visible;
 		padding:0px;
 		text-align:center;
-		text-transform: uppercase;
+		text-transform: none;
 	}
 
 	h1 span{color: #d1d1d1;}
@@ -1864,13 +1878,14 @@ text-transform: none;
 	.route .dmk2maps_bubble_title {
 	font-family: 'Merriweather';
 	font-size: 42px;
+	
 	font-weight: bold;
 	color: #fff;
-	width: 500px;
-	margin: 42px auto 18px;
+	width: 450px;
+	margin: 150px auto 18px;
 	display: block;
 	text-align: center;
-	line-height: 14px;
+	line-height: 40px;
 	text-decoration: none;
 	text-transform: none;
 	}
@@ -1910,16 +1925,17 @@ text-transform: none;
 		box-shadow: 5px 0 10px #999;
 	}
 
-	#menu > a{display: block;width: 100%;line-height: 220px;font-size: 80px; font-family: 'Merriweather'; color: #787878;text-transform: none;font-weight: bold;
+	#menu > a{display: block;width: 100%;line-height: 220px;font-size: 60px; font-family: 'Merriweather'; color: #787878;text-transform: none;font-weight: bold;
 	text-decoration: none;background: url(../img/filteropts_bg.jpg) repeat 0 0;border-bottom: 2px dotted #d9d9d9;  }
 	#menu > a span{padding: 0 0 0 88px;}
-	#menu > a.close {line-height: 280px;background: #fff;color: #959595; font-family: 'Lato'; font-style: italic;font-size: 80px;}
+	#menu > a.close {line-height: 280px;background: #fff;color: #959595; font-family: 'Lato'; font-style: italic;
+	font-size: 60px;}
 
 	#menu .rrss {width: 100%; float: left; text-align: center;padding: 120px 0;}
 	#menu .rrss a{margin: 0 72px;}
 	#menu .rrss a img{width: 100px;height: 100px;}
 	#menu .links {width: 100%; float: left; text-align: center;padding: 140px 0;}
-	#menu .links a{padding: 0 80px;font-size: 56px; font-family: 'Lato'; color: #787878; text-decoration: none;}
+	#menu .links a{padding: 0 80px;font-size: 46px; font-family: 'Lato'; color: #787878; text-decoration: none;}
 	#menu .links a:first-child {border-right: 2px solid #dddcdd;}
 
 	header {height: 240px; background:#fff; width: 100%;border-bottom: 2px dashed #d8d8d8;display: flex;}
@@ -1956,7 +1972,7 @@ text-transform: none;
 	body.places #filter {position: relative;float: left;height: 225px; width: 100%;
 	background:  url(../img/filter_arrow.png) no-repeat right center,url(../img/filter_bg.jpg) repeat 0 0; background-size: 100px 52px, auto auto;}
 	body.places #filter.open {background: url(../img/filter_bg.jpg) repeat 0 0;}
-	body.places #filter > a {color: #000;text-decoration: none;display: block;font-family: 'Merriweather'; font-size: 72px; font-weight: bold;
+	body.places #filter > a {color: #000;text-decoration: none;display: block;font-family: 'Merriweather'; font-size: 60px; font-weight: bold;
 	font-style:italic;text-transform: none;width: 100%;line-height: 195px;height: 195px;float: left;}
 	body.places #filter > a span {padding: 0 0 0 66px;}
 	
@@ -1982,7 +1998,7 @@ text-transform: none;
 		body.profile #filter {position: relative;float: left;height: 225px; width: 100%;
 	background:  url(../img/filter_arrow.png) no-repeat right center,url(../img/filter_bg.jpg) repeat 0 0; background-size: 100px 52px, auto auto;}
 	body.profile #filter.open {background: url(../img/filter_bg.jpg) repeat 0 0;}
-	body.profile #filter > a {color: #000;text-decoration: none;display: block;font-family: 'Merriweather'; font-size: 72px; font-weight: bold;
+	body.profile #filter > a {color: #000;text-decoration: none;display: block;font-family: 'Merriweather'; font-size: 60px; font-weight: bold;
 	font-style:italic;text-transform: none;width: 100%;line-height: 195px;}
 	body.profile #filter > a span {padding: 0 0 0 66px;}
 
@@ -2093,7 +2109,7 @@ text-transform: none;
 	body.people #filter {position: relative;float: left;height: 225px; width: 100%;
 	background:  url(../img/filter_arrow.png) no-repeat right center,url(../img/filter_bg.jpg) repeat 0 0; background-size: 100px 52px, auto auto;}
 	body.people #filter.open {background: url(../img/filter_bg.jpg) repeat 0 0;}
-	body.people #filter > a {color: #000;text-decoration: none;display: block;font-family: 'Merriweather'; font-size: 72px; font-weight: bold;
+	body.people #filter > a {color: #000;text-decoration: none;display: block;font-family: 'Merriweather'; font-size: 60px; font-weight: bold;
 	font-style:italic;text-transform: none;width: 100%;line-height: 195px;}
 	body.people #filter > a span {padding: 0 0 0 66px;}
 
@@ -2158,9 +2174,9 @@ text-transform: none;
 	body.stories .route img{float: left; width: 50%;min-height: 420px;}
 	body.stories .route .routedata{float: left; width: 50%;position:relative;min-height: 420px;}
 	body.stories .route span{width: 90%;float: left; text-transform: none;padding-left: 39px;line-height: 60px;}
-	body.stories .route span.title{font-family: 'Merriweather'; color: #fff;font-size: 64px; font-weight: bold;margin-top: 39px;}
+	body.stories .route span.title{font-family: 'Merriweather'; color: #fff;font-size: 54px; font-weight: bold;margin-top: 39px;}
 	body.stories .route span.subtitle{font-family: 'Lato'; color: #d1d1d1;font-size: 48px; font-style: italic;}
-	body.stories .route span.linkroute{width: 340px;font-family: 'Lato'; color: #ffffff;font-size: 54px;font-weight: bold;position: absolute;
+	body.stories .route span.linkroute{width: 340px;font-family: 'Lato'; color: #ffffff;font-size: 44px;font-weight: bold;position: absolute;
 	bottom: 90px;left: 24px;background: url(../img/right-arrow.png) no-repeat right center;background-size: 60px auto;}
 
 	/* ROUTE */
@@ -2172,9 +2188,10 @@ text-transform: none;
 	body.route h2 {width: 50%;font-family:'Merriweather';color:#959595;font-size: 58px;font-style: normal;text-transform: none;float:left;}
 	body.route .title {width: 50%;font-family:'Merriweather';color:#ffffff;font-size: 62px;font-style: normal;text-transform: none;float:left;}
 	body.route .subtitle {width: 50%;font-family:'Lato';color:#d1d1d1;font-size: 62px;font-style: italic;text-transform: none;float:left;}
-	body.route .introtext {float:left;width:100%;clear: both;font-family:'Lato';color:#959595;font-size: 62px;font-style: normal;text-transform: none;margin: 20px 0 10px 0;}
+	body.route .introtext {float:left;width:100%;clear: both;font-family:'Lato';color:#959595;font-size: 52px;font-style: normal;text-transform: none;margin: 20px 0 10px 0;}
 
-	body.route .downloadtip {width:90%;margin: 0 auto;padding: 60px 0;clear: both;font-family:'Lato';color:#959595;font-size: 62px;font-style: normal;text-transform: none;}
+	body.route .downloadtip {width:90%;margin: 0 auto;padding: 60px 0;clear: both;font-family:'Lato';color:#959595;
+	font-size: 50px;font-style: normal;text-transform: none;}
 	body.route .audio{width: 90%; margin: 0 auto; padding-left: 60px;border: 2px solid #d3d3d3; background: url(../img/download_arrow.png) no-repeat right center, url(../img/filter_bg.jpg) repeat 0 0;
 	display: block; font-family: 'Lato';font-size: 42px;color: #787878;text-transform: uppercase;line-height: 150px;text-decoration: none;background-size: 100px auto;}
 	body.route  #map-canvas{width:100%; height:700px; float: left;clear: both; } 

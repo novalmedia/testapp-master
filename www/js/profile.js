@@ -17,7 +17,7 @@
 	var placeLatlng; 
 	var itemid = jQuery.getQuery('itemid');
 	var showTab = jQuery.getQuery('tab');
-	var history = [];
+	var historyPages = [];
 	var styles = [
 							{
 								"elementType": "labels.icon",
@@ -148,18 +148,20 @@
 					tx.executeSql("SELECT data FROM profiles WHERE itemid = ? ",[itemid],fillProfileNC,dbErrorHandler);
 				}, dbErrorHandler);
 
-
-			switch(showTab){
-				case 'person':
-					showPerson(true);
-					break;
-				case 'story':
-					showStory(true);
-					break;
-				case 'place':
-				default:
-					showPlace(true);
-					break;
+			if (showTab){
+				switch(showTab){
+					case 'person':
+						showPerson(true);
+						break;
+					case 'story':
+						showStory(true);
+						break;
+					case 'place':
+						showPlace(true);
+						break;
+				}
+			} else {
+				showPlace(true);
 			}
 	}			
 	
@@ -180,7 +182,7 @@
 						endLoading();	  
 					});
 			} else {
-				alert('Error de conexión/Connection error');
+				modales('Error de conexión/Connection error');
 				endLoading();	  
 			}
 		
@@ -206,7 +208,7 @@
 				$('#story .downloada').click(function(){manageFile('http://miflamencoplace.com/media/k2/attachments/'+data.audioen, data.audioen )});
 				$('#story .playing').click(function(){stopAudio()});
 				$('#headphones').click(function(){manageFile('http://miflamencoplace.com/media/k2/attachments/'+data.audioen, data.audioen )});
-				//isDownloadedFile(data.audioen);
+				isDownloadedFile(data.audioen);
 			}else{
 				$('#story .downloada').hide();
 			} 
@@ -218,7 +220,7 @@
 				$('#story .downloada').click(function(){manageFile('http://miflamencoplace.com/media/k2/attachments/'+data.audioes,data.audioes )});
 				$('#story .playing').click(function(){stopAudio()});
 				$('#headphones').click(function(){manageFile('http://miflamencoplace.com/media/k2/attachments/'+data.audioes, data.audioes )});
-				//isDownloadedFile(data.audioes);
+				isDownloadedFile(data.audioes);
 			}else{
 				$('#story .downloada').hide();
 			} 
@@ -264,12 +266,20 @@
 				galContent += '<div class="swiper-slide"><img width="115" src="'+galpic+'" /></div>';
 			});
 			$('#place .gallery .swiper-wrapper').html(galContent);
-				if (showTab == '' || showTab == 'place') {
-					  var mySwiper = $('#place .gallery').swiper({
+				 if (showTab == '' || showTab == 'place') {
+				jQuery('#place .gallery').show();
+				var mySwiper = $('#place .gallery').swiper({
 						mode:'horizontal',
+						calculateHeight: true,
 						loop: true
-					  }); 
-			  }
+				 }); 
+				 jQuery('#place').height(
+					jQuery('#place .fulltext').height()+
+					jQuery('#place .addressinfo').height()+
+					jQuery('#map-canvas').height()+
+					jQuery('#place .gallery').height()
+					);
+			  } 
 		} else {
 			$('#place .gallery').remove();
 			$('#map-canvas').remove();
@@ -306,23 +316,37 @@
 		
 		jQuery('#person').fadeOut('fast');
 		jQuery('#story').fadeOut('fast');
-		jQuery('#place').fadeIn('slow');
+		jQuery('#place').fadeIn('fast', function(){
+ 			if (showTab == 'person' || showTab == 'story') { 
+				jQuery('#place .gallery').show();
+				var mySwiper = $('#place .gallery').swiper({
+						mode:'horizontal',
+						calculateHeight: true,
+						loop: true
+				 }); 
+				 jQuery('#place').height(
+					jQuery('#place .fulltext').height()+
+					jQuery('#place .addressinfo').height()+
+					jQuery('#map-canvas').height()+
+					jQuery('#place .gallery').height()
+					);
+			} 
+		
+		});
 		jQuery('#filteropts a').show();
 		jQuery('#filteropts .place').hide();
-		
+		historyPages.push('place');
+	
 		if (!open){
 			toggleFilter();
 		}
 		if (showTab == 'person' || showTab == 'story') {
-		var mySwiper = $('#place .gallery').swiper({
-						mode:'horizontal',
-						loop: true
-					  }); 
+			if (navigator.onLine){
+				var center = map.getCenter(); 
+				google.maps.event.trigger(map, 'resize'); 
+				map.setCenter(center); 
+			}
 		}
-		var center = map.getCenter(); 
-		google.maps.event.trigger(map, 'resize'); 
-		map.setCenter(center); 
-		
 		return false;
 	}
 	function showPerson(open){
@@ -335,6 +359,7 @@
 		if (!open){
 			toggleFilter();
 		}
+		historyPages.push('person');
 		return false;
 	}
 	function showStory(open){
@@ -347,9 +372,31 @@
 		if (!open){
 			toggleFilter();
 		}
+		historyPages.push('story');
 		return false;
 	}
 	
+	function goBack()
+	{
+		if (historyPages.length <= 1){
+			history.go(-1);
+		} else {
+			historyPages.pop();
+			section = historyPages.pop();
+			switch(section){
+				case 'story':
+					showStory(true);
+					break;
+				case 'person':
+					showPerson(true);
+					break;
+				case 'place':
+				default:
+					showPlace(true);
+					break;
+			}
+		}
+	}
 	
 	function isDownloadedFile(nameFile)
 	{
@@ -411,14 +458,14 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 								//alert("download complete: " + theFile.toURI());
 								jQuery('#story .downloada').removeClass('loading').addClass('pause');
 								setAudioPosition(0);
-								alert('Descarga completada/Download complete');
+								modales('Descarga completada/Download complete');
 								//playAudio(theFile);
 							},
 							function(error) {
-							alert('file'+file);
-							alert('fp'+fp);
+							/* alert('file'+file);
+							alert('fp'+fp); */
 								jQuery('#story .downloada').removeClass('loading');
-								alert("download error");
+								modales("Download error");
 								
 							}
 						);
@@ -433,7 +480,7 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 
 function onDirectoryFail(error) {
     //Error while creating directory
-    alert("Error: " + error.code);
+    modales("Error 10F");
 }
 
 
@@ -503,8 +550,8 @@ function onSuccess() {
 //
 function fail(){}
 function onError(error) {
-	alert('code: '    + error.code    + '\n' + 
-		  'message: ' + error.message + '\n');
+	/* alert('code: '    + error.code    + '\n' + 
+		  'message: ' + error.message + '\n'); */
 }
 
 
@@ -523,4 +570,9 @@ function onError(error) {
 			tx.executeSql("INSERT OR REPLACE INTO profiles(itemid,data) values(?,?)",[itemid,jsonData]);
 		}, dbErrorHandler);
 		
+	}
+	
+	function modales(text)
+	{
+		jQuery.modal('<p>'+text+'</p><a class="btnClose simplemodal-close" href="#">Cerrar/Close</a>',{overlayClose:true});
 	}
