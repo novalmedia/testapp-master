@@ -241,7 +241,9 @@ header {height: 90px; background:#fff; width: 100%;border-bottom: 1px dashed #d8
 
 body.places #aroundme {background: url(../img/aroundme.png);width:26px;height: 26px;float: right;margin: 31px 22px 0 0;}
 body.places #map-canvas{width:100%; height:674px; float: left;clear: both; } 
-body.places #map-canvas-list{width:100%; float: left;clear: both; display: none;} 
+body.places #map-canvas-list{width:100%; float: left;clear: both; display: none;
+background-image: url(../img/bg_list.jpg); background-size: 100% auto; background-position: top center;background-repeat: no-repeat;
+} 
 body.places #filter {position: relative;float: left;height: 75px; width: 100%;background:  url(../img/filter_arrow.png) no-repeat right center,url(../img/filter_bg.jpg) repeat 0 0;}
 body.places #filter.open {background: url(../img/filter_bg.jpg) repeat 0 0;}
 body.places #filter > a {color: #000;text-decoration: none;display: block;font-family: 'Merriweather'; font-size: 24px; font-weight: bold;font-style:italic;text-transform: none;width: 100%;
@@ -540,9 +542,9 @@ div.placeEntry {
 
 div.placeEntry  .img{
 margin-left: 20px;
-width: 140px;
-height: 140px;
-border: 6px solid #d4d1d1;
+width: 100px;
+height: 100px;
+border: 2px solid #d4d1d1;
 border-top-left-radius: 150px;
 border-top-right-radius: 150px;
 border-bottom-left-radius: 150px;
@@ -558,7 +560,7 @@ font-family: 'Merriweather';
 font-size: 21px;
 font-weight: bold;
 color: #fff;
-width: 290px;
+width: 330px;
 margin: 14px auto;
 display: block;
 text-align: center;
@@ -569,12 +571,13 @@ text-transform: none;
 
 div.placeEntry  h4{
 display: block;
-width: 290px;
+width: 330px;
 text-align: center;
 margin: 0 auto;
 font-family: 'Lato';
 font-size: 21px;
 font-weight: bold;
+font-style: italic;
 color: #959595;
 text-transform: none;
 }
@@ -1104,9 +1107,9 @@ background-size: 25px auto, auto auto;	}
 
 	div.placeEntry  .img{
 	margin-left: 20px;
-	width: 140px;
-	height: 140px;
-	border: 6px solid #d4d1d1;
+	width: 100px;
+	height: 100px;
+	border: 2px solid #d4d1d1;
 	border-top-left-radius: 150px;
 	border-top-right-radius: 150px;
 	border-bottom-left-radius: 150px;
@@ -1122,7 +1125,7 @@ background-size: 25px auto, auto auto;	}
 	font-size: 21px;
 	font-weight: bold;
 	color: #fff;
-	width: 290px;
+	width: 320px;
 	margin: 14px auto;
 	display: block;
 	text-align: center;
@@ -1133,12 +1136,13 @@ background-size: 25px auto, auto auto;	}
 
 	div.placeEntry  h4{
 	display: block;
-	width: 290px;
+	width: 320px;
 	text-align: center;
 	margin: 0 auto;
 	font-family: 'Lato';
 	font-size: 21px;
 	font-weight: bold;
+	font-style: italic;
 	color: #959595;
 	text-transform: none;
 	}
@@ -1639,8 +1643,8 @@ background-size: 25px auto, auto auto;	}
 	div.placeEntry  .img{
 	margin-left: 20px;
 	margin-right: 20px;
-	width: 100px;
-	height: 100px;
+	width: 70px;
+	height: 70px;
 	border: 2px solid #d4d1d1;
 	border-top-left-radius: 150px;
 	border-top-right-radius: 150px;
@@ -1658,7 +1662,7 @@ background-size: 25px auto, auto auto;	}
 	font-size: 16px;
 	font-weight: bold;
 	color: #fff;
-	width: 120px;
+	width: 150px;
 	margin: 7px auto;
 	display: block;
 	line-height: 18px;
@@ -1670,7 +1674,7 @@ background-size: 25px auto, auto auto;	}
 
 	div.placeEntry  h4{
 	display: block;
-	width: 120px;
+	width: 150px;
 	margin: 0 auto;
 	font-family: 'Lato';
 	font-size: 14px;
@@ -2260,9 +2264,9 @@ div.placeEntry {
 
 div.placeEntry  .img{
 margin: 20px 40px;
-width: 290px;
-height: 290px;
-border: 6px solid #d4d1d1;
+width: 170px;
+height: 170px;
+border: 2px solid #d4d1d1;
 border-top-left-radius: 300px;
 border-top-right-radius: 300px;
 border-bottom-left-radius: 300px;
@@ -2274,7 +2278,7 @@ float: left;
 }
 div.placeEntry  h3{
 font-size: 50px;
-width: 475px;
+width: 595px;
 margin: 34px auto;
 line-height: 55px;
 float: left;
@@ -2282,7 +2286,7 @@ text-align: left;
 }
 
 div.placeEntry  h4{
-width: 475px;
+width: 595px;
 font-size: 48px;
 line-height: 40px;
 float: left;
