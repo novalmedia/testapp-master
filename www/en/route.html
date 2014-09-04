@@ -31,11 +31,12 @@
 			<div class="introtext"></div>
 		</div>
 		<div id="subroute">
-			<div id="map-canvas"></div>
+			<div id="map-container">
+				<div id="map-canvas"></div>
+			</div>
+			<a href="#" onclick="fullMap();" class="viewfull">View in fullscreen</a>
 			<div class="downloadtip">Inmerse yourself in this <strong> Route </strong> and enjoy the ride that we propose you by downloading the audio guide that gathers all the stories of this itinerary.</div>
-			 <div id="playlistes">
-	        
-	   </div>
+			 <div id="playlistes"></div>
 		</div>
 
 
@@ -55,6 +56,10 @@
 				<a href="contact.html">CONTACT</a>
 			</div>
 			<a href="#" onclick="openURL('http://surnames.com.es/');return false;" class="surnames"></a>
+		</div>
+		<div id="map-container2">
+			<div class="map-controls"><a href="#" onclick="normalMap();">Back to route</a></div>
+			<div id="map-canvas2"></div>
 		</div>
        <script type="text/javascript" src="../phonegap.js"></script>
         <script type="text/javascript" src="../js/fastclick.js"></script>

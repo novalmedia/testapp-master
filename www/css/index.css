@@ -214,7 +214,6 @@ text-decoration: none;background: url(../img/filteropts_bg.jpg) repeat 0 0;borde
 	padding-bottom: 350px;
     -webkit-transform: translate3d(100%, 0, 0); 
     transform: translate3d(100%, 0, 0); 
-	background: url(../img/logo_ministerio.png) no-repeat center bottom #fff;
 	-webkit-transition-duration: .25s; 
     transition-duration: .25s; 
 	display: none;
@@ -339,6 +338,7 @@ body.profile #person .persontitle .authorname{padding-left: 20px;font-family: 'M
 body.profile #person .persontitle .authorname img {float: right;width: 25px;margin: 7px 5px 0 5px;}
 body.profile #person .authortext {font-family: 'Lato'; font-size: 21px;color: #bcbcbc;text-transform: none;background: #1b1b1b;}
 body.profile #person .authortext p{padding: 40px 20px;margin-top: 0;}
+body.profile #person .authortext a{display:none;}
 body.profile #person .tops {padding: 40px 20px;float: left;}
 body.profile #person .tops img{float: left;margin-right: 10px;height:60px;}
 
@@ -762,7 +762,6 @@ text-transform: none;
 		padding-bottom: 150px;
 		-webkit-transform: translate3d(100%, 0, 0); 
 		transform: translate3d(100%, 0, 0); 
-		background: url(../img/logo_ministerio.png) no-repeat center bottom #fff;
 		-webkit-transition-duration: .25s; 
 		transition-duration: .25s; 
 		display: none;
@@ -1334,7 +1333,6 @@ background-size: 25px auto, auto auto;	}
 		padding-bottom: 350px;
 		-webkit-transform: translate3d(100%, 0, 0); 
 		transform: translate3d(100%, 0, 0); 
-		background: url(../img/logo_ministerio.png) no-repeat center bottom #fff;
 		-webkit-transition-duration: .25s; 
 		transition-duration: .25s; 
 		display: none;

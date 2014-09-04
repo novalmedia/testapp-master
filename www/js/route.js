@@ -176,7 +176,7 @@
 				modales('Error de conexión/Connection error');
 			}
 		} else {
-				jsondata = data = JSON.parse(results.rows.item(0).data);
+			jsondata = data = JSON.parse(results.rows.item(0).data);
 			if (navigator.onLine){
 				fillProfile(jsondata);
 			} else {
@@ -228,6 +228,7 @@
 		var ien = 1;
 		for (i=0;i<data.routeitems.length;i++){
 				item = data.routeitems[i];
+				console.log(item);
 				if (item.audioes != '' && langid == 'es') {
 					isDownloadedFile(item.audioes,item.title, ies++, i);
 				}
