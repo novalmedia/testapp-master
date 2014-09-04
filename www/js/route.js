@@ -374,7 +374,7 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
     }, onError);
 } else {
 	google.maps.event.trigger(markers[markerId], 'click');
-	playAudio(file);
+	playAudio(file, id);
 }
 };
 function onDirectorySuccess(parent) {
