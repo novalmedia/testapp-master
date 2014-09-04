@@ -104,12 +104,6 @@
 								  { "color": "#565656" }
 								]
 							  },{
-								
-								"elementType": "labels.text.stroke",
-								"stylers": [
-								  { "color": "#111111" }
-								]
-							  },{
 								"featureType": "administrative",
 								"elementType": "labels.text.stroke",
 								"stylers": [
@@ -127,7 +121,19 @@
 								"stylers": [
 								  { "visibility": "off" }
 								]
-							  }
+							  },{
+								
+								"elementType": "labels.text.stroke",
+								"stylers": [
+								  { "color": "#111111" }
+								]
+							  },{
+								
+								"elementType": "labels.text.fill",
+								"stylers": [
+								  { "color": "#cccccc" }
+								]
+							  },
 							];
 	//var deviceType = (navigator.userAgent.match(/iPad/i))  == "iPad" ? "iPad" : (navigator.userAgent.match(/iPhone/i))  == "iPhone" ? "iPhone" : (navigator.userAgent.match(/Android/i)) == "Android" ? "Android" : (navigator.userAgent.match(/BlackBerry/i)) == "BlackBerry" ? "BlackBerry" : "null";
 	var deviceType = "iPhone";
@@ -203,8 +209,7 @@
 						zoom: 14, 
 						disableDefaultUI: true,
 						draggable: true,
-						center: center,
-						scrollwheel: false
+						center: center
 					}; 
 			map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions); 
 			map.mapTypes.set("map_style",styledMap);
@@ -403,6 +408,7 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 					   if (entries[i].name == nameFile){
 						fileFound = true;
 						google.maps.event.trigger(markers[markerId], 'click');
+						google.maps.event.trigger(markers2[markerId], 'click');
 						playAudio(entries[i],id);
 					   }
 					}
@@ -434,6 +440,7 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
     }, onError);
 } else {
 	google.maps.event.trigger(markers[markerId], 'click');
+	google.maps.event.trigger(markers2[markerId], 'click');
 	playAudio(file, id);
 }
 };
