@@ -249,11 +249,24 @@
 	
 	function fullMap()
 	{
-		jQuery('#map-canvas').addClass('full');
+		jQuery('#map-container').addClass('full');
 		map.setOptions({ 
 						draggable: true,
-						zoomControl: false,
+						zoomControl: false
 					});
+		map.setCenter(new google.maps.LatLng(37.392864, -5.990077));
+        map.setZoom(14);
+		map.fitBounds(bounds);
+	}
+	function normalMap()
+	{
+		jQuery('#map-container').removeClass('full');
+		map.setOptions({ 
+						draggable: false,
+						zoomControl: true
+					});
+		map.setCenter(new google.maps.LatLng(37.392864, -5.990077));
+        map.setZoom(14);
 		map.fitBounds(bounds);
 	}
 	
