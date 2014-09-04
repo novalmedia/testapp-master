@@ -1,5 +1,6 @@
 	var map; 
 	var myLatlng; 
+	var bounds;
 	var markers = [];
 	
 	var bubw =150;
@@ -202,7 +203,7 @@
 			map.setMapTypeId("map_style");
 			var placeLatlng = [];
 
-			var bounds = new google.maps.LatLngBounds();
+			bounds = new google.maps.LatLngBounds();
 		} else {
 			jQuery('#map-canvas').remove();
 		}
@@ -246,7 +247,15 @@
  */
 	}
 	
-
+	function fullMap()
+	{
+		jQuery('#map-canvas').addClass('full');
+		map.setOptions({ 
+						draggable: true,
+						zoomControl: false,
+					});
+		map.fitBounds(bounds);
+	}
 	
 	function saveRoute(data) {
 
