@@ -402,6 +402,7 @@
 	
 	function isDownloadedFile(nameFile)
 	{
+		if (deviceType == 'Android') {
 	 	   window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
 			function onFileSystemSuccess(fileSystem) {
 				var folderName = 'miflamencoplace'
@@ -423,61 +424,69 @@
 				}
 			},
 			onError
-		);    
+			);   
+		} else {
+			$('#story .downloada').addClass('pause');
+			setAudioPosition(0);
+		}		
 	}
 	
 function manageFile(file, nameFile){
 
-window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
-    function onFileSystemSuccess(fileSystem) {
-			var folderName = 'miflamencoplace'
-			var directoryEntry = fileSystem.root; // to get root path of directory
-			directoryEntry.getDirectory(folderName, { create: true, exclusive: false }, onDirectorySuccess, onDirectoryFail); // creating folder in sdcard
-			
-			function onDirectorySuccess(parent) {
-				 var directoryReader = parent.createReader();
-				directoryReader.readEntries(successReader,fail);
-			}
-
-			function successReader(entries) {
-					var i;
-					var fileFound = false;
-					for (i=0; i<entries.length; i++) {
-					   if (entries[i].name == nameFile){
-						fileFound = true;
-						playAudio(entries[i]);
-					   }
-					}
-					if (!fileFound){
-						jQuery('#story .downloada').addClass('loading');
-						var fp = directoryEntry.toURL(); // Returns Fulpath of local directory
-						fp = fp + folderName + "/" + nameFile; 		
-						var fileTransfer = new FileTransfer();
-						fileTransfer.download(
-							file,
-							fp,
-							function(theFile) {
-								//alert("download complete: " + theFile.toURI());
-								jQuery('#story .downloada').removeClass('loading').addClass('pause');
-								setAudioPosition(0);
-								modales('Descarga completada/Download complete');
-								//playAudio(theFile);
-							},
-							function(error) {
-							/* alert('file'+file);
-							alert('fp'+fp); */
-								jQuery('#story .downloada').removeClass('loading');
-								modales("Download error");
-								
-							}
-						);
+	if (deviceType == 'Android') {
+		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
+			function onFileSystemSuccess(fileSystem) {
+					var folderName = 'miflamencoplace'
+					var directoryEntry = fileSystem.root; // to get root path of directory
+					directoryEntry.getDirectory(folderName, { create: true, exclusive: false }, onDirectorySuccess, onDirectoryFail); // creating folder in sdcard
 					
+					function onDirectorySuccess(parent) {
+						 var directoryReader = parent.createReader();
+						directoryReader.readEntries(successReader,fail);
 					}
-				}; 
-			
-      
-    }, onError);
-};
+
+					function successReader(entries) {
+							var i;
+							var fileFound = false;
+							for (i=0; i<entries.length; i++) {
+							   if (entries[i].name == nameFile){
+								fileFound = true;
+								playAudio(entries[i]);
+							   }
+							}
+							if (!fileFound){
+								jQuery('#story .downloada').addClass('loading');
+								var fp = directoryEntry.toURL(); // Returns Fulpath of local directory
+								fp = fp + folderName + "/" + nameFile; 		
+								var fileTransfer = new FileTransfer();
+								fileTransfer.download(
+									file,
+									fp,
+									function(theFile) {
+										//alert("download complete: " + theFile.toURI());
+										jQuery('#story .downloada').removeClass('loading').addClass('pause');
+										setAudioPosition(0);
+										modales('Descarga completada/Download complete');
+										//playAudio(theFile);
+									},
+									function(error) {
+									/* alert('file'+file);
+									alert('fp'+fp); */
+										jQuery('#story .downloada').removeClass('loading');
+										modales("Download error");
+										
+									}
+								);
+							
+							}
+						}; 
+					
+			  
+		}, onError);
+	} else {
+		playAudio(file);
+	}
+}
 
 
 function onDirectoryFail(error) {
@@ -492,7 +501,11 @@ function onDirectoryFail(error) {
 		$('#story .downloada').css('display','none');
 		$('#story .playing').css('display','table');
 		if (my_media == null) {
-			my_media = new Media(src.toNativeURL(), onSuccess, onError);
+			if (deviceType == 'Android') {
+				my_media = new Media(src.toNativeURL(), onSuccess, onError);
+			} else {
+				my_media = new Media(src, onSuccess, onError);
+			}
 		}
 		my_media.play();
 		
