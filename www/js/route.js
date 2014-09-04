@@ -519,9 +519,9 @@ function playAudio(src, id) {
 				secs = position;
 			}
 			if (secs < 10){
-				jQuery('.download.a'+id+' .audio_position').html(Math.ceil(position/60)+':0'+Math.ceil(secs));
+				jQuery('.download.a'+id+' .audio_position').html(Math.floor(position/60)+':0'+Math.ceil(secs));
 			} else {
-				jQuery('.download.a'+id+' .audio_position').html(Math.ceil(position/60)+':'+Math.ceil(secs));
+				jQuery('.download.a'+id+' .audio_position').html(Math.floor(position/60)+':'+Math.ceil(secs));
 			}
 		}
     }
