@@ -256,8 +256,9 @@ header {height: 90px; background:#fff; width: 100%;border-bottom: 1px dashed #d8
 #map-container2 .map-controls{position: absolute; float: left;display: block;background: #fff; min-height:5%; width: 100%;top:0;left: 0;}
 #map-container2 .map-controls a{font-family: 'Merriweather'; text-transform: none;color: #000;text-decoration: none;
 width: 100%;text-align: center; float: left;}
-#map-container2 #map-canvas{position: absolute !important; float: left;min-height:95%; width: 100%; top:5%;left: 0;}
+#map-container2 #map-canvas2{position: absolute !important; float: left;min-height:95%; width: 100%; top:5%;left: 0;}
 a.viewfull {font-family: 'Merriweather'; text-transform: none;color: #000;text-decoration: none;width: 100%;text-align: center; float: left;}
+
 /* Places */
 
 body.places #aroundme {background: url(../img/aroundme.png);width:26px;height: 26px;float: right;margin: 31px 22px 0 0;}
