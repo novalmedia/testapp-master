@@ -136,6 +136,18 @@ jQuery( window ).unload(function() {
 								"stylers": [
 								  { "visibility": "off" }
 								]
+							  },{
+								
+								"elementType": "labels.text.stroke",
+								"stylers": [
+								  { "color": "#111111" }
+								]
+							  },{
+								
+								"elementType": "labels.text.fill",
+								"stylers": [
+								  { "color": "#cccccc" }
+								]
 							  }
 							];
 	

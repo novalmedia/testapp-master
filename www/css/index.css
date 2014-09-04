@@ -153,15 +153,16 @@ border-bottom-left-radius: 0px;
     width: 80%; 
   
     min-height: 100%; 
-	padding-bottom: 350px;
+	padding-bottom: 600px;
     -webkit-transform: translate3d(-100%, 0, 0); 
     transform: translate3d(-100%, 0, 0); 
 	background: url(../img/logo_ministerio.png) no-repeat center bottom #fff;
 	-webkit-transition-duration: .25s; 
     transition-duration: .25s; 
-	background-size: 90% auto;
+	background-size: 310px auto;
 
 }
+	#menu a.surnames {position: absolute; width: 100%;bottom:520px;height: 30px;background: transparent;}
 #menu.open { 
     -webkit-transform: translate3d(0, 0, 0); 
     transform: translate3d(0, 0, 0); 
@@ -255,9 +256,10 @@ header {height: 90px; background:#fff; width: 100%;border-bottom: 1px dashed #d8
 }
 #map-container2 .map-controls{position: absolute; float: left;display: block;background: #fff; min-height:5%; width: 100%;top:0;left: 0;}
 #map-container2 .map-controls a{font-family: 'Merriweather'; text-transform: none;color: #000;text-decoration: none;
-width: 100%;text-align: center; float: left;}
+width: 100%;text-align: center; float: left;padding-top: 5px;}
 #map-container2 #map-canvas2{position: absolute !important; float: left;min-height:95%; width: 100%; top:5%;left: 0;}
-a.viewfull {font-family: 'Merriweather'; text-transform: none;color: #000;text-decoration: none;width: 100%;text-align: center; float: left;}
+a.viewfull {font-family: 'Merriweather'; text-transform: none;color: #000;text-decoration: none;width: 100%;
+text-align: center; float: left;padding-top: 10px;}
 
 /* Places */
 
@@ -719,7 +721,7 @@ text-transform: none;
 		width: 80%; 
 	  
 		min-height: 100%; 
-		padding-bottom: 250px;
+		padding-bottom: 275px;
 		-webkit-transform: translate3d(-100%, 0, 0); 
 		transform: translate3d(-100%, 0, 0); 
 		background: url(../img/logo_ministerio.png) no-repeat center bottom #fff;
@@ -727,6 +729,7 @@ text-transform: none;
 		transition-duration: .25s; 
 		background-size: 150px auto;
 	}
+	#menu a.surnames {position: absolute; width: 100%;bottom:250px;height: 20px;background: transparent;}
 	#menu.open { 
 		-webkit-transform: translate3d(0, 0, 0); 
 		transform: translate3d(0, 0, 0); 
@@ -1187,7 +1190,7 @@ background-size: 25px auto, auto auto;	}
 		background-color:#191919;
 	   
 		font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
-		font-size:12px;
+		font-size:16px;
 		height:100%;
 		margin:0px;
 		padding:0px;
@@ -1290,7 +1293,7 @@ background-size: 25px auto, auto auto;	}
 		width: 80%; 
 	  
 		min-height: 100%; 
-		padding-bottom: 75px;
+		padding-bottom: 340px;
 		-webkit-transform: translate3d(-100%, 0, 0); 
 		transform: translate3d(-100%, 0, 0); 
 		background: url(../img/logo_ministerio.png) no-repeat center bottom #fff;
@@ -1298,6 +1301,7 @@ background-size: 25px auto, auto auto;	}
 		transition-duration: .25s; 
 		background-size: 200px auto;
 	}
+	#menu a.surnames {position: absolute; width: 100%;bottom:340px;height: 30px;background: transparent;}
 	#menu.open { 
 		-webkit-transform: translate3d(0, 0, 0); 
 		transform: translate3d(0, 0, 0); 
@@ -1940,7 +1944,7 @@ text-transform: none;
 		width: 80%; 
 	  
 		min-height: 100%; 
-		padding-bottom: 1000px;
+		padding-bottom: 1200px;
 		-webkit-transform: translate3d(-100%, 0, 0); 
 		transform: translate3d(-100%, 0, 0); 
 		background: url(../img/hlogo_ministerio.png) no-repeat center bottom #fff;
@@ -1948,6 +1952,7 @@ text-transform: none;
 		transition-duration: .25s; 
 		background-size: 600px auto;
 	}
+	#menu a.surnames {position: absolute; width: 100%;bottom:1000px;height: 100px;background: transparent;}
 	#menu.open { 
 		-webkit-transform: translate3d(0, 0, 0); 
 		transform: translate3d(0, 0, 0); 

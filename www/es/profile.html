@@ -81,7 +81,7 @@
 					<a href="#" class="playing"><span class="placetitle"><br></span><span class="persontitle"></span><span class="audio_position"></span></a>
 				</div>
 				<div class="onyoutube">
-					<a id="onyoutube" href="#" onclick="jQuery('#video').addClass('open'); ">
+					<a id="onyoutube" href="#" onclick="jQuery('#video').addClass('open');jQuery('#video iframe').attr('src',jQuery('#video iframe').attr('src')); ">
 						<img src="../img/onyoutube.png" />
 						<span>¿Quieres ver el <strong>vídeo</strong><br>de esta <strong>historia</strong>?</span>
 					</a>
@@ -89,7 +89,7 @@
 				
 			</div>
 		</div>
-		<div id="video" onclick="jQuery('#video').removeClass('open'); ">
+		<div id="video" onclick="jQuery('#video').removeClass('open');">
 			<iframe src="" width="100%" frameborder="0" allowfullscreen></iframe>
 		</div>
         </div>
@@ -107,6 +107,7 @@
 				<a href="about.html">INFO</a>
 				<a href="contact.html">CONTACTO</a>
 			</div>
+			<a href="#" onclick="openURL('http://surnames.com.es/');return false;" class="surnames"></a>
 		</div>
         <script type="text/javascript" src="../phonegap.js"></script>
         <script type="text/javascript" src="../js/fastclick.js"></script>
