@@ -207,7 +207,7 @@
 					}; 
 			var mapOptions2 = { 
 						zoom: 14, 
-						disableDefaultUI: true,
+						//disableDefaultUI: true,
 						draggable: true,
 						center: center
 					}; 
@@ -279,6 +279,7 @@
 	function fullMap()
 	{
 		jQuery('#map-container2').addClass('full');
+		jQuery('#app').hide();
 		/*var vph = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 		 var mapNode = map.getDiv();
 		$('#map-container2').append(mapNode);
@@ -292,6 +293,7 @@
 	}
 	function normalMap()
 	{
+		jQuery('#app').show();
 		jQuery('#map-container2').removeClass('full');
 		/* var mapNode = map.getDiv();
 		$('#map-container').append(mapNode);
