@@ -550,14 +550,14 @@ function onDirectoryFail(error) {
 			jQuery('.audio_position').html("0:00");
 		} else {
 			if ( position > 60 ){
-				secs = position - (60*Math.floor(position/60));
+				secs = position - (60*Math.ceil(position/60));
 			} else {
 				secs = position;
 			}
 			if (secs < 10){
-				jQuery('.audio_position').html(Math.floor(position/60)+':0'+Math.floor(secs));
+				jQuery('.audio_position').html(Math.floor(position/60)+':0'+Math.ceil(secs));
 			} else {
-				jQuery('.audio_position').html(Math.floor(position/60)+':'+Math.floor(secs));
+				jQuery('.audio_position').html(Math.floor(position/60)+':'+Math.ceil(secs));
 			}
 		}
     }
