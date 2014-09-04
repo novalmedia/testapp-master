@@ -236,11 +236,28 @@ header {height: 90px; background:#fff; width: 100%;border-bottom: 1px dashed #d8
 #logo {background: url(../img/logo_black.png);width:120px;height: 39px;margin: 24px auto 0;background-size:120px 39px;}
 #btn_menu {background: url(../img/btn_menu.png);width:34px;height: 31px;float: left;margin: 31px 0 0 22px;}
 
-#map-container .map-controls{display: none;background: #fff;}
-#map-container.full{position: absolute !important; width: 100% !important;min-height:100%;top:0;left:0;z-index:99999;}
-#map-container.full .map-controls{display: block; min-height:5%;position: absolute !important; top:0;left:0;}
-#map-container.full #map-canvas{min-height:95%;position: absolute !important;top:5%;left:0; }
-
+#map-container2 {
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    width: 100%; 
+    min-height: 100%; 
+    -webkit-transform: translate3d(0, -100%, 0); 
+    transform: translate3d(0, -100%, 0); 
+	-webkit-transition-duration: .25s; 
+    transition-duration: .25s; 
+}
+#map-container2.full { 
+    -webkit-transform: translate3d(0, 0, 0); 
+    transform: translate3d(0, 0, 0); 
+	-webkit-transition-duration: .25s; 
+    transition-duration: .25s; 
+}
+#map-container2 .map-controls{position: absolute; float: left;display: block;background: #fff; min-height:5%; width: 100%;top:0;left: 0;}
+#map-container2 .map-controls a{font-family: 'Merriweather'; text-transform: none;color: #000;text-decoration: none;
+width: 100%;text-align: center; float: left;}
+#map-container2 #map-canvas{position: absolute !important; float: left;min-height:95%; width: 100%; top:5%;left: 0;}
+a.viewfull {font-family: 'Merriweather'; text-transform: none;color: #000;text-decoration: none;width: 100%;text-align: center; float: left;}
 /* Places */
 
 body.places #aroundme {background: url(../img/aroundme.png);width:26px;height: 26px;float: right;margin: 31px 22px 0 0;}

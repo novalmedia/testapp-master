@@ -249,8 +249,11 @@
 	
 	function fullMap()
 	{
-		jQuery('#map-container').addClass('full');
-		map.setOptions({ 
+		jQuery('#map-container2').addClass('full');
+		var vph = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+		var mapNode = map.getDiv();
+		$('#map-container2').append(mapNode);
+		 map.setOptions({ 
 						draggable: true,
 						zoomControl: false
 					});
@@ -260,14 +263,16 @@
 	}
 	function normalMap()
 	{
-		jQuery('#map-container').removeClass('full');
-		map.setOptions({ 
+		jQuery('#map-container2').removeClass('full');
+		var mapNode = map.getDiv();
+		$('#map-container').append(mapNode);
+		 map.setOptions({ 
 						draggable: false,
 						zoomControl: true
 					});
 		map.setCenter(new google.maps.LatLng(37.392864, -5.990077));
         map.setZoom(14);
-		map.fitBounds(bounds);
+		map.fitBounds(bounds); 
 	}
 	
 	function saveRoute(data) {
