@@ -209,7 +209,8 @@ text-decoration: none;background: url(../img/filteropts_bg.jpg) repeat 0 0;borde
     top: 0; 
     right: 0; 
     width: 80%; 
-  
+  	  background: #ffffff;
+
     min-height: 100%; 
 	padding-bottom: 350px;
     -webkit-transform: translate3d(100%, 0, 0); 
@@ -757,7 +758,7 @@ text-transform: none;
 		top: 0; 
 		right: 0; 
 		width: 80%; 
-	  
+	  background: #ffffff;
 		min-height: 100%; 
 		padding-bottom: 150px;
 		-webkit-transform: translate3d(100%, 0, 0); 
@@ -1328,7 +1329,8 @@ background-size: 25px auto, auto auto;	}
 		top: 0; 
 		right: 0; 
 		width: 80%; 
-	  
+	  	  background: #ffffff;
+
 		min-height: 100%; 
 		padding-bottom: 350px;
 		-webkit-transform: translate3d(100%, 0, 0); 
@@ -1987,7 +1989,8 @@ text-transform: none;
 	
 
 	#aroundmenu {
-	   
+	   	  background: #ffffff;
+
 		padding-bottom: 450px;
 	   
 	}
