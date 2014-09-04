@@ -274,6 +274,7 @@
 							+'<a onclick="stopAudio('+id+');return false;" href="#" class="playing"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position"></span></a>'
 							+'</div>');
 			return true;   */
+		if (deviceType == 'Android') {
 	 	   window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
 			function onFileSystemSuccess(fileSystem) {
 				var folderName = 'miflamencoplace'
@@ -310,6 +311,13 @@
 			},
 			onError
 		);    
+		} else {
+			$("#playlistes").append(
+				'<div class="download a'+id+'">'
+				+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+', \''+markerId+'\');return false;" href="#" class="downloada pause"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position">0:00</span></a>'
+				+'<a onclick="stopAudio('+id+');return false;" href="#" class="playing"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position"></span></a>'
+				+'</div>');
+		}
 	}
 
 function manageFile(file, nameFile, id, markerId){
@@ -365,6 +373,7 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
       
     }, onError);
 } else {
+	google.maps.event.trigger(markers[markerId], 'click');
 	playAudio(file);
 }
 };
