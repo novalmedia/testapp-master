@@ -128,6 +128,15 @@
 							];
 	//var deviceType = (navigator.userAgent.match(/iPad/i))  == "iPad" ? "iPad" : (navigator.userAgent.match(/iPhone/i))  == "iPhone" ? "iPhone" : (navigator.userAgent.match(/Android/i)) == "Android" ? "Android" : (navigator.userAgent.match(/BlackBerry/i)) == "BlackBerry" ? "BlackBerry" : "null";
 	var deviceType = "iPhone";
+	
+	jQuery( window ).unload(function() {
+		for (k=0; k<=my_media.length;k++) { 
+			stopAudio(k);
+		} 
+	});
+
+	
+	
 	function initProfile() {
 	
 		var itemid = jQuery.getQuery('itemid');
@@ -403,7 +412,7 @@ function playAudio(src, id) {
 				my_media[id] = new Media(src, onSuccess, onError);
 			}
 		}
-		 for (k=0; k<=my_media.length;k++) { 
+		for (k=0; k<=my_media.length;k++) { 
 			if (k!=id)  stopAudio(k);
 		} 
 		my_media[id].play();

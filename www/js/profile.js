@@ -12,6 +12,11 @@
         }
     };
 })(jQuery);
+
+jQuery( window ).unload(function() {
+  stopAudio();
+});
+
 	var map; 
 	var myLatlng; 
 	var placeLatlng; 
