@@ -392,7 +392,7 @@ function onDirectoryFail(error) {
  	var my_media = [];
 	var mediaTimer = [];
 	
-	function playAudio(src, id) {
+function playAudio(src, id) {
 		$('.download.a'+id+' .downloada').css('display','none');
 		$('.download.a'+id+' .playing').css('display','table');
 		
@@ -403,9 +403,9 @@ function onDirectoryFail(error) {
 				my_media[id] = new Media(src, onSuccess, onError);
 			}
 		}
-		/* for (k=0; k<=markersArray.length;k++) { 
+		 for (k=0; k<=my_media.length;k++) { 
 			if (k!=id)  stopAudio(k);
-		} */
+		} 
 		my_media[id].play();
 		
 		 // Update my_media position every second
