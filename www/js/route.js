@@ -136,7 +136,7 @@
 							  },
 							];
 	var deviceType = (navigator.userAgent.match(/iPad/i))  == "iPad" ? "iPad" : (navigator.userAgent.match(/iPhone/i))  == "iPhone" ? "iPhone" : (navigator.userAgent.match(/Android/i)) == "Android" ? "Android" : (navigator.userAgent.match(/BlackBerry/i)) == "BlackBerry" ? "BlackBerry" : "null";
-	//var deviceType = "iPhone";
+	var deviceType = "iPhone";
 	
 	jQuery( window ).unload(function() {
 		for (k=0; k<=my_media.length;k++) { 
@@ -256,13 +256,13 @@
 					
 					
 					new google.maps.event.addListener(markers[i], "click", function(){
-						map.setZoom(20);
+						map.setZoom(18);
 						infowindows.close();
 						infowindows.setContent('<a class="dmk2maps_bubble_title" href="profile.html?itemid='+this.item.id+'">'+this.item.title+'</a><img onclick="document.location.href=\'profile.html?itemid='+this.item.id+'\';" class="dmk2maps_bubble_arrow" src="http://miflamencoplace.com/images/arrow'+this.item.catid+'.png">');
 						infowindows.open(map,this);
 					});	
 					new google.maps.event.addListener(markers2[i], "click", function(){
-						map2.setZoom(20);
+						map2.setZoom(18);
 						infowindows.close();
 						infowindows.setContent('<a class="dmk2maps_bubble_title" href="profile.html?itemid='+this.item.id+'">'+this.item.title+'</a><img onclick="document.location.href=\'profile.html?itemid='+this.item.id+'\';" class="dmk2maps_bubble_arrow" src="http://miflamencoplace.com/images/arrow'+this.item.catid+'.png">');
 						infowindows.open(map2,this);
@@ -281,30 +281,12 @@
 	{
 		jQuery('#map-container2').addClass('full');
 		jQuery('#app').hide();
-		/*var vph = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-		 var mapNode = map.getDiv();
-		$('#map-container2').append(mapNode);
-		 map.setOptions({ 
-						draggable: true,
-						zoomControl: false
-					});
-		map.setCenter(new google.maps.LatLng(37.392864, -5.990077));
-        map.setZoom(14); */
 		map2.fitBounds(bounds);
 	}
 	function normalMap()
 	{
 		jQuery('#app').show();
 		jQuery('#map-container2').removeClass('full');
-		/* var mapNode = map.getDiv();
-		$('#map-container').append(mapNode);
-		 map.setOptions({ 
-						draggable: false,
-						zoomControl: true
-					});
-		map.setCenter(new google.maps.LatLng(37.392864, -5.990077));
-        map.setZoom(14);
-		map.fitBounds(bounds);  */
 	}
 	
 	function saveRoute(data) {

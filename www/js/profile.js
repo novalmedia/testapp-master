@@ -265,7 +265,6 @@ jQuery( window ).unload(function() {
 				zoom: 17, 
 				disableDefaultUI: true,
 				draggable: false,
-				 zoomControl: true,
 				center: placeLatlng,
 				scrollwheel: false
 			}; 
