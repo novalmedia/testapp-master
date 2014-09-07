@@ -332,7 +332,30 @@ body.profile #place .fulltext a{display: none;}
 body.profile #place .addressinfo {width: 90%; text-align: left;padding:25px 5%;background: #191919;}
 body.profile #place .addressinfo .street {color:#ffffff;text-transform: none;font-size:20px;}
 body.profile #place .addressinfo .address {color:#a0a0a0;text-transform: none;font-size:20px;}
-body.profile #person {display: inline-block;}
+.gallery {position: relative; float: left;}
+.gallery .left, .gallery .right {
+	background: #333333 url(../img/arrow-left.png) no-repeat center;
+	position: absolute;
+	left: 0px;
+	top: 0%;
+	height: 100%;
+	width: 40px;
+	opacity: 0.6;
+	cursor: pointer;
+	z-index: 10;
+}
+.gallery .right {
+background: #333333 url(../img/arrow-right.png) no-repeat center;
+left: auto;
+right: 0px;
+}
+
+/* body.profile #place .gallery-container {position: relative;float: left;}
+body.profile #place .arrow-left {background: url(../img/arrow-left.png) no-repeat; width: 50px; height: 50px; background-size: contain;
+position: absolute; top: 40%; left: 0;z-index:9999;}
+body.profile #place .arrow-right {background: url(../img/arrow-right.png) no-repeat; width: 50px; height: 50px; background-size: contain;
+position: absolute; top: 40%; right: 0;z-index:9999;}
+body.profile #person {display: inline-block;} */
 	body.profile #personbg {width: 100%;display: inline-block;background-size: cover !important;}
 body.profile #person .persontitle{background: rgba(50,50,50,0.8);margin-top:270px; width: 100%;padding: 20px 0 30px 0;}
 body.profile #person .persontitle span{padding-left: 20px;font-family: 'Merriweather';font-weight: normal; font-size: 21px;color: #b6b6b6;text-transform: none;}
