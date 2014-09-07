@@ -22,7 +22,7 @@
 					<div id="aroundme"></div>
 				</div>
 			</header>
-           <div id="filter"><a href="#" onclick="toggleFilter();"><span>Places to...</span></a>
+           <div id="filter"><a class="switch" href="#" onclick="switchView();return false;"></a><a class="showfilters" href="#" onclick="toggleFilter();"><span>Places to...</span></a>
 			   <div id="filteropts" style="display: none;">
 				<a href="#" onclick="filterMarkers(5);return false;" class="remember"><span>Remember</span></a>
 				<a href="#" onclick="filterMarkers(6);return false;" class="breathe"><span>Breathe</span></a>
@@ -32,7 +32,9 @@
 				<a href="#" onclick="toggleFilter();" class="btnclose">&nbsp;</a>
 			   </div>
 		   </div>
-           <div id="map-canvas"></div>
+            <div id="map-canvas"></div>
+           <div id="map-canvas-list"></div>
+           <div id="map-canvas-list-hidden" style="display: none;"></div>
         </div>
 		<div id="menu">
 			<a href="#" class="close"  onclick="jQuery('#menu').removeClass('open');"><span>Navigation</span></a>

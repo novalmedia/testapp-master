@@ -203,10 +203,29 @@
 				infowindow.setContent('<div class="dmk2maps_bubble_image" onclick="document.location.href=\'profile.html?itemid='+data.id+'\';"><img src="http://miflamencoplace.com/media/k2/items/cache/'+data.img+'"></div><a class="dmk2maps_bubble_title" href="profile.html?itemid='+data.id+'">'+data.title+'</a><span class="dmk2maps_bubble_author"> by '+data.personname+'</span><img onclick="document.location.href=\'profile.html?itemid='+data.id+'\';" class="dmk2maps_bubble_arrow" src="http://miflamencoplace.com/images/arrow'+data.catid+'.png">');
 				infowindow.open(map,marker);
 			});	
-			$('#map-canvas-list').append('<div class="placeEntry cat'+data.catid+'" onclick="document.location.href=\'profile.html?itemid='+data.id+'\';"><div class="img" style="background-image:url(\''+data.img64+'\');"></div><h3>'+data.title+'</h3><h4>By '+data.personname+'</h4></div>');
+			$('#map-canvas-list-hidden').append('<div class="'+data.title.replace(/\s/g,"-").toLowerCase()+' placeEntry cat'+data.catid+'" onclick="document.location.href=\'profile.html?itemid='+data.id+'\';"><div class="img" style="background-image:url(\''+data.img64+'\');"></div><h3>'+data.title+'</h3><h4>By '+data.personname+'</h4></div>');
 		} else {
-			$('#map-canvas-list').append('<div class="placeEntry cat'+data.catid+'" onclick="document.location.href=\'profile.html?itemid='+data.id+'\';"><div class="img" style="background-image:url(\''+data.img64+'\');"></div><h3>'+data.title+'</h3><h4>By '+data.personname+'</h4></div>');
+			$('#map-canvas-list-hidden').append('<div class="'+data.title.replace(/\s/g,"-").toLowerCase()+' placeEntry cat'+data.catid+'" onclick="document.location.href=\'profile.html?itemid='+data.id+'\';"><div class="img" style="background-image:url(\''+data.img64+'\');"></div><h3>'+data.title+'</h3><h4>By '+data.personname+'</h4></div>');
 		}
+	}
+
+	function orderList()
+	{
+		var elem = jQuery('#map-canvas-list-hidden .placeEntry').each(function(){
+			item1 = this;
+			flag = false;
+			$('#map-canvas-list .placeEntry').each(function(){
+				item2 = this;
+				if (jQuery(item1).attr('class') < jQuery(item2).attr('class')){
+					jQuery(item1).insertBefore(jQuery(item2));
+					flag = true;
+					return false;
+				}
+			})
+			if (!flag){
+				$('#map-canvas-list').append(jQuery(item1));
+			}
+		});
 	}
 
 	
@@ -390,6 +409,7 @@
 				addMarker(val,map);
 				savePlace(val);
 			  });
+			  orderList();
 		      endLoading();	
 			});
 		} else {
@@ -398,6 +418,7 @@
 			//console.log(data);
 				addMarker(data,map);
 			}
+			orderList();
 			endLoading();	
 		}
 	}
