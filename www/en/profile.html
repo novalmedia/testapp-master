@@ -48,6 +48,7 @@
 				<div class="address"></div>
 			</div>
 			<div id="map-canvas"></div>
+			<a href="#" onclick="fullMap();" class="viewfull">View in fullscreen</a>
 			<div class="gallery"><div class="left"></div>
 				<div class="right"></div><div class="swiper-wrapper"></div></div>
 			<div class="md-modal md-hide">
@@ -94,6 +95,11 @@
 			<iframe src="" width="100%" frameborder="0" allowfullscreen></iframe>
 		</div>
         </div>
+		<div id="map-container2">
+			<div class="map-controls"><a href="#" onclick="normalMap();">Back to place</a></div>
+			<div id="map-canvas2"></div>
+		</div>
+
 		<div id="menu">
 			<a href="#" class="close"  onclick="jQuery('#menu').removeClass('open');"><span>Navigation</span></a>
 			<a href="places.html" class="item"><span>Places</span></a>

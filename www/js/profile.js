@@ -18,6 +18,7 @@ jQuery( window ).unload(function() {
 });
 
 	var map; 
+	var map2; 
 	var myLatlng; 
 	var placeLatlng; 
 	var itemid = jQuery.getQuery('itemid');
@@ -268,13 +269,26 @@ jQuery( window ).unload(function() {
 				center: placeLatlng,
 				scrollwheel: false
 			}; 
+			var mapOptions2 = { 
+				zoom: 17, 
+				center: placeLatlng,
+			}; 
 			map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions); 
 			map.mapTypes.set("map_style",styledMap);
 			map.setMapTypeId("map_style");
+			map2 = new google.maps.Map(document.getElementById('map-canvas2'),mapOptions2); 
+			map2.mapTypes.set("map_style",styledMap);
+			map2.setMapTypeId("map_style");
 			
 			var marker = new google.maps.Marker({ 
 				position: placeLatlng, 
 				map: map, 
+				title: data.title,
+				icon: '../img/markers/'+sfx+data.catid+'.png'				
+			});
+			var marker2 = new google.maps.Marker({ 
+				position: placeLatlng, 
+				map: map2, 
 				title: data.title,
 				icon: '../img/markers/'+sfx+data.catid+'.png'				
 			});
@@ -586,7 +600,20 @@ function onError(error) {
 		  'message: ' + error.message + '\n'); */
 }
 
-
+	function fullMap()
+	{
+		jQuery('#map-container2').addClass('full');
+		jQuery('#app').hide();
+		
+		map2.fitBounds(bounds);
+	}
+	function normalMap()
+	{
+		jQuery('#app').show();
+		jQuery('#map-container2').removeClass('full');
+		
+	}
+	
 	function startLoading(){
 		$('body').append('<div id="bigloading"><p>CARGANDO DATOS<br>LOADING DATA</p></div>');
 	}

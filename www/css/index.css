@@ -259,7 +259,7 @@ header {height: 90px; background:#fff; width: 100%;border-bottom: 1px dashed #d8
 width: 100%;text-align: center; float: left;padding-top: 5px;}
 #map-container2 #map-canvas2{position: absolute !important; float: left;min-height:95%; width: 100%; top:5%;left: 0;}
 a.viewfull {font-family: 'Merriweather'; text-transform: none;color: #000;text-decoration: none;width: 100%;
-text-align: center; float: left;padding-top: 10px;}
+text-align: center; float: left;padding: 10px 0;background: #ffffff;}
 
 /* Places */
 
