@@ -136,7 +136,7 @@
 							  },
 							];
 	var deviceType = (navigator.userAgent.match(/iPad/i))  == "iPad" ? "iPad" : (navigator.userAgent.match(/iPhone/i))  == "iPhone" ? "iPhone" : (navigator.userAgent.match(/Android/i)) == "Android" ? "Android" : (navigator.userAgent.match(/BlackBerry/i)) == "BlackBerry" ? "BlackBerry" : "null";
-	var deviceType = "iPhone";
+	//var deviceType = "iPhone";
 	
 	jQuery( window ).unload(function() {
 		for (k=0; k<=my_media.length;k++) { 
@@ -241,7 +241,7 @@
 				if (navigator.onLine){
 					placeLatlng[i] = new google.maps.LatLng(item.lat, item.long); 
 					var sfx = (vpw > 1024)?'hd':( (vpw < 400)?'l':'');
-					/* markers[i] = new google.maps.Marker({ 
+					 markers[i] = new google.maps.Marker({ 
 						position: placeLatlng[i], 
 						url : 'profile.html?itemid='+item.id,
 						map: map, 
@@ -269,10 +269,10 @@
 						infowindows.open(map2,this);
 					});	
 					bounds.extend(placeLatlng[i]);
-					map.fitBounds(bounds); */
+					map.fitBounds(bounds); 
 				}
 		}
-		orderList();
+		
 		/* playlistes.sort();
 		playlistes.reverse();
 		while(playlistes.length > 0) {$("#playlistes").append(playlistes.push());}
@@ -370,13 +370,15 @@
 							+'</div>');
 						}
 					}
-					if (!found)
+					if (!found) {
 						//playlistes[id] =
 						$("#playlistes-hidden").append(
 						'<div class="download a'+id+'">'
 						+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+', \''+markerId+'\');return false;" href="#" class="downloada"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position"></span></a>'
 						+'<a onclick="stopAudio('+id+');return false;" href="#" class="playing"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position"></span></a>'
 						+'</div>');
+					}
+					orderList();
 						
 				}
 			},
@@ -388,6 +390,7 @@
 				+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+', \''+markerId+'\');return false;" href="#" class="downloada pause"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position">0:00</span></a>'
 				+'<a onclick="stopAudio('+id+');return false;" href="#" class="playing"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position"></span></a>'
 				+'</div>');
+			orderList();
 		}
 	}
 
