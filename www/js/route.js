@@ -365,8 +365,8 @@
 							flag = false;
 							$('#playlistes .download').each(function(){
 								item2 = this;
-								if (parseInt(id) < parseInt(jQuery(item2).attr('class'))){
-									jQuery('<div class="download a'+id+'">'
+								if (parseInt(id) < parseInt(jQuery(item2).attr('rel'))){
+									jQuery('<div class="download a'+id+'" rel="'+id+'">'
 									+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+', \''+markerId+'\');return false;" href="#" class="downloada pause"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position">0:00</span></a>'
 									+'<a onclick="stopAudio('+id+');return false;" href="#" class="playing"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position"></span></a>'
 									+'</div>').insertBefore(jQuery(item2));
@@ -375,7 +375,7 @@
 								}
 							})
 							if (!flag){
-								jQuery('#playlistes').append('<div class="download a'+id+'">'
+								jQuery('#playlistes').append('<div class="download a'+id+'" rel="'+id+'">'
 									+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+', \''+markerId+'\');return false;" href="#" class="downloada pause"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position">0:00</span></a>'
 									+'<a onclick="stopAudio('+id+');return false;" href="#" class="playing"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position"></span></a>'
 									+'</div>');
@@ -393,9 +393,9 @@
 						flag = false;
 						$('#playlistes .download').each(function(){
 							item2 = this;
-							if (parseInt(id) < parseInt(jQuery(item2).attr('class'))){
-								jQuery('<div class="download a'+id+'">'
-									+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+', \''+markerId+'\');return false;" href="#" class="downloada pause"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position">0:00</span></a>'
+							if (parseInt(id) < parseInt(jQuery(item2).attr('rel'))){
+								jQuery('<div class="download a'+id+'" rel="'+id+'">'
+									+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+', \''+markerId+'\');return false;" href="#" class="downloada"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position">0:00</span></a>'
 									+'<a onclick="stopAudio('+id+');return false;" href="#" class="playing"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position"></span></a>'
 									+'</div>').insertBefore(jQuery(item2));
 								flag = true;
@@ -403,8 +403,8 @@
 							}
 						})
 						if (!flag){
-							jQuery('#playlistes').append('<div class="download a'+id+'">'
-								+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+', \''+markerId+'\');return false;" href="#" class="downloada pause"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position">0:00</span></a>'
+							jQuery('#playlistes').append('<div class="download a'+id+'" rel="'+id+'">'
+								+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+', \''+markerId+'\');return false;" href="#" class="downloada"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position">0:00</span></a>'
 								+'<a onclick="stopAudio('+id+');return false;" href="#" class="playing"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position"></span></a>'
 								+'</div>');
 						}
@@ -417,7 +417,7 @@
 		);    
 		} else {
 			$("#playlistes-hidden").append(
-				'<div class="download a'+id+'">'
+				'<div class="download a'+id+'" rel="'+id+'">'
 				+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+', \''+markerId+'\');return false;" href="#" class="downloada pause"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position">0:00</span></a>'
 				+'<a onclick="stopAudio('+id+');return false;" href="#" class="playing"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position"></span></a>'
 				+'</div>');
