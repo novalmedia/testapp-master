@@ -272,7 +272,7 @@
 					map.fitBounds(bounds);
 				}
 		}
-		orderList();
+		//orderList();
 		/* playlistes.sort();
 		playlistes.reverse();
 		while(playlistes.length > 0) {$("#playlistes").append(playlistes.push());}
@@ -361,7 +361,7 @@
 						if (entries[i].name == nameFile){
 							found = true;
 							//playlistes[id] =
-							$("#playlistes-hidden").append(
+							$("#playlistes").append(
 							'<div class="download a'+id+'">'
 							+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+', \''+markerId+'\');return false;" href="#" class="downloada pause"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position">0:00</span></a>'
 							+'<a onclick="stopAudio('+id+');return false;" href="#" class="playing"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position"></span></a>'
@@ -370,7 +370,7 @@
 					}
 					if (!found)
 						//playlistes[id] =
-						$("#playlistes-hidden").append(
+						$("#playlistes").append(
 						'<div class="download a'+id+'">'
 						+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+', \''+markerId+'\');return false;" href="#" class="downloada"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position"></span></a>'
 						+'<a onclick="stopAudio('+id+');return false;" href="#" class="playing"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position"></span></a>'
