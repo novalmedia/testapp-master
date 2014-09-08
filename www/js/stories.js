@@ -1,3 +1,12 @@
+/**
+ * @preserve Mi Flamenco Place.
+ *
+ * @version 1.8.2
+ * @copyright Novalmedia Diseño y Comunicacion [All Rights *Reserved]
+ * @author Jose Antonio Troitiño
+ *
+ */
+
 $(function() {
 	dbShell = window.openDatabase("miflamenkoplace", 1, "miflamenkoplace", 50000000);
 	dbShell.transaction(function(tx) {

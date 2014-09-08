@@ -1,3 +1,12 @@
+/**
+ * @preserve Mi Flamenco Place.
+ *
+ * @version 1.8.2
+ * @copyright Novalmedia Diseño y Comunicacion [All Rights *Reserved]
+ * @author Jose Antonio Troitiño
+ *
+ */
+
 (function($){
     $.getQuery = function( query ) {
         query = query.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
