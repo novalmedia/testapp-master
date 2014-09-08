@@ -173,7 +173,10 @@
 					saveRoute(data);
 				});
 			}else {
-				modales('Error de conexión/Connection error');
+				if (langid=='en')
+					modales('Connection error');
+				else
+					modales('Error de conexión');
 			}
 		} else {
 			jsondata = data = JSON.parse(results.rows.item(0).data);
@@ -425,7 +428,10 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 								//alert("download complete: " + theFile.toURI());
 								jQuery('.download.a'+id+' .downloada').removeClass('loading').addClass('pause');
 								setAudioPosition(0);
-								modales('Descarga completada/Download complete');
+								if (langid=='en')
+									modales('Download complete');
+								else
+									modales('Descarga completada');
 								//playAudio(theFile);
 							},
 							function(error) {

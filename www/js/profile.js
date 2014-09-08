@@ -202,7 +202,10 @@ jQuery( window ).unload(function() {
 						endLoading();	  
 					});
 			} else {
-				modales('Error de conexión/Connection error');
+				if (langid=='en')
+					modales('Connection error');
+				else
+					modales('Error de conexión');
 				endLoading();	  
 			}
 		
@@ -499,7 +502,10 @@ function manageFile(file, nameFile){
 										//alert("download complete: " + theFile.toURI());
 										jQuery('#story .downloada').removeClass('loading').addClass('pause');
 										setAudioPosition(0);
-										modales('Descarga completada/Download complete');
+										if (langid=='en')
+											modales('Download complete');
+										else
+											modales('Descarga completada');
 										//playAudio(theFile);
 									},
 									function(error) {

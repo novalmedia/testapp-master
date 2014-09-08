@@ -99,7 +99,8 @@ margin: 25px auto;
     overflow:visible;
     padding:0px;
     text-align:center;
-	text-transform: uppercase;
+	text-transform: none;
+	font-family: 'Merriweather';
 }
 
 h1 span{color: #d1d1d1;}
@@ -1791,7 +1792,8 @@ margin: 50px auto;
     overflow:visible;
     padding:0px;
     text-align:center;
-	text-transform: uppercase;
+	text-transform: none;
+	font-family: 'Merriweather';
 }
 
 h1 span{color: #d1d1d1;}

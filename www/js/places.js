@@ -483,7 +483,11 @@
 								  dbShell.transaction(function(tx) {
 									tx.executeSql("INSERT OR REPLACE INTO config(name,value) values('lastupdateplaces',?)",[Date.now()]);
 								  }, dbErrorHandler);
-								modales('Datos actualizados/Updated data');
+								  if (langid='en')
+									modales('Data updated');
+								  else
+									modales('Datos actualizados');
+								  
 								  getEntries();
 							  });
 								
