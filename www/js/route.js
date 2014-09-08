@@ -136,7 +136,7 @@
 							  },
 							];
 	var deviceType = (navigator.userAgent.match(/iPad/i))  == "iPad" ? "iPad" : (navigator.userAgent.match(/iPhone/i))  == "iPhone" ? "iPhone" : (navigator.userAgent.match(/Android/i)) == "Android" ? "Android" : (navigator.userAgent.match(/BlackBerry/i)) == "BlackBerry" ? "BlackBerry" : "null";
-	//var deviceType = "iPhone";
+	var deviceType = "iPhone";
 	
 	jQuery( window ).unload(function() {
 		for (k=0; k<=my_media.length;k++) { 
@@ -294,9 +294,11 @@
 	{
 		var elem = jQuery('#playlistes-hidden .download').each(function(){
 			item1 = this;
+			console.log(item1);
 			flag = false;
 			$('#playlistes .download').each(function(){
 				item2 = this;
+				console.log(item2);
 				if (parseInt(jQuery(item1).attr('class')) < parseInt(jQuery(item2).attr('class'))){
 					jQuery(item1).insertBefore(jQuery(item2));
 					flag = true;
