@@ -534,24 +534,25 @@ body.route .downloadtip {width:90%;margin: 0 auto;padding: 20px 0;clear: both;fo
 body.route  #map-canvas{width:100%; height:450px; float: left;clear: both; } 
 
 
-body.route .download{width: 90%;float: left;padding: 0 20px;}
+body.route .download{width: 100%;float: left;padding: 0;}
 body.route .downloada{width: 100%; margin: 0 auto; padding-left: 20px; background: url(../img/download2_arrow.png) no-repeat right center;
 display: table; font-family: 'Lato';font-size: 14px;color: #ffffff;text-transform: uppercase;text-decoration: none;
 border-top: 1px solid #d3d3d3;border-bottom: 1px dotted #d3d3d3;padding: 15px 0;}
 body.route .downloada span {display: block;}
-body.route .downloada span.placetitle{width: 70%;padding: 0 0 0 10px;float: left;font-family: 'Lato';font-size:18px;color: #ffffff; text-transform: none;}
-body.route .downloada span.persontitle{width: 70%;padding: 0 0 0 10px;float: left;font-family: 'Lato';font-size:18px;color: #ffffff; text-transform: none;font-style: italic;}
+body.route .downloada span.placetitle{width: 60%;padding: 0 0 0 75px;float: left;font-family: 'Lato';
+font-size:16px;color: #ffffff; text-transform: none;}
+body.route .downloada span.persontitle{width: 60%;padding: 0 0 0 75px;float: left;font-family: 'Lato';font-size:16px;color: #ffffff; text-transform: none;font-style: italic;}
 body.route .downloada span.audio_position{width: 10%;float: left;display: block;padding: 0 0 0 0px;font-size:16px;}
 
-body.route .downloada.pause {background: url(../img/play.png) no-repeat 90% center;background-size: auto 30px;}
+body.route .downloada.pause {background: url(../img/graph.png) no-repeat 5% center, url(../img/play.png) no-repeat 90% center;background-size: auto 30px;}
 
-body.route .playing{width: 100%; margin: 0 auto; padding-left: 20px; background: url(../img/pause.png) no-repeat 90% center;background-size: auto 30px;
+body.route .playing{width: 100%; margin: 0 auto; padding-left: 20px; background: url(../img/graph.png) no-repeat 5% center, url(../img/pause.png) no-repeat 90% center;background-size: auto 30px;
 display: table; font-family: 'Lato';font-size: 14px;color: #ffffff;text-transform: uppercase;text-decoration: none;
 border-top: 1px solid #d3d3d3;border-bottom: 1px dotted #d3d3d3;padding: 15px 0;display: none;}
 
 body.route .playing span {display: block;}
-body.route .playing span.placetitle{width: 70%;padding: 0 0 0 10px;float: left;font-family: 'Lato';font-size:18px;color: #ffffff; text-transform: none;}
-body.route .playing span.persontitle{width: 70%;padding: 0 0 0 10px;float: left;font-family: 'Lato';font-size:18px;color: #ffffff; text-transform: none;font-style: italic;}
+body.route .playing span.placetitle{width: 60%;padding: 0 0 0 75px;float: left;font-family: 'Lato';font-size:16px;color: #ffffff; text-transform: none;}
+body.route .playing span.persontitle{width: 60%;padding: 0 0 0 75px;float: left;font-family: 'Lato';font-size:16px;color: #ffffff; text-transform: none;font-style: italic;}
 body.route .playing span.audio_position{width: 10%;float: left;display: block;padding: 0 0 0 0px;font-size:16px;}
 
 body.route .downloada.loading {background: none;}
@@ -1098,7 +1099,7 @@ background-size: 25px auto, auto auto;	}
 	body.route  #map-canvas{width:100%; height:250px; float: left;clear: both; } 
 
 
-	body.route .download{width: 90%;float: left;padding: 0 5%;}
+	body.route .download{width: 100%;float: left;padding: 0;}
 	body.route .downloada{width: 100%; margin: 0 auto; padding-left: 20px; background: url(../img/download2_arrow.png) no-repeat right center;
 	display: table; font-family: 'Lato';font-size: 11px;color: #ffffff;text-transform: uppercase;text-decoration: none;
 	border-top: 1px solid #d3d3d3;border-bottom: 1px dotted #d3d3d3;padding: 7px 0;background-size: auto 20px !important;}
@@ -1503,8 +1504,8 @@ background-size: 25px auto, auto auto;	}
 	border-top: 1px solid #d3d3d3;border-bottom: 1px dotted #d3d3d3;padding: 15px 0;display: none;}
 
 	body.profile #story .playing span {display: block;}
-	body.profile #story .playing span.placetitle{width: 70%;padding: 0 0 0 10px;float: left;font-family: 'Lato';font-size:18px;color: #2f2f2f; text-transform: none;}
-	body.profile #story .playing span.persontitle{width: 70%;padding: 0 0 0 10px;float: left;font-family: 'Lato';font-size:18px;color: #787878; text-transform: none;font-style: italic;}
+	body.profile #story .playing span.placetitle{width: 70%;padding: 0 0 0 10px;float: left;font-family: 'Lato';font-size:16px;color: #2f2f2f; text-transform: none;}
+	body.profile #story .playing span.persontitle{width: 70%;padding: 0 0 0 10px;float: left;font-family: 'Lato';font-size:16px;color: #787878; text-transform: none;font-style: italic;}
 	body.profile #story .playing span.audio_position{width: 10%;float: left;display: block;padding: 0 0 0 10px;font-size:16px;margin-top: -10px;}
 
 	body.profile #story .downloada.loading {background: none;}
@@ -1637,24 +1638,30 @@ background-size: 25px auto, auto auto;	}
 	body.route  #map-canvas{width:100%; height:350px; float: left;clear: both; } 
 
 
-	body.route .download{width: 90%;float: left;padding: 0 20px;}
+	body.route .download{width: 100%;float: left;padding: 0;}
 	body.route .downloada{width: 100%; margin: 0 auto; padding-left: 20px; background: url(../img/download2_arrow.png) no-repeat right center;
 	display: table; font-family: 'Lato';font-size: 14px;color: #ffffff;text-transform: uppercase;text-decoration: none;
 	border-top: 1px solid #d3d3d3;border-bottom: 1px dotted #d3d3d3;padding: 15px 0;}
 	body.route .downloada span {display: block;}
-	body.route .downloada span.placetitle{width: 70%;padding: 0 0 0 10px;float: left;font-family: 'Lato';font-size:18px;color: #ffffff; text-transform: none;}
-	body.route .downloada span.persontitle{width: 70%;padding: 0 0 0 10px;float: left;font-family: 'Lato';font-size:18px;color: #ffffff; text-transform: none;font-style: italic;}
+	body.route .downloada span.placetitle{width: 50%;
+padding: 0 0 0 55px;
+float: left;
+font-family: 'Lato';
+font-size: 16px;
+color: #ffffff;
+text-transform: none;}
+	body.route .downloada span.persontitle{width: 50%;padding: 0 0 0 55px;float: left;font-family: 'Lato';font-size:16px;color: #ffffff; text-transform: none;font-style: italic;}
 	body.route .downloada span.audio_position{width: 10%;float: left;display: block;padding: 0 0 0 0px;font-size:16px;}
 
-	body.route .downloada.pause {background: url(../img/play.png) no-repeat 90% center;background-size: auto 30px;}
+	body.route .downloada.pause {background: url(../img/graph.png) no-repeat 5% center,url(../img/play.png) no-repeat 90% center;background-size: auto 30px;}
 
-	body.route .playing{width: 100%; margin: 0 auto; padding-left: 20px; background: url(../img/pause.png) no-repeat 90% center;background-size: auto 30px;
+	body.route .playing{width: 100%; margin: 0 auto; padding-left: 20px; background: url(../img/graph.png) no-repeat 5% center, url(../img/pause.png) no-repeat 90% center;background-size: auto 30px;
 	display: table; font-family: 'Lato';font-size: 14px;color: #ffffff;text-transform: uppercase;text-decoration: none;
 	border-top: 1px solid #d3d3d3;border-bottom: 1px dotted #d3d3d3;padding: 15px 0;display: none;}
 
 	body.route .playing span {display: block;}
-	body.route .playing span.placetitle{width: 70%;padding: 0 0 0 10px;float: left;font-family: 'Lato';font-size:18px;color: #ffffff; text-transform: none;}
-	body.route .playing span.persontitle{width: 70%;padding: 0 0 0 10px;float: left;font-family: 'Lato';font-size:18px;color: #ffffff; text-transform: none;font-style: italic;}
+	body.route .playing span.placetitle{width: 50%;padding: 0 0 0 55px;float: left;font-family: 'Lato';font-size:16px;color: #ffffff; text-transform: none;}
+	body.route .playing span.persontitle{width: 50%;padding: 0 0 0 55px;float: left;font-family: 'Lato';font-size:16px;color: #ffffff; text-transform: none;font-style: italic;}
 	body.route .playing span.audio_position{width: 10%;float: left;display: block;padding: 0 0 0 0px;font-size:16px;}
 
 	body.route .downloada.loading {background: none;}
@@ -2279,26 +2286,26 @@ text-transform: none;
 
 	body.profile #story .download{padding: 0 40px;}
 	body.profile #story .downloada{padding-left: 40px;font-size: 48px;padding: 40px 0;}
-	body.profile #story .downloada span.placetitle{padding: 0 0 0 25px;font-size:50px;line-height: 50px;}
-	body.profile #story .downloada span.persontitle{padding: 0 0 0 25px;font-size:50px;line-height: 50px;}
+	body.profile #story .downloada span.placetitle{padding: 0 0 0 120px;font-size:50px;line-height: 50px;}
+	body.profile #story .downloada span.persontitle{padding: 0 0 0 120px;font-size:50px;line-height: 50px;}
 	body.profile #story .downloada span.audio_position{padding: 0 0 0 25px;font-size:48px;}
 	body.profile #story .downloada.pause {background-size: auto 90px;background-position: 95% center;}
 	body.profile #story .playing{padding-left: 40px; background-size: auto 90px;font-size: 48px;padding: 30px 0;background-position: 95% center;}
-	body.profile #story .playing span.placetitle{padding: 0 0 0 25px;font-size:50px;line-height: 50px;}
-	body.profile #story .playing span.persontitle{padding: 0 0 0 25px;font-size:50px;line-height: 50px;}
+	body.profile #story .playing span.placetitle{padding: 0 0 0 120px;font-size:50px;line-height: 50px;}
+	body.profile #story .playing span.persontitle{padding: 0 0 0 120px;font-size:50px;line-height: 50px;}
 	body.profile #story .playing span.audio_position{padding: 0 0 0 25px;font-size:48px;}
 	body.profile #story .downloada.loading  .audio_position{width: 240px;height:66px;}
 	
-	body.route .download{padding: 0 40px;}
+	body.route .download{width: 100%;float: left;padding: 0;}
 	body.route .downloada{padding-left: 40px;font-size: 48px;padding: 40px 0;}
-	body.route .downloada span.placetitle{padding: 0 0 0 25px;font-size:50px;line-height: 50px;}
-	body.route .downloada span.persontitle{padding: 0 0 0 25px;font-size:50px;line-height: 50px;}
-	body.route .downloada span.audio_position{padding: 0 0 0 25px;font-size:48px;}
-	body.route .downloada.pause {background-size: auto 90px;background-position: 95% center;}
+	body.route .downloada span.placetitle{padding: 0 0 0 120px;font-size:40px;line-height: 50px;}
+	body.route .downloada span.persontitle{padding: 0 0 0 120px;font-size:40px;line-height: 50px;}
+	body.route .downloada span.audio_position{padding: 0 0 0 25px;font-size:40px;}
+	body.route .downloada.pause {background-size:auto 90px;background-position: 1% center, 95% center;}
 	body.route .playing{padding-left: 40px; background-size: auto 90px;font-size: 48px;padding: 30px 0;background-position: 95% center;}
-	body.route .playing span.placetitle{padding: 0 0 0 25px;font-size:50px;line-height: 50px;}
-	body.route .playing span.persontitle{padding: 0 0 0 25px;font-size:50px;line-height: 50px;}
-	body.route .playing span.audio_position{padding: 0 0 0 25px;font-size:48px;}
+	body.route .playing span.placetitle{padding: 0 0 0 120px;font-size:40px;line-height: 50px;}
+	body.route .playing span.persontitle{padding: 0 0 0 120px;font-size:40px;line-height: 50px;}
+	body.route .playing span.audio_position{padding: 0 0 0 25px;font-size:40px;}
 	body.route .downloada.loading  .audio_position{width: 240px;height:66px;}
 #playlistes {width: 100%; float: left;padding: 60px 0;}
 

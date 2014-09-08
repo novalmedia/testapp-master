@@ -136,7 +136,7 @@
 							  },
 							];
 	var deviceType = (navigator.userAgent.match(/iPad/i))  == "iPad" ? "iPad" : (navigator.userAgent.match(/iPhone/i))  == "iPhone" ? "iPhone" : (navigator.userAgent.match(/Android/i)) == "Android" ? "Android" : (navigator.userAgent.match(/BlackBerry/i)) == "BlackBerry" ? "BlackBerry" : "null";
-	var deviceType = "iPhone";
+	//var deviceType = "iPhone";
 	
 	jQuery( window ).unload(function() {
 		for (k=0; k<=my_media.length;k++) { 

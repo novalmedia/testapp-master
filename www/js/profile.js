@@ -305,6 +305,8 @@ jQuery( window ).unload(function() {
 						calculateHeight: true,
 						loop: true
 				 }); 
+				 jQuery('.gallery .left').click(function(){mySwiper.swipePrev()});
+				 jQuery('.gallery .right').click(function(){mySwiper.swipeNext()});
 				 jQuery('#place').height(
 					jQuery('#place .fulltext').height()+
 					jQuery('#place .addressinfo').height()+
@@ -315,6 +317,7 @@ jQuery( window ).unload(function() {
 		} else {
 			$('#place .gallery').remove();
 			$('#map-canvas').remove();
+			$('.viewfull').remove();
 		}
 	}
 	
