@@ -256,13 +256,11 @@
 					
 					
 					new google.maps.event.addListener(markers[i], "click", function(){
-						map.setZoom(18);
 						infowindows.close();
 						infowindows.setContent('<a class="dmk2maps_bubble_title" href="profile.html?itemid='+this.item.id+'">'+this.item.title+'</a><img onclick="document.location.href=\'profile.html?itemid='+this.item.id+'\';" class="dmk2maps_bubble_arrow" src="http://miflamencoplace.com/images/arrow'+this.item.catid+'.png">');
 						infowindows.open(map,this);
 					});	
 					new google.maps.event.addListener(markers2[i], "click", function(){
-						map2.setZoom(18);
 						infowindows.close();
 						infowindows.setContent('<a class="dmk2maps_bubble_title" href="profile.html?itemid='+this.item.id+'">'+this.item.title+'</a><img onclick="document.location.href=\'profile.html?itemid='+this.item.id+'\';" class="dmk2maps_bubble_arrow" src="http://miflamencoplace.com/images/arrow'+this.item.catid+'.png">');
 						infowindows.open(map2,this);
@@ -271,6 +269,7 @@
 					map.fitBounds(bounds);
 				}
 		}
+		orderList();
 		/* playlistes.sort();
 		playlistes.reverse();
 		while(playlistes.length > 0) {$("#playlistes").append(playlistes.push());}
@@ -288,7 +287,24 @@
 		jQuery('#app').show();
 		jQuery('#map-container2').removeClass('full');
 	}
-	
+	function orderList()
+	{
+		var elem = jQuery('#playlistes-hidden .download').each(function(){
+			item1 = this;
+			flag = false;
+			$('#playlistes .download').each(function(){
+				item2 = this;
+				if (parseInt(jQuery(item1).attr('class')) < parseInt(jQuery(item2).attr('class'))){
+					jQuery(item1).insertBefore(jQuery(item2));
+					flag = true;
+					return false;
+				}
+			})
+			if (!flag){
+				$('#playlistes').append(jQuery(item1));
+			}
+		});
+	}
 	function saveRoute(data) {
 
 		var itemid = data.id;
@@ -342,7 +358,7 @@
 						if (entries[i].name == nameFile){
 							found = true;
 							//playlistes[id] =
-							$("#playlistes").append(
+							$("#playlistes-hidden").append(
 							'<div class="download a'+id+'">'
 							+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+', \''+markerId+'\');return false;" href="#" class="downloada pause"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position">0:00</span></a>'
 							+'<a onclick="stopAudio('+id+');return false;" href="#" class="playing"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position"></span></a>'
@@ -351,7 +367,7 @@
 					}
 					if (!found)
 						//playlistes[id] =
-						$("#playlistes").append(
+						$("#playlistes-hidden").append(
 						'<div class="download a'+id+'">'
 						+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+', \''+markerId+'\');return false;" href="#" class="downloada"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position"></span></a>'
 						+'<a onclick="stopAudio('+id+');return false;" href="#" class="playing"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position"></span></a>'
@@ -362,7 +378,7 @@
 			onError
 		);    
 		} else {
-			$("#playlistes").append(
+			$("#playlistes-hidden").append(
 				'<div class="download a'+id+'">'
 				+'<a onclick="manageFile(\'http://miflamencoplace.com/media/k2/attachments/'+nameFile+'\',\''+nameFile+'\', '+id+', \''+markerId+'\');return false;" href="#" class="downloada pause"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position">0:00</span></a>'
 				+'<a onclick="stopAudio('+id+');return false;" href="#" class="playing"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position"></span></a>'
