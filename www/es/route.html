@@ -74,15 +74,13 @@
         <script type="text/javascript">
            // app.initialize();
 			var langid = 'es';
-           if (navigator.onLine){
+           if (checkConnection()){
 				function initialize() { 
 					initProfile();		
 				} 
 				google.maps.event.addDomListener(window, 'load', initialize);
 			} else {
-				$(window).load(function(){
-					initProfile();		
-				});
+				document.addEventListener('deviceready', initProfile, false);
 			}
             
         </script>
