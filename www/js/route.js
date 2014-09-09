@@ -219,7 +219,7 @@
 					}; 
 			var mapOptions2 = { 
 						zoom: 14, 
-						//disableDefaultUI: true,
+						disableDefaultUI: true,
 						draggable: true,
 						center: center
 					}; 
