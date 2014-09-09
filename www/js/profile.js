@@ -656,12 +656,12 @@ function onError(error) {
 			jQuery.modal('<p>'+text+'</p><a class="btnClose simplemodal-close" href="#">Cerrar</a>',{overlayClose:true});
 	}
 	
-	function checkConnection() {
- 		var x = new ( window.ActiveXObject || XMLHttpRequest )( "Microsoft.XMLHTTP" ),
+function checkConnection() {
+		var x = new XMLHttpRequest,
 			s;
 		x.open(
 			"HEAD",
-			"//miflamencoplace.com/rpc/check.php?rand=" + Math.random(),
+			"http://miflamencoplace.com/rpc/check.php?rand=" + Math.random(),
 			false
 		);
 		try {

@@ -12,7 +12,6 @@ $(function() {
 	dbShell.transaction(function(tx) {
 		tx.executeSql("CREATE TABLE IF NOT EXISTS routes(id INTEGER PRIMARY KEY,itemid INTEGER UNIQUE,data)");
 	}, dbErrorHandler);
-	alert(checkConnection());
 	if (checkConnection()){
 		jQuery.getJSON( "http://miflamencoplace.com/rpc/get_routes.php?callback=jsonp1122334455", function( data ) {
 			jQuery.each( data, function( key, val ) {

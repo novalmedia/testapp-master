@@ -15,11 +15,11 @@ $(function() {
 	}
 });
 function checkConnection() {
-  		var x = new ( window.ActiveXObject || XMLHttpRequest )( "Microsoft.XMLHTTP" ),
+		var x = new XMLHttpRequest,
 			s;
 		x.open(
 			"HEAD",
-			"//miflamencoplace.com/rpc/check.php?rand=" + Math.random(),
+			"http://miflamencoplace.com/rpc/check.php?rand=" + Math.random(),
 			false
 		);
 		try {

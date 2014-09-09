@@ -591,16 +591,19 @@ function onError(error) {
 		else
 			jQuery.modal('<p>'+text+'</p><a class="btnClose simplemodal-close" href="#">Cerrar</a>',{overlayClose:true});
 	}
-	function checkConnection() {
-		var result;
-		var xhr = XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHttp');
-		xhr.onload = function(){
-			result = true;
+function checkConnection() {
+		var x = new XMLHttpRequest,
+			s;
+		x.open(
+			"HEAD",
+			"http://miflamencoplace.com/rpc/check.php?rand=" + Math.random(),
+			false
+		);
+		try {
+			x.send();
+			s = x.status;
+			return ( s >= 200 && s < 300 || s === 304 );
+		} catch (e) {
+			return false;
 		}
-		xhr.onerror = function(){
-			result = false;
-		}
-		xhr.open("GET","http://miflamencoplace.com/rpc/check.php",true);
-		xhr.send();
-		return result;
     }
