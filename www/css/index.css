@@ -671,7 +671,7 @@ text-transform: none;
 	
 		padding-top: 45%;	
 		background: url(../img/bigloading.gif) no-repeat center center #000000;
-		background-size: 64px;
+		background-size: 32px;
 		}
 	#bigloading p{	font-size: 10px;}
 		
@@ -1243,7 +1243,7 @@ background-size: 25px auto, auto auto;	}
 	
 		padding-top: 45%;	
 		background: url(../img/bigloading.gif) no-repeat center center #000000;
-		background-size: 128px;
+		background-size: 64px;
 		}
 	#bigloading p{	font-size: 12px;}
 		
@@ -1294,8 +1294,10 @@ background-size: 25px auto, auto auto;	}
 
 
 	.dmk2maps_bubble_image img {height: 102px;}
-	.dmk2maps_bubble_title {font-family: 'Merriweather';font-size: 14px;font-weight: bold;color: #fff;width: 190px;margin: 7px auto;
+	.places .dmk2maps_bubble_title {font-family: 'Merriweather';font-size: 14px;font-weight: bold;color: #fff;width: 190px;margin: 7px auto;
 	display: block;text-align: center;line-height: 15px;text-decoration: none;text-transform: none;}
+	.dmk2maps_bubble_title {font-family: 'Merriweather';font-size: 14px;font-weight: bold;color: #fff;width: 140px;margin: 7px auto;
+	display: block;text-align: center;line-height: 15px;text-decoration: none;text-transform: none;margin-top: 50px;}
 
 	.dmk2maps_bubble_author {display: block;width: 190px;text-align: center;margin: 0 auto;font-family: 'Lato';font-size: 14px;font-weight: bold;color: #959595;text-transform: none;}
 	.phoney {text-align: center;overflow: visible;max-height: 280px;}

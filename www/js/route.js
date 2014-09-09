@@ -19,7 +19,7 @@
 	if (parseInt(vpw) > 400) bubw = 200;
 	if (parseInt(vpw) > 1024) bubw = 500;
 	var infowindows = new InfoBubble({
-							shadowStyle: 0,padding: 0,backgroundColor: 'rgba(0,0,0,0.8)',borderRadius: Math.floor(bubw+(bubw/3)),borderWidth: 6,
+							shadowStyle: 0,padding: 0,backgroundColor: 'rgba(0,0,0,0.8)',borderRadius: Math.floor(bubw+(bubw/3)),borderWidth: 2,
 							borderColor: '#fff',minWidth: bubw,minHeight: bubw,maxWidth: bubw,maxHeight: bubw,disableAutoPan: false,
 							hideCloseButton: false,backgroundClassName: 'phoney',arrowSize: 5,arrowPosition: 10,arrowStyle: 3
 						});	
