@@ -77,10 +77,10 @@ function saveRoute(data) {
 }
 
 function checkConnection() {
-        var networkState = navigator.network.connection.type;
+       var networkState = navigator.network.connection.type;
         if (networkState == Connection.NONE){
 			return false;
-		} else {
+		} else { 
 			return true;
-		}
+		} 
     }
