@@ -276,7 +276,7 @@ jQuery( window ).unload(function() {
 			var mapOptions = { 
 				zoom: 17, 
 				disableDefaultUI: true,
-				draggable: false,
+				draggable: true,
 				center: placeLatlng,
 				panControl: true,
 				zoomControl: true,
