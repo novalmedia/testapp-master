@@ -75,12 +75,19 @@ function saveRoute(data) {
 	}, dbErrorHandler);
 	
 }
-
 function checkConnection() {
-       var networkState = navigator.network.connection.type;
-        if (networkState == Connection.NONE){
+		var x = new ( window.ActiveXObject || XMLHttpRequest )( "Microsoft.XMLHTTP" ),
+			s;
+		x.open(
+			"HEAD",
+			"//miflamencoplace.com/rpc/check.php?rand=" + Math.random(),
+			false
+		);
+		try {
+			x.send();
+			s = x.status;
+			return ( s >= 200 && s < 300 || s === 304 );
+		} catch (e) {
 			return false;
-		} else { 
-			return true;
-		} 
+		}
     }

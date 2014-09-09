@@ -592,10 +592,15 @@ function onError(error) {
 			jQuery.modal('<p>'+text+'</p><a class="btnClose simplemodal-close" href="#">Cerrar</a>',{overlayClose:true});
 	}
 	function checkConnection() {
-        var networkState = navigator.network.connection.type;
-        if (networkState == Connection.NONE){
-			return false;
-		} else {
-			return true;
+		var result;
+		var xhr = XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHttp');
+		xhr.onload = function(){
+			result = true;
 		}
+		xhr.onerror = function(){
+			result = false;
+		}
+		xhr.open("GET","http://miflamencoplace.com/rpc/check.php",true);
+		xhr.send();
+		return result;
     }
