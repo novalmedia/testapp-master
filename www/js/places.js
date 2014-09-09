@@ -39,7 +39,6 @@
 	
 	function initMap() {
 	
-		checkConnection();
 
 		var viewportHeight = $(window).height();
 		var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
