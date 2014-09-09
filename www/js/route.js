@@ -301,6 +301,7 @@
 	{
 		jQuery('#app').show();
 		jQuery('#map-container2').removeClass('full');
+		map.fitBounds(bounds);
 	}
 	function orderList()
 	{

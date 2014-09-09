@@ -278,18 +278,20 @@ jQuery( window ).unload(function() {
 				disableDefaultUI: true,
 				draggable: false,
 				center: placeLatlng,
+				panControl: true,
+				zoomControl: true,
 				scrollwheel: false
 			}; 
-			var mapOptions2 = { 
+			/* var mapOptions2 = { 
 				zoom: 17, 
 				center: placeLatlng,
-			}; 
+			};  */
 			map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions); 
 			map.mapTypes.set("map_style",styledMap);
 			map.setMapTypeId("map_style");
-			map2 = new google.maps.Map(document.getElementById('map-canvas2'),mapOptions2); 
+			/* map2 = new google.maps.Map(document.getElementById('map-canvas2'),mapOptions2); 
 			map2.mapTypes.set("map_style",styledMap);
-			map2.setMapTypeId("map_style");
+			map2.setMapTypeId("map_style"); */
 			
 			var marker = new google.maps.Marker({ 
 				position: placeLatlng, 
@@ -297,12 +299,12 @@ jQuery( window ).unload(function() {
 				title: data.title,
 				icon: '../img/markers/'+sfx+data.catid+'.png'				
 			});
-			var marker2 = new google.maps.Marker({ 
+		/* 	var marker2 = new google.maps.Marker({ 
 				position: placeLatlng, 
 				map: map2, 
 				title: data.title,
 				icon: '../img/markers/'+sfx+data.catid+'.png'				
-			});
+			}); */
 
 		
 			var galContent = '';
@@ -622,7 +624,7 @@ function onError(error) {
 		jQuery('#map-container2').addClass('full');
 		jQuery('#app').hide();
 		
-		map2.fitBounds(bounds);
+		/* map2.fitBounds(bounds); */
 	}
 	function normalMap()
 	{
