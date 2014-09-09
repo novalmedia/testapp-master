@@ -281,7 +281,7 @@
 	function filterMarkers(catid, load){
 		while(markersArray.length) { markersArray.pop().setMap(null); }
 		if (!catid || catid == 'all'){
-			dbShell = window.openDatabase("miflamenkoplace", 1, "miflamenkoplace", 50000000);
+			dbShell = window.openDatabase("miflamenkoplacev2", 1, "miflamenkoplacev2", 50000000);
 
 			dbShell.transaction(setupTable,dbErrorHandler,checkUpdateNeeded);
 		} else {

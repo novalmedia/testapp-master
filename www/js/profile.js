@@ -169,7 +169,7 @@ jQuery( window ).unload(function() {
 	
 			//startLoading();
 		
-				dbShell = window.openDatabase("miflamenkoplace", 1, "miflamenkoplace", 50000000);
+				dbShell = window.openDatabase("miflamenkoplacev2", 1, "miflamenkoplacev2", 50000000);
 				dbShell.transaction(function(tx) {
 					tx.executeSql("CREATE TABLE IF NOT EXISTS profiles(id INTEGER PRIMARY KEY,itemid INTEGER UNIQUE,data)");
 				}, dbErrorHandler);
