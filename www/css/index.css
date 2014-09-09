@@ -326,7 +326,7 @@ body.profile #place .introtext {width: 100%; text-align: center;margin-top: 30px
 body.profile #place .tostory {width: 100%; text-align: center;}
 body.profile #place .tostory img {width: 60px; }
 body.profile #place .social {width: 100%; text-align: center;}
-body.profile #place #map-canvas{width:100%; height:350px; float: left;clear: both; } 
+body.profile #place #map-canvas{width:100%; height:300px; float: left;clear: both; } 
 
 body.profile #place .fulltext {width: 90%; text-align: left;margin-top: 0px;font-family: 'Lato'; font-size: 21px;
 color: #959595;text-transform: none;background: #000000;padding:25px 5%;}
@@ -818,7 +818,7 @@ text-transform: none;
 	/* Places */
 
 	body.places #aroundme {background: url(../img/laroundme.png);width: 20px;height: 20px;float: right;margin: 10px 10px 0 0;background-size:20px 30px;}
-	body.places #map-canvas{width:100%; height:674px; float: left;clear: both; } 
+	body.places #map-canvas{width:100%; height:600px; float: left;clear: both; } 
 	body.places #map-canvas-list{width:100%; float: left;clear: both; display: none;} 
 	body.places #filter {position: relative;float: left;height: 40px; width: 100%;
 	background:  url(../img/filter_arrow.png) no-repeat right center,url(../img/filter_bg.jpg) repeat 0 0;
@@ -1392,7 +1392,7 @@ background-size: 25px auto, auto auto;	}
 	/* Places */
 
 	body.places #aroundme {background: url(../img/aroundme.png);width:26px;height: 26px;float: right;margin: 24px 22px 0 0;}
-	body.places #map-canvas{width:100%; height:674px; float: left;clear: both; } 
+	body.places #map-canvas{width:100%; height:600px; float: left;clear: both; } 
 	body.places #map-canvas-list{width:100%; float: left;clear: both; display: none;} 
 	body.places #filter {position: relative;float: left;height: 60px; width: 100%;
 	background:  url(../img/filter_arrow.png) no-repeat right center,url(../img/filter_bg.jpg) repeat 0 0;
@@ -1454,7 +1454,7 @@ background-size: 25px auto, auto auto;	}
 	body.profile #place .tostory {width: 100%; text-align: center;}
 	body.profile #place .tostory img {width: 40px; }
 	body.profile #place .social {width: 100%; text-align: center;}
-	body.profile #place #map-canvas{width:100%; height:350px; float: left;clear: both; } 
+	body.profile #place #map-canvas{width:100%; height:300px; float: left;clear: both; } 
 
 	body.profile #place .fulltext {width: 90%; text-align: left;margin-top: 0px;font-family: 'Lato'; font-size: 18px;
 	color: #959595;text-transform: none;background: #000000;padding:25px 5%;}
@@ -2097,7 +2097,7 @@ text-transform: none;
 	body.profile #place .introtext {width: 90%; text-align: center;margin-top: 30px;font-family: 'Merriweather';
 	font-size: 58px;	color: #c7c7c7;text-transform: none;padding: 0 5%;}
 	body.profile #place .social {width: 100%; text-align: center;}
-	body.profile #place #map-canvas{width:100%; height:950px; float: left;clear: both; } 
+	body.profile #place #map-canvas{width:100%; height:800px; float: left;clear: both; } 
 	body.profile #place .tostory img {width: 120px; }
 	body.profile #place .fulltext { text-align: center;margin-top: 0px;font-family: 'Lato'; font-size: 63px;
 	color: #959595;text-transform: none;}
