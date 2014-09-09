@@ -38,6 +38,8 @@
 	});		
 	
 	function initMap() {
+	
+		checkConnection();
 
 		var viewportHeight = $(window).height();
 		var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
@@ -520,5 +522,21 @@
 	
 	function modales(text)
 	{
-		jQuery.modal('<p>'+text+'</p><a class="btnClose simplemodal-close" href="#">Cerrar/Close</a>',{overlayClose:true});
+		if (langid=='en')
+			jQuery.modal('<p>'+text+'</p><a class="btnClose simplemodal-close" href="#">Close</a>',{overlayClose:true});
+		else
+			jQuery.modal('<p>'+text+'</p><a class="btnClose simplemodal-close" href="#">Cerrar</a>',{overlayClose:true});
 	}
+	
+	function checkConnection() {
+        var networkState = navigator.network.connection.type;
+        var states = {};
+        states[Connection.UNKNOWN]  = 'Unknown connection';
+        states[Connection.ETHERNET] = 'Ethernet connection';
+        states[Connection.WIFI]     = 'WiFi connection';
+        states[Connection.CELL_2G]  = 'Cell 2G connection';
+        states[Connection.CELL_3G]  = 'Cell 3G connection';
+        states[Connection.CELL_4G]  = 'Cell 4G connection';
+        states[Connection.NONE]     = 'No network connection';
+        alert('Connection type: ' + states[networkState]);
+    }

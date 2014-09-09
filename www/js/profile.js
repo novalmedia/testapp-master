@@ -650,5 +650,8 @@ function onError(error) {
 	
 	function modales(text)
 	{
-		jQuery.modal('<p>'+text+'</p><a class="btnClose simplemodal-close" href="#">Cerrar/Close</a>',{overlayClose:true});
+		if (langid=='en')
+			jQuery.modal('<p>'+text+'</p><a class="btnClose simplemodal-close" href="#">Close</a>',{overlayClose:true});
+		else
+			jQuery.modal('<p>'+text+'</p><a class="btnClose simplemodal-close" href="#">Cerrar</a>',{overlayClose:true});
 	}

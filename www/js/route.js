@@ -457,7 +457,7 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 					   if (entries[i].name == nameFile){
 						fileFound = true;
 						google.maps.event.trigger(markers[markerId], 'click');
-						google.maps.event.trigger(markers2[markerId], 'click');
+						//google.maps.event.trigger(markers2[markerId], 'click');
 						playAudio(entries[i],id);
 					   }
 					}
@@ -492,7 +492,7 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
     }, onError);
 } else {
 	google.maps.event.trigger(markers[markerId], 'click');
-	google.maps.event.trigger(markers2[markerId], 'click');
+	//google.maps.event.trigger(markers2[markerId], 'click');
 	playAudio(file, id);
 }
 };
@@ -586,5 +586,8 @@ function onError(error) {
 
 	function modales(text)
 	{
-		jQuery.modal('<p>'+text+'</p><a class="btnClose simplemodal-close" href="#">Cerrar/Close</a>',{overlayClose:true});
+		if (langid=='en')
+			jQuery.modal('<p>'+text+'</p><a class="btnClose simplemodal-close" href="#">Close</a>',{overlayClose:true});
+		else
+			jQuery.modal('<p>'+text+'</p><a class="btnClose simplemodal-close" href="#">Cerrar</a>',{overlayClose:true});
 	}
