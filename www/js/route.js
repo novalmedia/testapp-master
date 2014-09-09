@@ -235,7 +235,7 @@
 		} else {
 			jQuery('#map-canvas').remove();
 		}
-		modales('Cargando ...');
+		modales(data.routeitems.length);
 		var ies = 1;
 		var ien = 1;
 		for (i=0;i<data.routeitems.length;i++){
