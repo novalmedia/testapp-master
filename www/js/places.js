@@ -49,7 +49,7 @@
 			 $('#menu').css('min-height',(viewportHeight-menuH+16)+'px');
 		var mapZoom = (viewportWidth > 1024)?15:14;
 		
-			if (navigator.onLine) {
+			if (checkConnection()) {
 				myLatlng = new google.maps.LatLng(37.392864, -5.990077); 
 				var mapOptions = { 
 					zoom: mapZoom, 
@@ -186,7 +186,7 @@
 								]
 							  }
 							];
-			if (navigator.onLine) {
+			if (checkConnection()) {
 				var styledMap = new google.maps.StyledMapType(styles,{name: "Styled Map"});
 				map.mapTypes.set("map_style",styledMap);
 				map.setMapTypeId("map_style");
@@ -199,7 +199,7 @@
 	
 	function addMarker(data,map) {
 			var sfx = (vpw > 1024)?'hd':((vpw < 400)?'l':'');
-		if (navigator.onLine){
+		if (checkConnection()){
 			placeLatlng = new google.maps.LatLng(data.lat, data.long);
 			var marker = new google.maps.Marker({ 
 				position: placeLatlng, 
@@ -281,7 +281,7 @@
 	function filterMarkers(catid, load){
 		while(markersArray.length) { markersArray.pop().setMap(null); }
 		if (!catid || catid == 'all'){
-			dbShell = window.openDatabase("miflamenkoplacev2", 1, "miflamenkoplacev2", 50000000);
+			dbShell = window.openDatabase("miflamenkoplace", 1, "miflamenkoplace", 50000000);
 
 			dbShell.transaction(setupTable,dbErrorHandler,checkUpdateNeeded);
 		} else {
@@ -402,7 +402,7 @@
 			//console.log(results);
 		jQuery('.placeEntry').remove();
 		
-		if (!navigator.onLine){
+		if (!checkConnection()){
 			jQuery('#map-canvas').hide();
 			jQuery('#map-canvas-list').show();
 			jQuery('a.switch').remove();
@@ -474,7 +474,7 @@
 	}
 	
 	function checkUpdateNeeded(){
-		if (navigator.onLine){
+		if (checkConnection()){
 			jQuery.getJSON( "http://miflamencoplace.com/rpc/check-updateplaces.php", function( data ) {
 			  jQuery.each( data, function( key, modified ) {
 				  dbShell.transaction(function(tx) {
@@ -530,13 +530,9 @@
 	
 	function checkConnection() {
         var networkState = navigator.network.connection.type;
-        var states = {};
-        states[Connection.UNKNOWN]  = 'Unknown connection';
-        states[Connection.ETHERNET] = 'Ethernet connection';
-        states[Connection.WIFI]     = 'WiFi connection';
-        states[Connection.CELL_2G]  = 'Cell 2G connection';
-        states[Connection.CELL_3G]  = 'Cell 3G connection';
-        states[Connection.CELL_4G]  = 'Cell 4G connection';
-        states[Connection.NONE]     = 'No network connection';
-        alert('Connection type: ' + states[networkState]);
+        if (networkState == Connection.NONE){
+			return false;
+		} else {
+			return true;
+		}
     }

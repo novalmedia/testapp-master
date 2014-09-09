@@ -169,7 +169,7 @@ jQuery( window ).unload(function() {
 	
 			//startLoading();
 		
-				dbShell = window.openDatabase("miflamenkoplacev2", 1, "miflamenkoplacev2", 50000000);
+				dbShell = window.openDatabase("miflamenkoplace", 1, "miflamenkoplace", 50000000);
 				dbShell.transaction(function(tx) {
 					tx.executeSql("CREATE TABLE IF NOT EXISTS profiles(id INTEGER PRIMARY KEY,itemid INTEGER UNIQUE,data)");
 				}, dbErrorHandler);
@@ -203,7 +203,7 @@ jQuery( window ).unload(function() {
 	
 		if (results.rows.length == 0) {
 			startLoading();
-			if (navigator.onLine){
+			if (checkConnection()){
 				jQuery.getJSON( "http://miflamencoplace.com/rpc/get_profile.php?itemid="+itemid, function( data ) {
 						fillProfile(data);
 						saveProfile(data);
@@ -269,7 +269,7 @@ jQuery( window ).unload(function() {
 		$('#story .authorname').html(data.personname);
 		$('#video iframe').attr('src',data.onyoutube).css('height',(vpw/100)*56);
 		
-		if (navigator.onLine){
+		if (checkConnection()){
 		
 			var styledMap = new google.maps.StyledMapType(styles,{name: "Styled Map"});
 			placeLatlng = new google.maps.LatLng(data.lat, data.long);
@@ -388,7 +388,7 @@ jQuery( window ).unload(function() {
 			toggleFilter();
 		}
 		if (showTab == 'person' || showTab == 'story') {
-			if (navigator.onLine){
+			if (checkConnection()){
 				var center = map.getCenter(); 
 				google.maps.event.trigger(map, 'resize'); 
 				map.setCenter(center); 
@@ -655,3 +655,12 @@ function onError(error) {
 		else
 			jQuery.modal('<p>'+text+'</p><a class="btnClose simplemodal-close" href="#">Cerrar</a>',{overlayClose:true});
 	}
+	
+	function checkConnection() {
+        var networkState = navigator.network.connection.type;
+        if (networkState == Connection.NONE){
+			return false;
+		} else {
+			return true;
+		}
+    }

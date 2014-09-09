@@ -159,7 +159,7 @@
 	
 		var itemid = jQuery.getQuery('itemid');
 		
-		dbShell = window.openDatabase("miflamenkoplacev2", 1, "miflamenkoplacev2", 50000000);
+		dbShell = window.openDatabase("miflamenkoplace", 1, "miflamenkoplace", 50000000);
 
 		dbShell.transaction(function(tx) {	
 			tx.executeSql("SELECT data FROM routes WHERE itemid = ? ",[itemid],fillProfileNC,dbErrorHandler);
@@ -175,7 +175,7 @@
 	function fillProfileNC(tx,results){
 	
 		if (results.rows.length == 0) {
-			if (navigator.onLine){
+			if (checkConnection()){
 				
 				jQuery.getJSON( "http://miflamencoplace.com/rpc/get_route.php?itemid="+itemid, function( data ) {
 					fillProfile(data);
@@ -189,7 +189,7 @@
 			}
 		} else {
 			jsondata = data = JSON.parse(results.rows.item(0).data);
-			if (navigator.onLine){
+			if (checkConnection()){
 				fillProfile(jsondata);
 			} else {
 				fillProfile(jsondata);
@@ -206,7 +206,7 @@
 		$('#route .introtext').html(data.introtext);
 		$('#playlistes').css('background',' url(../img/overlay.png) repeat,url(\''+data.img64+'\') no-repeat center top')
 		.css('background-size', 'cover');
-		if (navigator.onLine){
+		if (checkConnection()){
 		
 			var styledMap = new google.maps.StyledMapType(styles,{name: "Styled Map"});
 			center = new google.maps.LatLng(37.392864, -5.990077); 
@@ -247,7 +247,7 @@
 				if (item.audioen != '' && langid == 'en') {
 					isDownloadedFile(item.audioen,item.title, ien++, i);
 				}
-				if (navigator.onLine){
+				if (checkConnection()){
 					placeLatlng[i] = new google.maps.LatLng(item.lat, item.long); 
 					var sfx = (vpw > 1024)?'hd':( (vpw < 400)?'l':'');
 					 markers[i] = new google.maps.Marker({ 
@@ -591,3 +591,11 @@ function onError(error) {
 		else
 			jQuery.modal('<p>'+text+'</p><a class="btnClose simplemodal-close" href="#">Cerrar</a>',{overlayClose:true});
 	}
+	function checkConnection() {
+        var networkState = navigator.network.connection.type;
+        if (networkState == Connection.NONE){
+			return false;
+		} else {
+			return true;
+		}
+    }

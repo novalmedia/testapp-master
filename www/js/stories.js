@@ -8,11 +8,11 @@
  */
 
 $(function() {
-	dbShell = window.openDatabase("miflamenkoplacev2", 1, "miflamenkoplacev2", 50000000);
+	dbShell = window.openDatabase("miflamenkoplace", 1, "miflamenkoplace", 50000000);
 	dbShell.transaction(function(tx) {
 		tx.executeSql("CREATE TABLE IF NOT EXISTS routes(id INTEGER PRIMARY KEY,itemid INTEGER UNIQUE,data)");
 	}, dbErrorHandler);
-	if (navigator.onLine){
+	if (checkConnection()){
 		jQuery.getJSON( "http://miflamencoplace.com/rpc/get_routes.php?callback=jsonp1122334455", function( data ) {
 			jQuery.each( data, function( key, val ) {
 				addRoute(val);
@@ -74,3 +74,12 @@ function saveRoute(data) {
 	}, dbErrorHandler);
 	
 }
+
+function checkConnection() {
+        var networkState = navigator.network.connection.type;
+        if (networkState == Connection.NONE){
+			return false;
+		} else {
+			return true;
+		}
+    }
