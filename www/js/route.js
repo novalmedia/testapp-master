@@ -277,6 +277,9 @@
 						infowindows.setContent('<a class="dmk2maps_bubble_title" href="profile.html?itemid='+this.item.id+'">'+this.item.title+'</a><img onclick="document.location.href=\'profile.html?itemid='+this.item.id+'\';" class="dmk2maps_bubble_arrow" src="http://miflamencoplace.com/images/arrow'+this.item.catid+'.png">');
 						infowindows.open(map2,this);
 					});	
+					new google.maps.event.addListener(infowindows, "closeclick", function(){
+						map.fitBounds(bounds); 				
+					});
 					bounds.extend(placeLatlng[i]);
 					map.fitBounds(bounds); 
 				}
