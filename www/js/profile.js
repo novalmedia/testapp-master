@@ -278,8 +278,6 @@ jQuery( window ).unload(function() {
 				disableDefaultUI: true,
 				draggable: true,
 				center: placeLatlng,
-				/* panControl: true,
-				zoomControl: true, */
 				scrollwheel: false
 			}; 
 			/* var mapOptions2 = { 
