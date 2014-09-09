@@ -235,7 +235,6 @@
 		} else {
 			jQuery('#map-canvas').remove();
 		}
-		modales(data.routeitems.length);
 		var ies = 1;
 		var ien = 1;
 		for (i=0;i<data.routeitems.length;i++){
@@ -358,6 +357,7 @@
 							+'<a onclick="stopAudio('+id+');return false;" href="#" class="playing"><span class="placetitle">'+id+'   '+title+'</span><span class="audio_position"></span></a>'
 							+'</div>');
 			return true;   */
+			alert('test');
 		if (deviceType == 'Android') {
 	 	   window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
 			function onFileSystemSuccess(fileSystem) {
