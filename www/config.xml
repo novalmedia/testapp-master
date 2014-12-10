@@ -4,8 +4,8 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.phonegap.mi-flamenco-place"
-		versionCode = "1560"
-        version   = "1.5.6">
+		versionCode = "1570"
+        version   = "1.5.7">
 
     <name>Mi Flamenco Place</name>
 
@@ -120,7 +120,7 @@
     <gap:splash src="res/screen/windows-phone/screen-portrait.jpg"      gap:platform="winphone" />
 
 	<gap:config-file platform="ios" parent="CFBundleShortVersionString">
-		<string>156</string>
+		<string>157</string>
 	</gap:config-file>
 
     <!--
